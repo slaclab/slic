@@ -1,0 +1,56 @@
+// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/PackageInfo.hh.in,v 1.8 2013-11-06 00:23:35 jeremy Exp $
+#ifndef SLIC_PACKAGE_INFO_HH
+#define SLIC_PACKAGE_INFO_HH 1
+
+namespace slic {
+
+/**
+ * @class PackageInfo
+ * @brief Provides basic information about this application.
+ * 
+ */
+class PackageInfo {
+
+public:
+
+    /**
+     * Get the version string of the application.
+     * @return The version string.
+     */
+	static std::string& getVersionString() {
+        static std::string ver_str = "@SLIC_VERSION@";
+        return ver_str;
+    }
+
+    /**
+     * Get the full name of the application.
+     * @return The full name of the application.
+     */
+    static std::string& getNameString() {
+        static std::string name_str = "Simulation for the Linear Collider";
+        return name_str;
+    }
+
+    /**
+     * Get the abbreviated name of the application.
+     * @return The abbreviated name of the application.
+     */            
+    static std::string& getAbbrevString() {
+        static std::string abbrev_str = "slic";
+        return abbrev_str;
+    }
+
+    /**
+     * Get a string fully describing the application.
+     * @return The description of the application.
+     */            
+    static std::string getFullApplicationString() {
+        static std::string fullVerStr = getNameString() + " " + getVersionString();
+        return fullVerStr;
+    }
+
+  };
+}
+
+#endif
+

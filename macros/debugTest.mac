@@ -1,0 +1,11 @@
+/lcdd/url ./examples/template.lcdd 
+
+/debug/addEvents 0 2
+/debug/debugMacro ./macros/debug.mac
+/debug/cleanupMacro ./macros/cleanup.mac
+
+/lcio/fileExists delete
+
+/run/initialize
+
+/run/beamOn 3

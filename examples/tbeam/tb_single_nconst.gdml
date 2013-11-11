@@ -1,0 +1,1058 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gdml xmlns:gdml="http://cern.ch/2001/Schemas/GDML"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="gdml_1.0.xsd">
+
+   <define>
+      <position  name=   "pos_0"  x="     0.0000"  y="     0.0000"  z="     0.0000"  unit="cm" />
+      <position  name=   "pos_1"  x="     0.0000"  y="     0.0000"  z="     7.5000"  unit="cm" />
+      <position  name=   "pos_2"  x="     0.0000"  y="     0.0000"  z="     7.2500"  unit="cm" />
+      <position  name=   "pos_3"  x="     0.0000"  y="     0.0000"  z="     0.1250"  unit="cm" />
+      <position  name=   "pos_4"  x="     0.0000"  y="     0.0000"  z="    -0.0250"  unit="cm" />
+      <position  name=   "pos_5"  x="     0.0000"  y="     0.0000"  z="    -0.0700"  unit="cm" />
+      <position  name=   "pos_6"  x="     0.0000"  y="     0.0000"  z="    -0.1400"  unit="cm" />
+      <position  name=   "pos_7"  x="     0.0000"  y="     0.0000"  z="    -0.2200"  unit="cm" />
+      <position  name=   "pos_8"  x="     0.0000"  y="     0.0000"  z="     6.7500"  unit="cm" />
+      <position  name=   "pos_9"  x="     0.0000"  y="     0.0000"  z="     6.2500"  unit="cm" />
+      <position  name=  "pos_10"  x="     0.0000"  y="     0.0000"  z="     5.7500"  unit="cm" />
+      <position  name=  "pos_11"  x="     0.0000"  y="     0.0000"  z="     5.2500"  unit="cm" />
+      <position  name=  "pos_12"  x="     0.0000"  y="     0.0000"  z="     4.7500"  unit="cm" />
+      <position  name=  "pos_13"  x="     0.0000"  y="     0.0000"  z="     4.2500"  unit="cm" />
+      <position  name=  "pos_14"  x="     0.0000"  y="     0.0000"  z="     3.7500"  unit="cm" />
+      <position  name=  "pos_15"  x="     0.0000"  y="     0.0000"  z="     3.2500"  unit="cm" />
+      <position  name=  "pos_16"  x="     0.0000"  y="     0.0000"  z="     2.7500"  unit="cm" />
+      <position  name=  "pos_17"  x="     0.0000"  y="     0.0000"  z="     2.2500"  unit="cm" />
+      <position  name=  "pos_18"  x="     0.0000"  y="     0.0000"  z="     1.7500"  unit="cm" />
+      <position  name=  "pos_19"  x="     0.0000"  y="     0.0000"  z="     1.2500"  unit="cm" />
+      <position  name=  "pos_20"  x="     0.0000"  y="     0.0000"  z="     0.7500"  unit="cm" />
+      <position  name=  "pos_21"  x="     0.0000"  y="     0.0000"  z="     0.2500"  unit="cm" />
+      <position  name=  "pos_22"  x="     0.0000"  y="     0.0000"  z="    -0.2500"  unit="cm" />
+      <position  name=  "pos_23"  x="     0.0000"  y="     0.0000"  z="    -0.7500"  unit="cm" />
+      <position  name=  "pos_24"  x="     0.0000"  y="     0.0000"  z="    -1.2500"  unit="cm" />
+      <position  name=  "pos_25"  x="     0.0000"  y="     0.0000"  z="    -1.7500"  unit="cm" />
+      <position  name=  "pos_26"  x="     0.0000"  y="     0.0000"  z="    -2.2500"  unit="cm" />
+      <position  name=  "pos_27"  x="     0.0000"  y="     0.0000"  z="    -2.7500"  unit="cm" />
+      <position  name=  "pos_28"  x="     0.0000"  y="     0.0000"  z="    -3.2500"  unit="cm" />
+      <position  name=  "pos_29"  x="     0.0000"  y="     0.0000"  z="    -3.7500"  unit="cm" />
+      <position  name=  "pos_30"  x="     0.0000"  y="     0.0000"  z="    -4.2500"  unit="cm" />
+      <position  name=  "pos_31"  x="     0.0000"  y="     0.0000"  z="    -4.7500"  unit="cm" />
+      <position  name=  "pos_32"  x="     0.0000"  y="     0.0000"  z="    -5.2500"  unit="cm" />
+      <position  name=  "pos_33"  x="     0.0000"  y="     0.0000"  z="    -5.7500"  unit="cm" />
+      <position  name=  "pos_34"  x="     0.0000"  y="     0.0000"  z="    -6.2500"  unit="cm" />
+      <position  name=  "pos_35"  x="     0.0000"  y="     0.0000"  z="    -6.7500"  unit="cm" />
+      <position  name=  "pos_36"  x="     0.0000"  y="     0.0000"  z="    -7.2500"  unit="cm" />
+      <position  name=  "pos_37"  x="     0.0000"  y="     0.0000"  z="   -61.8992"  unit="cm" />
+      <position  name=  "pos_38"  x="     0.0000"  y="     0.0000"  z="    50.5685"  unit="cm" />
+      <position  name=  "pos_39"  x="     0.0000"  y="     0.0000"  z="     1.0807"  unit="cm" />
+      <position  name=  "pos_40"  x="     0.0000"  y="     0.0000"  z="     0.0307"  unit="cm" />
+      <position  name=  "pos_41"  x="     0.0000"  y="     0.0000"  z="    -0.8193"  unit="cm" />
+      <position  name=  "pos_42"  x="     0.0000"  y="     0.0000"  z="    -0.9693"  unit="cm" />
+      <position  name=  "pos_43"  x="     0.0000"  y="     0.0000"  z="    -1.0750"  unit="cm" />
+      <position  name=  "pos_44"  x="     0.0000"  y="     0.0000"  z="    -1.1307"  unit="cm" />
+      <position  name=  "pos_45"  x="     0.0000"  y="     0.0000"  z="    -1.2557"  unit="cm" />
+      <position  name=  "pos_46"  x="     0.0000"  y="     0.0000"  z="    47.9070"  unit="cm" />
+      <position  name=  "pos_47"  x="     0.0000"  y="     0.0000"  z="    45.2455"  unit="cm" />
+      <position  name=  "pos_48"  x="     0.0000"  y="     0.0000"  z="    42.5840"  unit="cm" />
+      <position  name=  "pos_49"  x="     0.0000"  y="     0.0000"  z="    39.9225"  unit="cm" />
+      <position  name=  "pos_50"  x="     0.0000"  y="     0.0000"  z="    37.2610"  unit="cm" />
+      <position  name=  "pos_51"  x="     0.0000"  y="     0.0000"  z="    34.5995"  unit="cm" />
+      <position  name=  "pos_52"  x="     0.0000"  y="     0.0000"  z="    31.9380"  unit="cm" />
+      <position  name=  "pos_53"  x="     0.0000"  y="     0.0000"  z="    29.2765"  unit="cm" />
+      <position  name=  "pos_54"  x="     0.0000"  y="     0.0000"  z="    26.6150"  unit="cm" />
+      <position  name=  "pos_55"  x="     0.0000"  y="     0.0000"  z="    23.9535"  unit="cm" />
+      <position  name=  "pos_56"  x="     0.0000"  y="     0.0000"  z="    21.2920"  unit="cm" />
+      <position  name=  "pos_57"  x="     0.0000"  y="     0.0000"  z="    18.6305"  unit="cm" />
+      <position  name=  "pos_58"  x="     0.0000"  y="     0.0000"  z="    15.9690"  unit="cm" />
+      <position  name=  "pos_59"  x="     0.0000"  y="     0.0000"  z="    13.3075"  unit="cm" />
+      <position  name=  "pos_60"  x="     0.0000"  y="     0.0000"  z="    10.6460"  unit="cm" />
+      <position  name=  "pos_61"  x="     0.0000"  y="     0.0000"  z="     7.9845"  unit="cm" />
+      <position  name=  "pos_62"  x="     0.0000"  y="     0.0000"  z="     5.3230"  unit="cm" />
+      <position  name=  "pos_63"  x="     0.0000"  y="     0.0000"  z="     2.6615"  unit="cm" />
+      <position  name=  "pos_64"  x="     0.0000"  y="     0.0000"  z="    -2.6615"  unit="cm" />
+      <position  name=  "pos_65"  x="     0.0000"  y="     0.0000"  z="    -5.3230"  unit="cm" />
+      <position  name=  "pos_66"  x="     0.0000"  y="     0.0000"  z="    -7.9845"  unit="cm" />
+      <position  name=  "pos_67"  x="     0.0000"  y="     0.0000"  z="   -10.6460"  unit="cm" />
+      <position  name=  "pos_68"  x="     0.0000"  y="     0.0000"  z="   -13.3075"  unit="cm" />
+      <position  name=  "pos_69"  x="     0.0000"  y="     0.0000"  z="   -15.9690"  unit="cm" />
+      <position  name=  "pos_70"  x="     0.0000"  y="     0.0000"  z="   -18.6305"  unit="cm" />
+      <position  name=  "pos_71"  x="     0.0000"  y="     0.0000"  z="   -21.2920"  unit="cm" />
+      <position  name=  "pos_72"  x="     0.0000"  y="     0.0000"  z="   -23.9535"  unit="cm" />
+      <position  name=  "pos_73"  x="     0.0000"  y="     0.0000"  z="   -26.6150"  unit="cm" />
+      <position  name=  "pos_74"  x="     0.0000"  y="     0.0000"  z="   -29.2765"  unit="cm" />
+      <position  name=  "pos_75"  x="     0.0000"  y="     0.0000"  z="   -31.9380"  unit="cm" />
+      <position  name=  "pos_76"  x="     0.0000"  y="     0.0000"  z="   -34.5995"  unit="cm" />
+      <position  name=  "pos_77"  x="     0.0000"  y="     0.0000"  z="   -37.2610"  unit="cm" />
+      <position  name=  "pos_78"  x="     0.0000"  y="     0.0000"  z="   -39.9225"  unit="cm" />
+      <position  name=  "pos_79"  x="     0.0000"  y="     0.0000"  z="   -42.5840"  unit="cm" />
+      <position  name=  "pos_80"  x="     0.0000"  y="     0.0000"  z="   -45.2455"  unit="cm" />
+      <position  name=  "pos_81"  x="     0.0000"  y="     0.0000"  z="   -47.9070"  unit="cm" />
+      <position  name=  "pos_82"  x="     0.0000"  y="     0.0000"  z="   -50.5685"  unit="cm" />
+      <position  name=  "pos_83"  x="     0.0000"  y="     0.0000"  z="  -196.3185"  unit="cm" />
+      <position  name=  "pos_84"  x="     0.0000"  y="     0.0000"  z="    44.3250"  unit="cm" />
+      <position  name=  "pos_85"  x="     0.0000"  y="     0.0000"  z="     0.9600"  unit="cm" />
+      <position  name=  "pos_86"  x="     0.0000"  y="     0.0000"  z="     0.4250"  unit="cm" />
+      <position  name=  "pos_87"  x="     0.0000"  y="     0.0000"  z="     0.3250"  unit="cm" />
+      <position  name=  "pos_88"  x="     0.0000"  y="     0.0000"  z="     0.2625"  unit="cm" />
+      <position  name=  "pos_89"  x="     0.0000"  y="     0.0000"  z="    -0.2625"  unit="cm" />
+      <position  name=  "pos_90"  x="     0.0000"  y="     0.0000"  z="    -0.3250"  unit="cm" />
+      <position  name=  "pos_91"  x="     0.0000"  y="     0.0000"  z="    -0.4250"  unit="cm" />
+      <position  name=  "pos_92"  x="     0.0000"  y="     0.0000"  z="    -0.4750"  unit="cm" />
+      <position  name=  "pos_93"  x="     0.0000"  y="     0.0000"  z="    41.4550"  unit="cm" />
+      <position  name=  "pos_94"  x="     0.0000"  y="     0.0000"  z="    38.5850"  unit="cm" />
+      <position  name=  "pos_95"  x="     0.0000"  y="     0.0000"  z="    35.7150"  unit="cm" />
+      <position  name=  "pos_96"  x="     0.0000"  y="     0.0000"  z="    32.8450"  unit="cm" />
+      <position  name=  "pos_97"  x="     0.0000"  y="     0.0000"  z="    29.9750"  unit="cm" />
+      <position  name=  "pos_98"  x="     0.0000"  y="     0.0000"  z="    27.1050"  unit="cm" />
+      <position  name=  "pos_99"  x="     0.0000"  y="     0.0000"  z="    24.2350"  unit="cm" />
+      <position  name= "pos_100"  x="     0.0000"  y="     0.0000"  z="    18.5150"  unit="cm" />
+      <position  name= "pos_101"  x="     0.0000"  y="     0.0000"  z="     3.8100"  unit="cm" />
+      <position  name= "pos_102"  x="     0.0000"  y="     0.0000"  z="     9.9450"  unit="cm" />
+      <position  name= "pos_103"  x="     0.0000"  y="     0.0000"  z="     1.3750"  unit="cm" />
+      <position  name= "pos_104"  x="     0.0000"  y="     0.0000"  z="    -7.1950"  unit="cm" />
+      <position  name= "pos_105"  x="     0.0000"  y="     0.0000"  z="   -15.7650"  unit="cm" />
+      <position  name= "pos_106"  x="     0.0000"  y="     0.0000"  z="   -24.3350"  unit="cm" />
+      <position  name= "pos_107"  x="     0.0000"  y="     0.0000"  z="   -32.9050"  unit="cm" />
+      <position  name= "pos_108"  x="     0.0000"  y="     0.0000"  z="   -41.4750"  unit="cm" />
+
+      <!-- The Euler angles (x convention) phi, theta, psi -->
+      <!-- are generated instead of x, y, z  -->
+      <rotation  name=   "rot_0"  x="     0.0000"  y="     0.0000"  z="     0.0000"  unit="degree" />
+   </define>
+
+   <materials>
+      <element  name="Hydrogen_e_e"  Z="  1.0000"  N="  1" >
+         <atom type="A" unit="g/mol" value="  1.0100" />
+      </element>
+      <element  name= "Carbon_e_e"  Z="  6.0000"  N=" 12" >
+         <atom type="A" unit="g/mol" value=" 12.0100" />
+      </element>
+      <element  name="Nitrogen_e_e"  Z="  7.0000"  N=" 14" >
+         <atom type="A" unit="g/mol" value=" 14.0100" />
+      </element>
+      <element  name= "Oxygen_e_e"  Z="  8.0000"  N=" 16" >
+         <atom type="A" unit="g/mol" value=" 16.0000" />
+      </element>
+      <element  name="Silicon_e_e"  Z=" 14.0000"  N=" 28" >
+         <atom type="A" unit="g/mol" value=" 28.0900" />
+      </element>
+      <element  name="Chlorine_e_e"  Z=" 17.0000"  N=" 35" >
+         <atom type="A" unit="g/mol" value=" 35.4500" />
+      </element>
+      <element  name=   "Iron_e_e"  Z=" 26.0000"  N=" 56" >
+         <atom type="A" unit="g/mol" value=" 55.8500" />
+      </element>
+      <element  name= "Copper_e_e"  Z=" 29.0000"  N=" 64" >
+         <atom type="A" unit="g/mol" value=" 63.5460" />
+      </element>
+      <element  name="Bromine_e_e"  Z=" 35.0000"  N=" 80" >
+         <atom type="A" unit="g/mol" value=" 79.9050" />
+      </element>
+      <element  name="Tungsten_e_e"  Z=" 74.0000"  N="184" >
+         <atom type="A" unit="g/mol" value="183.8400" />
+      </element>
+
+      <material  name="Air"  >
+         <D type="density" unit="g/cm3" value="     0.0013"/>
+         <fraction n="    0.7000"  ref="Nitrogen_e_e"/>
+         <fraction n="    0.3000"  ref="Oxygen_e_e"/>
+      </material>
+      <material  name="CablefibreMix"  >
+         <D type="density" unit="g/cm3" value="     0.1200"/>
+         <fraction n="    0.0063"  ref="Nitrogen_e_e"/>
+         <fraction n="    0.0027"  ref="Oxygen_e_e"/>
+         <fraction n="    0.0515"  ref="Hydrogen_e_e"/>
+         <fraction n="    0.4449"  ref="Carbon_e_e"/>
+         <fraction n="    0.4946"  ref="Chlorine_e_e"/>
+      </material>
+      <material  name="Copper"  >
+         <D type="density" unit="g/cm3" value="     8.9600"/>
+         <fraction n="    1.0000"  ref="Copper_e_e"/>
+      </material>
+      <material  name="G10"  >
+         <D type="density" unit="g/cm3" value="     1.7000"/>
+         <fraction n="    0.0800"  ref="Chlorine_e_e"/>
+         <fraction n="    0.3614"  ref="Silicon_e_e"/>
+         <fraction n="    0.4606"  ref="Oxygen_e_e"/>
+         <fraction n="    0.0194"  ref="Hydrogen_e_e"/>
+         <fraction n="    0.0787"  ref="Carbon_e_e"/>
+      </material>
+      <material  name="PCBFR4"  >
+         <D type="density" unit="g/cm3" value="     1.2500"/>
+         <fraction n="    0.1808"  ref="Silicon_e_e"/>
+         <fraction n="    0.4056"  ref="Oxygen_e_e"/>
+         <fraction n="    0.2780"  ref="Carbon_e_e"/>
+         <fraction n="    0.0684"  ref="Hydrogen_e_e"/>
+         <fraction n="    0.0671"  ref="Bromine_e_e"/>
+      </material>
+      <material  name="Polyethylene"  >
+         <D type="density" unit="g/cm3" value="     0.9200"/>
+         <fraction n="    0.8560"  ref="Carbon_e_e"/>
+         <fraction n="    0.1440"  ref="Hydrogen_e_e"/>
+      </material>
+      <material  name="Polystyrene"  >
+         <D type="density" unit="g/cm3" value="     1.0320"/>
+         <fraction n="    0.9150"  ref="Carbon_e_e"/>
+         <fraction n="    0.0850"  ref="Hydrogen_e_e"/>
+      </material>
+      <material  name="Silicon"  >
+         <D type="density" unit="g/cm3" value="     2.3300"/>
+         <fraction n="    1.0000"  ref="Silicon_e_e"/>
+      </material>
+      <material  name="Steel235"  >
+         <D type="density" unit="g/cm3" value="     7.8500"/>
+         <fraction n="    0.9980"  ref="Iron_e_e"/>
+         <fraction n="    0.0020"  ref="Carbon_e_e"/>
+      </material>
+      <material  name="Tungsten"  >
+         <D type="density" unit="g/cm3" value="    19.3000"/>
+         <fraction n="    1.0000"  ref="Tungsten_e_e"/>
+      </material>
+
+   </materials>
+
+   <solids>
+      <box  lunit="cm" aunit="degree"
+         name="World_s"
+         x="  500.0000"  y="  500.0000"  z="  500.0000" />
+
+      <box  lunit="cm" aunit="degree"
+         name="Ecal_s"
+         x="    9.0000"  y="    9.0000"  z="    7.5000" />
+
+      <box  lunit="cm" aunit="degree"
+         name="EcalLayer_s"
+         x="    9.0000"  y="    9.0000"  z="    0.2500" />
+
+      <box  lunit="cm" aunit="degree"
+         name="EcalW_s"
+         x="    9.0000"  y="    9.0000"  z="    0.1250" />
+
+      <box  lunit="cm" aunit="degree"
+         name="EcalG10_s"
+         x="    9.0000"  y="    9.0000"  z="    0.0250" />
+
+      <box  lunit="cm" aunit="degree"
+         name="EcalSi_s"
+         x="    9.0000"  y="    9.0000"  z="    0.0200" />
+
+      <box  lunit="cm" aunit="degree"
+         name="EcalCu_s"
+         x="    9.0000"  y="    9.0000"  z="    0.0500" />
+
+      <box  lunit="cm" aunit="degree"
+         name="EcalAir_s"
+         x="    9.0000"  y="    9.0000"  z="    0.0300" />
+
+      <box  lunit="cm" aunit="degree"
+         name="HCal_s"
+         x="   50.0000"  y="   50.0000"  z="   51.8992" />
+
+      <box  lunit="cm" aunit="degree"
+         name="HCal_Layer_s"
+         x="   50.0000"  y="   50.0000"  z="    1.3307" />
+
+      <box  lunit="cm" aunit="degree"
+         name="Poly_s"
+         x="   50.0000"  y="   50.0000"  z="    0.2500" />
+
+      <box  lunit="cm" aunit="degree"
+         name="Steel_s"
+         x="   50.0000"  y="   50.0000"  z="    0.8000" />
+
+      <box  lunit="cm" aunit="degree"
+         name="AirGap_s"
+         x="   50.0000"  y="   50.0000"  z="    0.0500" />
+
+      <box  lunit="cm" aunit="degree"
+         name="SteelCassette_s"
+         x="   50.0000"  y="   50.0000"  z="    0.1000" />
+
+      <box  lunit="cm" aunit="degree"
+         name="Foil_s"
+         x="   50.0000"  y="   50.0000"  z="    0.0057" />
+
+      <box  lunit="cm" aunit="degree"
+         name="Pcb_s"
+         x="   50.0000"  y="   50.0000"  z="    0.0500" />
+
+      <box  lunit="cm" aunit="degree"
+         name="Cablefibre_s"
+         x="   50.0000"  y="   50.0000"  z="    0.0750" />
+
+      <box  lunit="cm" aunit="degree"
+         name="Catcher_s"
+         x="   50.0000"  y="   50.0000"  z="   45.7600" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherLayerFine_s"
+         x="   50.0000"  y="   50.0000"  z="    1.4350" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherModule_s"
+         x="   50.0000"  y="   50.0000"  z="    0.4750" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherSteelFront_s"
+         x="   50.0000"  y="   50.0000"  z="    0.0500" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherPolyFront_s"
+         x="   50.0000"  y="   50.0000"  z="    0.0500" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherTyvekFront_s"
+         x="   50.0000"  y="   50.0000"  z="    0.0125" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherPolyActive_s"
+         x="   50.0000"  y="   50.0000"  z="    0.2500" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherTyvekBack_s"
+         x="   50.0000"  y="   50.0000"  z="    0.0125" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherPolyBack_s"
+         x="   50.0000"  y="   50.0000"  z="    0.0500" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherSteelBack_s"
+         x="   50.0000"  y="   50.0000"  z="    0.0500" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherFineAbs_s"
+         x="   50.0000"  y="   50.0000"  z="    0.9600" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherLayerCoarse_s"
+         x="   50.0000"  y="   50.0000"  z="    4.2850" />
+
+      <box  lunit="cm" aunit="degree"
+         name="CatcherCoarseAbs_s"
+         x="   50.0000"  y="   50.0000"  z="    3.8100" />
+
+   </solids>
+
+   <structure>
+      <volume name="EcalW">
+         <materialref ref="Tungsten"/>
+         <solidref ref="EcalW_s"/>
+      </volume>
+
+      <volume name="EcalG10">
+         <materialref ref="G10"/>
+         <solidref ref="EcalG10_s"/>
+      </volume>
+
+      <volume name="EcalSi">
+         <materialref ref="Silicon"/>
+         <solidref ref="EcalSi_s"/>
+      </volume>
+
+      <volume name="EcalCu">
+         <materialref ref="Copper"/>
+         <solidref ref="EcalCu_s"/>
+      </volume>
+
+      <volume name="EcalAir">
+         <materialref ref="Air"/>
+         <solidref ref="EcalAir_s"/>
+      </volume>
+
+      <volume name="EcalLayer">
+         <materialref ref="Air"/>
+         <solidref ref="EcalLayer_s"/>
+         <physvol>
+            <volumeref ref="EcalW"/>
+               <positionref ref="pos_3"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalG10"/>
+               <positionref ref="pos_4"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalSi"/>
+               <positionref ref="pos_5"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalCu"/>
+               <positionref ref="pos_6"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalAir"/>
+               <positionref ref="pos_7"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+      </volume>
+
+      <volume name="Ecal">
+         <materialref ref="Air"/>
+         <solidref ref="Ecal_s"/>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_2"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_8"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_9"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_10"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_11"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_11"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_12"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_13"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_14"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_15"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_16"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_17"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_18"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_19"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_20"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_21"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_22"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_23"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_24"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_25"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_26"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_27"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_28"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_29"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_30"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_31"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_32"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_33"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_34"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_35"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="EcalLayer"/>
+               <positionref ref="pos_36"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+      </volume>
+
+      <volume name="Poly">
+         <materialref ref="Polystyrene"/>
+         <solidref ref="Poly_s"/>
+      </volume>
+
+      <volume name="Steel">
+         <materialref ref="Steel235"/>
+         <solidref ref="Steel_s"/>
+      </volume>
+
+      <volume name="AirGap">
+         <materialref ref="Air"/>
+         <solidref ref="AirGap_s"/>
+      </volume>
+
+      <volume name="SteelCassette">
+         <materialref ref="Steel235"/>
+         <solidref ref="SteelCassette_s"/>
+      </volume>
+
+      <volume name="Foil">
+         <materialref ref="Air"/>
+         <solidref ref="Foil_s"/>
+      </volume>
+
+      <volume name="Pcb">
+         <materialref ref="PCBFR4"/>
+         <solidref ref="Pcb_s"/>
+      </volume>
+
+      <volume name="Cablefibre">
+         <materialref ref="CablefibreMix"/>
+         <solidref ref="Cablefibre_s"/>
+      </volume>
+
+      <volume name="HCal_Layer">
+         <materialref ref="Air"/>
+         <solidref ref="HCal_Layer_s"/>
+         <physvol>
+            <volumeref ref="Poly"/>
+               <positionref ref="pos_39"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="Steel"/>
+               <positionref ref="pos_40"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="AirGap"/>
+               <positionref ref="pos_41"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="SteelCassette"/>
+               <positionref ref="pos_42"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="Foil"/>
+               <positionref ref="pos_43"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="Pcb"/>
+               <positionref ref="pos_44"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="Cablefibre"/>
+               <positionref ref="pos_45"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+      </volume>
+
+      <volume name="HCal">
+         <materialref ref="Air"/>
+         <solidref ref="HCal_s"/>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_38"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_46"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_47"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_48"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_49"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_49"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_50"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_51"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_52"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_53"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_54"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_55"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_56"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_57"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_58"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_59"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_60"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_61"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_62"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_63"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_0"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_64"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_65"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_66"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_67"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_68"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_69"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_70"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_71"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_72"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_73"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_74"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_75"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_76"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_77"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_78"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_79"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_80"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_81"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal_Layer"/>
+               <positionref ref="pos_82"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+      </volume>
+
+      <volume name="CatcherSteelFront">
+         <materialref ref="Steel235"/>
+         <solidref ref="CatcherSteelFront_s"/>
+      </volume>
+
+      <volume name="CatcherPolyFront">
+         <materialref ref="Polystyrene"/>
+         <solidref ref="CatcherPolyFront_s"/>
+      </volume>
+
+      <volume name="CatcherTyvekFront">
+         <materialref ref="Polyethylene"/>
+         <solidref ref="CatcherTyvekFront_s"/>
+      </volume>
+
+      <volume name="CatcherPolyActive">
+         <materialref ref="Polystyrene"/>
+         <solidref ref="CatcherPolyActive_s"/>
+      </volume>
+
+      <volume name="CatcherTyvekBack">
+         <materialref ref="Polyethylene"/>
+         <solidref ref="CatcherTyvekBack_s"/>
+      </volume>
+
+      <volume name="CatcherPolyBack">
+         <materialref ref="Polystyrene"/>
+         <solidref ref="CatcherPolyBack_s"/>
+      </volume>
+
+      <volume name="CatcherSteelBack">
+         <materialref ref="Steel235"/>
+         <solidref ref="CatcherSteelBack_s"/>
+      </volume>
+
+      <volume name="CatcherModule">
+         <materialref ref="Air"/>
+         <solidref ref="CatcherModule_s"/>
+         <physvol>
+            <volumeref ref="CatcherSteelFront"/>
+               <positionref ref="pos_86"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherPolyFront"/>
+               <positionref ref="pos_87"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherTyvekFront"/>
+               <positionref ref="pos_88"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherPolyActive"/>
+               <positionref ref="pos_0"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherTyvekBack"/>
+               <positionref ref="pos_89"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherPolyBack"/>
+               <positionref ref="pos_90"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherSteelBack"/>
+               <positionref ref="pos_91"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+      </volume>
+
+      <volume name="CatcherFineAbs">
+         <materialref ref="Steel235"/>
+         <solidref ref="CatcherFineAbs_s"/>
+      </volume>
+
+      <volume name="CatcherLayerFine">
+         <materialref ref="Air"/>
+         <solidref ref="CatcherLayerFine_s"/>
+         <physvol>
+            <volumeref ref="CatcherModule"/>
+               <positionref ref="pos_85"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherFineAbs"/>
+               <positionref ref="pos_92"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+      </volume>
+
+      <volume name="CatcherCoarseAbs">
+         <materialref ref="Steel235"/>
+         <solidref ref="CatcherCoarseAbs_s"/>
+      </volume>
+
+      <volume name="CatcherLayerCoarse">
+         <materialref ref="Air"/>
+         <solidref ref="CatcherLayerCoarse_s"/>
+         <physvol>
+            <volumeref ref="CatcherModule"/>
+               <positionref ref="pos_101"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherCoarseAbs"/>
+               <positionref ref="pos_92"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+      </volume>
+
+      <volume name="Catcher">
+         <materialref ref="Air"/>
+         <solidref ref="Catcher_s"/>
+         <physvol>
+            <volumeref ref="CatcherLayerFine"/>
+               <positionref ref="pos_84"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerFine"/>
+               <positionref ref="pos_93"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerFine"/>
+               <positionref ref="pos_94"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerFine"/>
+               <positionref ref="pos_95"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerFine"/>
+               <positionref ref="pos_96"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerFine"/>
+               <positionref ref="pos_97"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerFine"/>
+               <positionref ref="pos_98"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerFine"/>
+               <positionref ref="pos_99"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerCoarse"/>
+               <positionref ref="pos_100"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerCoarse"/>
+               <positionref ref="pos_102"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerCoarse"/>
+               <positionref ref="pos_103"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerCoarse"/>
+               <positionref ref="pos_104"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerCoarse"/>
+               <positionref ref="pos_105"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerCoarse"/>
+               <positionref ref="pos_106"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerCoarse"/>
+               <positionref ref="pos_107"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="CatcherLayerCoarse"/>
+               <positionref ref="pos_108"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+      </volume>
+
+      <volume name="World">
+         <materialref ref="Air"/>
+         <solidref ref="World_s"/>
+         <physvol>
+            <volumeref ref="Ecal"/>
+               <positionref ref="pos_1"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="HCal"/>
+               <positionref ref="pos_37"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+         <physvol>
+            <volumeref ref="Catcher"/>
+               <positionref ref="pos_83"/>
+               <rotationref ref="rot_0"/>
+         </physvol>
+      </volume>
+
+   </structure>
+
+   <setup name="unit1"   version="1.0">
+      <world ref="World"/>
+   </setup>
+
+</gdml>

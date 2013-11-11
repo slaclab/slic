@@ -1,0 +1,5 @@
+/event/enableEventTimer
+/mcp/verbose 4
+/mcp/printInitialCollection
+/mcp/printFinalCollection
+/tracking/verbose 2

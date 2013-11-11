@@ -1,0 +1,20 @@
+<!-- detector envelope -->	
+<constant name="det_x" value="1.5 * m" />
+<constant name="det_y" value="1.5 * m" />
+
+<constant name="pre_gap" value="1.0 * m" />
+<constant name="post_gap" value="1.0 * m" />
+
+<!--
+<constant name="det_z" value="pre_gap + ecal_z + hcal_z + hcal_gap_z + catcher_z + catcher_gap_z + post_gap" />
+-->
+
+<constant name="det_z" value="world_side" />
+
+<constant name="ecal_pos_z" value="-det_z / 2 + pre_gap + ecal_z / 2" />
+<constant name="hcal_pos_z" value="ecal_pos_z + hcal_gap_z + ecal_z / 2 + hcal_z / 2" />
+<constant name="catcher_pos_z" value="hcal_pos_z + catcher_gap_z + hcal_z / 2 + catcher_z / 2" />
+
+<position name="ecal_pos" z="ecal_pos_z" />
+<position name="hcal_pos" z="hcal_pos_z" />
+<position name="catcher_pos" z="catcher_pos_z" />

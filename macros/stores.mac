@@ -1,0 +1,13 @@
+# Geant4 objects from the Store vectors
+/stores/G4Material/print 
+/stores/G4VSolid/print 
+/stores/G4VPhysicalVolume/print
+/stores/G4LogicalVolume/print
+
+# LCDD managed stores from LCDDProcessor
+/stores/IdSpec/print 
+/stores/G4SensitiveDetector/print 
+/stores/G4VisAttributes/print 
+/stores/G4MagneticField/print 
+/stores/G4LimitSet/print 
+/stores/G4Region/print 

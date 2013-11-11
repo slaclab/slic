@@ -1,0 +1,56 @@
+# $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/macros/NPCylBarr.mac,v 1.8 2005-06-27 18:48:06 jeremy Exp $
+# set G4 verbosities
+/control/verbose 2
+/run/verbose 0
+/tracking/verbose 0
+/event/verbose 0
+
+# load geometry
+/lcdd/url examples/segtest/NPCylBarr.lcdd 
+
+# set lcio verbosity
+/lcio/verbose 4
+
+# set lcio path and filename
+/lcio/path .
+/lcio/filename lcioOutputFile
+
+# set Monte Carlo engine verbosity
+/mcp/verbose 0
+
+# set tolerance for vertexIsNotEndpointOfParent flag
+#/mcp/setVertexTolerance 1.0
+
+# set minimum tracking distance for MCP
+/mcp/minimumTrackingDistance 1.0
+
+# select stdhep generator
+/generator/select stdhep
+
+# set stdhep filename and events to skip
+/generator/filename stdhep/muons
+/generator/skipEvents 0
+
+# random seed with user value
+/random/seed 329583482
+
+# random seed from time 
+#/random/seed
+
+/physics/select LHEP
+
+# initialize G4RunManager
+/run/initialize
+
+# visualization
+/vis/scene/create
+/vis/scene/add/volume
+/vis/scene/add/trajectories
+/vis/scene/add/hits
+
+/vis/open OGLSX
+/vis/viewer/zoom 8
+
+# execute events
+/run/beamOn 1
+/stdhep€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kra.stdhep:w:nn:nnn€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kra.stdhep:wnnnnn:nnn:nnn:nnn:nnn:n:nn:nn:nnn€kl€kl€kl€kl€kl€kl€kl:w:n:n:n:n:n:nn€kd€kd€ku€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kra.stdhep:w€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€ku€ku€kd€kl€kl€kl€kl€kl€kl€kl€kl€kl€kl€klistdhep/ttbar`xxxxxx:w€krnnnnnnnnnnnn:w:nnnnn€kd€kd€kd€kd€kd€kd€kd€kd€ku€ku€ku€ku€ku€ku€kd€ku€kl€ku€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kr€kddddddd€ku€kdi€ku#/generator/filename ttbar:w€ku€ku€kl€kl€kl€klistdhep/€kr€kr€kr€kr€kr.stdhep€kd€kl€kl€kl€kl€klstdhep/€kr€kr€kr€kr€kr.stdhep€kd€kl€kl€kl€kl€klstdhep/€kr/€kl€kl€krxx€kr€kr€kr€kra€kl€kl€klt€kr€kr€kr.stdhep:w:wq:w:nnn:nnn:nnn:wq

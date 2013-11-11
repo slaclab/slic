@@ -1,0 +1,13 @@
+# mandatory actions for SLIC init
+
+# select physics list
+/physics/select LHEP
+
+# select generator
+/generator/select gps
+
+# put your geo file here
+/lcdd/url examples/template.lcdd
+
+# initialize the simulation
+/run/initialize

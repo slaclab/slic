@@ -1,0 +1,1288 @@
+<?xml version="1.0"?>
+<!-- 
+Time-stamp: <2004-10-02 17:23:06 jeremym>
+
+Full GDML Description for LC Test Beam 1
+
+Hcal from R. Poeschl's implementation in Mokka: TB03.
+
+Ecal from last Mokka version: TB02.
+
+Catcher from V. Zutshi: TB04. (NEW)
+
+J. McCormick, SLAC 
+jeremym@slac.stanford.edu
+-->
+<gdml xmlns:gdml="http://cern.ch/2001/Schemas/GDML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///a/surrey01/vol/vol2/g.lcd.mc/prj/sw/extern/gdml/GDMLSchema/gdml_1.0.xsd">
+<!-- define -->
+  <define>
+<!-- global_constants.inc, global constants -->
+<!-- center pos and id rot -->
+    <position name="center"/>
+    <rotation name="identity"/>
+<!-- world side -->
+    <constant name="world_side" value="10000.0*mm"/>
+<!-- config angles -->
+    <constant name="config_angle_0" value="0.0*deg"/>
+    <constant name="config_angle_20" value="20.0*deg"/>
+    <constant name="config_angle_32" value="32.0*deg"/>
+    <constant name="config_angle_40" value="40.0*deg"/>
+    <constant name="current_config_angle" value="config_angle_0"/>
+<!-- def grid -->
+    <constant name="def_grid_x" value="1.0*cm"/>
+    <constant name="def_grid_y" value="1.0*cm"/>
+<!-- ecal_constants.inc, ecal constants -->
+<!-- ecal slice thicknesses -->
+    <constant name="ecal_w_thickness" value="2.5*mm"/>
+    <constant name="ecal_g10_thickness" value="0.5*mm"/>
+    <constant name="ecal_si_thickness" value="0.4*mm"/>
+    <constant name="ecal_cu_thickness" value="1.0*mm"/>
+    <constant name="ecal_air_thickness" value="0.6*mm"/>
+<!-- ecal layer thickness -->
+    <constant name="ecal_layer_thickness" value="ecal_w_thickness +             ecal_g10_thickness +           ecal_si_thickness +           ecal_cu_thickness +           ecal_air_thickness"/>
+    <constant name="ecal_layer_half_thickness" value="ecal_layer_thickness/2"/>
+<!-- ecal layer box dims -->
+    <constant name="ecal_layer_x" value="18.0*cm"/>
+    <constant name="ecal_layer_y" value="18.0*cm"/>
+    <constant name="ecal_layer_z" value="ecal_layer_thickness"/>
+<!-- ecal number of layers 
+     must match the layJ#_z, lay#_pos given below
+-->
+    <constant name="ecal_num_layers" value="30"/>
+<!-- ecal dims -->
+    <constant name="ecal_x" value="ecal_layer_x"/>
+    <constant name="ecal_y" value="ecal_layer_y"/>
+    <constant name="ecal_z" value="ecal_num_layers * ecal_layer_thickness"/>
+    <constant name="ecal_half_z" value="ecal_z/2"/>
+<!-- ecal slice z in layer -->
+    <constant name="ecal_w_z" value="ecal_layer_half_thickness - ecal_w_thickness/2"/>
+    <constant name="ecal_g10_z" value="ecal_w_z - ecal_w_thickness/2 - ecal_g10_thickness/2"/>
+    <constant name="ecal_si_z" value="ecal_g10_z - ecal_g10_thickness/2 - ecal_si_thickness/2"/>
+    <constant name="ecal_cu_z" value="ecal_si_z - ecal_si_thickness/2 - ecal_cu_thickness/2"/>
+    <constant name="ecal_air_z" value="ecal_cu_z - ecal_cu_thickness/2 - ecal_air_thickness/2"/>
+<!-- ecal pos -->
+    <position name="ecal_pos" z="ecal_half_z"/>
+<!-- ecal slice rel pos in layer -->
+    <position name="ecal_w_pos" z="ecal_w_z"/>
+    <position name="ecal_g10_pos" z="ecal_g10_z"/>
+    <position name="ecal_si_pos" z="ecal_si_z"/>
+    <position name="ecal_cu_pos" z="ecal_cu_z"/>
+    <position name="ecal_air_pos" z="ecal_air_z"/>
+<!-- ecal layer z values -->
+    <constant name="ecal_lay0_z" value="ecal_z/2 - ecal_layer_half_thickness"/>
+    <constant name="ecal_lay1_z" value="ecal_lay0_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay2_z" value="ecal_lay1_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay3_z" value="ecal_lay2_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay4_z" value="ecal_lay3_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay5_z" value="ecal_lay4_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay6_z" value="ecal_lay5_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay7_z" value="ecal_lay6_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay8_z" value="ecal_lay7_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay9_z" value="ecal_lay8_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay10_z" value="ecal_lay9_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay11_z" value="ecal_lay10_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay12_z" value="ecal_lay11_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay13_z" value="ecal_lay12_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay14_z" value="ecal_lay13_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay15_z" value="ecal_lay14_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay16_z" value="ecal_lay15_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay17_z" value="ecal_lay16_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay18_z" value="ecal_lay17_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay19_z" value="ecal_lay18_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay20_z" value="ecal_lay19_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay21_z" value="ecal_lay20_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay22_z" value="ecal_lay21_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay23_z" value="ecal_lay22_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay24_z" value="ecal_lay23_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay25_z" value="ecal_lay24_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay26_z" value="ecal_lay25_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay27_z" value="ecal_lay26_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay28_z" value="ecal_lay27_z - ecal_layer_thickness"/>
+    <constant name="ecal_lay29_z" value="ecal_lay28_z - ecal_layer_thickness"/>
+<!-- ecal layer positions -->
+    <position name="ecal_lay0_pos" z="ecal_lay0_z"/>
+    <position name="ecal_lay1_pos" z="ecal_lay1_z"/>
+    <position name="ecal_lay2_pos" z="ecal_lay2_z"/>
+    <position name="ecal_lay3_pos" z="ecal_lay3_z"/>
+    <position name="ecal_lay4_pos" z="ecal_lay4_z"/>
+    <position name="ecal_lay5_pos" z="ecal_lay5_z"/>
+    <position name="ecal_lay6_pos" z="ecal_lay6_z"/>
+    <position name="ecal_lay7_pos" z="ecal_lay7_z"/>
+    <position name="ecal_lay8_pos" z="ecal_lay8_z"/>
+    <position name="ecal_lay9_pos" z="ecal_lay9_z"/>
+    <position name="ecal_lay10_pos" z="ecal_lay10_z"/>
+    <position name="ecal_lay11_pos" z="ecal_lay11_z"/>
+    <position name="ecal_lay12_pos" z="ecal_lay12_z"/>
+    <position name="ecal_lay13_pos" z="ecal_lay13_z"/>
+    <position name="ecal_lay14_pos" z="ecal_lay14_z"/>
+    <position name="ecal_lay15_pos" z="ecal_lay15_z"/>
+    <position name="ecal_lay16_pos" z="ecal_lay16_z"/>
+    <position name="ecal_lay17_pos" z="ecal_lay17_z"/>
+    <position name="ecal_lay18_pos" z="ecal_lay18_z"/>
+    <position name="ecal_lay19_pos" z="ecal_lay19_z"/>
+    <position name="ecal_lay20_pos" z="ecal_lay20_z"/>
+    <position name="ecal_lay21_pos" z="ecal_lay21_z"/>
+    <position name="ecal_lay22_pos" z="ecal_lay22_z"/>
+    <position name="ecal_lay23_pos" z="ecal_lay23_z"/>
+    <position name="ecal_lay24_pos" z="ecal_lay24_z"/>
+    <position name="ecal_lay25_pos" z="ecal_lay25_z"/>
+    <position name="ecal_lay26_pos" z="ecal_lay26_z"/>
+    <position name="ecal_lay27_pos" z="ecal_lay27_z"/>
+    <position name="ecal_lay28_pos" z="ecal_lay28_z"/>
+    <position name="ecal_lay29_pos" z="ecal_lay29_z"/>
+<!-- hcal_constants.inc, hcal constants -->
+<!-- hcal slice thicknesses -->
+    <constant name="hcal_poly_thickness" value="5.0*mm"/>
+    <constant name="hcal_steel_thickness" value="16.0*mm"/>
+    <constant name="hcal_air_thickness" value="1.0*mm"/>
+    <constant name="hcal_steel_cassette_thickness" value="2.0*mm"/>
+    <constant name="hcal_foil_thickness" value="0.115*mm"/>
+    <constant name="hcal_pcb_thickness" value="1.0*mm"/>
+    <constant name="hcal_cablefibre_thickness" value="1.5*mm"/>
+<!-- hcal layer thickness -->
+    <constant name="hcal_layer_thickness" value="hcal_poly_thickness + hcal_steel_thickness + hcal_air_thickness + hcal_steel_cassette_thickness + hcal_foil_thickness + hcal_pcb_thickness + hcal_cablefibre_thickness"/>
+    <constant name="hcal_layer_half_thickness" value="hcal_layer_thickness/2"/>
+<!-- hcal layer box dims -->
+    <constant name="hcal_layer_x" value="1.0*m"/>
+    <constant name="hcal_layer_y" value="1.0*m"/>
+    <constant name="hcal_layer_z" value="hcal_layer_thickness"/>
+<!-- hcal number of layers 
+     must match the layJ#_z, lay#_pos given below
+-->
+    <constant name="hcal_num_layers" value="39"/>
+<!-- hcal dims -->
+    <constant name="hcal_x" value="hcal_layer_x"/>
+    <constant name="hcal_y" value="hcal_layer_y"/>
+    <constant name="hcal_z" value="hcal_num_layers * hcal_layer_thickness"/>
+    <constant name="hcal_half_z" value="hcal_z/2"/>
+<!-- hcal slice z in layer -->
+    <constant name="hcal_poly_z" value="hcal_layer_half_thickness - hcal_poly_thickness/2"/>
+    <constant name="hcal_steel_z" value="hcal_poly_z - hcal_poly_thickness/2 - hcal_steel_thickness/2"/>
+    <constant name="hcal_air_z" value="hcal_steel_z - hcal_steel_thickness/2 - hcal_air_thickness/2"/>
+    <constant name="hcal_steel_cassette_z" value="hcal_air_z - hcal_air_thickness/2 - hcal_steel_cassette_thickness/2"/>
+    <constant name="hcal_foil_z" value="hcal_steel_cassette_z - hcal_steel_cassette_thickness/2 - hcal_foil_thickness/2"/>
+    <constant name="hcal_pcb_z" value="hcal_foil_z - hcal_foil_thickness/2 - hcal_pcb_thickness/2"/>
+    <constant name="hcal_cablefibre_z" value="hcal_pcb_z - hcal_pcb_thickness/2 - hcal_cablefibre_thickness/2"/>
+<!-- hcal slice rel pos in layer -->
+    <position name="hcal_poly_pos" z="hcal_poly_z"/>
+    <position name="hcal_steel_pos" z="hcal_steel_z"/>
+    <position name="hcal_air_pos" z="hcal_air_z"/>
+    <position name="hcal_steel_cassette_pos" z="hcal_steel_cassette_z"/>
+    <position name="hcal_foil_pos" z="hcal_foil_z"/>
+    <position name="hcal_pcb_pos" z="hcal_pcb_z"/>
+    <position name="hcal_cablefibre_pos" z="hcal_cablefibre_z"/>
+<!-- hcal pos -->
+    <constant name="hcal_gap_z" value="10.*cm"/>
+    <position name="hcal_pos" z="-hcal_half_z - hcal_gap_z"/>
+<!-- hcal layer z values -->
+    <constant name="hcal_lay0_z" value="hcal_half_z - hcal_layer_half_thickness"/>
+    <constant name="hcal_lay1_z" value="hcal_lay0_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay2_z" value="hcal_lay1_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay3_z" value="hcal_lay2_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay4_z" value="hcal_lay3_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay5_z" value="hcal_lay4_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay6_z" value="hcal_lay5_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay7_z" value="hcal_lay6_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay8_z" value="hcal_lay7_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay9_z" value="hcal_lay8_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay10_z" value="hcal_lay9_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay11_z" value="hcal_lay10_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay12_z" value="hcal_lay11_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay13_z" value="hcal_lay12_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay14_z" value="hcal_lay13_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay15_z" value="hcal_lay14_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay16_z" value="hcal_lay15_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay17_z" value="hcal_lay16_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay18_z" value="hcal_lay17_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay19_z" value="hcal_lay18_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay20_z" value="hcal_lay19_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay21_z" value="hcal_lay20_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay22_z" value="hcal_lay21_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay23_z" value="hcal_lay22_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay24_z" value="hcal_lay23_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay25_z" value="hcal_lay24_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay26_z" value="hcal_lay25_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay27_z" value="hcal_lay26_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay28_z" value="hcal_lay27_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay29_z" value="hcal_lay28_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay30_z" value="hcal_lay29_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay31_z" value="hcal_lay30_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay32_z" value="hcal_lay31_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay33_z" value="hcal_lay32_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay34_z" value="hcal_lay33_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay35_z" value="hcal_lay34_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay36_z" value="hcal_lay35_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay37_z" value="hcal_lay36_z - hcal_layer_thickness"/>
+    <constant name="hcal_lay38_z" value="hcal_lay37_z - hcal_layer_thickness"/>
+<!-- hcal layer positions -->
+    <position name="hcal_lay0_pos" z="hcal_lay0_z"/>
+    <position name="hcal_lay1_pos" z="hcal_lay1_z"/>
+    <position name="hcal_lay2_pos" z="hcal_lay2_z"/>
+    <position name="hcal_lay3_pos" z="hcal_lay3_z"/>
+    <position name="hcal_lay4_pos" z="hcal_lay4_z"/>
+    <position name="hcal_lay5_pos" z="hcal_lay5_z"/>
+    <position name="hcal_lay6_pos" z="hcal_lay6_z"/>
+    <position name="hcal_lay7_pos" z="hcal_lay7_z"/>
+    <position name="hcal_lay8_pos" z="hcal_lay8_z"/>
+    <position name="hcal_lay9_pos" z="hcal_lay9_z"/>
+    <position name="hcal_lay10_pos" z="hcal_lay10_z"/>
+    <position name="hcal_lay11_pos" z="hcal_lay11_z"/>
+    <position name="hcal_lay12_pos" z="hcal_lay12_z"/>
+    <position name="hcal_lay13_pos" z="hcal_lay13_z"/>
+    <position name="hcal_lay14_pos" z="hcal_lay14_z"/>
+    <position name="hcal_lay15_pos" z="hcal_lay15_z"/>
+    <position name="hcal_lay16_pos" z="hcal_lay16_z"/>
+    <position name="hcal_lay17_pos" z="hcal_lay17_z"/>
+    <position name="hcal_lay18_pos" z="hcal_lay18_z"/>
+    <position name="hcal_lay19_pos" z="hcal_lay19_z"/>
+    <position name="hcal_lay20_pos" z="hcal_lay20_z"/>
+    <position name="hcal_lay21_pos" z="hcal_lay21_z"/>
+    <position name="hcal_lay22_pos" z="hcal_lay22_z"/>
+    <position name="hcal_lay23_pos" z="hcal_lay23_z"/>
+    <position name="hcal_lay24_pos" z="hcal_lay24_z"/>
+    <position name="hcal_lay25_pos" z="hcal_lay25_z"/>
+    <position name="hcal_lay26_pos" z="hcal_lay26_z"/>
+    <position name="hcal_lay27_pos" z="hcal_lay27_z"/>
+    <position name="hcal_lay28_pos" z="hcal_lay28_z"/>
+    <position name="hcal_lay29_pos" z="hcal_lay29_z"/>
+    <position name="hcal_lay30_pos" z="hcal_lay30_z"/>
+    <position name="hcal_lay31_pos" z="hcal_lay31_z"/>
+    <position name="hcal_lay32_pos" z="hcal_lay32_z"/>
+    <position name="hcal_lay33_pos" z="hcal_lay33_z"/>
+    <position name="hcal_lay34_pos" z="hcal_lay34_z"/>
+    <position name="hcal_lay35_pos" z="hcal_lay35_z"/>
+    <position name="hcal_lay36_pos" z="hcal_lay36_z"/>
+    <position name="hcal_lay37_pos" z="hcal_lay37_z"/>
+    <position name="hcal_lay38_pos" z="hcal_lay38_z"/>
+<!-- catcher_constants.inc -->
+<!-- catcher slice thicknesses -->
+    <constant name="catcher_steel_front_thickness" value="1.0*mm"/>
+    <constant name="catcher_poly_front_thickness" value="1.0*mm"/>
+    <constant name="catcher_tyvek_front_thickness" value="0.25*mm"/>
+    <constant name="catcher_poly_active_thickness" value="5.0*mm"/>
+    <constant name="catcher_tyvek_back_thickness" value="0.25*mm"/>
+    <constant name="catcher_poly_back_thickness" value="1.0*mm"/>
+    <constant name="catcher_steel_back_thickness" value="1.0*mm"/>
+    <constant name="catcher_steel_abs_fine_thickness" value="19.2*mm"/>
+    <constant name="catcher_steel_abs_coarse_thickness" value="76.2*mm"/>
+<!-- catcher layer thickness -->
+    <constant name="catcher_layer_base_thickness" value="catcher_steel_front_thickness +            catcher_poly_front_thickness +            catcher_tyvek_front_thickness +            catcher_poly_active_thickness +            catcher_tyvek_back_thickness +            catcher_poly_back_thickness +            catcher_steel_back_thickness"/>
+    <constant name="catcher_layer_fine_thickness" value="catcher_layer_base_thickness +            catcher_steel_abs_fine_thickness"/>
+    <constant name="catcher_layer_coarse_thickness" value="catcher_layer_base_thickness +              catcher_steel_abs_coarse_thickness"/>
+<!-- catcher layer box dims -->
+    <constant name="catcher_layer_x" value="1.0*m"/>
+    <constant name="catcher_layer_y" value="1.0*m"/>
+    <constant name="catcher_layer_fine_z" value="catcher_layer_fine_thickness"/>
+    <constant name="catcher_layer_coarse_z" value="catcher_layer_coarse_thickness"/>
+<!-- catcher number of layers: must match the lay#_z, lay#_pos given below  -->
+    <constant name="catcher_num_fine_layers" value="8"/>
+    <constant name="catcher_num_coarse_layers" value="8"/>
+    <constant name="catcher_num_layers" value="catcher_num_fine_layers +         catcher_num_coarse_layers"/>
+<!-- catcher dims -->
+    <constant name="catcher_x" value="catcher_layer_x"/>
+    <constant name="catcher_y" value="catcher_layer_y"/>
+    <constant name="catcher_coarse_z" value="catcher_num_coarse_layers * catcher_layer_coarse_z"/>
+    <constant name="catcher_fine_z" value="catcher_num_fine_layers   * catcher_layer_fine_z"/>
+    <constant name="catcher_z" value="catcher_coarse_z + catcher_fine_z"/>
+<!-- catcher slice z in layer for module -->
+    <constant name="catcher_steel_front_z" value="catcher_layer_base_thickness/2 - catcher_steel_front_thickness/2"/>
+    <constant name="catcher_poly_front_z" value="catcher_steel_front_z - catcher_steel_front_thickness/2 - catcher_poly_front_thickness/2"/>
+    <constant name="catcher_tyvek_front_z" value="catcher_poly_front_z  - catcher_poly_front_thickness/2  - catcher_tyvek_front_thickness/2"/>
+    <constant name="catcher_poly_active_z" value="catcher_tyvek_front_z - catcher_tyvek_front_thickness/2 - catcher_poly_active_thickness/2"/>
+    <constant name="catcher_tyvek_back_z" value="catcher_poly_active_z - catcher_poly_active_thickness/2 - catcher_tyvek_back_thickness/2"/>
+    <constant name="catcher_poly_back_z" value="catcher_tyvek_back_z  - catcher_tyvek_back_thickness/2  - catcher_poly_back_thickness/2"/>
+    <constant name="catcher_steel_back_z" value="catcher_poly_back_z   - catcher_poly_back_thickness/2   - catcher_steel_back_thickness/2"/>
+<!-- module and abs pos in fine layer -->
+    <constant name="catcher_module_fine_z" value="catcher_layer_fine_z/2 - catcher_layer_base_thickness/2"/>
+<!--   
+     <constant name="AAA_catcher_abs_redge" value="catcher_module_fine_z - catcher_layer_base_thickness/2" />
+     <constant name="AAA_catcher_abs_center" value="AAA_catcher_abs_redge - catcher_layer_fine_z/2" />
+-->
+    <constant name="catcher_abs_fine_z" value="catcher_module_fine_z - catcher_layer_base_thickness/2 - catcher_steel_abs_fine_thickness/2"/>
+    <position name="catcher_module_fine_pos" z="catcher_module_fine_z"/>
+    <position name="catcher_abs_fine_pos" z="catcher_abs_fine_z"/>
+<!-- module and abs pos in coarse layer -->
+    <constant name="catcher_module_coarse_z" value="catcher_layer_coarse_z/2 - catcher_layer_base_thickness/2"/>
+    <constant name="catcher_abs_coarse_z" value="catcher_module_coarse_z - catcher_layer_base_thickness/2 - catcher_steel_abs_coarse_thickness/2"/>
+    <position name="catcher_module_coarse_pos" z="catcher_module_coarse_z"/>
+    <position name="catcher_abs_coarse_pos" z="catcher_abs_coarse_z"/>
+<!-- catcher pos -->
+    <constant name="catcher_gap_z" value="10.0*mm"/>
+    <position name="catcher_pos" z="-hcal_z - catcher_z - catcher_gap_z"/>
+<!-- catcher slice rel pos in active module (no abs.) -->
+    <position name="catcher_steel_front_pos" z="catcher_steel_front_z"/>
+    <position name="catcher_poly_front_pos" z="catcher_poly_front_z"/>
+    <position name="catcher_tyvek_front_pos" z="catcher_tyvek_front_z"/>
+    <position name="catcher_poly_active_pos" z="catcher_poly_active_z"/>
+    <position name="catcher_tyvek_back_pos" z="catcher_tyvek_back_z"/>
+    <position name="catcher_poly_back_pos" z="catcher_poly_back_z"/>
+    <position name="catcher_steel_back_pos" z="catcher_steel_back_z"/>
+<!-- catcher layer z values -->
+    <constant name="catcher_lay0_z" value="catcher_z/2 - catcher_layer_fine_thickness/2"/>
+    <constant name="catcher_lay1_z" value="catcher_lay0_z - catcher_layer_fine_thickness"/>
+    <constant name="catcher_lay2_z" value="catcher_lay1_z - catcher_layer_fine_thickness"/>
+    <constant name="catcher_lay3_z" value="catcher_lay2_z - catcher_layer_fine_thickness"/>
+    <constant name="catcher_lay4_z" value="catcher_lay3_z - catcher_layer_fine_thickness"/>
+    <constant name="catcher_lay5_z" value="catcher_lay4_z - catcher_layer_fine_thickness"/>
+    <constant name="catcher_lay6_z" value="catcher_lay5_z - catcher_layer_fine_thickness"/>
+    <constant name="catcher_lay7_z" value="catcher_lay6_z - catcher_layer_fine_thickness"/>
+<!-- This one is special: last - 1/2 fine - 1/2 coarse -->
+    <constant name="catcher_lay8_z" value="catcher_lay7_z -             catcher_layer_fine_thickness/2 -             catcher_layer_coarse_thickness/2"/>
+    <constant name="catcher_lay9_z" value="catcher_lay8_z - catcher_layer_coarse_thickness"/>
+    <constant name="catcher_lay10_z" value="catcher_lay9_z - catcher_layer_coarse_thickness"/>
+    <constant name="catcher_lay11_z" value="catcher_lay10_z - catcher_layer_coarse_thickness"/>
+    <constant name="catcher_lay12_z" value="catcher_lay11_z - catcher_layer_coarse_thickness"/>
+    <constant name="catcher_lay13_z" value="catcher_lay12_z - catcher_layer_coarse_thickness"/>
+    <constant name="catcher_lay14_z" value="catcher_lay13_z - catcher_layer_coarse_thickness"/>
+    <constant name="catcher_lay15_z" value="catcher_lay14_z - catcher_layer_coarse_thickness"/>
+<!-- catcher layer positions -->
+    <position name="catcher_lay0_pos" z="catcher_lay0_z"/>
+    <position name="catcher_lay1_pos" z="catcher_lay1_z"/>
+    <position name="catcher_lay2_pos" z="catcher_lay2_z"/>
+    <position name="catcher_lay3_pos" z="catcher_lay3_z"/>
+    <position name="catcher_lay4_pos" z="catcher_lay4_z"/>
+    <position name="catcher_lay5_pos" z="catcher_lay5_z"/>
+    <position name="catcher_lay6_pos" z="catcher_lay6_z"/>
+    <position name="catcher_lay7_pos" z="catcher_lay7_z"/>
+    <position name="catcher_lay8_pos" z="catcher_lay8_z"/>
+    <position name="catcher_lay9_pos" z="catcher_lay9_z"/>
+    <position name="catcher_lay10_pos" z="catcher_lay10_z"/>
+    <position name="catcher_lay11_pos" z="catcher_lay11_z"/>
+    <position name="catcher_lay12_pos" z="catcher_lay12_z"/>
+    <position name="catcher_lay13_pos" z="catcher_lay13_z"/>
+    <position name="catcher_lay14_pos" z="catcher_lay14_z"/>
+    <position name="catcher_lay15_pos" z="catcher_lay15_z"/>
+  </define>
+<!-- materials -->
+  <materials>
+<!-- 
+     global_materials.inc
+     global materials 
+-->
+<!--
+    Materials definitions given by 
+    Mokka CGA, TB03 hcal/ecal, R. Poeschl (most of reference URLs) and J. McCormick.
+-->
+    <element Z="35." formula="Br" name="Bromine">
+      <atom value="79.905"/>
+    </element>
+    <element Z="29." formula="Cu" name="Copper">
+      <atom value="63.546"/>
+    </element>
+    <element Z="6." formula="C" name="Carbon">
+      <atom value="12.01"/>
+    </element>
+    <element Z="17." formula="Cl" name="Chlorine">
+      <atom value="35.45"/>
+    </element>
+    <element Z="1." formula="H" name="Hydrogen">
+      <atom value="1.01"/>
+    </element>
+    <element Z="26." formula="Fe" name="Iron">
+      <atom value="55.85"/>
+    </element>
+    <element Z="7." formula="N" name="Nitrogen">
+      <atom value="14.01"/>
+    </element>
+    <element Z="8." formula="O" name="Oxygen">
+      <atom value="16.0"/>
+    </element>
+    <element Z="14." formula="Si" name="Silicon">
+      <atom value="28.09"/>
+    </element>
+    <element Z="74." formula="W" name="Tungsten">
+      <atom value="183.84"/>
+    </element>
+<!--materials-->
+<!-- 
+     Air: 70% N, 30% O 
+-->
+    <material name="Air">
+      <D unit="mg/cm3" value="1.290"/>
+      <fraction n="0.7" ref="Nitrogen"/>
+      <fraction n="0.3" ref="Oxygen"/>
+    </material>
+<!-- 
+     Copper for Ecal 
+-->
+    <material name="CopperEcal">
+      <D unit="g/cm3" value="8.96"/>
+      <composite n="1" ref="Copper"/>
+    </material>
+<!-- 
+     Quartz for G10 
+-->
+    <material name="Quartz">
+      <D unit="g/cm3" value="2.2"/>
+      <composite n="1" ref="Silicon"/>
+      <composite n="2" ref="Oxygen"/>
+    </material>
+<!--
+    Epoxy for G10.
+-->
+    <material name="Epoxy">
+      <D unit="g/cm3" value="1.3"/>
+      <composite n="44" ref="Hydrogen"/>
+      <composite n="15" ref="Carbon"/>
+      <composite n="7" ref="Oxygen"/>
+    </material>
+<!-- 
+     G10 for Ecal.
+-->
+    <material name="G10">
+      <D unit="g/cm3" value="1.7"/>
+      <fraction n="0.08" ref="Chlorine"/>
+      <fraction n="0.773" ref="Quartz"/>
+      <fraction n="0.147" ref="Epoxy"/>
+    </material>
+<!--
+    Steel235 for the HCal absorber.
+    
+    reference: http://n.ethz.ch/student/zwickers/ download/fs_pe_grundlagen_cyrill.pdf 
+-->
+    <material name="Steel235">
+      <D unit="g/cm3" value="7.85"/>
+      <fraction n="0.998" ref="Iron"/>
+      <fraction n=".002" ref="Carbon"/>
+    </material>
+<!-- 
+     Polyethylene (aka Tyvek) for the Tail Catcher.
+     
+     reference: http://www.encyclopedia.com/html/p1/polyethy.asp
+     reference: http://www.boedeker.com/polye_p.htm
+     
+     Approximation only. (get spec from V. Zutshi@NICADD)
+-->
+    <material name="Polyethylene">
+      <D unit="g/cm3" value="0.92"/>
+      <composite n="2" ref="Carbon"/>
+      <composite n="4" ref="Hydrogen"/>
+    </material>
+<!-- 
+     Polystyrene ("generic") from Mokka for scint. HCal and Catcher.
+     
+     reference: http://cmsdoc.cern.ch/cmsim/manual/cms116/node228.html 
+-->
+    <material name="Polystyrene">
+      <D unit="g/cm3" value="1.032"/>
+      <composite n="19" ref="Carbon"/>
+      <composite n="21" ref="Hydrogen"/>
+    </material>
+<!--
+    Polystyrole.
+-->
+    <material name="Polystyrole">
+      <D unit="g/cm3" value="1.065"/>
+      <composite n="8" ref="Hydrogen"/>
+      <composite n="8" ref="Carbon"/>
+    </material>
+<!-- 
+     PVC for cablefibre mix.
+     
+     reference: http://www.elpac.de/Kunststoffkleinteile/Kleines_Kunststoff-Know-_How/PVC-P/pvc-p.html 
+-->
+    <material name="PVC">
+      <D unit="g/cm3" value="1.35"/>
+      <composite n="3" ref="Hydrogen"/>
+      <composite n="2" ref="Carbon"/>
+      <composite n="1" ref="Chlorine"/>
+    </material>
+<!--
+    PCB for circuit board.
+-->
+    <material name="PCBFR4">
+      <D unit="g/cm3" value="1.25"/>
+      <fraction n="0.180774" ref="Silicon"/>
+      <fraction n="0.405633" ref="Oxygen"/>
+      <fraction n="0.278042" ref="Carbon"/>
+      <fraction n="0.0684428" ref="Hydrogen"/>
+      <fraction n="0.0671091" ref="Bromine"/>
+    </material>
+<!-- 
+     Silicon for ECal active layer.
+-->
+    <material name="SiliconEcal">
+      <D unit="g/cm3" value="2.33"/>
+      <composite n="1" ref="Silicon"/>
+    </material>
+<!--
+    Tungsten for Ecal absorber.
+-->
+    <material name="TungstenEcal">
+      <D unit="g/cm3" value="19.3"/>
+      <composite n="1" ref="Tungsten"/>
+    </material>
+<!-- 
+     Cablefibre mix.
+-->
+    <material name="CablefibreMix">
+      <D unit="g/cm3" value="0.120"/>
+      <fraction n="0.009" ref="Air"/>
+      <fraction n="0.872" ref="PVC"/>
+      <fraction n="0.119" ref="Polystyrole"/>
+    </material>
+  </materials>
+<!-- solids -->
+  <solids>
+<!-- global solids, global_solids.inc -->
+<!-- world -->
+    <box name="WorldBox" x="world_side" y="world_side" z="world_side"/>
+<!-- ecal_solids.inc, ecal solids -->
+<!-- ecal box -->
+    <box name="EcalBox" x="ecal_x" y="ecal_y" z="ecal_z"/>
+<!-- ecal layer box -->
+    <box name="EcalLayerBox" x="ecal_layer_x" y="ecal_layer_y" z="ecal_layer_z"/>
+<!-- ecal slice boxes -->
+    <box name="EcalWBox" x="ecal_layer_x" y="ecal_layer_y" z="ecal_w_thickness"/>
+    <box name="EcalG10Box" x="ecal_layer_x" y="ecal_layer_y" z="ecal_g10_thickness"/>
+    <box name="EcalSiBox" x="ecal_layer_x" y="ecal_layer_y" z="ecal_si_thickness"/>
+    <box name="EcalCuBox" x="ecal_layer_x" y="ecal_layer_y" z="ecal_cu_thickness"/>
+    <box name="EcalAirBox" x="ecal_layer_x" y="ecal_layer_y" z="ecal_air_thickness"/>
+<!-- hcal_solids.inc, hcal solids -->
+<!-- hcal box -->
+    <box name="HcalBox" x="hcal_x" y="hcal_y" z="hcal_z"/>
+<!-- hcal layer box -->
+    <box name="hcal_layerBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_layer_z"/>
+<!-- hcal slice boxes -->
+    <box name="PolyBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_poly_thickness"/>
+    <box name="SteelBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_steel_thickness"/>
+    <box name="AirBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_air_thickness"/>
+    <box name="SteelCassetteBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_steel_cassette_thickness"/>
+    <box name="FoilBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_foil_thickness"/>
+    <box name="PcbBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_pcb_thickness"/>
+    <box name="CablefibreBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_cablefibre_thickness"/>
+<!-- catcher_solids.inc, catcher solids -->
+<!-- catcher boxes -->
+    <box name="CatcherBox" x="catcher_x" y="catcher_y" z="catcher_z"/>
+<!-- catcher layer boxes -->
+    <box name="CatcherLayerFineBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_layer_fine_thickness"/>
+    <box name="CatcherLayerCoarseBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_layer_coarse_thickness"/>
+<!-- module sublayer -->
+    <box name="CatcherModuleBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_layer_base_thickness"/>
+<!-- catcher slice boxes -->
+    <box name="CatcherSteelFrontBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_steel_front_thickness"/>
+    <box name="CatcherPolyFrontBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_poly_front_thickness"/>
+    <box name="CatcherTyvekFrontBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_tyvek_front_thickness"/>
+    <box name="CatcherPolyActiveBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_poly_active_thickness"/>
+    <box name="CatcherTyvekBackBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_tyvek_back_thickness"/>
+    <box name="CatcherPolyBackBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_poly_back_thickness"/>
+    <box name="CatcherSteelBackBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_steel_back_thickness"/>
+    <box name="CatcherFineAbsBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_steel_abs_fine_thickness"/>
+    <box name="CatcherCoarseAbsBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_steel_abs_coarse_thickness"/>
+  </solids>
+<!-- structure -->
+  <structure>
+<!-- ecal_structure.inc, ecal structure -->
+<!-- ecal slices -->
+    <volume name="EcalW">
+      <materialref ref="TungstenEcal"/>
+      <solidref ref="EcalWBox"/>
+    </volume>
+    <volume name="EcalG10">
+      <materialref ref="G10"/>
+      <solidref ref="EcalG10Box"/>
+    </volume>
+    <volume name="EcalSi">
+      <materialref ref="SiliconEcal"/>
+      <solidref ref="EcalSiBox"/>
+    </volume>
+    <volume name="EcalCu">
+      <materialref ref="CopperEcal"/>
+      <solidref ref="EcalCuBox"/>
+    </volume>
+    <volume name="EcalAir">
+      <materialref ref="Air"/>
+      <solidref ref="EcalAirBox"/>
+    </volume>
+<!-- single ecal layer -->
+    <volume name="EcalLayer">
+      <materialref ref="Air"/>
+      <solidref ref="EcalLayerBox"/>
+      <physvol>
+        <volumeref ref="EcalW"/>
+        <positionref ref="ecal_w_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalG10"/>
+        <positionref ref="ecal_g10_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalSi"/>
+        <positionref ref="ecal_si_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalCu"/>
+        <positionref ref="ecal_cu_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalAir"/>
+        <positionref ref="ecal_air_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+    </volume>
+<!-- ecal layer positions -->
+    <volume name="Ecal">
+      <materialref ref="Air"/>
+      <solidref ref="EcalBox"/>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay0_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay1_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay2_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay3_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay4_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay4_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay5_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay6_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay7_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay8_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay9_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay10_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay11_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay12_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay13_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay14_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay15_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay16_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay17_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay18_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay19_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay20_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay21_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay22_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay23_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay24_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay25_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay26_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay27_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay28_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="EcalLayer"/>
+        <positionref ref="ecal_lay29_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+    </volume>
+<!-- hcal_structure.inc, hcal structure -->
+<!-- hcal slices -->
+    <volume name="Poly">
+      <materialref ref="Polystyrene"/>
+      <solidref ref="PolyBox"/>
+    </volume>
+    <volume name="Steel">
+      <materialref ref="Steel235"/>
+      <solidref ref="SteelBox"/>
+    </volume>
+    <volume name="AirGap">
+      <materialref ref="Air"/>
+      <solidref ref="AirBox"/>
+    </volume>
+    <volume name="SteelCassette">
+      <materialref ref="Steel235"/>
+      <solidref ref="SteelCassetteBox"/>
+    </volume>
+    <volume name="Foil">
+      <materialref ref="Air"/>
+      <solidref ref="FoilBox"/>
+    </volume>
+    <volume name="Pcb">
+      <materialref ref="PCBFR4"/>
+      <solidref ref="PcbBox"/>
+    </volume>
+    <volume name="Cablefibre">
+      <materialref ref="CablefibreMix"/>
+      <solidref ref="CablefibreBox"/>
+    </volume>
+<!-- single hcal layer -->
+    <volume name="HCal_Layer">
+      <materialref ref="Air"/>
+      <solidref ref="hcal_layerBox"/>
+      <physvol>
+        <volumeref ref="Poly"/>
+        <positionref ref="hcal_poly_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="Steel"/>
+        <positionref ref="hcal_steel_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="AirGap"/>
+        <positionref ref="hcal_air_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="SteelCassette"/>
+        <positionref ref="hcal_steel_cassette_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="Foil"/>
+        <positionref ref="hcal_foil_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="Pcb"/>
+        <positionref ref="hcal_pcb_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="Cablefibre"/>
+        <positionref ref="hcal_cablefibre_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+    </volume>
+<!-- hcal layer positions -->
+    <volume name="HCal">
+      <materialref ref="Air"/>
+      <solidref ref="HcalBox"/>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay0_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay1_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay2_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay3_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay4_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay4_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay5_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay6_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay7_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay8_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay9_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay10_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay11_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay12_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay13_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay14_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay15_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay16_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay17_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay18_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay19_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay20_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay21_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay22_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay23_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay24_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay25_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay26_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay27_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay28_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay29_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay30_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay31_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay32_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay33_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay34_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay35_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay36_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay37_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="HCal_Layer"/>
+        <positionref ref="hcal_lay38_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+    </volume>
+<!-- 
+     catcher_structure.inc
+     catcher structure 
+-->
+<!-- catcher slices -->
+    <volume name="CatcherSteelFront">
+      <materialref ref="Steel235"/>
+      <solidref ref="CatcherSteelFrontBox"/>
+    </volume>
+    <volume name="CatcherPolyFront">
+      <materialref ref="Polystyrene"/>
+      <solidref ref="CatcherPolyFrontBox"/>
+    </volume>
+    <volume name="CatcherTyvekFront">
+      <materialref ref="Polyethylene"/>
+      <solidref ref="CatcherTyvekFrontBox"/>
+    </volume>
+    <volume name="CatcherPolyActive">
+      <materialref ref="Polystyrene"/>
+      <solidref ref="CatcherPolyActiveBox"/>
+    </volume>
+    <volume name="CatcherTyvekBack">
+      <materialref ref="Polyethylene"/>
+      <solidref ref="CatcherTyvekBackBox"/>
+    </volume>
+    <volume name="CatcherPolyBack">
+      <materialref ref="Polystyrene"/>
+      <solidref ref="CatcherPolyBackBox"/>
+    </volume>
+    <volume name="CatcherSteelBack">
+      <materialref ref="Steel235"/>
+      <solidref ref="CatcherSteelBackBox"/>
+    </volume>
+    <volume name="CatcherFineAbs">
+      <materialref ref="Steel235"/>
+      <solidref ref="CatcherFineAbsBox"/>
+    </volume>
+    <volume name="CatcherCoarseAbs">
+      <materialref ref="Steel235"/>
+      <solidref ref="CatcherCoarseAbsBox"/>
+    </volume>
+<!-- single layers, RO module, fine and coarse -->
+<!-- RO module -->
+    <volume name="CatcherModule">
+      <materialref ref="Air"/>
+      <solidref ref="CatcherModuleBox"/>
+      <physvol>
+        <volumeref ref="CatcherSteelFront"/>
+        <positionref ref="catcher_steel_front_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherPolyFront"/>
+        <positionref ref="catcher_poly_front_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherTyvekFront"/>
+        <positionref ref="catcher_tyvek_front_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherPolyActive"/>
+        <positionref ref="catcher_poly_active_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherTyvekBack"/>
+        <positionref ref="catcher_tyvek_back_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherPolyBack"/>
+        <positionref ref="catcher_poly_back_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherSteelBack"/>
+        <positionref ref="catcher_steel_back_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+    </volume>
+<!-- fine layer -->
+    <volume name="CatcherLayerFine">
+      <materialref ref="Air"/>
+      <solidref ref="CatcherLayerFineBox"/>
+      <physvol>
+        <volumeref ref="CatcherModule"/>
+        <positionref ref="catcher_module_fine_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherFineAbs"/>
+        <positionref ref="catcher_abs_fine_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+    </volume>
+<!-- coarse layer -->
+    <volume name="CatcherLayerCoarse">
+      <materialref ref="Air"/>
+      <solidref ref="CatcherLayerCoarseBox"/>
+      <physvol>
+        <volumeref ref="CatcherModule"/>
+        <positionref ref="catcher_module_coarse_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherCoarseAbs"/>
+        <positionref ref="catcher_abs_coarse_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+    </volume>
+<!-- catcher layer positions -->
+    <volume name="Catcher">
+      <materialref ref="Air"/>
+      <solidref ref="CatcherBox"/>
+      <physvol>
+        <volumeref ref="CatcherLayerFine"/>
+        <positionref ref="catcher_lay0_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerFine"/>
+        <positionref ref="catcher_lay1_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerFine"/>
+        <positionref ref="catcher_lay2_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerFine"/>
+        <positionref ref="catcher_lay3_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerFine"/>
+        <positionref ref="catcher_lay4_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerFine"/>
+        <positionref ref="catcher_lay5_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerFine"/>
+        <positionref ref="catcher_lay6_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerFine"/>
+        <positionref ref="catcher_lay7_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerCoarse"/>
+        <positionref ref="catcher_lay8_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerCoarse"/>
+        <positionref ref="catcher_lay9_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerCoarse"/>
+        <positionref ref="catcher_lay10_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerCoarse"/>
+        <positionref ref="catcher_lay11_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerCoarse"/>
+        <positionref ref="catcher_lay12_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerCoarse"/>
+        <positionref ref="catcher_lay13_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerCoarse"/>
+        <positionref ref="catcher_lay14_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol>
+        <volumeref ref="CatcherLayerCoarse"/>
+        <positionref ref="catcher_lay15_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+    </volume>
+<!-- global_structure.inc, global structure -->
+<!-- world -->
+    <volume name="World">
+      <materialref ref="Air"/>
+      <solidref ref="WorldBox"/>
+<!-- ecal -->
+      <physvol>
+        <volumeref ref="Ecal"/>
+        <positionref ref="ecal_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+<!-- hcal -->
+      <physvol>
+        <volumeref ref="HCal"/>
+        <positionref ref="hcal_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+<!-- catcher -->
+      <physvol>
+        <volumeref ref="Catcher"/>
+        <positionref ref="catcher_pos"/>
+        <rotationref ref="identity"/>
+      </physvol>
+    </volume>
+  </structure>
+<!-- setup -->
+  <setup name="Default" version="1.0">
+    <world ref="World"/>
+  </setup>
+</gdml>

@@ -1,0 +1,196 @@
+<!-- 
+     global_materials.inc
+     global materials 
+-->
+
+<!--
+    Material and elements definitions from 
+    Mokka CGA, TB03 hcal/ecal, R. Poeschl (most reference URLs) and J. McCormick.
+-->
+
+<element name="Bromine_e" formula="Br" Z="35.">
+  <atom value="79.905"/>
+</element>
+
+<element name="Copper_e" formula="Cu" Z="29.">
+  <atom value="63.546" />
+</element>
+
+<element name="Carbon_e" formula="C" Z="6.">
+  <atom value="12.01" />
+</element>
+
+<element name="Chlorine_e" formula="Cl" Z="17.">
+  <atom value="35.45" />
+</element>
+
+<element name="Hydrogen_e" formula="H" Z="1.">
+  <atom value="1.01" />
+</element>
+
+<element name="Iron_e" formula="Fe" Z="26.">
+  <atom value="55.85" />
+</element>
+
+<element name="Nitrogen_e" formula="N" Z="7.">
+  <atom value="14.01" />
+</element>
+
+<element name="Oxygen_e" formula="O" Z="8.">
+  <atom value="16.0" />
+</element>
+
+<element name="Silicon_e" formula="Si" Z="14.">
+  <atom value="28.09" />
+</element>
+
+<element name="Tungsten_e" formula="W" Z="74.">
+  <atom value="183.84" />
+</element>
+
+<!--materials-->
+<!-- 
+     Air: 70% N, 30% O 
+-->
+<material name="Air">
+  <D value="1.290" unit="mg/cm3" />
+  <fraction n="0.7" ref="Nitrogen_e" />
+  <fraction n="0.3" ref="Oxygen_e" />
+</material>
+
+<!-- 
+     Copper for Ecal.
+-->
+<material name="Copper">
+  <D value="8.96" unit="g/cm3"/>
+  <composite n="1" ref="Copper_e"/>
+</material>
+
+<!-- 
+     Quartz for G10 
+-->
+<material name="Quartz">
+  <D value="2.2" unit="g/cm3"/>
+  <composite n="1" ref="Silicon_e"/>
+  <composite n="2" ref="Oxygen_e"/>
+</material>
+
+<!--
+    Epoxy for G10.
+-->
+<material name="Epoxy">
+  <D value="1.3" unit="g/cm3"/>
+  <composite n="44" ref="Hydrogen_e"/>
+  <composite n="15" ref="Carbon_e"/>
+  <composite n="7" ref="Oxygen_e"/>
+</material>
+
+<!-- 
+     G10 for Ecal.
+-->
+<material name="G10">
+  <D value="1.7" unit="g/cm3" />
+  <fraction n="0.08" ref="Chlorine_e" />
+  <fraction n="0.773" ref="Quartz" />
+  <fraction n="0.147" ref="Epoxy" />
+</material>
+
+<!--
+    Steel235 for the HCal absorber.
+    
+    reference: http://n.ethz.ch/student/zwickers/ download/fs_pe_grundlagen_cyrill.pdf 
+-->
+<material name="Steel235">
+  <D value="7.85" unit="g/cm3" />
+  <fraction n="0.998" ref="Iron_e" />
+  <fraction n=".002" ref="Carbon_e" />
+</material>
+
+<!-- 
+     Polyethylene (aka Tyvek) for the Tail Catcher.
+     
+     reference: http://www.encyclopedia.com/html/p1/polyethy.asp
+     reference: http://www.boedeker.com/polye_p.htm
+     
+     Approximation only. (get spec sheet from V. Zutshi @ NICADD)
+-->
+<material name="Polyethylene" >
+  <D value="0.92" unit="g/cm3" />
+  <composite n="2" ref="Carbon_e" />
+  <composite n="4" ref="Hydrogen_e" />
+</material>
+
+<!-- 
+     Polystyrene ("generic") from Mokka for scint. HCal and Catcher.
+     
+     reference: http://cmsdoc.cern.ch/cmsim/manual/cms116/node228.html 
+     
+     Used for both hcal and catcher.
+-->
+<material name="Polystyrene">
+  <D value="1.032" unit="g/cm3" />
+  <composite n="19" ref="Carbon_e"/>
+  <composite n="21" ref="Hydrogen_e" />
+</material>
+
+<!--
+    Polystyrole.
+-->
+<material name="Polystyrole">
+  <D value="1.065" unit="g/cm3" />
+  <composite n="8" ref="Hydrogen_e" />
+  <composite n="8" ref="Carbon_e" />
+</material>
+
+<!-- 
+     PVC for cablefibre mix.
+     
+     reference: http://www.elpac.de/Kunststoffkleinteile/Kleines_Kunststoff-Know-_How/PVC-P/pvc-p.html 
+-->
+<material name="PVC">
+  <D value="1.35" unit="g/cm3" />
+  <composite n="3" ref="Hydrogen_e" />
+  <composite n="2" ref="Carbon_e" />
+  <composite n="1" ref="Chlorine_e"/>
+</material>
+
+<!--
+    PCB for circuit board.
+-->
+<material name="PCBFR4">
+  <D value="1.25" unit="g/cm3" />
+  <fraction n="0.180774" ref="Silicon_e"/>
+  <fraction n="0.405633" ref="Oxygen_e" />
+  <fraction n="0.278042" ref="Carbon_e" />
+  <fraction n="0.0684428" ref="Hydrogen_e" />
+  <fraction n="0.0671091" ref="Bromine_e" />
+
+</material>
+
+<!-- 
+     Silicon for ECal active layer.
+-->
+<material name="Silicon">
+  <D value="2.33" unit="g/cm3" />
+  <composite n="1" ref="Silicon_e" />
+</material>
+
+<!--
+    Tungsten for Ecal absorber.
+-->
+<material name="Tungsten">
+  <D value="19.3" unit="g/cm3"/>
+  <composite n="1" ref="Tungsten_e" />
+</material>
+
+<!-- 
+     Cablefibre mix.
+-->
+<material name="CablefibreMix">
+  <D value="0.120" unit="g/cm3"/>
+  <fraction n="0.009" ref="Air" />
+  <fraction n="0.872" ref="PVC" />
+  <fraction n="0.119" ref="Polystyrole" />
+</material>
+
+

@@ -1,0 +1,267 @@
+<!-- ecal_structure.inc, ecal structure -->
+<!-- ecal slices -->
+<volume name="EcalW">	
+  <materialref ref="Tungsten" />
+  <solidref ref="EcalWBox" />
+  <visref ref="EcalVis" />
+</volume>
+
+<volume name="EcalG10">	
+  <materialref ref="G10" />
+  <solidref ref="EcalG10Box" />
+  <visref ref="EcalVis" />
+</volume>
+
+<volume name="EcalSi">	
+  <materialref ref="Silicon" />
+  <solidref ref="EcalSiBox" />
+  <sdref ref="ECSD" />
+  <visref ref="EcalVis" />
+</volume>
+
+<volume name="EcalCu">	
+  <materialref ref="Copper" />
+  <solidref ref="EcalCuBox" />
+  <visref ref="EcalVis" />
+</volume>
+
+<volume name="EcalAir">	
+  <materialref ref="Air" />
+  <solidref ref="EcalAirBox" />
+  <visref ref="EcalVis" />
+</volume>
+
+<!-- single ecal layer -->
+<volume name="EcalLayer">
+  <materialref ref="Air" />
+  <solidref ref="EcalLayerBox" />
+
+  <physvol>
+    <volumeref ref="EcalW" />
+    <positionref ref="ecal_w_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalG10" />
+    <positionref ref="ecal_g10_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalSi" />
+    <positionref ref="ecal_si_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalCu" />
+    <positionref ref="ecal_cu_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalAir" />
+    <positionref ref="ecal_air_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <visref ref="EcalVis" />
+
+</volume>
+
+<!-- ecal layer positions -->
+<volume name="Ecal">
+
+  <materialref ref="Air" />
+  <solidref ref="EcalBox" />
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay0_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay1_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay2_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay3_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay4_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay4_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay5_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay6_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay7_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay8_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay9_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay10_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay11_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay12_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay13_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay14_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay15_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay16_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay17_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay18_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay19_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay20_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay21_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay22_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay23_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay24_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay25_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay26_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay27_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay28_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <physvol>
+    <volumeref ref="EcalLayer" />
+    <positionref ref="ecal_lay29_pos" />
+    <rotationref ref="identity" />
+  </physvol>
+
+  <visref ref="EcalVis" />
+
+</volume>

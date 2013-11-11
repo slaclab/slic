@@ -1,0 +1,31 @@
+#ifndef Geant4VersionInfo_hh
+#define Geant4VersionInfo_hh 1
+
+#include <string>
+
+/**
+  * @class Geant4VersionInfo
+  * @brief Statically accessible Geant4 version information.
+  */
+class Geant4VersionInfo
+{
+    private:
+    
+        /**
+         * Class constructor.
+         */
+        Geant4VersionInfo() {;}
+
+    public:
+   
+        /** 
+         * Get the Geant4 version string in format "##.##.##" 
+         * or "[release].[version].[patch]".
+         * @return The Geant4 version string.
+         */
+        static std::string getFullVersion() {
+            return "@Geant4_VERSION@";
+        }
+};
+
+#endif

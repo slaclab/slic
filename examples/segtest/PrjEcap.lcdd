@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<lcdd xmlns:lcdd="http://www.lcsim.org/schemas/lcdd/1.0"     
+      xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"          
+      xs:noNamespaceSchemaLocation="http://www.lcsim.org/schemas/lcdd/1.0/lcdd.xsd">
+
+  <header>
+
+    <detector name="projective_endcap"
+	      version="1.0" />
+
+    <author name="Jeremy McCormick"
+	    email="jeremy@slac.stanford.edu"/>
+
+    <generator name="DummyGenerator"
+	       version="1.0"
+	       file="DummyCompactFile.xml"
+	       checksum="0" />
+
+    <comment>
+      Projective endcap test.
+    </comment>
+
+  </header>
+
+  <iddict>
+  </iddict>
+
+  <sensitive_detectors>
+
+    <calorimeter name="CalPrjZ"
+		 hits_collection="CalHitsC"
+		 ecut="0.25"
+		 eunit="MeV"
+		 verbose="4">
+      <projective_zplane ntheta="360" nphi="360" />
+    </calorimeter>
+
+    <tracker name="Tracker"
+	     hits_collection="TrackerHitsA" 
+	     ecut="0.25"
+	     eunit="MeV"
+	     verbose="4"/>
+
+  </sensitive_detectors>
+
+  <limits>
+  </limits>
+
+  <regions>
+
+    <region name="TestBox0_Region"
+	    store_secondaries="true"
+	    cut="1.0"
+	    lunit="mm" />
+
+    <region name="TestBox1_Region"
+	    store_secondaries="true"
+	    cut="1.0"
+	    lunit="mm" />
+
+    <region name="TestTube0_Region"
+	    store_secondaries="true"
+	    cut="1.0"
+	    lunit="mm" />
+
+    <region name="TestTube1_Region"
+	    store_secondaries="true"
+	    cut="1.0"
+	    lunit="mm" />
+
+    <region name="TestTube2_Region"
+	    store_secondaries="true"
+	    cut="1.0"
+	    lunit="mm" />
+
+  </regions>
+
+  <display>
+  </display>
+
+  <gdml>
+
+    <define>
+
+      <constant name="TWOPI" value="2.*pi"/>     
+
+      <rotation name="identity_rot"  x="0.0"  y="0.0"  z="0.0"  unit="degree" />
+      <position name="identity_pos"  x="0.0"  y="0.0"  z="0.0"  unit="cm" />
+
+      <constant name="def_z" value="0.0 * mm" />
+      <constant name="layer_incr_z" value="70.0 * mm" />
+
+      <constant name="TestTube1_z" value="def_z + 1000.0" />
+
+      <position name="TestTube1_pos" z="TestTube1_z" />
+
+    </define>
+
+    <materials>
+
+      <element  name="Nitrogen_e"  Z="7.0"  N="14" >
+	<atom type="A" unit="g/mol" value=" 14.0100" />
+      </element>
+
+      <element  name="Oxygen_e"  Z="8.0"  N="16" >
+	<atom type="A" unit="g/mol" value=" 16.0000" />
+      </element>
+
+      <element  name="Argon_e"  Z="18.0"  N="40" >
+	<atom type="A" unit="g/mol" value=" 39.9480" />
+      </element>
+
+      <element name="Tungsten_e" formula="W" Z="74.">
+	<atom value="183.84" />
+      </element>
+
+      <material  name="Air"  >
+	<D type="density" unit="g/cm3" value="0.0012"/>
+	<fraction n="0.7803"  ref="Nitrogen_e"/>
+	<fraction n="0.2103"  ref="Oxygen_e"/>
+	<fraction n="0.0094"  ref="Argon_e"/>
+      </material>
+
+      <material name="Tungsten">
+	<D value="19.3" unit="g/cm3"/>
+	<composite n="1" ref="Tungsten_e" />
+      </material>
+
+    </materials>
+
+    <solids>
+      <box  lunit="m" 
+	    aunit="degree"
+	    name="world_box"
+	    x="10.0"  
+	    y="10.0"  
+	    z="10.0" />
+
+      <box  lunit="cm" 
+	    aunit="degree"
+	    name="layer_box"
+	    x="500.0"  
+	    y="500.0"  
+	    z="layer_incr_z" />
+
+      <tube name="test_tube" 
+	    lunit="mm"
+	    z="50.0"
+	    rmin="800"
+	    rmax="1000"
+	    deltaphi="TWOPI" />
+
+      <tube name="test_tube_barr" 
+	    lunit="mm"
+	    z="150.0"
+	    rmin="800"
+	    rmax="1000"
+	    deltaphi="TWOPI" />
+
+    </solids>
+
+    <structure>
+
+      <volume name="TestTube1">
+	<materialref ref="Tungsten"/>
+	<solidref ref="test_tube"/>
+	<sdref ref="CalPrjZ" />
+	<regionref ref="TestTube1_Region" />
+      </volume>
+
+      <volume name="world">
+	<materialref ref="Air"/>
+	<solidref ref="world_box"/>
+
+	<physvol>
+	  <volumeref ref="TestTube1" />
+	  <positionref ref="TestTube1_pos"/>
+	  <rotationref ref="identity_rot"/>
+	</physvol>
+
+      </volume>
+
+    </structure>
+
+    <setup name="Default" version="1.0">
+      <world ref="world"/>
+    </setup>
+
+  </gdml>
+
+  <fields>
+    <solenoid name="testField"
+	      inner_field="5.0"
+	      outer_field="0.0"
+	      zmin="0"
+	      zmax="1000"
+	      inner_radius="0"
+	      outer_radius="2000"
+	      funit="tesla"
+	      lunit="mm"
+	      />
+    <global_field>
+      <fieldref ref="testField" />
+    </global_field>
+  </fields>
+
+</lcdd>

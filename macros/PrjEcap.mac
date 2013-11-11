@@ -1,0 +1,29 @@
+/control/verbose 2
+
+/lcdd/url examples/segtest/PrjEcap.lcdd
+
+/lcio/path .
+/lcio/filename lcioOutputFile
+
+/physics/select LHEP
+
+/generator/select gps
+
+/run/initialize
+
+/gps/particle mu-
+/gps/energy 10 GeV
+/gps/position 0 850 300 mm
+/gps/direction 0 0 1
+
+#/control/execute macros/heprep2.mac
+
+/vis/drawTree
+/vis/scene/add/hits
+/vis/scene/add/trajectories
+
+/vis/open OGLIX
+/vis/viewer/zoom 3
+/vis/viewer/set/viewpointThetaPhi 25 20
+
+/run/beamOn

@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Time-stamp: <2005-02-03 13:37:57 jeremym> -->
+<lcdd xmlns:lcdd="http://www.lcsim.org/schemas/lcdd/1.0"     
+      xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"          
+      xs:noNamespaceSchemaLocation="http://www.lcsim.org/schemas/lcdd/1.0/lcdd.xsd">
+
+  <!-- header containing meta data about this geometry -->
+  <header>
+
+    <detector name="MDI_BDS"
+	      version="1.0" />
+
+    <author name="Jeremy McCormick"
+	    email="jeremym@slac.stanford.edu"/>
+
+    <generator name="None"
+	       version="1.0"
+	       file="MyDetectorCompactFile.xml"
+	       checksum="0" />
+
+    <comment>
+      MDI and BDS components from "LC Detector 2003" / NLC IR.
+    </comment>
+
+  </header>
+
+  <!-- ID encoding specifications -->
+  <iddict>
+  </iddict>
+
+  <!-- sensitive detector readouts -->
+  <sensitive_detectors>
+  </sensitive_detectors>
+
+  <limits>
+  </limits>
+
+  <regions>  
+  </regions>
+
+  <display>
+
+    <vis name="DefaultVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="solid">
+      <color R="1.0"
+	     G="1.0"
+	     B="1.0"
+	     alpha="1.0"
+	     />
+    </vis>
+
+    <vis name="MaskLowzVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="solid">
+      <color R="1.0"
+	     G="1.0"
+	     B="1.0"
+	     alpha="1.0"
+	     />
+    </vis>
+
+    <vis name="MaskLumCalVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="solid">
+      <color R="1.0"
+	     G="0.0"
+	     B="0.0"
+	     alpha="1.0"
+	     />
+    </vis>
+
+    <vis name="InstMaskVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="solid">
+      <color R="0.0"
+	     G="1.0"
+	     B="0.0"
+	     alpha="1.0"
+	     />
+    </vis>
+
+    <vis name="MaskVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="solid">
+      <color R="0.0"
+	     G="0.0"
+	     B="1.0"
+	     alpha="1.0"
+	     />
+    </vis>
+
+
+    <vis name="WorldVis"
+		    visible="false"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="solid">
+      <color R="1.0"
+	     G="1.0"
+	     B="1.0"
+	     alpha="1.0"
+	     />
+    </vis>
+
+  </display>
+
+  <gdml>
+
+    <define>
+
+      <!-- standard global constants -->
+      <constant name="TWOPI" value="2. * pi"/>     
+      <rotation name="identity_rot"  x="0.0"  y="0.0"  z="0.0"  unit="degree" />
+      <position name="identity_pos"  x="0.0"  y="0.0"  z="0.0"  unit="cm" />      
+
+      <!-- world -->
+      <constant name="world_side" value="10000" />
+      <constant name="world_x" value="world_side" />
+      <constant name="world_y" value="world_side" />
+      <constant name="world_z" value="world_side" />
+
+      <rotation name="south_rot" x="0.0" y="0.0" z="180.0" unit="degree" />
+
+      <constant name="crossing_angle" value="0.573" />
+
+      <constant name="mask_lum_cal_z" value="35.0" />
+      <constant name="mask_lum_cal_rmax" value="19.0" />
+
+      <constant name="beam_z" value="500.0" />
+
+      <constant name="beam_incoming_z" value="beam_z" />
+      <constant name="beam_incoming_rmax" value="1.0" />
+
+      <constant name="beam_outgoing_z" value="beam_z" />
+      <constant name="beam_outgoing_rmax" value="1.2" />
+
+      <constant name="beam_pos_in_mask_x" value="3.325" />
+      <constant name="beam_pos_in_mask_lowz_x" value="3.10" />
+
+      <constant name="mask_inst_zplane1_rmin" value="8.14" />
+      <constant name="mask_inst_zplane1_rmax" value="19.0" />
+
+      <constant name="mask_inst_zplane2_rmin" value="8.92" />
+      <constant name="mask_inst_zplane2_rmax" value="19.0" />
+
+      <constant name="mask_zplane1_rmin" value="8.92" />
+      <constant name="mask_zplane1_rmax" value="19.0" />
+
+      <constant name="mask_zplane2_rmin" value="13.85" />
+      <constant name="mask_zplane2_rmax" value="19.0" />
+
+      <constant name="mask_lowz_rmax" value="7.87" />
+      <constant name="mask_lowz_z" value="10.0" />
+
+      <constant name="ecal_endcap_face_z" value="168.0" />
+      <constant name="ecal_endcap_thick" value="16.0" />
+
+      <constant name="hcal_endcap_face_z" value="184.0" />
+      <constant name="hcal_endcap_thick"  value="102.0" />
+      <constant name="hcal_endcap_outer_z" value="286.0" />
+
+      <constant name="lumcal_pos_z" value="332.5" />
+      <position name="lumcal_north_pos" x="0.0"  y="0.0" z="lumcal_pos_z" unit="cm" />
+      <position name="lumcal_south_pos" x="0.0"  y="0.0" z="-lumcal_pos_z" unit="cm" />
+
+      <constant name="mask_lowz_pos_z" value="310.0" />
+      <position name="mask_lowz_north_pos" x="0.0"  y="0.0"  z="mask_lowz_pos_z"   unit="cm" />
+      <position name="mask_lowz_south_pos" x="0.0"  y="0.0"  z="-mask_lowz_pos_z"   unit="cm" />
+
+      <constant name="mask_inst_pos_z" value="ecal_endcap_face_z + ecal_endcap_thick / 2" />
+      <position name="mask_inst_north_pos" x="0.0"  y="0.0"  z="mask_inst_pos_z" unit="cm" />
+      <position name="mask_inst_south_pos" x="0.0"  y="0.0"  z="-mask_inst_pos_z" unit="cm" />
+
+      <constant name="mask_pos_z" value="hcal_endcap_face_z + hcal_endcap_thick / 2" />
+      <position name="mask_north_pos" x="0.0" y="0.0" z="mask_pos_z" unit="cm" />
+      <position name="mask_south_pos" x="0.0" y="0.0" z="-mask_pos_z" unit="cm" />
+
+    </define>
+
+    <materials>
+
+      <!-- elements -->
+      <element name="Argon_e" Z="18.0" N="40" >
+	<atom type="A" unit="g/mol" value="39.9480" />
+      </element>
+
+      <element  name="Nitrogen_e"  Z="7.0"  N="14" >
+	<atom type="A" unit="g/mol" value=" 14.0100" />
+      </element>
+
+      <element  name="Oxygen_e"  Z="8.0"  N="16" >
+	<atom type="A" unit="g/mol" value=" 16.0000" />
+      </element>
+
+      <!-- materials -->
+      <material  name="Air"  >
+	<D type="density" unit="g/cm3" value="0.0012"/>
+	<fraction n="0.7803"  ref="Nitrogen_e"/>
+	<fraction n="0.2103"  ref="Oxygen_e"/>
+	<fraction n="0.0094"  ref="Argon_e"/>
+      </material>
+    </materials>
+
+    <solids>
+
+      <!-- world -->
+      <box  lunit="cm" 
+	    aunit="degree"
+	    name="world_box"
+	    x="world_x"  
+	    y="world_y"  
+	    z="world_z" />
+
+      <tube name="mask_lum_cal_tube"
+	    lunit="cm"
+	    z="mask_lum_cal_z"
+	    rmin="0.0"
+	    rmax="mask_lum_cal_rmax"
+ 	    deltaphi="TWOPI"
+	    />     
+
+      <tube name="beam_incoming"
+	    lunit="cm"
+	    z="beam_incoming_z"
+	    rmin="0.0"
+	    rmax="beam_incoming_rmax"
+	    deltaphi="TWOPI"
+	    />     
+
+      <tube name="beam_outgoing"
+	    lunit="cm"
+	    z="beam_outgoing_z"
+	    rmin="0.0"
+	    rmax="beam_outgoing_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <polycone name="mask_inst_polycone"
+		lunit="cm"
+		startphi="0"
+		deltaphi="TWOPI">
+
+	<zplane rmin="mask_inst_zplane1_rmin"
+		rmax="mask_inst_zplane1_rmax"
+		z="-ecal_endcap_thick / 2" />
+
+	<zplane rmin="mask_inst_zplane2_rmin"
+		rmax="mask_inst_zplane2_rmax"
+		z="ecal_endcap_thick / 2"/>
+
+      </polycone>
+
+      <polycone name="mask_polycone"
+		lunit="cm"
+		startphi="0"
+		deltaphi="TWOPI">
+	<zplane rmin="mask_zplane1_rmin"
+		rmax="mask_zplane1_rmax"
+		z="-hcal_endcap_thick / 2"/>
+	<zplane rmin="mask_zplane2_rmin"
+		rmax="mask_zplane2_rmax"
+		z="hcal_endcap_thick / 2"/>
+      </polycone>
+
+      <tube name="mask_lowz_tube"
+	    lunit="cm"
+	    rmin="0.0"
+	    rmax="mask_lowz_rmax"
+	    z="mask_lowz_z"
+	    startphi="0"
+	    deltaphi="TWOPI"/>
+      
+      <subtraction name="mask_lum_cal_bool1_sol">
+
+	<first ref="mask_lum_cal_tube" />
+	<second ref="beam_incoming" />
+
+	<position name="left_pos" x="beam_pos_in_mask_x * cm" y="0.0" z="0.0" />
+
+ 	<rotation name="left_rot" x="0.0" y="crossing_angle * degree" z="0.0" />
+
+      </subtraction>
+
+      <subtraction name="mask_lum_cal_bool2_sol">
+	<first ref="mask_lum_cal_bool1_sol"/>
+	<second ref="beam_outgoing" />
+
+	<position name="right_pos" x="-beam_pos_in_mask_x * cm" y="0.0" z="0.0" />
+	<rotation name="right_rot" x="0.0" y="-crossing_angle * degree" z="0.0" /> 
+
+      </subtraction>
+
+      <subtraction name="mask_lowz_bool1_sol">
+	<first ref="mask_lowz_tube"/>
+	<second ref="beam_incoming"/>
+
+	<position name="mask_lowz_beam_incoming_pos" x="beam_pos_in_mask_lowz_x * cm" y="0.0" z="0.0" />
+	<rotation name="mask_lowz_beam_incoming_rot" x="0.0" y="crossing_angle * degree" z="0.0" />
+
+      </subtraction>
+
+      <subtraction name="mask_lowz_bool2_sol">
+	<first ref="mask_lowz_bool1_sol"/>
+	<second ref="beam_outgoing"/>
+
+	<position name="mask_lowz_beam_outgoing_pos" x="-beam_pos_in_mask_lowz_x * cm" y="0.0" z="0.0" />
+	<rotation name="mask_lowz_beam_outgoing_rot" x="0.0" y="-crossing_angle * degree" z="0.0" />
+
+      </subtraction>
+
+    </solids>
+
+    <structure>
+
+      <volume name="mask_lum_cal">
+	<materialref ref="Air"/>
+	<solidref ref="mask_lum_cal_bool2_sol"/>
+	<visref ref="MaskLumCalVis" />
+      </volume>
+
+      <volume name="mask_inst">
+	<materialref ref="Air"/>
+	<solidref ref="mask_inst_polycone"/>
+	<visref ref="InstMaskVis" />
+      </volume>
+
+      <volume name="mask">
+	<materialref ref="Air"/>
+	<solidref ref="mask_polycone"/>
+	<visref ref="MaskVis" />
+      </volume>
+
+      <volume name="mask_lowz">
+	<materialref ref="Air"/>
+	<solidref ref="mask_lowz_bool2_sol"/>
+	<visref ref="MaskLowzVis" />
+      </volume>
+
+      <volume name="world">
+	<materialref ref="Air"/>
+	<solidref ref="world_box"/>
+
+	<!-- north system -->
+	<physvol>
+	  <volumeref ref="mask_lum_cal"/>
+	  <positionref ref="lumcal_north_pos"/>
+	  <rotationref ref="identity_rot"/>
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="mask_inst"/>
+	  <positionref ref="mask_inst_north_pos"/>
+	  <rotationref ref="identity_rot"/>
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="mask"/>
+	  <positionref ref="mask_north_pos"/>
+	  <rotationref ref="identity_rot"/>
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="mask_lowz"/>
+	  <positionref ref="mask_lowz_north_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<!-- south system -->
+	<physvol>
+	  <volumeref ref="mask_lum_cal"/>
+	  <positionref ref="lumcal_south_pos"/>
+	  <rotationref ref="south_rot"/>
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="mask_inst"/>
+	  <positionref ref="mask_inst_south_pos"/>
+	  <rotationref ref="south_rot"/>
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="mask"/>
+	  <positionref ref="mask_south_pos"/>
+	  <rotationref ref="south_rot"/>
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="mask_lowz"/>
+	  <positionref ref="mask_lowz_south_pos" />
+	  <rotationref ref="south_rot" />
+	</physvol>
+
+	<visref ref="WorldVis" />
+      </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+      <world ref="world"/>
+    </setup>
+
+  </gdml>
+
+  <!-- global field -->
+  <fields>
+  </fields>
+
+</lcdd>

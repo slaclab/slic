@@ -1,0 +1,152 @@
+_MC Bug Fixing with Ron Cassell_
+
+2/11/2005
+
+-too many Mcp in the cal hits
+  -energy cut on saving particles? (CHANGE TO 1.0 MeV)
+
+-too many particles per hit in cal hits
+  -long, not super-long format (CHANGE IN LcioHCBuilder.cc)
+    -needs combining logic
+    -aggregate hits by unique track ids
+      -McpHitContribList = aggregateMcpHitContribListByTrackId( calHit );
+
+-flags "all wrong"  
+
+-backscatter flag set on initial muons
+
+-vertexIsNotEndpointOfParent is incorrect
+
+-startPoint incorrect
+
+-within tolerance for Mcp not correct
+
+-status bits (review)
+  -creation (do in preTracking)
+    -createdInSimulator
+    -backscatter
+    -vertexIsNotEndpointOfParent
+  -disposition (mutually exclusive) (do in postTracking)
+    -decayedInCal
+    -decayedInTracker
+    -stopped
+      -but *not* decayed
+    -left
+  -hasEndpointDaughters
+
+-run some Kshorts, lamdas
+  -100 events
+
+2/14/2005
+
+minimumTrackingDistance == min travel for particle to be created in
+sim generator
+
+neutrinos w/ tracker hits!
+  -fixed bug with (<= cut) in G4TrackerSD
+    -seems to have fixed a bunch of stuff!
+
+endpoint dau is totally off!
+
+2/15/2005
+
+-starting tracking status is incorrect (now appears to be erroneous bug)
+  -picking up parent's region info
+
+-stopped flag = incorrect
+
+-vertex not end of parent flag = incorrect
+
+-decayedInTrackingRegion set when cal!
+
+2/16/2005
+
+-suspicious about hadron calorimeter
+  -overlaps?
+
+-possibly SD not aggregating hits correctly
+
+-hcal
+  -energy distrib is strange
+
+2/18/05
+
+-energy in GeV for LCIO
+-manual setup not correct
+-particles w/o final status (decayed, etc.)
+
+2/22/05
+
+-vtxnotendp bug
+  -probably fixed (secondaryTrack)
+
+-manual setup not working in LCS
+  -probably fixed
+
+-numSecoAtEnd ! correct (?)
+
+-decayC
+  -photons
+  -above threshhold
+
+-decayT
+  -photons below threshhold
+  -vtx and endp identical
+    -needed manual setup which didn't work!
+  -left a tracker hit
+
+-left
+  -electrons
+  -above 4 MeV
+  -thru the beampipe 
+    -need lum monitor
+
+-none
+  -2 events w/ no status
+  -stuck/loopers (need status)
+
+-photons
+  -below our energy threshhold
+  -vertex and endp look reasonable
+  -photon have secondaries at end and have tracker hit
+    -all continuous photons below threshhold
+    -very little energy
+    -tracker hit by stopping
+    -how get seco??? 
+
+-electrons
+  -ionization electrons not interacting
+
+-vtxNotEndp
+  -daughters at endp (after the fact)
+  -ex. 
+    -muon brems photon
+    -photon below threshhold, no tracker hit
+    -photon kicks out some electron, below threshhold
+    -electrons do leave hit
+    -photon stops or pair produces
+    -product electron leaves hit
+    -electron gets trackID = muon
+  -need to flag all daughters past 1st level with this flag
+   ("once chain has been broken")
+  
+2/28/05
+
+-zpoles
+  -lambdas w/ kE = 0, probably okay 
+
+-gammas
+  -extremely short tracks obscured by hit graphic (WIRED)
+  -weird placement of tracker hits
+  -possibly "orphaned" hits
+
+3/1/05
+
+-ttbar
+  -stdhep to LCIO conv.
+    -"dangling" gluons and quarks (needs to be checked against input)
+  -some particles (e-) with no final status, similar to looper, but
+   no message on this from G4
+
+-muons
+  -muon not flagged as decayed in tracker

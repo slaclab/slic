@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Descciption of ECal calorimeter from: NIMA 487 (2002) 291-307
+-->
+
+<lcdd xmlns:lcdd="http://www.lcsim.org/schemas/lcdd/1.0"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+      xs:noNamespaceSchemaLocation="http://www.lcsim.org/schemas/lcdd/1.0/lcdd.xsd">
+
+   <header>
+      <detector name="ECAL" version="1.0" />
+      <author name="Tony Johnson" email="tonyj@slac.stanford.edu"/>
+      <generator name="DummyGenerator" version="1.0" file="DummyCompactFile.xml" checksum="0" />
+      <comment>ECAL:  NIMA 487 (2002) 291-307</comment>
+   </header>
+
+   <!-- iddict not used in this example -->
+   <iddict/>
+   
+   <!--  Specifiy which detector volumes should be considered "sensitive", and how they 
+         should be read out. (We use a 1mm grid, far finer segmentation than used in the 
+         real calorimeter described in NIMA 487 (2002) 291-307, since it allows the hits
+         to be visualized better. Since we are only interested in the total energy deposited
+         in the layers, and since we are ignoring gaps between pads, this is good enough -->
+   <sensitive_detectors>
+      <calorimeter name="ECAL" hits_collection="ECalHits">
+         <grid_xyz grid_size_x="1.0"
+               grid_size_y="1.0"
+               grid_size_z="0.0"
+               lunit="mm"/>
+      </calorimeter>
+   </sensitive_detectors>
+
+   <!-- limits not used in this example -->
+   <limits/>
+   
+   <!-- We put the entire detector into a detector region and specify default cuts. We do not
+        store secondary particles, since this would greatly increase the size of the output file -->
+   <regions>
+      <region name="DetectorRegion"
+            store_secondaries="false"
+            cut="1.0"
+            lunit="mm"
+            threshold="1.0"
+            eunit="MeV" />
+   </regions>
+
+   <!-- Set some simple visibility attributes. We set the lead layers to be bluish, and the 
+        scintillator layers to be orange -->
+   
+   <display>
+      <vis name="InvisibleVis"
+            visible="false"
+            show_daughters="true"
+            line_style="unbroken"
+            drawing_style="wireframe">
+         <color R="1.0" G="1.0" B="1.0" alpha="1.0" />
+      </vis>
+
+      <vis name="LeadVis"
+            visible="true"
+            show_daughters="true"
+            line_style="unbroken"
+            drawing_style="wireframe">
+         <color R="0.0" G="0.5" B="1.0" alpha="1.0" />
+      </vis>
+      <vis name="ScintillatorVis"
+            visible="true"
+            show_daughters="true"
+            line_style="unbroken"
+            drawing_style="wireframe">
+         <color R="1.0" G="0.5" B="0.0" alpha="1.0" />
+      </vis>
+
+   </display>
+
+   <!-- Beginning of the standard GDML content section -->
+   <gdml>
+
+    <!-- Define constants. We define the position of all the elements here, as well as the sizes of the volumes.
+         Since GDML does not support any sort of loop construct, we must specify the position of each layer explicitly -->
+      <define>
+         <!-- ecal_constants.inc, ecal constants -->
+         <!-- ecal slice thicknesses -->
+         <constant name="ecal_lead_thickness" value="8*mm" />
+         <constant name="ecal_scintillator_thickness" value="2*mm" />
+
+         <!-- ecal layer thickness -->
+         <constant name="ecal_layer_thickness" value="ecal_lead_thickness + ecal_scintillator_thickness " />
+         <constant name="ecal_layer_half_thickness" value="ecal_layer_thickness/2" />
+
+         <!-- ecal layer box dims -->
+         <constant name="ecal_layer_x" value="100.0*cm" />
+         <constant name="ecal_layer_y" value="100.0*cm" />
+         <constant name="ecal_layer_z" value="ecal_layer_thickness" />
+
+         <!-- ecal number of layers 
+               must match the layJ#_z, lay#_pos given below
+         -->
+         <constant name="ecal_num_layers" value="18" />
+
+         <!-- ecal dims -->
+         <constant name="ecal_x" value="ecal_layer_x" />
+         <constant name="ecal_y" value="ecal_layer_y" />
+         <constant name="ecal_z" value="ecal_num_layers * ecal_layer_thickness" />
+         <constant name="ecal_half_z" value="ecal_z/2" />
+
+         <!-- ecal slice z in layer -->
+         <constant name="ecal_lead_z" value="-ecal_layer_half_thickness + ecal_lead_thickness/2" />
+         <constant name="ecal_scintillator_z" value="ecal_lead_z + ecal_lead_thickness/2 + ecal_scintillator_thickness/2" />
+
+         <!-- ecal slice rel pos in layer -->
+         <position name="ecal_lead_pos" z="ecal_lead_z" />
+         <position name="ecal_scintillator_pos" z="ecal_scintillator_z" />
+
+         <!-- ecal layer z values -->
+         <constant name="ecal_lay0_z" value="-ecal_z/2 + ecal_layer_half_thickness" />
+         <constant name="ecal_lay1_z" value="ecal_lay0_z + ecal_layer_thickness" />
+         <constant name="ecal_lay2_z" value="ecal_lay1_z + ecal_layer_thickness" />
+         <constant name="ecal_lay3_z" value="ecal_lay2_z + ecal_layer_thickness" />
+         <constant name="ecal_lay4_z" value="ecal_lay3_z + ecal_layer_thickness" />
+         <constant name="ecal_lay5_z" value="ecal_lay4_z + ecal_layer_thickness" />
+         <constant name="ecal_lay6_z" value="ecal_lay5_z + ecal_layer_thickness" />
+         <constant name="ecal_lay7_z" value="ecal_lay6_z + ecal_layer_thickness" />
+         <constant name="ecal_lay8_z" value="ecal_lay7_z + ecal_layer_thickness" />
+         <constant name="ecal_lay9_z" value="ecal_lay8_z + ecal_layer_thickness" />
+         <constant name="ecal_lay10_z" value="ecal_lay9_z + ecal_layer_thickness" />
+         <constant name="ecal_lay11_z" value="ecal_lay10_z + ecal_layer_thickness" />
+         <constant name="ecal_lay12_z" value="ecal_lay11_z + ecal_layer_thickness" />
+         <constant name="ecal_lay13_z" value="ecal_lay12_z + ecal_layer_thickness" />
+         <constant name="ecal_lay14_z" value="ecal_lay13_z + ecal_layer_thickness" />
+         <constant name="ecal_lay15_z" value="ecal_lay14_z + ecal_layer_thickness" />
+         <constant name="ecal_lay16_z" value="ecal_lay15_z + ecal_layer_thickness" />
+         <constant name="ecal_lay17_z" value="ecal_lay16_z + ecal_layer_thickness" />
+
+         <!-- ecal layer positions -->
+         <position name="ecal_lay0_pos" z="ecal_lay0_z" />
+         <position name="ecal_lay1_pos" z="ecal_lay1_z" />
+         <position name="ecal_lay2_pos" z="ecal_lay2_z" />
+         <position name="ecal_lay3_pos" z="ecal_lay3_z" />
+         <position name="ecal_lay4_pos" z="ecal_lay4_z" />
+         <position name="ecal_lay5_pos" z="ecal_lay5_z" />
+         <position name="ecal_lay6_pos" z="ecal_lay6_z" />
+         <position name="ecal_lay7_pos" z="ecal_lay7_z" />
+         <position name="ecal_lay8_pos" z="ecal_lay8_z" />
+         <position name="ecal_lay9_pos" z="ecal_lay9_z" />
+         <position name="ecal_lay10_pos" z="ecal_lay10_z" />
+         <position name="ecal_lay11_pos" z="ecal_lay11_z" />
+         <position name="ecal_lay12_pos" z="ecal_lay12_z" />
+         <position name="ecal_lay13_pos" z="ecal_lay13_z" />
+         <position name="ecal_lay14_pos" z="ecal_lay14_z" />
+         <position name="ecal_lay15_pos" z="ecal_lay15_z" />
+         <position name="ecal_lay16_pos" z="ecal_lay16_z" />
+         <position name="ecal_lay17_pos" z="ecal_lay17_z" />
+      </define>
+
+    <!-- materials -->
+      <materials>
+         <element name="N" formula="N" Z="7.0">
+            <atom type="A" unit="g/mol" value="14.00674" />
+         </element>
+         <element name="O" formula="O" Z="8.0">
+            <atom type="A" unit="g/mol" value="15.9994" />
+         </element>
+         <element name="Ar" formula="Ar" Z="18.0">
+            <atom type="A" unit="g/mol" value="39.948" />
+         </element>
+         <material name="Air">
+            <D type="density" unit="g/cm3" value="0.0012" />
+            <fraction n="0.754" ref="N" />
+            <fraction n="0.234" ref="O" />
+            <fraction n="0.012" ref="Ar" />
+         </material>
+         <element name="Pb" formula="Pb" Z="82.0">
+            <atom type="A" unit="g/mol" value="207.2" />
+         </element>
+         <material name="Lead">
+            <D type="density" unit="g/cm3" value="11.342" />
+            <composite n="1" ref="Pb" />
+         </material>
+         <element name="C" formula="C" Z="6.0">
+            <atom type="A" unit="g/mol" value="12.0107" />
+         </element>
+         <element name="H" formula="H" Z="1.0">
+            <atom type="A" unit="g/mol" value="1.00794" />
+         </element>
+         <material name="Polystyrene">
+            <D value="1.032" unit="g/cm3" />
+            <composite n="19" ref="C" />
+            <composite n="21" ref="H" />
+         </material>
+      </materials>
+
+    <!-- solids -->
+      <solids>
+         <box name="EcalLeadBox" x="ecal_layer_x" y="ecal_layer_y" z="ecal_lead_thickness" />
+         <box name="EcalScintillatorBox" x="ecal_layer_x" y="ecal_layer_y" z="ecal_scintillator_thickness" />
+         <box name="EcalLayerBox" x="ecal_layer_x" y="ecal_layer_y" z="ecal_layer_thickness"/>
+         <box name="EcalBox" x="ecal_x" y="ecal_y" z="ecal_z"/>
+         <box name="WorldBox" x="10*m" y="10*m" z="10*m"/>
+      </solids>
+
+    <!-- structure, contains list of volumes. Each volume must contain a name, a material, a solid 
+         (which defines its shape). Volumes can also contain information about how child volumes are
+         to be nested inside (physvol) including a position and an optional rotation -->
+      <structure>
+         <volume name="EcalLead">
+            <materialref ref="Lead" />
+            <solidref ref="EcalLeadBox" />
+            <visref ref="LeadVis" />
+         </volume>
+
+         <volume name="EcalScintillator">
+            <materialref ref="Polystyrene" />
+            <solidref ref="EcalScintillatorBox" />
+            <sdref ref="ECAL" />
+            <visref ref="ScintillatorVis" />
+         </volume>
+
+      <!-- single ecal layer -->
+         <volume name="EcalLayer">
+            <materialref ref="Air" />
+            <solidref ref="EcalLayerBox" />
+
+            <physvol>
+               <volumeref ref="EcalLead" />
+               <positionref ref="ecal_lead_pos" />
+            </physvol>
+
+            <physvol>
+               <volumeref ref="EcalScintillator" />
+               <positionref ref="ecal_scintillator_pos" />
+            </physvol>
+            <visref ref="InvisibleVis" />
+
+         </volume>
+      
+      <!-- ecal layer positions -->
+         <volume name="Ecal">
+
+            <materialref ref="Air" />
+            <solidref ref="EcalBox" />
+
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay0_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay1_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay2_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay3_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay4_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay5_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay6_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay7_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay9_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay9_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay10_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay11_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay12_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay13_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay14_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay15_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay16_pos" />
+            </physvol>
+            <physvol>
+               <volumeref ref="EcalLayer" />
+               <positionref ref="ecal_lay17_pos" />
+            </physvol>
+            <regionref ref="DetectorRegion"/>
+         </volume>
+
+         <volume name="World">
+
+            <materialref ref="Air" />
+            <solidref ref="WorldBox" />
+            <physvol>
+               <volumeref ref="Ecal" />
+            </physvol>
+         </volume>
+
+      </structure>
+
+    <!-- setup, defines which volume Geant4 should consider the "world" volume. All other volumes must be nested within this volume. -->
+      <setup name="Default" version="1.0">
+         <world ref="World" />
+      </setup>
+
+   </gdml>
+
+   <!-- No magnetic fields in this example -->
+   <fields/>
+</lcdd>

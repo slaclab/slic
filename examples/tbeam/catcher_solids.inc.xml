@@ -1,0 +1,22 @@
+<!-- catcher_solids.inc, catcher solids -->
+<!-- catcher boxes -->
+<box name="CatcherBox" x="catcher_x" y="catcher_y" z="catcher_z" />
+
+<!-- catcher layer boxes -->
+<box name="CatcherLayerFineBox"    x="catcher_layer_x" y="catcher_layer_y" z="catcher_layer_fine_thickness" />
+<box name="CatcherLayerCoarseBox"  x="catcher_layer_x" y="catcher_layer_y" z="catcher_layer_coarse_thickness" />
+
+<!-- module sublayer -->
+<box name="CatcherModuleBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_layer_base_thickness" />
+
+<!-- catcher slice boxes -->
+<box name="CatcherSteelFrontBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_steel_front_thickness" />
+<box name="CatcherPolyFrontBox"  x="catcher_layer_x" y="catcher_layer_y" z="catcher_poly_front_thickness" />
+<box name="CatcherTyvekFrontBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_tyvek_front_thickness" />
+<box name="CatcherPolyActiveBox" x="catcher_layer_x" y="catcher_layer_y" z="catcher_poly_active_thickness" />
+<box name="CatcherTyvekBackBox"  x="catcher_layer_x" y="catcher_layer_y" z="catcher_tyvek_back_thickness" />
+<box name="CatcherPolyBackBox"   x="catcher_layer_x" y="catcher_layer_y" z="catcher_poly_back_thickness" />
+<box name="CatcherSteelBackBox"  x="catcher_layer_x" y="catcher_layer_y" z="catcher_steel_back_thickness" />
+
+<box name="CatcherFineAbsBox"    x="catcher_layer_x" y="catcher_layer_y" z="catcher_steel_abs_fine_thickness" />
+<box name="CatcherCoarseAbsBox"  x="catcher_layer_x" y="catcher_layer_y" z="catcher_steel_abs_coarse_thickness" />

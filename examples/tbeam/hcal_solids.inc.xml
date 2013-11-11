@@ -1,0 +1,15 @@
+<!-- hcal_solids.inc, hcal solids -->
+<!-- hcal box -->
+<box name="HcalBox" x="hcal_x" y="hcal_y" z="hcal_z" />
+
+<!-- hcal layer box -->
+<box name="hcal_layerBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_layer_z" />
+
+<!-- hcal slice boxes -->
+<box name="PolyBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_poly_thickness" />
+<box name="SteelBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_steel_thickness" />
+<box name="AirBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_air_thickness" />
+<box name="SteelCassetteBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_steel_cassette_thickness" />
+<box name="FoilBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_foil_thickness" />
+<box name="PcbBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_pcb_thickness" />
+<box name="CablefibreBox" x="hcal_layer_x" y="hcal_layer_y" z="hcal_cablefibre_thickness" />

@@ -1,0 +1,110 @@
+<!-- ecal_constants.inc, ecal constants -->
+<!-- ecal slice thicknesses -->
+<constant name="ecal_w_thickness"   value="2.5*mm" />
+<constant name="ecal_g10_thickness" value="0.5*mm" />
+<constant name="ecal_si_thickness"  value="0.4*mm" />
+<constant name="ecal_cu_thickness"  value="1.0*mm" />
+<constant name="ecal_air_thickness" value="0.6*mm" />
+
+<!-- ecal layer thickness -->
+<constant name="ecal_layer_thickness" value="ecal_w_thickness +  
+					     ecal_g10_thickness +
+					     ecal_si_thickness +
+					     ecal_cu_thickness +
+					     ecal_air_thickness" />
+
+<constant name="ecal_layer_half_thickness" value="ecal_layer_thickness/2" />
+
+<!-- ecal layer box dims -->
+<constant name="ecal_layer_x" value="18.0*cm" />
+<constant name="ecal_layer_y" value="18.0*cm" />
+<constant name="ecal_layer_z" value="ecal_layer_thickness" />
+
+<!-- ecal number of layers 
+     must match the layJ#_z, lay#_pos given below
+-->
+<constant name="ecal_num_layers" value="30" />
+
+<!-- ecal dims -->
+<constant name="ecal_x" value="ecal_layer_x" />
+<constant name="ecal_y" value="ecal_layer_y" />
+<constant name="ecal_z" value="ecal_num_layers * ecal_layer_thickness" />
+<constant name="ecal_half_z" value="ecal_z/2" />
+
+<!-- ecal slice z in layer -->
+<constant name="ecal_w_z"   value="-ecal_layer_half_thickness + ecal_w_thickness/2" />
+<constant name="ecal_g10_z" value="ecal_w_z + ecal_w_thickness/2 + ecal_g10_thickness/2" />
+<constant name="ecal_si_z"  value="ecal_g10_z + ecal_g10_thickness/2 + ecal_si_thickness/2" />
+<constant name="ecal_cu_z"  value="ecal_si_z + ecal_si_thickness/2 + ecal_cu_thickness/2" />
+<constant name="ecal_air_z" value="ecal_cu_z + ecal_cu_thickness/2 + ecal_air_thickness/2" />
+
+<!-- ecal slice rel pos in layer -->
+<position name="ecal_w_pos"   z="ecal_w_z" />
+<position name="ecal_g10_pos" z="ecal_g10_z" />
+<position name="ecal_si_pos"  z="ecal_si_z" />
+<position name="ecal_cu_pos"  z="ecal_cu_z" />
+<position name="ecal_air_pos" z="ecal_air_z" />
+
+<!-- ecal layer z values -->
+<constant name="ecal_lay0_z" value="-ecal_z/2 + ecal_layer_half_thickness" />
+<constant name="ecal_lay1_z" value="ecal_lay0_z + ecal_layer_thickness" />
+<constant name="ecal_lay2_z" value="ecal_lay1_z + ecal_layer_thickness" />
+<constant name="ecal_lay3_z" value="ecal_lay2_z + ecal_layer_thickness" />
+<constant name="ecal_lay4_z" value="ecal_lay3_z + ecal_layer_thickness" />
+<constant name="ecal_lay5_z" value="ecal_lay4_z + ecal_layer_thickness" />
+<constant name="ecal_lay6_z" value="ecal_lay5_z + ecal_layer_thickness" />
+<constant name="ecal_lay7_z" value="ecal_lay6_z + ecal_layer_thickness" />
+<constant name="ecal_lay8_z" value="ecal_lay7_z + ecal_layer_thickness" />
+<constant name="ecal_lay9_z" value="ecal_lay8_z + ecal_layer_thickness" />
+<constant name="ecal_lay10_z" value="ecal_lay9_z + ecal_layer_thickness" />
+<constant name="ecal_lay11_z" value="ecal_lay10_z + ecal_layer_thickness" />
+<constant name="ecal_lay12_z" value="ecal_lay11_z + ecal_layer_thickness" />
+<constant name="ecal_lay13_z" value="ecal_lay12_z + ecal_layer_thickness" />
+<constant name="ecal_lay14_z" value="ecal_lay13_z + ecal_layer_thickness" />
+<constant name="ecal_lay15_z" value="ecal_lay14_z + ecal_layer_thickness" />
+<constant name="ecal_lay16_z" value="ecal_lay15_z + ecal_layer_thickness" />
+<constant name="ecal_lay17_z" value="ecal_lay16_z + ecal_layer_thickness" />
+<constant name="ecal_lay18_z" value="ecal_lay17_z + ecal_layer_thickness" />
+<constant name="ecal_lay19_z" value="ecal_lay18_z + ecal_layer_thickness" />
+<constant name="ecal_lay20_z" value="ecal_lay19_z + ecal_layer_thickness" />
+<constant name="ecal_lay21_z" value="ecal_lay20_z + ecal_layer_thickness" />
+<constant name="ecal_lay22_z" value="ecal_lay21_z + ecal_layer_thickness" />
+<constant name="ecal_lay23_z" value="ecal_lay22_z + ecal_layer_thickness" />
+<constant name="ecal_lay24_z" value="ecal_lay23_z + ecal_layer_thickness" />
+<constant name="ecal_lay25_z" value="ecal_lay24_z + ecal_layer_thickness" />
+<constant name="ecal_lay26_z" value="ecal_lay25_z + ecal_layer_thickness" />
+<constant name="ecal_lay27_z" value="ecal_lay26_z + ecal_layer_thickness" />    
+<constant name="ecal_lay28_z" value="ecal_lay27_z + ecal_layer_thickness" />    
+<constant name="ecal_lay29_z" value="ecal_lay28_z + ecal_layer_thickness" />
+
+<!-- ecal layer positions -->
+<position name="ecal_lay0_pos" z="ecal_lay0_z" />
+<position name="ecal_lay1_pos" z="ecal_lay1_z" />
+<position name="ecal_lay2_pos" z="ecal_lay2_z" />
+<position name="ecal_lay3_pos" z="ecal_lay3_z" />
+<position name="ecal_lay4_pos" z="ecal_lay4_z" />
+<position name="ecal_lay5_pos" z="ecal_lay5_z" />
+<position name="ecal_lay6_pos" z="ecal_lay6_z" />
+<position name="ecal_lay7_pos" z="ecal_lay7_z" />
+<position name="ecal_lay8_pos" z="ecal_lay8_z" />
+<position name="ecal_lay9_pos" z="ecal_lay9_z" />
+<position name="ecal_lay10_pos" z="ecal_lay10_z" />
+<position name="ecal_lay11_pos" z="ecal_lay11_z" />
+<position name="ecal_lay12_pos" z="ecal_lay12_z" />
+<position name="ecal_lay13_pos" z="ecal_lay13_z" />
+<position name="ecal_lay14_pos" z="ecal_lay14_z" />
+<position name="ecal_lay15_pos" z="ecal_lay15_z" />
+<position name="ecal_lay16_pos" z="ecal_lay16_z" />
+<position name="ecal_lay17_pos" z="ecal_lay17_z" />
+<position name="ecal_lay18_pos" z="ecal_lay18_z" />
+<position name="ecal_lay19_pos" z="ecal_lay19_z" />
+<position name="ecal_lay20_pos" z="ecal_lay20_z" />
+<position name="ecal_lay21_pos" z="ecal_lay21_z" />
+<position name="ecal_lay22_pos" z="ecal_lay22_z" />
+<position name="ecal_lay23_pos" z="ecal_lay23_z" />
+<position name="ecal_lay24_pos" z="ecal_lay24_z" />
+<position name="ecal_lay25_pos" z="ecal_lay25_z" />
+<position name="ecal_lay26_pos" z="ecal_lay26_z" />
+<position name="ecal_lay27_pos" z="ecal_lay27_z" />
+<position name="ecal_lay28_pos" z="ecal_lay28_z" />
+<position name="ecal_lay29_pos" z="ecal_lay29_z" />

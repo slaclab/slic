@@ -1,0 +1,7 @@
+/vis/scene/create
+/vis/scene/add/volume
+/vis/scene/add/hits
+/vis/scene/add/trajectories
+#/vis/scene/endOfEventAction refresh
+/vis/open OGLSX
+/vis/viewer/zoom 1.6

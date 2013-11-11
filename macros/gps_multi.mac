@@ -1,0 +1,42 @@
+# $Id: gps_multi.mac,v 1.2 2005-12-17 22:37:10 jeremy Exp $
+
+# 
+# Example Geant4 macro showing how to use the
+# GPS to generate multiple particles with
+# random angular and energy distribution
+# for each particle. 
+#
+
+# verbosity
+/gps/verbose 2
+
+# number of particles
+/gps/number 10
+
+# Point source at 0,0,0
+/gps/pos/type Point
+/gps/pos/centre 0 0 0 cm
+
+# linear power spectrum
+/gps/ene/type Lin
+# make sure to set this
+/gps/ene/gradient 1 MeV
+/gps/ene/min 1 GeV
+/gps/ene/max 10 GeV
+
+# isometric theta/phi distribution 
+/gps/ang/type iso
+
+# theta range
+/gps/ang/mintheta 1 deg
+/gps/ang/maxtheta 176 deg
+
+# phi range
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+# particle type
+/gps/particle mu-
+
+# run it
+/run/beamOn 2

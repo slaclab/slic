@@ -1,0 +1,651 @@
+<?xml version="1.0"  ?> 
+<!-- 9 Apr 2001  first pass at SDMar01 detector definition    -->
+
+<!DOCTYPE lcdparm SYSTEM "detParms.dtd" >
+
+<!--   Following describes the standard silicon detector, version 1        -->
+
+<!--
+
+CVS $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/examples/sdjan03/SDJan03_lcdparms.xml,v 1.1 2005-02-04 02:20:55 jeremy Exp $
+
+detector_ID:
+type  SDJan03
+major 1
+minor 0
+end;
+
+-->
+<lcdparm>
+  <global file="SDJan03.xml" />
+  <physical_detector topology="silicon" id = "SDJan03" >
+
+    <volume id = "PIPE_INNER" rad_len_cm="0.00047" inter_len_cm="0.00040">
+      <tube>
+        <barrel_dimensions inner_r = "1.1" outer_z = "3.1"  />
+        <layering>
+          <slice material = "Be" width = "0.0165" />
+        </layering>
+      </tube>
+      <support />
+    </volume>
+
+    <volume id = "PIPE_INNER_SHIELD" rad_len_cm="0.00281" inter_len_cm="0.00036">
+      <cone reflected = "yes">
+        <cone_dimensions  min_inner_r = "1.10"
+                          max_inner_r = "2.20"
+                          inner_z = "3.1"
+                          outer_z = "6.6"  />
+        <cone_slice material = "Ti" 
+                    inner_width = "0.01" />
+      </cone>
+      <support  />
+    </volume>
+    <volume id = "PIPE_CONE" rad_len_cm="0.00284" inter_len_cm="0.00245">
+      <cone reflected = "yes">
+        <cone_dimensions  min_inner_r = "1.11"
+                          max_inner_r = "2.21"
+                          inner_z = "3.1"
+                          outer_z = "6.6"  />
+        <cone_slice material = "Be" 
+                    inner_width = "0.1" />
+      </cone>
+      <support  />
+    </volume>
+
+
+    <volume id = "PIPE_OUTER" rad_len_cm="0.00284" inter_len_cm="0.00245">
+      <disk>
+        <disk_dimensions inner_r = "2.2" inner_z = "6.6" outer_r="2.3"  />
+        <layering>
+          <slice material = "Be" width = "11.4" />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+    <volume id = "PIPE_SSCONE" rad_len_cm="0.00568">
+      <cone reflected = "yes">
+        <cone_dimensions  min_inner_r = "2.2"
+                          max_inner_r = "5.55"
+                          inner_z = "18.0"
+                          outer_z = "45.40909"  />
+        <cone_slice material = "Stainless_steel" 
+                    inner_width = "0.01" />
+      </cone>
+      <support  />
+    </volume>
+
+
+    <volume id = "PIPE_SSOUTER" rad_len_cm="0.00568">
+      <disk>
+        <disk_dimensions inner_r = "5.55" inner_z = "45.40909" outer_r="5.56"/>
+        <layering>
+          <slice material = "Stainless_steel" width = "139.59091" />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+    <volume id = "M1_CONE">
+      <cone reflected = "yes" >
+        <cone_dimensions  min_inner_r = "5.55"
+                          max_inner_r = "10.65"
+                          inner_z = "185.0"
+                          outer_z = "355.0" />
+        <cone_slice material = "W" 
+                    inner_width = "12.45" 
+                    outer_width = "7.35" />
+      </cone>
+      <support  />
+    </volume>                      <!-- end M1A_CONE -->
+
+    <volume id = "M2_DISK">
+       <disk reflected = "yes">  
+          <disk_dimensions inner_r = "10.65"
+                           outer_r = "18.0"
+                           inner_z = "355.0" />
+          <layering>
+            <slice material = "W" width = "170.0" />
+          </layering>
+       </disk>
+       <support  />
+    </volume>                    
+
+    <volume id = "LOWZ_CONE">
+      <cone reflected = "yes" >
+        <cone_dimensions min_inner_r = "9.2"
+                         max_inner_r = "9.2"
+                         inner_z = "310.0"
+                         outer_z = "320.0" />
+        <cone_slice material = "Be" 
+                    inner_width = "0.1" 
+                    outer_width = "0.4" />
+      </cone>
+      <support  />
+    </volume>
+
+    <volume id = "LUM_CONE">
+      <cone reflected = "yes" >
+        <cone_dimensions min_inner_r = "9.2"
+                         max_inner_r = "9.2"
+                         inner_z = "320.0"
+                         outer_z = "355.0" />
+        <cone_slice material = "W" 
+                    inner_width = "0.4" 
+                    outer_width = "1.45" />
+      </cone>
+      <support  />
+    </volume>
+
+    <volume id="LUM_ENDCAP" >
+
+      <disk reflected = "yes" >
+        <disk_dimensions inner_r = "0.0001" inner_z = "310.0"
+                         outer_r = "9.2" />
+        <layering n = "1">
+          <slice material = "Be" width = "10." />
+          <slice material = "W" width = "35. " sensitive = "yes" />
+        </layering>
+        <segmentation theta = "600" phi = "1200" />
+      </disk>
+      <calorimeter type = "lum" />
+    </volume>
+
+    <complex_volume id = "VERTEX_BARREL">
+      <volume id = "VERTEX_BARREL_1" rad_len_cm="0.0011" inter_len_cm="0.00022">
+        <tube>
+          <barrel_dimensions inner_r = "1.2" outer_z = "2.5" />
+          <layering>
+            <slice material = "Si" width = "0.01" sensitive = "yes" />
+          </layering>
+        </tube>
+        <tracker />
+      </volume >
+      <volume id = "VERTEX_BARREL_2" rad_len_cm="0.0011" inter_len_cm="0.00022">
+        <tube>
+          <barrel_dimensions inner_r = "2.4" outer_z = "12.5" />
+          <layering>
+            <slice material = "Si" width = "0.01" sensitive = "yes" />
+          </layering>
+        </tube>
+        <tracker />
+      </volume >
+      <volume id = "VERTEX_BARREL_3" rad_len_cm="0.0011" inter_len_cm="0.00022">
+        <tube>
+          <barrel_dimensions inner_r = "3.6" outer_z = "12.5" />
+          <layering>
+            <slice material = "Si" width = "0.01" sensitive = "yes" />
+          </layering>
+        </tube>
+        <tracker />
+      </volume >
+      <volume id = "VERTEX_BARREL_4" rad_len_cm="0.0011" inter_len_cm="0.00022">
+        <tube>
+          <barrel_dimensions inner_r = "4.8" outer_z = "12.5" />
+          <layering>
+            <slice material = "Si" width = "0.01" sensitive = "yes" />
+          </layering>
+        </tube>
+        <tracker />
+      </volume >
+      <volume id = "VERTEX_BARREL_5" rad_len_cm="0.0011" inter_len_cm="0.00022">
+        <tube>
+          <barrel_dimensions inner_r = "6.0" outer_z = "12.5" />
+          <layering>
+            <slice material = "Si" width = "0.01" sensitive = "yes" />
+          </layering>
+        </tube>
+        <tracker />
+      </volume >
+    </complex_volume>
+
+    <volume id="VERTEX_BARREL_OUTER_WALL" rad_len_cm="0.00283" >
+      <tube>
+        <barrel_dimensions inner_r = "7.0"  outer_z = "15.0"  />
+        <layering>
+          <slice material = "Be" width = "0.1" />
+        </layering>
+      </tube>
+      <support />
+    </volume>
+
+    <volume id = "VERTEX_ENDPLATE" rad_len_cm="0.00850" inter_len_cm="0.0735">
+      <disk reflected="yes">
+        <disk_dimensions inner_r = "2.2" outer_r = "7.0" inner_z = "15.0" />
+        <layering>
+          <slice material = "Be" width = "0.3" />  
+        </layering >
+      </disk>
+      <support type = "cryo" />
+    </volume>
+
+    <volume id = "VERTEX_CRYO_BARREL" rad_len_cm="0.0044" inter_len_cm="0.003">
+      <tube>
+        <barrel_dimensions inner_r = "11.0" outer_z = "23.0" />
+        <layering>
+          <slice material = "PolystyreneFoam" width = "3.0" />  <!-- foam??? -->
+        </layering >
+      </tube>
+      <support type = "cryo" />
+    </volume>
+
+    <volume id = "VERTEX_CRYO_ENDPLATE" rad_len_cm="0.0044" inter_len_cm="0.003">
+      <disk>
+        <disk_dimensions inner_r = "2.2" outer_r = "11.0" inner_z = "20.0" />
+        <layering>
+          <slice material = "PolystyreneFoam" width = "3.0" />   <!-- foam??? -->
+        </layering >
+      </disk>
+      <support type = "cryo" />
+    </volume>
+
+
+
+    <complex_volume id = "TRACK_BARREL">
+      <volume id = "TRACK_BARREL_1" rad_len_cm="0.0052" inter_len_cm="0.0014">
+        <tube>
+          <barrel_dimensions inner_r = "20.0" outer_z = "26.67" />
+          <layering>
+            <slice material = "G10" width = "0.05" />
+            <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </tube>
+        <tracker />
+      </volume >
+      <volume id = "TRACK_BARREL_2" rad_len_cm="0.0052" inter_len_cm="0.0014">
+        <tube>
+          <barrel_dimensions inner_r = "46.25" outer_z = "61.67" />
+          <layering>
+            <slice material = "G10" width = "0.05" />
+            <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </tube>
+        <tracker />
+      </volume >
+      <volume id = "TRACK_BARREL_3" rad_len_cm="0.0052" inter_len_cm="0.0014">
+        <tube>
+          <barrel_dimensions inner_r = "72.5" outer_z = "96.67" />
+          <layering>
+            <slice material = "G10" width = "0.05" />
+            <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </tube>
+        <tracker />
+      </volume >
+      <volume id = "TRACK_BARREL_4" rad_len_cm="0.0052" inter_len_cm="0.0014">
+        <tube>
+          <barrel_dimensions inner_r = "98.75" outer_z = "131.67" />
+          <layering>
+            <slice material = "G10" width = "0.05" />
+            <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </tube>
+        <tracker />
+      </volume >
+      <volume id = "TRACK_BARREL_5" rad_len_cm="0.0052" inter_len_cm="0.0014">
+        <tube>
+          <barrel_dimensions inner_r = "125.0" outer_z = "166.67" />
+          <layering>
+            <slice material = "G10" width = "0.05" />
+            <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </tube>
+        <tracker />
+      </volume >
+    </complex_volume>
+
+    <complex_volume id = "TRACK_ENDCAP">
+      <volume id = "TRACK_ENDCAP_1" rad_len_cm="0.0022" >
+        <disk>
+          <disk_dimensions inner_r = "4.0" inner_z = "27.1"
+                           outer_r = "20.50" />
+          <layering>
+	    <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </disk>
+        <tracker />
+      </volume> 
+      <volume id = "TRACK_ENDCAP_2" rad_len_cm="0.0022" >
+        <disk>
+          <disk_dimensions inner_r = "4.0" inner_z = "27.12"
+                           outer_r = "20.50" />
+          <layering>
+	    <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </disk>
+        <tracker />
+      </volume> 
+      <volume id = "TRACK_ENDCAP_3" rad_len_cm="0.0022" >
+        <disk>
+          <disk_dimensions inner_r = "7.9" inner_z = "62.1"
+                           outer_r = "46.75" />
+          <layering>
+	    <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </disk>
+        <tracker />
+      </volume> 
+      <volume id = "TRACK_ENDCAP_4" rad_len_cm="0.0022">
+        <disk>
+          <disk_dimensions inner_r = "7.9" inner_z = "62.12"
+                           outer_r = "46.75" />
+          <layering>
+	    <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </disk>
+        <tracker />
+      </volume> 
+      <volume id = "TRACK_ENDCAP_5" rad_len_cm="0.0022" >
+        <disk>
+          <disk_dimensions inner_r = "11.7" inner_z = "97.1"
+                           outer_r = "73.0" />
+          <layering>
+	    <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </disk>
+        <tracker />
+      </volume> 
+      <volume id = "TRACK_ENDCAP_6" rad_len_cm="0.0022" >
+        <disk>
+          <disk_dimensions inner_r = "11.7" inner_z = "97.12"
+                           outer_r = "73.0" />
+          <layering>
+	    <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </disk>
+        <tracker />
+      </volume> 
+      <volume id = "TRACK_ENDCAP_7" rad_len_cm="0.0022" >
+        <disk>
+          <disk_dimensions inner_r = "15.6" inner_z = "132.1"
+                           outer_r = "99.25" />
+          <layering>
+	    <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </disk>
+        <tracker />
+      </volume> 
+      <volume id = "TRACK_ENDCAP_8" rad_len_cm="0.0022" >
+        <disk>
+          <disk_dimensions inner_r = "15.6" inner_z = "132.12"
+                           outer_r = "99.25" />
+          <layering>
+	    <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </disk>
+        <tracker />
+      </volume> 
+      <volume id = "TRACK_ENDCAP_9" rad_len_cm="0.0022" >
+        <disk>
+          <disk_dimensions inner_r = "19.5" inner_z = "167.1"
+                           outer_r = "125.50" />
+          <layering>
+	    <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </disk>
+        <tracker />
+      </volume> 
+      <volume id = "TRACK_ENDCAP_10" rad_len_cm="0.0022" >
+        <disk>
+          <disk_dimensions inner_r = "19.5" inner_z = "167.12"
+                           outer_r = "125.50" />
+          <layering>
+	    <slice material = "Si" width = "0.02" sensitive = "yes" />
+          </layering>
+        </disk>
+        <tracker />
+      </volume> 
+    </complex_volume>
+
+    <volume id="TRACK_ENDCAP_INNER_DISK1" rad_len_cm="0.006" >
+      <disk>
+        <disk_dimensions inner_r = "4.0" inner_z = "27.14"
+                         outer_r = "20.5" />
+        <layering>
+          <slice material = "G10" width = "0.1" />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+    <volume id="TRACK_ENDCAP_INNER_DISK2" rad_len_cm="0.006" >
+      <disk>
+        <disk_dimensions inner_r = "7.9" inner_z = "62.14"
+                         outer_r = "46.75" />
+        <layering>
+          <slice material = "G10" width = "0.1" />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+    <volume id="TRACK_ENDCAP_INNER_DISK3" rad_len_cm="0.006" >
+      <disk>
+        <disk_dimensions inner_r = "11.7" inner_z = "97.14"
+                         outer_r = "73.0" />
+        <layering>
+          <slice material = "G10" width = "0.1" />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+    <volume id="TRACK_ENDCAP_INNER_DISK4" rad_len_cm="0.006" >
+      <disk>
+        <disk_dimensions inner_r = "15.6" inner_z = "132.14"
+                         outer_r = "99.25" />
+        <layering>
+          <slice material = "G10" width = "0.1" />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+    <volume id="TRACK_ENDCAP_INNER_DISK5" rad_len_cm="0.006" >
+      <disk>
+        <disk_dimensions inner_r = "19.5" inner_z = "167.14"
+                         outer_r = "125.5" />
+        <layering>
+          <slice material = "G10" width = "0.1" />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+    <volume id="EM_BARREL" rad_len_cm="0.7911" > 
+       <tube>
+         <barrel_dimensions inner_r = "127.0" outer_z = "184.0" />
+         <layering n="30">
+           <slice material = "W" width = "0.25" />
+           <slice material = "G10" width = "0.05" />
+           <slice material = "Si" width = "0.04" sensitive = "yes" />
+           <slice material = "Cu" width = "0.1" />
+           <slice material = "Air" width = "0.06" />
+         </layering>
+         <segmentation cos_theta = "840" phi = "1680" />
+      </tube>
+      <calorimeter type = "em" />
+    </volume>
+
+    <volume id="EM_BARREL_OUTER_WALL" >
+      <tube>
+        <barrel_dimensions inner_r = "142."   outer_z = "184."  />
+        <layering>
+          <slice material = "Air" width = "2.0" />
+        </layering>
+      </tube>
+      <support />
+    </volume>
+
+
+    <volume id = "EM_ENDCAP" rad_len_cm="0.7911" >
+      <disk reflected = "yes">
+        <disk_dimensions inner_r = "20.0" inner_z = "168.0" outer_r = "125.0" />
+        <layering n="30" >
+          <slice material = "W" width = "0.25" />
+          <slice material = "G10" width = "0.05" />
+          <slice material = "Si" width = "0.04" sensitive = "yes" />
+          <slice material = "Cu" width = "0.1" />
+          <slice material = "Air" width = "0.06" />
+        </layering>
+        <segmentation theta = "840" phi = "1680" />
+      </disk>
+      <calorimeter type = "em" />
+    </volume>
+
+    <volume id="EM_ENDCAP_OUTER_DISK" >
+      <disk>
+        <disk_dimensions inner_r = "20.0" inner_z = "183.0"
+                         outer_r = "125.0" />
+        <layering>
+          <slice material = "Air" width = "1.0" />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+
+    <volume id="HAD_BARREL" rad_len_cm="1.133" inter_len_cm="0.1193">
+
+       <tube>
+         <barrel_dimensions inner_r = "144.0" outer_z = "286.0" />
+         <layering n="34">
+           <slice material = "Stainless_steel" width = "2.0" />
+           <slice material = "Polystyrene" width = "1.0" sensitive = "yes" />
+         </layering>
+         <segmentation cos_theta = "600" phi = "1200" />
+      </tube>
+      <calorimeter type = "had" />
+    </volume>
+
+
+    <volume id="HAD_BARREL_ENDRING" >
+
+      <disk>
+        <disk_dimensions inner_r = "143.8" inner_z = "286.0"
+                         outer_r = "247.0" />
+        <layering>
+          <slice material = "Al" width = "0.2" />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+    <volume id = "HAD_ENDCAP" rad_len_cm="1.133" inter_len_cm="0.1193">
+
+      <disk reflected = "yes">
+        <disk_dimensions inner_r = "20.0" inner_z = "184.0" outer_r = "142.0" />
+        <layering n="34" >
+           <slice material = "Stainless_steel" width = "2.0" />
+           <slice material = "Polystyrene" width = "1.0" sensitive = "yes" />
+        </layering>
+        <segmentation theta = "600" phi = "1200" />
+      </disk>
+      <calorimeter type = "had" />
+    </volume>
+
+
+    <volume id="HAD_ENDCAP_INNER_TUBE" >
+      <disk>
+        <disk_dimensions inner_r = "19.8" inner_z = "184.0" 
+                         outer_r = "20.0" />
+        <layering>
+          <slice material = "Al" width = "103." />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+    <volume id="HAD_ENDCAP_OUTER_TUBE" >
+      <disk>
+        <disk_dimensions inner_r = "142.0" inner_z = "184.0" 
+                         outer_r = "142.2" />
+        <layering>
+          <slice material = "Al" width = "103.0" />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+    <volume id = "COIL" rad_len_cm="4.501" inter_len_cm="1.015">
+     <tube>
+      <barrel_dimensions inner_r = "271.0" outer_z = "281.0" />
+      <layering>
+        <slice material = "Al" width = "40.0" />
+      </layering>
+     </tube>
+      <coil inner_field = "5.0"
+            outer_field = "-0.6"
+            outer_field_radius = "500.0" />
+    </volume>
+
+    <volume id = "COIL_INNER_TUBE" rad_len_cm="0.5626" inter_len_cm="0.1269">
+      <tube>
+        <barrel_dimensions inner_r = "249.0" outer_z = "286.0" />
+        <layering>
+          <slice material = "Al" width = "5.0" />
+        </layering>
+      </tube>
+      <support />
+    </volume>
+
+    <volume id = "COIL_OUTER_TUBE" rad_len_cm="0.5626" inter_len_cm="0.1269">
+      <tube>
+        <barrel_dimensions inner_r = "329.0" outer_z = "286.0" />
+        <layering>
+          <slice material = "Al" width = "5.0" />
+        </layering>
+      </tube>
+      <support />
+    </volume>
+
+    <volume id = "COIL_OUTER_DISK" rad_len_cm="0.5626" inter_len_cm="0.1269">
+      <disk reflected = "yes" >
+        <disk_dimensions inner_r = "249.0" inner_z = "281.0"
+                           outer_r = "334.0"  />
+        <layering>
+          <slice material = "Al" width = "5.0" />
+        </layering>
+      </disk>
+      <support />
+    </volume>
+
+    <volume id="MUON_BARREL" rad_len_cm="2.84" inter_len_cm="0.298">
+
+       <tube>
+         <barrel_dimensions inner_r = "337.0" outer_z = "287.0" />
+         <layering n="32">
+           <slice material = "Fe" width = "5.0" />
+           <slice material = "Air" width = "1.5" sensitive = "yes" />
+         </layering>
+         <segmentation cos_theta = "150" phi = "300" />
+         <strip_segmentation z_width = "3.0" phi_width = "3.0" />
+      </tube>
+      <calorimeter type = "muon" />
+    </volume>
+
+    <volume id="MUON_ENDCAP" rad_len_cm="2.84" inter_len_cm="0.298">
+
+       <disk>
+         <disk_dimensions inner_r = "20.0" inner_z = "287.0"
+                          outer_r = "636.0" />
+         <layering n="32">
+           <slice material = "Fe" width = "5.0" />
+           <slice material = "Air" width = "1.5" sensitive = "yes" />
+         </layering>
+         <segmentation cos_theta = "150" phi = "300" />
+         <strip_segmentation x_width = "3.0" y_width = "3.0" />
+      </disk>
+      <calorimeter type = "muon" />
+    </volume>
+
+
+  </physical_detector>
+
+  <proc_parm>
+    <cal_smear em_energy = "0.12 0.01" had_energy = "0.50 0.02"
+               em_position = "1.0 0.0" had_position = "5.0 0.0" />
+  </proc_parm>
+
+</lcdparm>

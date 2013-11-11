@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+$Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/examples/segtest/NPPolyBarr.lcdd,v 1.7 2005-05-06 21:57:25 jeremy Exp $
+
+geometry for stdhep example
+
+-->
+<lcdd xmlns:lcdd="http://www.lcsim.org/schemas/lcdd/1.0"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"          
+      xs:noNamespaceSchemaLocation="http://www.lcsim.org/schemas/lcdd/1.0/lcdd.xsd">
+
+  <header>
+
+    <detector name="nonprojective_polyhedra_barrel"
+	      version="1.0" />
+
+    <author name="Jeremy McCormick"
+	    email="jeremy@slac.stanford.edu"/>
+
+    <generator name="DummyGenerator"
+	       version="1.0"
+	       file="DummyCompactFile.xml"
+	       checksum="0" />
+
+    <comment>
+      Nonprojective polyhedra barrel example.
+    </comment>
+
+  </header>
+
+  <iddict>
+    <idspec name="NPPolyBarrId" length="64">
+
+      <!-- grid_xyz seg ids -->
+      <idfield label="x"
+	       start="0"
+	       length="8" />
+
+      <idfield label="y"
+	       start="8"
+	       length="8" />
+
+      <!--
+      <idfield label="z"
+	       start="16"
+	       length="8" />
+      -->
+
+    </idspec>
+  </iddict>
+
+  <sensitive_detectors>
+    <calorimeter name="CalBarrSD"
+		 hits_collection="CalBarrHits">
+      <idspecref ref="NPPolyBarrId" />
+      <grid_xyz grid_size_x="1.0"
+		grid_size_y="1.0"
+		grid_size_z="0.0"
+		lunit="cm" 
+	       />
+    </calorimeter>
+
+    <tracker name="TrackerSD"
+	     hits_collection="TrackerHits" />
+  </sensitive_detectors>  
+
+  <limits>
+  </limits>
+
+  <regions>
+
+    <region name="CalBarrRegion"
+	    store_secondaries="false"
+	    cut="1.0"
+	    lunit="mm"
+	    threshold="0.0"
+	    eunit="MeV"
+	    />
+
+    <region name="TrackerRegion"
+	    store_secondaries="true"
+	    cut="1.0"
+	    lunit="cm" 
+	    threshold="1.0"
+	    eunit="MeV"
+	    />
+
+  </regions>
+
+  <display>
+  </display>
+
+  <gdml>
+
+    <define>
+      
+      <!-- PI -->
+      <constant name="TWOPI" value="2.*pi"/>     
+
+      <!-- ident -->
+      <position name="identity_pos" />
+      <rotation name="identity_rot" />
+
+      <!-- "user parameters" -->
+      <constant name="num_sides"        value="8" />
+      <constant name="inner_radius"     value="500.0*mm" />
+      <constant name="sect_long_dim"    value="1000.0" /> 
+
+      <!-- tracker -->
+      <position name="tracker_pos" />
+      <rotation name="tracker_rot" />
+
+      <!-- cal envelope -->
+      <position name="cal_pos" />
+      <rotation name="cal_rot" />
+
+      <!-- layers -->
+      <constant name="abs_thickness"     value="20.0*mm" />
+      <constant name="sens_thickness"    value="5.0*mm" />
+      <constant name="layer_thickness"   value="abs_thickness + sens_thickness" />
+      <constant name="num_layers"        value="3" />      
+
+      <!-- section -->
+      <constant name="sect_thickness"    value="num_layers * layer_thickness" />
+      <constant name="sect_center_radius" value="inner_radius + sect_thickness / 2" />      
+      <constant name="outer_radius" value="inner_radius + sect_thickness" />
+
+      <constant name="inner_angle"      value="(360/num_sides)" />
+      <constant name="half_inner_angle" value="inner_angle/2"/>
+
+      <constant name="outer_radius_hyp" value="outer_radius / ( cos( half_inner_angle * deg ) )" />
+
+      <constant name="inner_face"       value="( inner_radius * tan( half_inner_angle * deg ) ) * 2" />      
+      <constant name="outer_face"       value="( outer_radius * tan( half_inner_angle * deg ) ) * 2" />
+
+      <constant name="sect_rot_x"   value="90.0 * deg" />      
+      <constant name="sect_start_rot_y" value="0.0" />
+      <constant name="sect_rot" value="-sect_start_rot_y/2" />
+
+      <constant name="sect_start_place_angle" value="0.0" />
+
+      <!-- starting params -->
+      <constant name="irot" value="inner_angle * deg" />
+      <constant name="offrot" value="-irot / 2" />
+      <constant name="placerot" value="-offrot" />
+
+      <!-- sect0 -->
+      <constant name="sect0_rot_y" value="-offrot" />
+      <constant name="sect0_pos_x" value="-sect_center_radius * sin( sect0_rot_y )" />
+      <constant name="sect0_pos_y" value="sect_center_radius * cos( sect0_rot_y )" />
+
+      <position name="sect0_pos"
+		x="sect0_pos_x" 
+		y="sect0_pos_y"
+		z="0.0" />
+
+      <rotation name="sect0_rot"
+		x="sect_rot_x"
+		y="sect0_rot_y"
+		z="0.0"
+		/>
+
+      <!-- sect1 -->
+      <constant name="sect1_rot_y" value="sect0_rot_y - irot" />
+      <constant name="sect1_pos_x" value="-sect_center_radius * sin( sect1_rot_y )" />
+      <constant name="sect1_pos_y" value="sect_center_radius * cos( sect1_rot_y )" />
+
+      <position name="sect1_pos"
+		x="sect1_pos_x"
+		y="sect1_pos_y"
+		z="0.0" />
+
+      <rotation name="sect1_rot"
+		x="sect_rot_x"
+		y="sect1_rot_y"
+		z="0.0"
+		/>
+
+      <!-- sect2 -->
+      <constant name="sect2_rot_y" value="sect1_rot_y - irot" />
+      <constant name="sect2_pos_x" value="-sect_center_radius * sin( sect2_rot_y )" />
+      <constant name="sect2_pos_y" value="sect_center_radius * cos( sect2_rot_y )" />
+
+      <position name="sect2_pos"
+		x="sect2_pos_x"
+		y="sect2_pos_y"
+		z="0.0" />
+
+      <rotation name="sect2_rot"
+		x="sect_rot_x"
+		y="sect2_rot_y"
+		z="0.0" />
+
+      <!-- sect3 -->
+      <constant name="sect3_rot_y" value="sect2_rot_y - irot" />
+      <constant name="sect3_pos_x" value="-sect_center_radius * sin( sect3_rot_y )" />
+      <constant name="sect3_pos_y" value="sect_center_radius * cos( sect3_rot_y )" />
+
+      <position name="sect3_pos"
+		x="sect3_pos_x"
+		y="sect3_pos_y"
+		z="0.0" />
+
+      <rotation name="sect3_rot"
+		x="sect_rot_x"
+		y="sect3_rot_y"
+		z="0.0" />
+
+      <!-- sect4 -->
+      <constant name="sect4_rot_y" value="sect3_rot_y - irot" />
+      <constant name="sect4_pos_x" value="-sect_center_radius * sin( sect4_rot_y )" />
+      <constant name="sect4_pos_y" value="sect_center_radius * cos( sect4_rot_y )" />
+
+      <position name="sect4_pos"
+		x="sect4_pos_x"
+		y="sect4_pos_y"
+		z="0.0" />
+
+      <rotation name="sect4_rot"
+		x="sect_rot_x"
+		y="sect4_rot_y"
+		z="0.0" />
+
+      <!-- sect5 -->
+      <constant name="sect5_rot_y" value="sect4_rot_y - irot" />
+      <constant name="sect5_pos_x" value="-sect_center_radius * sin( sect5_rot_y )" />
+      <constant name="sect5_pos_y" value="sect_center_radius * cos( sect5_rot_y )" />
+
+      <position name="sect5_pos"
+		x="sect5_pos_x"
+		y="sect5_pos_y"
+		z="0.0" />
+
+      <rotation name="sect5_rot"
+		x="sect_rot_x"
+		y="sect5_rot_y"
+		z="0.0" />
+
+      <!-- sect6 -->
+      <constant name="sect6_rot_y" value="sect5_rot_y - irot" />
+      <constant name="sect6_pos_x" value="-sect_center_radius * sin( sect6_rot_y )" />
+      <constant name="sect6_pos_y" value="sect_center_radius * cos( sect6_rot_y )" />
+
+      <position name="sect6_pos"
+		x="sect6_pos_x"
+		y="sect6_pos_y"
+		z="0.0" />
+
+      <rotation name="sect6_rot"
+		x="sect_rot_x"
+		y="sect6_rot_y"
+		z="0.0" />
+
+      <!-- sect7 -->
+      <constant name="sect7_rot_y" value="sect6_rot_y - irot" />
+      <constant name="sect7_pos_x" value="-sect_center_radius * sin( sect7_rot_y )" />
+      <constant name="sect7_pos_y" value="sect_center_radius * cos( sect7_rot_y )" />
+
+      <position name="sect7_pos"
+		x="sect7_pos_x"
+		y="sect7_pos_y"
+		z="0.0" />
+
+      <rotation name="sect7_rot"
+		x="sect_rot_x"
+		y="sect7_rot_y"
+		z="0.0" />
+
+      <!-- angle subtended by inner_face and outside section radius -->
+      <constant name="layer_outer_angle" value="(180 - inner_angle) / 2" />
+
+      <!-- angle subtended by Z side of the layer box and sect side along layer -->
+      <constant name="layer_inner_angle" value="(180 - 90 - layer_outer_angle) * deg" /> 
+
+      <!-- incr layer in x dim -->
+      <constant name="sens_incr_x" value="sens_thickness * tan( layer_inner_angle ) * 2" />
+      <constant name="abs_incr_x"  value="abs_thickness * tan ( layer_inner_angle ) * 2" />
+      <constant name="layer_incr_z" value="sens_thickness / 2 + abs_thickness / 2" />
+
+      <!-- sensitive 0 -->
+      <constant name="sens0_z"          value="-( sect_thickness/2 ) + sens_thickness/2"/>
+      <position name="sens0_pos"        z="sens0_z" />
+      <constant name="sens0_dim_x"      value="inner_face" />
+
+      <!-- absorber 0 -->
+      <constant name="abs0_z"           value="sens0_z + layer_incr_z"/>
+      <position name="abs0_pos"         z="abs0_z" />      
+      <constant name="abs0_dim_x"       value="inner_face + sens_incr_x" />
+
+      <!-- sensitive 1 -->
+      <constant name="sens1_z"          value="abs0_z + layer_incr_z" />
+      <position name="sens1_pos"        z="sens1_z" />
+      <constant name="sens1_dim_x"      value="abs0_dim_x + abs_incr_x" />
+
+      <!-- absorber 1 -->
+      <constant name="abs1_z"           value="sens1_z + layer_incr_z" />
+      <position name="abs1_pos"         z="abs1_z" />
+      <constant name="abs1_dim_x"       value="sens1_dim_x + sens_incr_x" />      
+
+      <!-- sensitive 2 -->
+      <constant name="sens2_z"          value="abs1_z + layer_incr_z" />
+      <position name="sens2_pos"        z="sens2_z" />
+      <constant name="sens2_dim_x"      value="abs1_dim_x + abs_incr_x" />
+
+      <!-- absorber 2 -->
+      <constant name="abs2_z"           value="sens2_z + layer_incr_z" />
+      <position name="abs2_pos"         z="abs2_z" />
+      <constant name="abs2_dim_x"       value="sens2_dim_x + sens_incr_x" />
+
+      <!-- world -->
+      <constant name="world_side"       value="7000.0" />
+    </define>
+
+    <materials>
+
+      <element  name="Argon_e" Z="18.0" N="40" >
+	<atom type="A" unit="g/mol" value=" 39.9480" />
+      </element>
+
+      <element name="Carbon_e" formula="C" Z="6.">
+	<atom value="12.01" />
+      </element>
+
+      <element name="Hydrogen_e" formula="H" Z="1.">
+	<atom value="1.01" />
+      </element>
+
+      <element name="Iron_e" formula="Fe" Z="26.">
+	<atom value="55.85" />
+      </element>
+
+      <element  name="Nitrogen_e"  Z="7.0" N="14" >
+	<atom type="A" unit="g/mol" value=" 14.0100" />
+      </element>
+
+      <element  name="Oxygen_e"  Z="8.0" N="16" >
+	<atom type="A" unit="g/mol" value="16.0" />
+      </element>
+
+      <element name="Silicon_e" formula="Si" Z="14.0" N="28" >
+	<atom type="A" unit="g/mol" value="28.09" />
+      </element>
+
+      <material  name="Air"  >
+	<D type="density" unit="g/cm3" value="0.0012" />
+	<fraction n="0.7803"  ref="Nitrogen_e"/>
+	<fraction n="0.2103"  ref="Oxygen_e"/>
+	<fraction n="0.0094"  ref="Argon_e"/>
+      </material>
+
+      <material name="StainlessSteel">
+	<D value="7.85" unit="g/cm3" />
+	<fraction n="0.998" ref="Iron_e" />
+	<fraction n=".002" ref="Carbon_e" />
+      </material>
+
+      <material name="Polystyrene">
+	<D value="1.032" unit="g/cm3" />
+	<composite n="19" ref="Carbon_e"/>
+	<composite n="21" ref="Hydrogen_e" />
+      </material>
+
+      <material name="Silicon" >
+	<D value="8.72" unit="g/cm3" />
+	<fraction n="1.0" ref="Silicon_e" />
+      </material>
+
+    </materials>
+
+    <solids>
+      <box name="world_box"
+	   x="world_side"
+	   y="world_side"
+	   z="world_side" 
+	   />
+
+      <tube name="tracker_tube" 
+	    z="sect_long_dim" 
+	    rmax="inner_radius" 
+	    rmin="0.0"
+	    deltaphi="TWOPI"/>
+
+      <tube name="cal_tube"
+	    z="sect_long_dim"
+	    rmax="outer_radius_hyp"
+	    rmin="inner_radius"
+	    deltaphi="TWOPI"
+	    />
+
+      <trd name="sect_trd" 
+	   x1="inner_face"
+	   x2="outer_face"
+	   y1="sect_long_dim"
+	   y2="sect_long_dim"
+	   z="sect_thickness"
+	   />
+
+      <box name="sens0_box"
+	   x="sens0_dim_x"
+	   y="sect_long_dim"
+	   z="sens_thickness"
+	   />
+
+      <box name="abs0_box"
+	   x="abs0_dim_x"
+	   y="sect_long_dim"
+	   z="abs_thickness"
+	   />
+
+      <box name="sens1_box"
+	   x="sens1_dim_x"
+	   y="sect_long_dim"
+	   z="sens_thickness"
+	   />
+
+      <box name="abs1_box"
+	   x="abs1_dim_x"
+	   y="sect_long_dim"
+	   z="abs_thickness"
+	   />
+
+      <box name="sens2_box"
+	   x="sens2_dim_x"
+	   y="sect_long_dim"
+	   z="sens_thickness"
+	   />
+
+      <box name="abs2_box"
+	   x="abs2_dim_x"
+	   y="sect_long_dim"
+	   z="abs_thickness"
+	   />
+
+    </solids>
+
+    <structure>
+
+      <!-- tracker -->
+      <volume name="tracker">
+	<materialref ref="Air" />
+	<solidref ref="tracker_tube" />
+	<sdref ref="TrackerSD" />
+	<regionref ref="TrackerRegion" />
+      </volume>
+
+      <!-- individual layers -->
+      <volume name="sens0">
+	<materialref ref="Polystyrene" />
+	<solidref ref="sens0_box" />
+	<sdref ref="CalBarrSD" />
+      </volume>	  		     
+
+      <volume name="abs0">
+	<materialref ref="StainlessSteel" />
+	<solidref ref="abs0_box" />
+      </volume>
+
+      <volume name="sens1">
+	<materialref ref="Polystyrene" />
+	<solidref ref="sens1_box" />
+	<sdref ref="CalBarrSD" /> 
+      </volume>
+
+      <volume name="abs1">
+	<materialref ref="StainlessSteel" />
+	<solidref ref="abs1_box" />
+      </volume>
+
+      <volume name="sens2">
+	<materialref ref="Polystyrene" />
+	<solidref ref="sens2_box" />
+	<sdref ref="CalBarrSD" />
+      </volume>
+
+      <volume name="abs2">
+	<materialref ref="StainlessSteel" />
+	<solidref ref="abs2_box" />
+      </volume>	
+
+      <!-- cal section -->
+      <volume name="sect">
+	<materialref ref="Air" />
+	<solidref ref="sect_trd" />
+
+	<physvol>
+	  <volumeref ref="sens0" />
+	  <positionref ref="sens0_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="abs0" />
+	  <positionref ref="abs0_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="sens1" />
+	  <positionref ref="sens1_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="abs1" />
+	  <positionref ref="abs1_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="sens2" />
+	  <positionref ref="sens2_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="abs2" />
+	  <positionref ref="abs2_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+      </volume>
+
+      <!-- cal barrel envelope -->
+      <volume name="cal">
+	<materialref ref="Air"/>
+	<solidref ref="cal_tube"/>
+
+	<physvol>
+	  <volumeref ref="sect" />
+	  <positionref ref="sect0_pos" />
+	  <rotationref ref="sect0_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="sect" />
+	  <positionref ref="sect1_pos" />
+	  <rotationref ref="sect1_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="sect" />
+	  <positionref ref="sect2_pos" />
+	  <rotationref ref="sect2_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="sect" />
+	  <positionref ref="sect3_pos" />
+	  <rotationref ref="sect3_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="sect" />
+	  <positionref ref="sect4_pos" />
+	  <rotationref ref="sect4_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="sect" />
+	  <positionref ref="sect5_pos" />
+	  <rotationref ref="sect5_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="sect" />
+	  <positionref ref="sect6_pos" />
+	  <rotationref ref="sect6_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="sect" />
+	  <positionref ref="sect7_pos" />
+	  <rotationref ref="sect7_rot" />
+	</physvol>
+
+	<regionref ref="CalBarrRegion" />
+      </volume>
+      
+      <!-- world with placed sections -->
+      <volume name="world">
+	<materialref ref="Air"/>
+	<solidref ref="world_box"/>	  
+
+	<physvol>
+	  <volumeref ref="tracker" />
+	  <positionref ref="tracker_pos" />
+	  <rotationref ref="tracker_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="cal" />
+	  <positionref ref="cal_pos" />
+	  <rotationref ref="cal_rot" />
+	</physvol>
+
+      </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+      <world ref="world"/>
+    </setup>
+
+  </gdml>
+
+  <fields>
+    <solenoid name="theField"
+	      inner_field="5.0"
+	      outer_field="0.0"
+	      zmin="0"
+	      zmax="1000"
+	      inner_radius="500"
+	      outer_radius="1000"
+	      funit="tesla"
+	      lunit="mm"
+	      />
+    <global_field>
+      <fieldref ref="theField" />
+    </global_field>
+  </fields>
+
+</lcdd>

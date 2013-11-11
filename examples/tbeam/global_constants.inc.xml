@@ -1,0 +1,22 @@
+<!-- global_constants.inc, global constants -->
+<!-- center pos and id rot -->
+<position name="center" />
+<rotation name="identity" />
+
+<!-- world side -->
+<constant name="world_side" value="10000.0*mm" />
+
+<!-- config angles -->
+<constant name="config_angle_0" value="0.0*deg" />
+<constant name="config_angle_20" value="20.0*deg" />
+<constant name="config_angle_32" value="32.0*deg" />
+<constant name="config_angle_40" value="40.0*deg" />
+
+<constant name="current_config_angle" value="config_angle_0" />
+
+<!-- def grid -->
+<constant name="def_grid_x" value="1.0*cm" />
+<constant name="def_grid_y" value="1.0*cm" />
+
+
+		

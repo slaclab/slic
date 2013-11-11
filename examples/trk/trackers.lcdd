@@ -1,0 +1,1672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Time-stamp: <2005-02-03 13:37:57 jeremym> -->
+<lcdd xmlns:lcdd="http://www.lcsim.org/schemas/lcdd/1.0"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+      xs:noNamespaceSchemaLocation="http://www.lcsim.org/schemas/lcdd/1.0/lcdd.xsd">
+
+  <!-- header containing meta data about this geometry -->
+  <header>
+
+    <detector name="sdjan03_lcdd"
+	      version="1.0" />
+
+    <author name="Jeremy McCormick"
+	    email="jeremy@slac.stanford.edu"/>
+
+    <generator name="DummyGenerator"
+	       version="1.0"
+	       file="DummyCompactFile.xml"
+	       checksum="0" />
+
+    <comment>
+      Full detector based on LCDG4's ParFiles/SDJan03.xml
+      with a tube-based geometry and projective readouts.
+    </comment>
+
+  </header>
+
+  <!-- ID encoding specifications -->
+  <iddict>
+
+    <!-- tracker id for vtx/trk systems -->
+    <idspec name="TrkId" length="64">
+
+      <!-- lowest level vol id -->
+      <idfield label="layer"
+	       start="0"
+	       length="10"
+	       signed="false"
+	       />
+
+      <!-- subdet level ids -->
+      <idfield label="sys"
+	       start="10"
+	       length="3"
+	       signed="false" />
+
+      <idfield label="barr"
+	       start="13"
+	       length="3"
+	       signed="false" />
+
+    </idspec>
+
+  </iddict>
+
+  <!-- sensitive detector readouts -->
+  <sensitive_detectors>
+
+    <!-- vtx SD -->
+    <tracker name="VtxBarrSD"
+	     hits_collection="VtxBarrHits"
+	     ecut="0.0"
+	     eunit="MeV"
+	     verbose="0">
+
+      <idspecref ref="TrkId" />
+
+    </tracker>
+
+    <!-- trk SD -->
+    <tracker name="TrkBarrSD"
+	     hits_collection="TrkBarrHits"
+	     ecut="0.0"
+	     eunit="MeV"
+	     verbose="0"
+	     combine_hits="true">
+
+      <idspecref ref="TrkId" />
+
+    </tracker>
+
+    <!-- TPC SD -->
+    <tracker name="TPCBarrSD"
+	     hits_collection="TPCBarrHits"
+	     ecut="0.0"
+	     eunit="MeV"
+	     verbose="0"
+	     combine_hits="true">
+    </tracker>
+
+    <scorer name="ScorerSD"
+	    hits_collection="ScorerHits"
+	    verbose="0"
+	    />
+
+  </sensitive_detectors>
+
+  <limits>
+    <limitset name="TrkLimit">
+      <limit name="step_length_max" particles="e+,e-,gamma" value="0.01" unit="mm" />
+    </limitset>
+    <limitset name="TPCLimit">
+      <limit name="step_length_max" particles="e+,e-,gamma" value="0.01" unit="mm"/>
+    </limitset>
+  </limits>
+
+  <regions>
+    <region name="EcalRegion"
+	    store_secondaries="false"
+	    cut="1.0"
+	    lunit="mm"
+	    threshold="0.0"
+	    eunit="MeV" />
+
+    <region name="HcalRegion"
+	    store_secondaries="false"
+	    cut="1.0"
+	    lunit="mm"
+	    threshold="0.0"
+	    eunit="MeV" />
+
+    <region name="MuonRegion"
+	    store_secondaries="false"
+	    cut="1.0"
+	    lunit="mm"
+	    threshold="0.0"
+	    eunit="MeV" />
+
+    <region name="TrackingRegion"
+	    store_secondaries="true"
+	    cut="10.0"
+	    lunit="mm"
+	    threshold="1.0"
+	    eunit="MeV" />
+
+  </regions>
+
+  <display>
+
+    <vis name="DefaultVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="wireframe">
+      <color R="1.0"
+	     G="1.0"
+	     B="1.0"
+	     alpha="1.0"
+	     />
+    </vis>
+
+    <vis name="WorldVis"
+		    visible="false"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="wireframe">
+      <color R="1.0"
+	     G="1.0"
+	     B="1.0"
+	     alpha="1.0"
+	     />
+    </vis>
+
+    <vis name="EcalVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="wireframe">
+      <color R="0.0"
+	     G="1.0"
+	     B="1.0"
+	     alpha="1.0"
+	     />
+    </vis>
+
+    <vis name="HcalVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="wireframe">
+
+      <color R="1.0"
+	     G="1.0"
+	     B="0.0"
+	     alpha="1.0"
+	     />
+    </vis>
+
+    <vis name="MuonVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="wireframe">
+      <color R="0.8"
+	     G="0.5"
+	     B="0.4"
+	     alpha="1.0" />
+    </vis>
+
+    <vis name="VtxVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="wireframe">
+      <color R="0.0"
+	     G="1.0"
+	     B="0.0"
+	     alpha="1.0" />
+    </vis>
+
+    <vis name="TrkVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="wireframe">
+      <color R="0.0"
+	     G="0.0"
+	     B="1.0"
+	     alpha="1.0" />
+    </vis>
+
+    <vis name="CoilVis"
+		    visible="true"
+		    show_daughters="true"
+		    line_style="unbroken"
+		    drawing_style="wireframe">
+      <color R="1.0"
+	     G="1.0"
+	     B="1.0"
+	     alpha="1.0"
+	     />
+    </vis>
+
+  </display>
+
+  <gdml>
+
+    <define>
+
+      <!-- standard global constants -->
+      <constant name="TWOPI" value="2. * pi"/>
+      <rotation name="identity_rot"  x="0.0"  y="0.0"  z="0.0"  unit="degree" />
+      <position name="identity_pos"  x="0.0"  y="0.0"  z="0.0"  unit="cm" />
+
+      <!-- system IDs -->
+      <constant name="vtx_sys_id" value="1" />
+      <constant name="trk_sys_id" value="2" />
+      <constant name="lum_sys_id" value="3" />
+      <constant name="ecal_sys_id" value="4" />
+      <constant name="hcal_sys_id" value="5" />
+      <constant name="muon_sys_id" value="6" />
+
+      <!-- barr, endcap IDs -->
+      <constant name="barr_id" value="0" />
+      <constant name="endcap_north_id" value="1" />
+      <constant name="endcap_south_id" value="2" />
+
+      <!-- laying starts at lay 0 -->
+      <constant name="global_lay_start_id" value="0" />
+
+      <!-- beampipe -->
+
+      <!-- beampipe inner -->
+      <constant name="pipe_inner_thick" value="0.165"/>
+      <constant name="pipe_inner_rmin" value="11.0"/>
+      <constant name="pipe_inner_rmax" value="pipe_inner_rmin + pipe_inner_thick" />
+      <constant name="pipe_inner_zlen" value="3.1 * 2" />
+
+      <!-- beampipe inner shield cone -->
+      <constant name="pipe_inner_shield_thick" value="0.1" />
+      <constant name="pipe_inner_shield_rmin1" value="11.0" />
+      <constant name="pipe_inner_shield_rmin2" value="22.0" />
+      <constant name="pipe_inner_shield_rmax1" value="pipe_inner_shield_rmin1 + pipe_inner_shield_thick" />
+      <constant name="pipe_inner_shield_rmax2" value="pipe_inner_shield_rmin2 + pipe_inner_shield_thick" />
+      <constant name="pipe_inner_shield_zlen" value="35.0" />
+      <constant name="pipe_inner_shield_pos_zface" value="31.0"/>
+      <constant name="pipe_inner_shield_pos_z" value="pipe_inner_shield_pos_zface + pipe_inner_shield_zlen / 2" />
+
+      <position name="pipe_inner_shield_north_pos" z="pipe_inner_shield_pos_z" />
+      <position name="pipe_inner_shield_south_pos" z="-pipe_inner_shield_pos_z" />
+
+      <rotation name="pipe_inner_shield_south_rot" z="180.0 * deg"/>
+      <!-- lum -->
+
+      <!-- vtx -->
+
+      <!-- vtx barr -->
+      <constant name="vtx_si_thick" value="0.1" />
+      <constant name="vtx_lay_thick" value="vtx_si_thick" />
+      <constant name="vtx_barr_lay_thick" value="vtx_lay_thick" />
+      <constant name="vtx_barr_layer_zlen" value="125.0 * 2" />
+
+      <constant name="vtx_barr_rmin" value="12.0" />
+
+      <!-- vtx barr layer 0 -->
+      <constant name="vtx_barr_lay0_rmin" value="vtx_barr_rmin" />
+      <constant name="vtx_barr_lay0_rmax" value="vtx_barr_lay0_rmin + vtx_barr_lay_thick" />
+      <constant name="vtx_barr_lay0_zlen" value="25.0 * 2" />
+
+      <!-- vtx barr layer 1 -->
+      <constant name="vtx_barr_lay1_rmin" value="24.0" />
+      <constant name="vtx_barr_lay1_rmax" value="vtx_barr_lay1_rmin + vtx_barr_lay_thick" />
+      <constant name="vtx_barr_lay1_zlen" value="vtx_barr_layer_zlen" />
+
+      <!-- vtx barr layer 2 -->
+      <constant name="vtx_barr_lay2_rmin" value="36.0" />
+      <constant name="vtx_barr_lay2_rmax" value="vtx_barr_lay2_rmin + vtx_barr_lay_thick" />
+      <constant name="vtx_barr_lay2_zlen" value="vtx_barr_layer_zlen" />
+
+      <!-- vtx barr layer 3 -->
+      <constant name="vtx_barr_lay3_rmin" value="48.0" />
+      <constant name="vtx_barr_lay3_rmax" value="vtx_barr_lay3_rmin + vtx_barr_lay_thick" />
+      <constant name="vtx_barr_lay3_zlen" value="vtx_barr_layer_zlen" />
+
+      <!-- vtx barr layer 4 -->
+      <constant name="vtx_barr_lay4_rmin" value="60.0" />
+      <constant name="vtx_barr_lay4_rmax" value="vtx_barr_lay4_rmin + vtx_barr_lay_thick" />
+      <constant name="vtx_barr_lay4_zlen" value="vtx_barr_layer_zlen" />
+
+      <!-- vtx outer wall -->
+      <constant name="vtx_barr_outer_wall_thick" value="1.0" />
+      <constant name="vtx_barr_outer_wall_rmin" value="vtx_barr_lay4_rmax" />
+      <constant name="vtx_barr_outer_wall_rmax" value="vtx_barr_outer_wall_rmin + vtx_barr_outer_wall_thick" />
+      <constant name="vtx_barr_outer_wall_zlen" value="150.0 * 2" />
+
+      <constant name="vtx_barr_zlen" value="vtx_barr_outer_wall_zlen" />
+      <constant name="vtx_barr_rmax" value="vtx_barr_outer_wall_rmax" />
+
+      <!-- vtx barr id -->
+      <constant name="vtx_barr_lay0_id" value="0." />
+      <constant name="vtx_barr_lay1_id" value="1." />
+      <constant name="vtx_barr_lay2_id" value="2." />
+      <constant name="vtx_barr_lay3_id" value="3." />
+      <constant name="vtx_barr_lay4_id" value="4." />
+
+      <!-- vtx endcap -->
+
+      <!-- vtx endplate -->
+      <constant name="vtx_endcap_endplate_rmin" value="22.0" />
+      <constant name="vtx_endcap_endplate_rmax" value="70.0" />
+      <constant name="vtx_endcap_endplate_thick" value="3.0" />
+      <constant name="vtx_endcap_endplate_zlen" value="vtx_endcap_endplate_thick" />
+
+      <!-- vtx cryo endplate -->
+      <constant name="vtx_endcap_cryo_rmin" value="22.0" />
+      <constant name="vtx_endcap_cryo_rmax" value="110.0" />
+      <constant name="vtx_endcap_cryo_thick" value="30.0" />
+      <constant name="vtx_endcap_cryo_zlen" value="vtx_endcap_cryo_thick" />
+
+      <!-- vtx endcap envelope -->
+      <constant name="vtx_endcap_rmin" value="vtx_endcap_endplate_rmin" />
+      <constant name="vtx_endcap_rmax" value="vtx_endcap_cryo_rmax" />
+
+      <constant name="vtx_endcap_cryo_endplate_gap" value="47.0" />
+
+      <constant name="vtx_endcap_thick" value="vtx_endcap_cryo_thick +
+					       vtx_endcap_cryo_endplate_gap +
+					       vtx_endcap_endplate_thick" />
+
+      <constant name="vtx_endcap_zlen" value="vtx_endcap_thick" />
+
+      <!-- vtx endcap z positions -->
+
+      <!-- vtx endcap face z pos -->
+      <constant name="vtx_endcap_pos_face_z" value="150.0" />
+
+      <!-- vtx endcap z pos -->
+      <constant name="vtx_endcap_pos_z" value="vtx_endcap_pos_face_z + vtx_endcap_thick / 2" />
+
+      <!-- vtx endcap, endplate z to cryo z incr w/in the endcap envelope -->
+      <constant name="vtx_endcap_cryo_incr_z" value="vtx_endcap_endplate_thick / 2 +
+						     vtx_endcap_cryo_endplate_gap +
+						     vtx_endcap_cryo_thick / 2" />
+
+      <!-- vtx endcap N/S endplate z pos -->
+      <constant name="vtx_endcap_north_endplate_pos_z" value="-( vtx_endcap_thick / 2 ) + ( vtx_endcap_endplate_thick / 2 )" />
+      <constant name="vtx_endcap_south_endplate_pos_z" value="( vtx_endcap_thick / 2 ) - ( vtx_endcap_endplate_thick / 2 )" />
+
+      <!-- vtx endcap N/S cryo z pos -->
+      <constant name="vtx_endcap_north_cryo_pos_z" value="vtx_endcap_north_endplate_pos_z + vtx_endcap_cryo_incr_z" />
+      <constant name="vtx_endcap_south_cryo_pos_z" value="vtx_endcap_south_endplate_pos_z - vtx_endcap_cryo_incr_z" />
+
+      <!-- vtx endcap N/S positions -->
+      <position name="vtx_endcap_north_pos" z="vtx_endcap_pos_z" />
+      <position name="vtx_endcap_south_pos" z="-vtx_endcap_pos_z" />
+
+      <!-- vtx endcap N endplate pos -->
+      <position name="vtx_endcap_north_endplate_pos" z="vtx_endcap_north_endplate_pos_z" />
+      <position name="vtx_endcap_south_endplate_pos" z="vtx_endcap_south_endplate_pos_z" />
+
+      <!-- vtx endcap N cryo pos -->
+      <position name="vtx_endcap_north_cryo_pos" z="vtx_endcap_north_cryo_pos_z" />
+      <position name="vtx_endcap_south_cryo_pos" z="vtx_endcap_south_cryo_pos_z" />
+
+      <!-- trk -->
+
+      <!-- trk barr -->
+
+      <!-- trk area starts contiguously to vtx, though may include an air gap -->
+      <!-- <constant name="trk_barr_rmin" value="vtx_barr_rmax" /> -->
+      <constant name="trk_barr_rmin" value="200.0" />
+      <constant name="trk_barr_outer_air_gap" value="19.0" />
+      <constant name="trk_barr_rmax" value="1251.0 + trk_barr_outer_air_gap" />
+
+      <constant name="trk_barr_si_thick" value="0.2" />
+      <constant name="trk_barr_g10_thick" value="0.5" />
+      <constant name="trk_barr_lay_thick" value="trk_barr_si_thick + trk_barr_g10_thick" />
+
+      <!-- trk barr layer 0 -->
+      <constant name="trk_barr_lay0_rmin" value="trk_barr_rmin" />
+      <constant name="trk_barr_lay0_rmax" value="trk_barr_lay0_rmin + trk_barr_lay_thick" />
+      <constant name="trk_barr_lay0_zlen" value="266.7 * 2" />
+
+      <constant name="trk_barr_lay0_g10_rmin" value="trk_barr_lay0_rmin" />
+      <constant name="trk_barr_lay0_g10_rmax" value="trk_barr_lay0_g10_rmin + trk_barr_g10_thick" />
+
+      <constant name="trk_barr_lay0_si_rmin" value="trk_barr_lay0_g10_rmax" />
+      <constant name="trk_barr_lay0_si_rmax" value="trk_barr_lay0_si_rmin + trk_barr_si_thick" />
+
+      <!-- trk barr layer 1 -->
+      <constant name="trk_barr_lay1_rmin" value="462.5" />
+      <constant name="trk_barr_lay1_rmax" value="trk_barr_lay1_rmin + trk_barr_lay_thick" />
+      <constant name="trk_barr_lay1_zlen" value="616.7 * 2" />
+
+      <constant name="trk_barr_lay1_g10_rmin" value="trk_barr_lay1_rmin" />
+      <constant name="trk_barr_lay1_g10_rmax" value="trk_barr_lay1_g10_rmin + trk_barr_g10_thick" />
+
+      <constant name="trk_barr_lay1_si_rmin" value="trk_barr_lay1_g10_rmax" />
+      <constant name="trk_barr_lay1_si_rmax" value="trk_barr_lay1_si_rmin + trk_barr_si_thick" />
+
+      <!-- trk barr layer 2 -->
+      <constant name="trk_barr_lay2_rmin" value="725.0" />
+      <constant name="trk_barr_lay2_rmax" value="trk_barr_lay2_rmin + trk_barr_lay_thick" />
+      <constant name="trk_barr_lay2_zlen" value="966.7 * 2" />
+
+      <constant name="trk_barr_lay2_g10_rmin" value="trk_barr_lay2_rmin" />
+      <constant name="trk_barr_lay2_g10_rmax" value="trk_barr_lay2_g10_rmin + trk_barr_g10_thick" />
+
+      <constant name="trk_barr_lay2_si_rmin" value="trk_barr_lay2_g10_rmax" />
+      <constant name="trk_barr_lay2_si_rmax" value="trk_barr_lay2_si_rmin + trk_barr_si_thick" />
+
+      <!-- trk barr layer 3 -->
+      <constant name="trk_barr_lay3_rmin" value="987.5" />
+      <constant name="trk_barr_lay3_rmax" value="trk_barr_lay3_rmin + trk_barr_lay_thick" />
+      <constant name="trk_barr_lay3_zlen" value="1316.7 * 2" />
+
+      <constant name="trk_barr_lay3_g10_rmin" value="trk_barr_lay3_rmin" />
+      <constant name="trk_barr_lay3_g10_rmax" value="trk_barr_lay3_g10_rmin + trk_barr_g10_thick" />
+
+      <constant name="trk_barr_lay3_si_rmin" value="trk_barr_lay3_g10_rmax" />
+      <constant name="trk_barr_lay3_si_rmax" value="trk_barr_lay3_si_rmin + trk_barr_si_thick" />
+
+      <!-- trk barr layer 4 -->
+      <constant name="trk_barr_lay4_rmin" value="1250.0" />
+      <constant name="trk_barr_lay4_rmax" value="trk_barr_lay4_rmin + trk_barr_lay_thick" />
+      <constant name="trk_barr_lay4_zlen" value="1666.7 * 2" />
+
+      <constant name="trk_barr_lay4_g10_rmin" value="trk_barr_lay4_rmin" />
+      <constant name="trk_barr_lay4_g10_rmax" value="trk_barr_lay4_g10_rmin + trk_barr_g10_thick" />
+
+      <constant name="trk_barr_lay4_si_rmin" value="trk_barr_lay4_g10_rmax" />
+      <constant name="trk_barr_lay4_si_rmax" value="trk_barr_lay4_si_rmin + trk_barr_si_thick" />
+
+      <!-- trk barr zlen -->
+      <constant name="trk_barr_zlen" value="trk_barr_lay4_zlen" />
+
+      <!-- trk barr id -->
+      <constant name="trk_barr_lay0_id" value="0." />
+      <constant name="trk_barr_lay1_id" value="1." />
+      <constant name="trk_barr_lay2_id" value="2." />
+      <constant name="trk_barr_lay3_id" value="3." />
+      <constant name="trk_barr_lay4_id" value="4." />
+      <constant name="trk_barr_lay5_id" value="5." />
+
+      <!-- tracking volume -->
+      <constant name="tracking_envelope_rmin" value="0.0" />
+
+      <!-- tracking volume max z, which depends on an ecal constant -->
+      <constant name="tracking_envelope_max_zlen" value="6000.0" />
+
+      <!-- few layers of 'TPC' for test -->
+      <constant name="tpc_nlayers" value="5." />
+      <constant name="tpc_lay_thick" value="50." />
+      <constant name="tpc_tot_lay_thick" value="tpc_nlayers * tpc_lay_thick" />
+      <constant name="tpc_barr_envelope_rmin" value="1400.0" />
+      <constant name="tpc_barr_envelope_rmax" value="tpc_barr_envelope_rmin + tpc_tot_lay_thick" />
+      <constant name="tpc_barr_envelope_zlen" value="tracking_envelope_max_zlen" />
+
+      <constant name="tracking_envelope_rmax" value="tpc_barr_envelope_rmax" />
+
+      <constant name="tpc_barr_lay0_rmin" value="tpc_barr_envelope_rmin" />
+      <constant name="tpc_barr_lay0_rmax" value="tpc_barr_lay0_rmin + tpc_lay_thick" />
+
+      <constant name="tpc_barr_lay1_rmin" value="tpc_barr_lay0_rmax" />
+      <constant name="tpc_barr_lay1_rmax" value="tpc_barr_lay1_rmin + tpc_lay_thick" />
+
+      <constant name="tpc_barr_lay2_rmin" value="tpc_barr_lay1_rmax" />
+      <constant name="tpc_barr_lay2_rmax" value="tpc_barr_lay2_rmin + tpc_lay_thick" />
+
+      <constant name="tpc_barr_lay3_rmin" value="tpc_barr_lay2_rmax" />
+      <constant name="tpc_barr_lay3_rmax" value="tpc_barr_lay3_rmin + tpc_lay_thick" />
+
+      <constant name="tpc_barr_lay4_rmin" value="tpc_barr_lay3_rmax" />
+      <constant name="tpc_barr_lay4_rmax" value="tpc_barr_lay4_rmin + tpc_lay_thick" />
+
+      <!-- Scorer -->
+      <constant name="scorer_barr_rmin" value="tpc_barr_envelope_rmax + 0.1" />
+      <constant name="scorer_barr_rmax" value="scorer_barr_rmin + 1000.0" />
+
+      <!-- coil -->
+      <constant name="coil_barr_inner_thick" value="50.0" />
+      <constant name="coil_barr_main_thick" value="400.0" />
+      <constant name="coil_barr_outer_thick" value="50.0" />
+
+      <constant name="coil_barr_inner_main_gap" value="17.0" />
+      <constant name="coil_barr_main_outer_gap" value="18.0" />
+
+      <constant name="coil_barr_rmin" value="2490.0" />
+      <constant name="coil_barr_zlen" value="2860.0 * 2" />
+
+      <constant name="coil_barr_inner_rmin" value="coil_barr_rmin" />
+      <constant name="coil_barr_inner_rmax" value="coil_barr_inner_rmin + coil_barr_inner_thick" />
+      <constant name="coil_barr_inner_zlen" value="coil_barr_zlen" />
+
+      <constant name="coil_barr_main_rmin" value="coil_barr_inner_rmax + coil_barr_inner_main_gap" />
+      <constant name="coil_barr_main_rmax" value="coil_barr_main_rmin + coil_barr_main_thick" />
+      <constant name="coil_barr_main_zlen" value="coil_barr_zlen - 50" />
+
+      <constant name="coil_barr_outer_rmin" value="coil_barr_main_rmax + coil_barr_main_outer_gap" />
+      <constant name="coil_barr_outer_rmax" value="coil_barr_outer_rmin + coil_barr_outer_thick" />
+      <constant name="coil_barr_outer_zlen" value="coil_barr_zlen" />
+
+      <constant name="coil_barr_rmax" value="coil_barr_outer_rmax" />
+
+      <!-- solenoid settings -->
+      <constant name="solenoid_inner_field" value="5.0" />
+      <constant name="solenoid_outer_field" value="-0.6" />
+      <constant name="solenoid_zmin" value="0.0" />
+      <constant name="solenoid_zmax" value="1000.0" />
+      <constant name="solenoid_rmin" value="1500.0" />
+      <constant name="solenoid_rmax" value="5000.0" />
+
+
+      <!-- full det envelope -->
+      <constant name="det_rmax" value="tracking_envelope_rmax" />
+      <constant name="det_zlen" value="tracking_envelope_max_zlen" />
+
+      <!-- world -->
+      <constant name="world_side" value="det_zlen * 1.5" />
+      <constant name="world_x" value="world_side" />
+      <constant name="world_y" value="world_side" />
+      <constant name="world_z" value="world_side" />
+
+    </define>
+
+    <materials>
+
+      <!-- elements -->
+      <element name="Aluminum_e" formula="Al" Z="13.0">
+	<atom type="A" unit="g/mole" value="26.98" />
+      </element>
+
+      <element name="Argon_e" Z="18.0" formula="Ar" N="40" >
+	<atom type="A" unit="g/mol" value="39.9480" />
+      </element>
+
+      <element name="Beryllium_e" formula="Be" Z="4.0">
+	<atom type="A" unit="g/mol" value="9.012182" />
+      </element>
+
+      <element name="Bromine_e" formula="Br" Z="35.">
+	<atom value="79.905"/>
+      </element>
+
+      <element name="Carbon_e" formula="C" Z="6.">
+	<atom value="12.01" />
+      </element>
+
+      <element name="Chlorine_e" formula="Cl" Z="17.">
+	<atom value="35.45" />
+      </element>
+
+      <element name="Copper_e" formula="Cu" Z="29.">
+	<atom value="63.546" />
+      </element>
+
+      <element name="Hydrogen_e" formula="H" Z="1.">
+	<atom value="1.01" />
+      </element>
+
+      <element name="Iron_e" formula="Fe" Z="26.">
+	<atom value="55.85" />
+      </element>
+
+      <element  name="Nitrogen_e" formula="N" Z="7.0"  N="14" >
+	<atom type="A" unit="g/mol" value=" 14.0100" />
+      </element>
+
+      <element  name="Oxygen_e" formula="O" Z="8.0"  N="16" >
+	<atom type="A" unit="g/mol" value=" 16.0000" />
+      </element>
+
+      <element name="Silicon_e" formula="Si" Z="14.">
+	<atom value="28.09" />
+      </element>
+
+      <!-- from PDG -->
+      <element name="Titanium_e" formula="Ti" Z="22." >
+	<atom value="47.867" />
+      </element>
+
+      <element name="Tungsten_e" formula="W" Z="74.">
+	<atom value="183.84" />
+      </element>
+
+      <!-- materials -->
+      <material  name="Air">
+	<D type="density" unit="g/cm3" value="0.0012"/>
+	<fraction n="0.7803"  ref="Nitrogen_e"/>
+	<fraction n="0.2103"  ref="Oxygen_e"/>
+	<fraction n="0.0094"  ref="Argon_e"/>
+      </material>
+
+      <material name="Vacuum">
+	<D type="density" unit="g/cm3" value="0.000001"/>
+	<fraction n="1.0" ref="Air" />
+      </material>
+
+      <material name="Aluminum">
+	<D type="density" unit="g/cm3" value="2.70" />
+	<composite n="1" ref="Aluminum_e" />
+      </material>
+
+      <material name="Beryllium">
+	<D type="density" unit="g/cm3" value="1.848" />
+	<composite n="1" ref="Beryllium_e" />
+      </material>
+
+      <material name="Copper">
+	<D type="density" value="8.96" unit="g/cm3"/>
+	<composite n="1" ref="Copper_e"/>
+      </material>
+
+      <material name="Epoxy">
+	<D type="density" value="1.3" unit="g/cm3"/>
+	<composite n="44" ref="Hydrogen_e"/>
+	<composite n="15" ref="Carbon_e"/>
+	<composite n="7" ref="Oxygen_e"/>
+      </material>
+
+      <material name="Quartz">
+	<D type="density" value="2.2" unit="g/cm3"/>
+	<composite n="1" ref="Silicon_e"/>
+	<composite n="2" ref="Oxygen_e"/>
+      </material>
+
+      <material name="G10">
+	<D type="density" value="1.7" unit="g/cm3" />
+	<fraction n="0.08" ref="Chlorine_e" />
+	<fraction n="0.773" ref="Quartz" />
+	<fraction n="0.147" ref="Epoxy" />
+      </material>
+
+      <material name="Iron">
+	<D type="density" value="7.87" unit="g/cm3" />
+	<composite n="1" ref="Iron_e" />
+      </material>
+
+      <!-- based on Mokka's generic polystyrene material -->
+      <material name="Polystyrene">
+	<D value="1.032" unit="g/cm3" />
+	<composite n="19" ref="Carbon_e"/>
+	<composite n="21" ref="Hydrogen_e" />
+      </material>
+
+      <material name="Silicon">
+	<D type="density" value="2.33" unit="g/cm3" />
+	<composite n="1" ref="Silicon_e" />
+      </material>
+
+      <!-- SS def taken from examples/tbeam/global_materials.inc, Steel235 -->
+      <material name="Steel235">
+	<D value="7.85" unit="g/cm3" />
+	<fraction n="0.998" ref="Iron_e" />
+	<fraction n=".002" ref="Carbon_e" />
+      </material>
+
+      <material name="Titanium">
+	<D value="4.54" unit="g/cm3" />
+	<composite n="1" ref="Titanium_e" />
+      </material>
+
+      <material name="Tungsten">
+	<D type="density" value="19.3" unit="g/cm3"/>
+	<composite n="1" ref="Tungsten_e" />
+      </material>
+    </materials>
+
+    <solids>
+      <!-- world -->
+      <box  lunit="mm"
+	    aunit="degree"
+	    name="world_box"
+	    x="world_x"
+	    y="world_y"
+	    z="world_z" />
+
+      <!-- full detector tube envelope -->
+      <tube name="det_envelope_tube"
+	    lunit="mm"
+	    z="det_zlen"
+	    rmin="0"
+	    rmax="det_rmax"
+	    deltaphi="TWOPI" />
+
+      <!-- tracking envelope -->
+      <tube name="tracking_envelope_tube"
+	    lunit="mm"
+	    z="tracking_envelope_max_zlen"
+	    rmin="tracking_envelope_rmin"
+	    rmax="tracking_envelope_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <!-- beampipe solids -->
+      <tube name="pipe_inner_tube"
+	    lunit="mm"
+	    z="pipe_inner_zlen"
+	    rmin="pipe_inner_rmin"
+	    rmax="pipe_inner_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <cone name="pipe_inner_shield_cone"
+	    lunit="mm"
+	    z="pipe_inner_shield_zlen"
+	    rmin1="pipe_inner_shield_rmin1"
+	    rmin2="pipe_inner_shield_rmin2"
+	    rmax1="pipe_inner_shield_rmax1"
+	    rmax2="pipe_inner_shield_rmax2"
+	    deltaphi="TWOPI"
+	    />
+
+      <!-- trk solids -->
+
+      <!-- trk barr solids -->
+      <tube name="trk_barr_tube"
+	    lunit="mm"
+	    z="trk_barr_zlen"
+	    rmin="trk_barr_rmin"
+	    rmax="trk_barr_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <!-- trk barr layer 0 solids -->
+      <tube name="trk_barr_lay0_tube"
+	    lunit="mm"
+	    z="trk_barr_lay0_zlen"
+	    rmin="trk_barr_lay0_rmin"
+	    rmax="trk_barr_lay0_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="trk_barr_lay0_g10_tube"
+	    lunit="mm"
+	    z="trk_barr_lay0_zlen"
+	    rmin="trk_barr_lay0_g10_rmin"
+	    rmax="trk_barr_lay0_g10_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="trk_barr_lay0_si_tube"
+	    lunit="mm"
+	    z="trk_barr_lay0_zlen"
+	    rmin="trk_barr_lay0_si_rmin"
+	    rmax="trk_barr_lay0_si_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <!-- trk barr layer 1 solids -->
+      <tube name="trk_barr_lay1_tube"
+	    lunit="mm"
+	    z="trk_barr_lay1_zlen"
+	    rmin="trk_barr_lay1_rmin"
+	    rmax="trk_barr_lay1_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="trk_barr_lay1_g10_tube"
+	    lunit="mm"
+	    z="trk_barr_lay1_zlen"
+	    rmin="trk_barr_lay1_g10_rmin"
+	    rmax="trk_barr_lay1_g10_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="trk_barr_lay1_si_tube"
+	    lunit="mm"
+	    z="trk_barr_lay1_zlen"
+	    rmin="trk_barr_lay1_si_rmin"
+	    rmax="trk_barr_lay1_si_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <!-- trk barr layer 2 solids -->
+      <tube name="trk_barr_lay2_tube"
+	    lunit="mm"
+	    z="trk_barr_lay2_zlen"
+	    rmin="trk_barr_lay2_rmin"
+	    rmax="trk_barr_lay2_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="trk_barr_lay2_g10_tube"
+	    lunit="mm"
+	    z="trk_barr_lay2_zlen"
+	    rmin="trk_barr_lay2_g10_rmin"
+	    rmax="trk_barr_lay2_g10_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="trk_barr_lay2_si_tube"
+	    lunit="mm"
+	    z="trk_barr_lay2_zlen"
+	    rmin="trk_barr_lay2_si_rmin"
+	    rmax="trk_barr_lay2_si_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <!-- trk barr layer 3 solids -->
+      <tube name="trk_barr_lay3_tube"
+	    lunit="mm"
+	    z="trk_barr_lay3_zlen"
+	    rmin="trk_barr_lay3_rmin"
+	    rmax="trk_barr_lay3_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="trk_barr_lay3_g10_tube"
+	    lunit="mm"
+	    z="trk_barr_lay3_zlen"
+	    rmin="trk_barr_lay3_g10_rmin"
+	    rmax="trk_barr_lay3_g10_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="trk_barr_lay3_si_tube"
+	    lunit="mm"
+	    z="trk_barr_lay3_zlen"
+	    rmin="trk_barr_lay3_si_rmin"
+	    rmax="trk_barr_lay3_si_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <!-- trk barr layer 0 solids -->
+      <tube name="trk_barr_lay4_tube"
+	    lunit="mm"
+	    z="trk_barr_lay4_zlen"
+	    rmin="trk_barr_lay4_rmin"
+	    rmax="trk_barr_lay4_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="trk_barr_lay4_g10_tube"
+	    lunit="mm"
+	    z="trk_barr_lay4_zlen"
+	    rmin="trk_barr_lay4_g10_rmin"
+	    rmax="trk_barr_lay4_g10_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="trk_barr_lay4_si_tube"
+	    lunit="mm"
+	    z="trk_barr_lay4_zlen"
+	    rmin="trk_barr_lay4_si_rmin"
+	    rmax="trk_barr_lay4_si_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <!-- vtx solids -->
+
+      <!-- vtx barr solids -->
+      <tube name="vtx_barr_tube"
+	    lunit="mm"
+	    z="vtx_barr_zlen"
+	    rmin="vtx_barr_rmin"
+	    rmax="vtx_barr_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="vtx_barr_lay0_tube"
+	    lunit="mm"
+	    z="vtx_barr_lay0_zlen"
+	    rmin="vtx_barr_lay0_rmin"
+	    rmax="vtx_barr_lay0_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="vtx_barr_lay1_tube"
+	    lunit="mm"
+	    z="vtx_barr_lay1_zlen"
+	    rmin="vtx_barr_lay1_rmin"
+	    rmax="vtx_barr_lay1_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="vtx_barr_lay2_tube"
+	    lunit="mm"
+	    z="vtx_barr_lay2_zlen"
+	    rmin="vtx_barr_lay2_rmin"
+	    rmax="vtx_barr_lay2_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="vtx_barr_lay3_tube"
+	    lunit="mm"
+	    z="vtx_barr_lay3_zlen"
+	    rmin="vtx_barr_lay3_rmin"
+	    rmax="vtx_barr_lay3_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="vtx_barr_lay4_tube"
+	    lunit="mm"
+	    z="vtx_barr_lay4_zlen"
+	    rmin="vtx_barr_lay4_rmin"
+	    rmax="vtx_barr_lay4_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="vtx_barr_outer_wall_tube"
+	    lunit="mm"
+	    z="vtx_barr_outer_wall_zlen"
+	    rmin="vtx_barr_outer_wall_rmin"
+	    rmax="vtx_barr_outer_wall_rmax"
+	    deltaphi="TWOPI" />
+
+      <!-- vtx endcap solids -->
+      <tube name="vtx_endcap_endplate_tube"
+	    lunit="mm"
+	    z="vtx_endcap_endplate_zlen"
+	    rmin="vtx_endcap_endplate_rmin"
+	    rmax="vtx_endcap_endplate_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="vtx_endcap_cryo_tube"
+	    lunit="mm"
+	    z="vtx_endcap_cryo_zlen"
+	    rmin="vtx_endcap_cryo_rmin"
+	    rmax="vtx_endcap_cryo_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <tube name="vtx_endcap_tube"
+	    lunit="mm"
+	    z="vtx_endcap_zlen"
+	    rmin="vtx_endcap_rmin"
+	    rmax="vtx_endcap_rmax"
+	    deltaphi="TWOPI"
+	    />
+
+      <!-- tpc solids -->
+      <tube name="tpc_barr_envelope_tube"
+	    lunit="mm"
+	    z="tpc_barr_envelope_zlen"
+	    rmin="tpc_barr_envelope_rmin"
+	    rmax="tpc_barr_envelope_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="tpc_barr_lay0_tube"
+	    lunit="mm"
+	    z="tpc_barr_envelope_zlen"
+	    rmin="tpc_barr_lay0_rmin"
+	    rmax="tpc_barr_lay0_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="tpc_barr_lay1_tube"
+	    lunit="mm"
+	    z="tpc_barr_envelope_zlen"
+	    rmin="tpc_barr_lay1_rmin"
+	    rmax="tpc_barr_lay1_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="tpc_barr_lay2_tube"
+	    lunit="mm"
+	    z="tpc_barr_envelope_zlen"
+	    rmin="tpc_barr_lay2_rmin"
+	    rmax="tpc_barr_lay2_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="tpc_barr_lay3_tube"
+	    lunit="mm"
+	    z="tpc_barr_envelope_zlen"
+	    rmin="tpc_barr_lay3_rmin"
+	    rmax="tpc_barr_lay3_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="tpc_barr_lay4_tube"
+	    lunit="mm"
+	    z="tpc_barr_envelope_zlen"
+	    rmin="tpc_barr_lay4_rmin"
+	    rmax="tpc_barr_lay4_rmax"
+	    deltaphi="TWOPI" />
+
+      <tube name="scorer_barr_tube"
+	    z="tpc_barr_envelope_zlen"
+	    rmin="scorer_barr_rmin"
+	    rmax="scorer_barr_rmax"
+	    deltaphi="TWOPI" />
+
+    </solids>
+
+    <structure>
+
+      <!-- beampipe LV -->
+      <volume name="pipe_inner">
+	<materialref ref="Beryllium"/>
+	<solidref ref="pipe_inner_tube"/>
+      </volume>
+
+      <volume name="pipe_inner_shield">
+	<materialref ref="Titanium"/>
+	<solidref ref="pipe_inner_shield_cone"/>
+      </volume>
+
+      <!-- vtx LV -->
+
+      <!-- vtx barr LV -->
+      <volume name="vtx_barr_lay0">
+	<materialref ref="Silicon"/>
+	<solidref ref="vtx_barr_lay0_tube" />
+	<sdref ref="VtxBarrSD" />
+	<visref ref="VtxVis" />
+      </volume>
+
+      <volume name="vtx_barr_lay1">
+	<materialref ref="Silicon"/>
+	<solidref ref="vtx_barr_lay1_tube" />
+	<sdref ref="VtxBarrSD" />
+	<visref ref="VtxVis" />
+      </volume>
+
+      <volume name="vtx_barr_lay2">
+	<materialref ref="Silicon"/>
+	<solidref ref="vtx_barr_lay2_tube" />
+	<sdref ref="VtxBarrSD" />
+	<visref ref="VtxVis" />
+      </volume>
+
+      <volume name="vtx_barr_lay3">
+	<materialref ref="Silicon"/>
+	<solidref ref="vtx_barr_lay3_tube" />
+	<sdref ref="VtxBarrSD" />
+	<visref ref="VtxVis" />
+      </volume>
+
+      <volume name="vtx_barr_lay4">
+	<materialref ref="Silicon"/>
+	<solidref ref="vtx_barr_lay4_tube" />
+	<sdref ref="VtxBarrSD" />
+	<visref ref="VtxVis" />
+      </volume>
+
+      <volume name="vtx_barr_outer_wall">
+	<materialref ref="Beryllium"/>
+	<solidref ref="vtx_barr_outer_wall_tube" />
+	<visref ref="VtxVis" />
+      </volume>
+
+      <volume name="vtx_barr">
+	<materialref ref="Air"/>
+	<solidref ref="vtx_barr_tube"/>
+
+	<physvol>
+	  <volumeref ref="vtx_barr_lay0" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <physvolid field_name="layer" value="vtx_barr_lay0_id" />
+
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="vtx_barr_lay1" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <physvolid field_name="layer" value="vtx_barr_lay1_id" />
+
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="vtx_barr_lay2" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <physvolid field_name="layer" value="vtx_barr_lay2_id" />
+
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="vtx_barr_lay3" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <physvolid field_name="layer" value="vtx_barr_lay3_id" />
+
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="vtx_barr_lay4" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <physvolid field_name="layer" value="vtx_barr_lay4_id" />
+
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="vtx_barr_outer_wall" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<!--
+	    <regionref ref="VtxTrackingRegion" />
+	-->
+
+	<visref ref="VtxVis" />
+
+      </volume>
+
+      <!-- vtx endcap LV -->
+      <volume name="vtx_endcap_endplate">
+	<materialref ref="Beryllium" />
+	<solidref ref="vtx_endcap_endplate_tube" />
+	<visref ref="VtxVis" />
+      </volume>
+
+      <!-- TODO: PolystyreneFoam, NOT regular poly -->
+      <volume name="vtx_endcap_cryo">
+	<materialref ref="Polystyrene" />
+	<solidref ref="vtx_endcap_cryo_tube" />
+	<visref ref="VtxVis" />
+      </volume>
+
+      <volume name="vtx_endcap_north">
+	<materialref ref="Air" />
+	<solidref ref="vtx_endcap_tube" />
+
+	<physvol>
+	  <volumeref ref="vtx_endcap_endplate" />
+	  <positionref ref="vtx_endcap_north_endplate_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="vtx_endcap_cryo" />
+	  <positionref ref="vtx_endcap_north_cryo_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+	<visref ref="VtxVis" />
+
+      </volume>
+
+      <volume name="vtx_endcap_south">
+	<materialref ref="Air" />
+	<solidref ref="vtx_endcap_tube" />
+
+	<physvol>
+	  <volumeref ref="vtx_endcap_endplate" />
+	  <positionref ref="vtx_endcap_south_endplate_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="vtx_endcap_cryo" />
+	  <positionref ref="vtx_endcap_south_cryo_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<visref ref="VtxVis" />
+
+      </volume>
+
+      <!-- trk LV -->
+
+      <!-- trk barr LV -->
+
+      <!-- trk layer 0 LV -->
+      <volume name="trk_barr_lay0_g10">
+	<materialref ref="G10"/>
+	<solidref ref="trk_barr_lay0_g10_tube"/>
+	<visref ref="TrkVis" />
+      </volume>
+
+      <volume name="trk_barr_lay0_si">
+	<materialref ref="Silicon"/>
+	<solidref ref="trk_barr_lay0_si_tube"/>
+	<sdref ref="TrkBarrSD" />
+	<visref ref="TrkVis" />
+      </volume>
+
+      <volume name="trk_barr_lay0">
+	<materialref ref="Air"/>
+	<solidref ref="trk_barr_lay0_tube"/>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay0_g10" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay0_si" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <!-- trk layer 1 LV -->
+      <volume name="trk_barr_lay1_g10">
+	<materialref ref="G10"/>
+	<solidref ref="trk_barr_lay1_g10_tube"/>
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <volume name="trk_barr_lay1_si">
+	<materialref ref="Silicon"/>
+	<solidref ref="trk_barr_lay1_si_tube"/>
+	<sdref ref="TrkBarrSD" />
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <volume name="trk_barr_lay1">
+	<materialref ref="Air"/>
+	<solidref ref="trk_barr_lay1_tube"/>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay1_g10" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay1_si" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <!-- trk layer 2 LV -->
+      <volume name="trk_barr_lay2_g10">
+	<materialref ref="G10"/>
+	<solidref ref="trk_barr_lay2_g10_tube"/>
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <volume name="trk_barr_lay2_si">
+	<materialref ref="Silicon"/>
+	<solidref ref="trk_barr_lay2_si_tube"/>
+	<sdref ref="TrkBarrSD" />
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <volume name="trk_barr_lay2">
+	<materialref ref="Air"/>
+	<solidref ref="trk_barr_lay2_tube"/>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay2_g10" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay2_si" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <!-- trk layer 3 LV -->
+      <volume name="trk_barr_lay3_g10">
+	<materialref ref="G10"/>
+	<solidref ref="trk_barr_lay3_g10_tube"/>
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <volume name="trk_barr_lay3_si">
+	<materialref ref="Silicon"/>
+	<solidref ref="trk_barr_lay3_si_tube"/>
+	<sdref ref="TrkBarrSD" />
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <volume name="trk_barr_lay3">
+	<materialref ref="Air"/>
+	<solidref ref="trk_barr_lay3_tube"/>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay3_g10" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay3_si" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <!-- trk layer 4 LV -->
+      <volume name="trk_barr_lay4_g10">
+	<materialref ref="G10"/>
+	<solidref ref="trk_barr_lay4_g10_tube"/>
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <volume name="trk_barr_lay4_si">
+	<materialref ref="Silicon"/>
+	<solidref ref="trk_barr_lay4_si_tube"/>
+	<sdref ref="TrkBarrSD" />
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <volume name="trk_barr_lay4">
+	<materialref ref="Air"/>
+	<solidref ref="trk_barr_lay4_tube"/>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay4_g10" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay4_si" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <!-- trk barr LV -->
+      <volume name="trk_barr">
+	<materialref ref="Air"/>
+	<solidref ref="trk_barr_tube" />
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay0" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay1" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay2" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay3" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay4" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<!--
+	    <regionref ref="TrkTrackingRegion" />
+	-->
+
+	<visref ref="TrkVis" />
+
+      </volume>
+
+      <!-- tpc LV -->
+
+      <volume name="tpc_barr_lay0">
+	<materialref ref="Air"/>
+	<solidref ref="tpc_barr_lay0_tube"/>
+	<sdref ref="TPCBarrSD"/>
+	<limitsetref ref="TPCLimit"/>
+      </volume>
+
+      <volume name="tpc_barr_lay1">
+	<materialref ref="Air"/>
+	<solidref ref="tpc_barr_lay1_tube"/>
+	<sdref ref="TPCBarrSD"/>
+	<limitsetref ref="TPCLimit"/>
+      </volume>
+
+      <volume name="tpc_barr_lay2">
+	<materialref ref="Air"/>
+	<solidref ref="tpc_barr_lay2_tube"/>
+	<sdref ref="TPCBarrSD"/>
+	<limitsetref ref="TPCLimit"/>
+      </volume>
+
+      <volume name="tpc_barr_lay3">
+	<materialref ref="Air"/>
+	<solidref ref="tpc_barr_lay3_tube"/>
+	<sdref ref="TPCBarrSD"/>
+	<limitsetref ref="TPCLimit"/>
+      </volume>
+
+      <volume name="tpc_barr_lay4">
+	<materialref ref="Air"/>
+	<solidref ref="tpc_barr_lay4_tube"/>
+	<sdref ref="TPCBarrSD"/>
+	<limitsetref ref="TPCLimit"/>
+      </volume>
+
+      <volume name="tpc_barr_envelope">
+	<materialref ref="Air"/>
+	<solidref ref="tpc_barr_envelope_tube"/>
+
+	<physvol>
+	  <volumeref ref="tpc_barr_lay0"/>
+	  <positionref ref="identity_pos"/>
+	  <rotationref ref="identity_rot"/>
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="tpc_barr_lay1"/>
+	  <positionref ref="identity_pos"/>
+	  <rotationref ref="identity_rot"/>
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="tpc_barr_lay2"/>
+	  <positionref ref="identity_pos"/>
+	  <rotationref ref="identity_rot"/>
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="tpc_barr_lay3"/>
+	  <positionref ref="identity_pos"/>
+	  <rotationref ref="identity_rot"/>
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="tpc_barr_lay4"/>
+	  <positionref ref="identity_pos"/>
+	  <rotationref ref="identity_rot"/>
+	</physvol>
+
+      </volume>
+
+      <volume name="scorer_barr">
+	<materialref ref="Vacuum"/>
+	<solidref ref="scorer_barr_tube"/>
+	<sdref ref="ScorerSD"/>
+      </volume>
+
+      <!-- tracking envelope: includes vtx and trk -->
+      <volume name="tracking_envelope">
+	<materialref ref="Air"/>
+	<solidref ref="tracking_envelope_tube" />
+
+	<!-- pipe -->
+	<physvol>
+	  <volumeref ref="pipe_inner" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<!-- vtx -->
+
+	<!-- vtx barr -->
+	<physvol>
+	  <volumeref ref="vtx_barr" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <!-- ids -->
+	  <physvolid field_name="sys" value="vtx_sys_id" />
+	  <physvolid field_name="barr" value="barr_id" />
+
+	</physvol>
+
+	<!-- vtx endcap -->
+	<physvol>
+	  <volumeref ref="vtx_endcap_north" />
+	  <positionref ref="vtx_endcap_north_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <!-- ids -->
+	  <physvolid field_name="sys" value="vtx_sys_id" />
+	  <physvolid field_name="barr" value="endcap_north_id" />
+
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="vtx_endcap_south" />
+	  <positionref ref="vtx_endcap_south_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <!-- ids -->
+	  <physvolid field_name="sys" value="vtx_sys_id" />
+	  <physvolid field_name="barr" value="endcap_south_id" />
+
+	</physvol>
+
+	<!-- trk -->
+
+	<!-- trk barr layers -->
+	<physvol>
+	  <volumeref ref="trk_barr_lay0" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <!-- ids -->
+	  <physvolid field_name="layer" value="trk_barr_lay0_id" />
+	  <physvolid field_name="sys" value="trk_sys_id" />
+	  <physvolid field_name="barr" value="barr_id" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay1" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <!-- ids -->
+	  <physvolid field_name="layer" value="trk_barr_lay1_id" />
+	  <physvolid field_name="sys" value="trk_sys_id" />
+	  <physvolid field_name="barr" value="barr_id" />
+
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay2" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <!-- ids -->
+	  <physvolid field_name="layer" value="trk_barr_lay2_id" />
+	  <physvolid field_name="sys" value="trk_sys_id" />
+	  <physvolid field_name="barr" value="barr_id" />
+
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay3" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <!-- ids -->
+	  <physvolid field_name="layer" value="trk_barr_lay3_id" />
+	  <physvolid field_name="sys" value="trk_sys_id" />
+	  <physvolid field_name="barr" value="barr_id" />
+
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="trk_barr_lay4" />
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+
+	  <!-- ids -->
+	  <physvolid field_name="layer" value="trk_barr_lay4_id" />
+	  <physvolid field_name="sys" value="trk_sys_id" />
+	  <physvolid field_name="barr" value="barr_id" />
+
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="tpc_barr_envelope" />
+	  <positionref ref="identity_pos"/>
+	  <rotationref ref="identity_rot"/>
+	</physvol>
+
+	<regionref ref="TrackingRegion" />
+
+      </volume>
+
+      <!-- det -->
+      <volume name="det_envelope">
+	<materialref ref="Air" />
+	<solidref ref="det_envelope_tube" />
+
+	<!-- tracking envelope PV -->
+	<physvol>
+	  <volumeref ref="tracking_envelope"/>
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<visref ref="DefaultVis" />
+
+      </volume>
+
+      <!-- world -->
+      <volume name="world">
+	<materialref ref="Air"/>
+	<solidref ref="world_box"/>
+
+	<physvol>
+	  <volumeref ref="det_envelope"/>
+	  <positionref ref="identity_pos" />
+	  <rotationref ref="identity_rot" />
+	</physvol>
+
+	<physvol>
+	  <volumeref ref="scorer_barr"/>
+	  <positionref ref="identity_pos"/>
+	</physvol>
+
+	<visref ref="WorldVis" />
+      </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+      <world ref="world"/>
+    </setup>
+
+  </gdml>
+
+  <!-- global field -->
+  <fields>
+    <solenoid name="GlobalSolenoid"
+	      inner_field="solenoid_inner_field"
+	      outer_field="solenoid_outer_field"
+	      zmin="solenoid_zmin"
+	      zmax="solenoid_zmax"
+	      inner_radius="solenoid_rmin"
+	      outer_radius="solenoid_rmax"
+	      funit="tesla"
+	      lunit="mm"/>
+    <global_field>
+      <fieldref ref="GlobalSolenoid" />
+    </global_field>
+  </fields>
+
+</lcdd>

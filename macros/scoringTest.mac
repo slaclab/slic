@@ -1,0 +1,35 @@
+#
+# define scoring mesh
+#
+/score/create/cylinderMesh cylMesh_1
+#                        R  Z(-24 to 24) 
+/score/mesh/cylinderSize 12. 24. m
+#                iR   iZ
+/score/mesh/nBin 120 480 1
+
+/score/quantity/energyDeposit eDep
+
+/score/quantity/cellFlux CF_photon
+/score/filter/particle photonFilter gamma
+#above 2 line crete tally for cell flux for gamma 
+
+/score/quantity/cellFlux CF_neutron
+/score/filter/particle neutronFilter neutron
+
+#score neutrons > 100keV
+/score/quantity/cellFlux CF_HEneutron
+/score/filter/particleWithKineticEnergy HEneutronFilter 0.1 7000000 MeV neutron
+
+/score/quantity/doseDeposit dose
+
+/score/close
+/score/list
+
+/run/beamOn 1
+
+#Output result
+/score/dumpQuantityToFile cylMesh_1 eDep QGSP_BERT_1_edep.txt
+/score/dumpQuantityToFile cylMesh_1 CF_neutron QGSP_BERT_1_neutron.txt
+/score/dumpQuantityToFile cylMesh_1 CF_HEneutron QGSP_BERT_1_HEneutron.txt
+/score/dumpQuantityToFile cylMesh_1 CF_photon QGSP_BERT_1_photon.txt
+/score/dumpQuantityToFile cylMesh_1 dose QGSP_BERT_1_dose.txt
