@@ -8,6 +8,7 @@
 #include "G4ProcessManager.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4UnknownDecay.hh"
+#include "G4SystemOfUnits.hh"
 
 namespace slic {
 LCSUSYPhysics::LCSUSYPhysics(const G4String& name) :
@@ -55,9 +56,9 @@ void LCSUSYPhysics::ConstructParticle() {
 }
 
 void LCSUSYPhysics::ConstructProcess() {
-	theParticleIterator->reset();
-	while ((*theParticleIterator)()) {
-		G4ParticleDefinition* pdef = theParticleIterator->value();
+	aParticleIterator->reset();
+	while ((*aParticleIterator)()) {
+		G4ParticleDefinition* pdef = aParticleIterator->value();
 		G4ProcessManager* pmgr = pdef->GetProcessManager();
 		if (m_decay.IsApplicable(*pdef)) {
 			if (pdef->GetPDGCharge() != 0) {

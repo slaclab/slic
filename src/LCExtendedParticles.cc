@@ -5,6 +5,7 @@
 
 // geant4
 #include "G4ProcessManager.hh"
+#include "G4SystemOfUnits.hh"
 
 namespace slic {
 
@@ -58,9 +59,10 @@ void LCExtendedParticles::ConstructParticle() {
 }
 
 void LCExtendedParticles::ConstructProcess() {
-	theParticleIterator->reset();
-	while ((*theParticleIterator)()) {
-		G4ParticleDefinition* pdef = theParticleIterator->value();
+	aParticleIterator->reset();
+
+	while ((*aParticleIterator)()) {
+		G4ParticleDefinition* pdef = aParticleIterator->value();
 		G4ProcessManager* pmgr = pdef->GetProcessManager();
 		if (pdef->GetParticleType() == "extended" || pdef->GetParticleType() == "susy") {
 			if (pdef->GetPDGCharge() != 0) {

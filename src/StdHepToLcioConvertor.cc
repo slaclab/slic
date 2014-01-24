@@ -12,6 +12,7 @@
 // geant4
 #include "G4ParticleDefinition.hh"
 #include "G4ParticleTable.hh"
+#include "G4PhysicalConstants.hh"
 
 // stl
 #include <cassert>

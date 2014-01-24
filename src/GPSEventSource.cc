@@ -3,6 +3,7 @@
 
 // geant4
 #include "G4MuonMinus.hh"
+#include "G4SystemOfUnits.hh"
 
 namespace slic {
 GPSEventSource::GPSEventSource() :

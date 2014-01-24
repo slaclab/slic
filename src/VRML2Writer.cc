@@ -16,7 +16,7 @@
 #include "G4ThreeVector.hh"
 #include "G4RotationMatrix.hh"
 #include "G4Point3D.hh"
-#include "globals.hh"
+#include "G4SystemOfUnits.hh"
 
 #include "math.h"
 

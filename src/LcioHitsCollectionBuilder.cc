@@ -11,6 +11,7 @@
 
 // Geant4
 #include "G4SDManager.hh"
+#include "G4SystemOfUnits.hh"
 
 // LCIO
 #include "IMPL/LCCollectionVec.h"

@@ -19,6 +19,7 @@
 // Geant4
 #include "G4Types.hh"
 #include "G4StateManager.hh"
+#include "G4SystemOfUnits.hh"
 
 namespace slic {
 PrimaryGeneratorAction::PrimaryGeneratorAction() :

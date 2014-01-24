@@ -19,6 +19,7 @@
 #include "G4MagneticField.hh"
 #include "G4FieldManager.hh"
 #include "G4TransportationManager.hh"
+#include "G4SystemOfUnits.hh"
 
 using std::string;
 

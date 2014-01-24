@@ -58,8 +58,10 @@ public:
 	 * Draw a Trajectory.
 	 * @param[in] i_mode The draw mode.
 	 */
-	virtual void DrawTrajectory(G4int i_mode) const {
-		G4VTrajectory::DrawTrajectory(i_mode);
+	//virtual void DrawTrajectory(G4int i_mode) const {
+	//
+	virtual void DrawTrajectory() const {
+		G4VTrajectory::DrawTrajectory();
 	}
 
 	/**
