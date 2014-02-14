@@ -56,9 +56,9 @@ void LCSUSYPhysics::ConstructParticle() {
 }
 
 void LCSUSYPhysics::ConstructProcess() {
-	aParticleIterator->reset();
-	while ((*aParticleIterator)()) {
-		G4ParticleDefinition* pdef = aParticleIterator->value();
+	theParticleIterator->reset();
+	while ((*theParticleIterator)()) {
+		G4ParticleDefinition* pdef = theParticleIterator->value();
 		G4ProcessManager* pmgr = pdef->GetProcessManager();
 		if (m_decay.IsApplicable(*pdef)) {
 			if (pdef->GetPDGCharge() != 0) {

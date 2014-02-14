@@ -59,10 +59,10 @@ void LCExtendedParticles::ConstructParticle() {
 }
 
 void LCExtendedParticles::ConstructProcess() {
-	aParticleIterator->reset();
+	theParticleIterator->reset();
 
-	while ((*aParticleIterator)()) {
-		G4ParticleDefinition* pdef = aParticleIterator->value();
+	while ((*theParticleIterator)()) {
+		G4ParticleDefinition* pdef = theParticleIterator->value();
 		G4ProcessManager* pmgr = pdef->GetProcessManager();
 		if (pdef->GetParticleType() == "extended" || pdef->GetParticleType() == "susy") {
 			if (pdef->GetPDGCharge() != 0) {

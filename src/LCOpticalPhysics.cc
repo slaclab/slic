@@ -55,11 +55,11 @@ void LCOpticalPhysics::ConstructOp() {
 	//G4OpticalSurfaceModel themodel = unified;
 	//theBoundaryProcess->SetModel(themodel);
 
-	aParticleIterator->reset();
+	theParticleIterator->reset();
 
-	while ((*aParticleIterator)()) {
+	while ((*theParticleIterator)()) {
 
-		G4ParticleDefinition* particle = aParticleIterator->value();
+		G4ParticleDefinition* particle = theParticleIterator->value();
 		G4ProcessManager* pmanager = particle->GetProcessManager();
 		G4String particleName = particle->GetParticleName();
 
