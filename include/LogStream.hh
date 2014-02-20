@@ -356,60 +356,61 @@ public:
      * @param[in] The ios manipulator.
      * @return The LogStream.
      */
-    LogStream& operator <<(const std::_Setiosflags &manip) {
-        if (isActive()) {
-            getOutputStream() << manip;
-        }
-        return *this;
-    }
+    //LogStream& operator <<(const std::_Setiosflags &manip) {
+    //    if (isActive()) {
+    //        getOutputStream() << manip;
+    //    }
+    //    return *this;
+    //}
 
     /**
      * Handle STL Resetiosflags manipulator.
      * @param[in] The ios manipulator.
      * @return The LogStream.
      */
-    LogStream& operator <<(const std::_Resetiosflags &manip) {
-        if (isActive()) {
-            getOutputStream() << manip;
-        }
-        return *this;
-    }
+
+    //LogStream& operator <<(const std::_Resetiosflags &manip) {
+    //    if (isActive()) {
+    //        getOutputStream() << manip;
+    //    }
+    //    return *this;
+    //}
 
     /**
      * Handle STL Setbase manipulator.
      * @param[in] The ios manipulator.
      * @return The LogStream.
      */
-    LogStream& operator <<(const std::_Setbase &manip) {
-        if (isActive()) {
-            getOutputStream() << manip;
-        }
-        return *this;
-    }
+    //LogStream& operator <<(const std::_Setbase &manip) {
+    //    if (isActive()) {
+    //        getOutputStream() << manip;
+    //    }
+    //    return *this;
+    //}
 
     /**
      * Handle STL Setprecision manipulator.
      * @param[in] The ios manipulator.
      * @return The LogStream.
      */
-    LogStream& operator <<(const std::_Setprecision &manip) {
-        if (isActive()) {
-            getOutputStream() << manip;
-        }
-        return *this;
-    }
+    //LogStream& operator <<(const std::_Setprecision &manip) {
+    //    if (isActive()) {
+    //        getOutputStream() << manip;
+    //    }
+    //    return *this;
+    //}
 
     /**
      * Handle STL Setw manipulator.
      * @param[in] The ios manipulator.
      * @return The LogStream.
      */
-    LogStream& operator <<(const std::_Setw &manip) {
-        if (isActive()) {
-            getOutputStream() << manip;
-        }
-        return *this;
-    }
+    //LogStream& operator <<(const std::_Setw &manip) {
+    //    if (isActive()) {
+    //        getOutputStream() << manip;
+    //    }
+    //    return *this;
+    //}
 
     /**
      * Handle ios class modifiers.
