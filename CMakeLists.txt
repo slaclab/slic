@@ -18,6 +18,9 @@ SET( SLIC_VERSION_PATCH 4 )
 # option for enabling and disabling the logging system
 OPTION( ENABLE_SLIC_LOG "enable slic logging system" ON )
 
+# option to dump CMake variables after cmake is executed
+OPTION( PRINT_CMAKE_VARIABLES "print CMake environment" OFF )
+
 # find ilcutil
 FIND_PACKAGE( ILCUTIL COMPONENTS ILCSOFT_CMAKE_MODULES REQUIRED )
 
@@ -82,22 +85,24 @@ ELSE()
     MESSAGE( STATUS "Found HEPPDT: ${HEPPDT_ROOT}" )
 ENDIF()
 
-
-#EXECUTE_PROCESS( COMMAND grep "define G4VERSION_NUMBER" ${Geant4_DIR}/source/global/management/include/G4Version.hh | sed 's/#define G4VERSION_NUMBER\ \ //g' OUTPUT_VARIABLE GEANT4_VERSION )
-#EXECUTE_PROCESS( COMMAND grep "define G4VERSION_NUMBER" ${Geant4_DIR}/source/global/management/include/G4Version.hh OUTPUT_VARIABLE GEANT4_VERSION )
-#MESSAGE( STATUS "GEANT4_VERSION=${GEANT4_VERSION}" )
-
 # configure files
 CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh.in ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh)
 CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh.in ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh )
 
-# additional compilation flags
+# additional compilation flags for Geant4
 ADD_DEFINITIONS( ${Geant4_DEFINITIONS} )
 
-# turn on compilation flag for enabling log statements in preprocessor blocks
+# turn on compilation flag for enabling log statements that are defined within preprocessor blocks
 IF ( ENABLE_SLIC_LOG STREQUAL "ON" )
     MESSAGE( STATUS "Enabling slic log system" )
     ADD_DEFINITIONS( -DSLIC_LOG )
+ENDIF()
+
+# enable gprof when using debug build
+IF ( CMAKE_BUILD_TYPE MATCHES DEBUG )
+    MESSAGE( STATUS "Enabling gprof in DEBUG build" )
+    ADD_DEFINITIONS( "-pg" )
+    SET( CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} -pg" )
 ENDIF()
 
 # local includes
@@ -154,9 +159,10 @@ ELSE()
     MESSAGE( STATUS "INSTALL_DOC is set to OFF.  Documentation will not be created." )
 ENDIF()
 
-
-
-#get_cmake_property(_variableNames VARIABLES)
-#foreach (_variableName ${_variableNames})
-#    message(STATUS "${_variableName}=${${_variableName}}")
-#endforeach()
+# print CMake environment if enabled
+IF ( PRINT_CMAKE_VARIABLES STREQUAL "ON" )
+    GET_CMAKE_PROPERTY( _variableNames VARIABLES )
+    FOREACH ( _variableName ${_variableNames} )
+        MESSAGE(STATUS "${_variableName}=${${_variableName}}" )
+    ENDFOREACH()
+ENDIF()
