@@ -35,13 +35,13 @@ void LCExtendedParticles::ConstructParticle() {
 		// Add particles that Geant4 does not already know about.  
 		if (pdef == 0) {
 
-		    std::cout << "constructing new particle: " << pdata.PDTname() << std::endl;
+		    //std::cout << "constructing new particle: " << pdata.PDTname() << std::endl;
 
 			G4String particleType = "extended";
 			if (id.isSUSY())
 			    particleType = "susy";
 
-			std::cout << "  type: " << particleType << std::endl;
+			//std::cout << "  type: " << particleType << std::endl;
 
 			// Create a G4ParticleDefinition for this SUSY particle.
 			new G4ParticleDefinition(
@@ -78,7 +78,7 @@ void LCExtendedParticles::ConstructProcess() {
 		G4ProcessManager* pmgr = pdef->GetProcessManager();
 		if (pdef->GetParticleType() == "extended" || pdef->GetParticleType() == "susy") {
 
-		    std::cout << "assigning processes to particle: " << pdef->GetParticleName() << std::endl;
+		    //std::cout << "assigning processes to particle: " << pdef->GetParticleName() << std::endl;
 
 			if (pdef->GetPDGCharge() != 0) {
 				pmgr->AddProcess(&m_scatter, -1, 1, 1); // multiple scattering
