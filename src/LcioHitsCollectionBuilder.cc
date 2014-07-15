@@ -2,8 +2,8 @@
 
 // SLIC
 #include "LcioHitsCollectionBuilder.hh"
-#include "LcioMcpManager.hh"
 #include "HitsCollectionUtil.hh"
+#include "MCParticleManager.hh"
 #include "SlicApplication.hh"
 
 // LCDD
@@ -14,18 +14,18 @@
 #include "G4SystemOfUnits.hh"
 
 // LCIO
+#include "EVENT/MCParticle.h"
 #include "IMPL/LCCollectionVec.h"
 #include "IMPL/LCFlagImpl.h"
-#include "IMPL/MCParticleImpl.h"
 
 // LCIO
 using IMPL::SimCalorimeterHitImpl;
 using IMPL::SimTrackerHitImpl;
-using IMPL::MCParticleImpl;
 using IMPL::LCEventImpl;
 using IMPL::LCFlagImpl;
 using IMPL::LCCollectionVec;
 using EVENT::LCIO;
+using EVENT::MCParticle;
 
 // STL
 #include <iostream>
@@ -36,8 +36,6 @@ namespace slic {
 
 LcioHitsCollectionBuilder::LcioHitsCollectionBuilder() :
 		Module("LcioHitsCollectionBuilder"), m_storeMomentum(0) {
-	// set local LcioMcpManager ptr
-	m_mcpManager = LcioMcpManager::instance();
 
 	// setup default coll flag for cal hits
 	setFlagDefaults();
@@ -288,20 +286,14 @@ IMPL::SimTrackerHitImpl* LcioHitsCollectionBuilder::createHit(TrackerHit* tracke
 	simTrackerHit->setTime(tEdep);
 
 	// Cell ID.
-//#if LCIO_VERSION_GE(1, 60)
-	// New method for 64-bit IDs.
 	simTrackerHit->setCellID0(trackerHit->getId());
-//#else
-	// Old method for 32-bit IDs.
-	//simTrkHit->setCellID(trkHit->getId());
-//#endif
 
 	// MCP using McpManager
-	MCParticleImpl* mcp = m_mcpManager->getMaps()->findParticle(trackerHit->getTrackID());
+	MCParticle* mcp = MCParticleManager::instance()->findMCParticle(trackerHit->getTrackID());
 
 	if (!mcp) {
 		log().error(
-				"No MCP found for trackID <" + StringUtil::toString(trackerHit->getTrackID()) + "> for trk hit.");
+				"No MCParticle found for trackID <" + StringUtil::toString(trackerHit->getTrackID()) + "> when processing SimTrackerHit");
 	} else {
 		simTrackerHit->setMCParticle(mcp);
 	}
@@ -332,37 +324,29 @@ void LcioHitsCollectionBuilder::addParticleContributions(CalorimeterHit* g4CalHi
 		const HitContribution& contrib = (*iter);
 
 		// Get the MCParticle pointer from the track ID.
-		MCParticleImpl* contribMcp = m_mcpManager->getMaps()->findParticle(contrib.getTrackID());
+		MCParticle* contribMcp = MCParticleManager::instance()->findMCParticle(contrib.getTrackID());
 
 		if (contribMcp != 0) {
 			// Add the MCParticle contribution to the hit.
-//#if LCIO_VERSION_GE(1, 60)
-			// Newer LCIO versions have the step position for contributions.
 			simCalHit->addMCParticleContribution(
 					contribMcp,
 					(float)(contrib.getEdep()/GeV),
 					(float)(contrib.getGlobalTime()),
 					contrib.getPDGID(),
 					const_cast<float*>(contrib.getPosition()));
-//#else
-			// Older LCIO versions do not include the step position.
-//			simCalHit->addMCParticleContribution(contribMcp, (float) (contrib.getEdep() / GeV),
-//					(float) contrib.getGlobalTime(), contrib.getPDGID());
-//#endif
 			++ncontrib;
 		}
 		// Problem!  Contributing particle is missing from MCParticle list.
 #ifdef SLIC_LOG
 		else
 		{
-			log() << LOG::always << "ERROR:  Could not find MCParticle from track ID <" << contrib.getTrackID() << ">." << LOG::endl;
+			log() << LOG::error << "No MCParticle from track ID <" << contrib.getTrackID() << "> when processing SimCalorimeterHit" << LOG::endl;
 		}
 #endif
 	}
 
 #ifdef SLIC_LOG
-	if ( ncontrib == 0 )
-	{
+	if ( ncontrib == 0 ) {
 		log().error("No hit contributions for CalorimeterHit.");
 	}
 #endif

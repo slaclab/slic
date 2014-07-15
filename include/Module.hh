@@ -158,20 +158,6 @@ public:
         ;
     }
 
-    //G4ClassificationOfNewTrack stackingClassifyNewTrack(const G4Track*) {
-    //	G4Exception("", "", FatalException, "This method should be overridden.");
-    // Arbitrary return value.  Will never reach here.
-    //	return fWaiting;
-    //}
-
-    //void stackingNewStage() {
-    //	;
-    //}
-
-    //void stackingPrepareNewEvent() {
-    //	;
-    //}
-
 public:
     ModuleStatus m_status;
     std::string m_name;

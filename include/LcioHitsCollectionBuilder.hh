@@ -193,9 +193,6 @@ private:
 
     // store momentum
     bool m_storeMomentum;
-
-    // ptr to Lcio Mcp manager for lkp of Mcp data
-    LcioMcpManager* m_mcpManager;
 };
 }
 

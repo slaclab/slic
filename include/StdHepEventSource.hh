@@ -3,10 +3,9 @@
 #ifndef SLIC_STDHEPEVENTSOURCE_HH
 #define SLIC_STDHEPEVENTSOURCE_HH 1
 
-// slic
-#include "StdHepLoader.hh"
-#include "StdHepToLcioConvertor.hh"
+// SLIC
 #include "EventSourceWithInputFile.hh"
+#include "StdHepGenerator.hh"
 
 namespace slic {
 /**
@@ -50,7 +49,7 @@ public:
     /**
      * Print out the current event.
      */
-    void dumpCurrentEvent();
+    void printCurrentEvent();
 
     /**
      * Begin of run action.
@@ -64,15 +63,8 @@ public:
      */
     void beginEvent(const G4Event* anEvent);
 
-    /**
-     * Get the lStdHep reader associated with this source.
-     * @return The StdHep reader.
-     */
-    lStdHep* getStdHepReader();
-
 private:
-    StdHepLoader* m_loader;
-    StdHepToLcioConvertor* m_convertor;
+    StdHepGenerator* m_eventGenerator;
 };
 }
 

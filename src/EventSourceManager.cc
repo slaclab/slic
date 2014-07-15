@@ -1,31 +1,33 @@
 // $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/EventSourceManager.cc,v 1.26 2013-06-26 01:57:02 jeremy Exp $
+#include "EventSourceManager.hh"
 
 // SLIC
-#include "EventSourceManager.hh"
+#include "FileUtil.hh"
+
+#include "EventAction.hh"
+#include "RunManager.hh"
+#include "SlicApplication.hh"
+
 #include "GPSEventSource.hh"
+#include "LcioEventSource.hh"
 #include "ParticleGunEventSource.hh"
 #include "StdHepEventSource.hh"
-#include "LcioEventSource.hh"
-#include "FileUtil.hh"
-#include "EventAction.hh"
-#include "SlicApplication.hh"
-#include "RunManager.hh"
 
 // LCDD
 #include "lcdd/util/StringUtil.hh"
 
 namespace slic {
 
-std::string EventSourceManager::m_stdhepStr = std::string("stdhep");
-std::string EventSourceManager::m_lcioStr = std::string("lcio");
-std::string EventSourceManager::m_gpsStr = std::string("gps");
-std::string EventSourceManager::m_gunStr = std::string("gun");
-std::string EventSourceManager::m_unknownStr = std::string("unknown");
+std::string EventSourceManager::STDHEP = std::string("stdhep");
+std::string EventSourceManager::LCIO = std::string("lcio");
+std::string EventSourceManager::GPS = std::string("gps");
+std::string EventSourceManager::PARTICLE_GUN = std::string("gun");
+std::string EventSourceManager::UNKNOWN = std::string("unknown");
 
 EventSourceManager::EventSourceManager() :
-		Module("EventSourceManager"), m_currentEventSource(0), m_filename(""), m_fileIsSet(false), m_newFilename(
-				false), m_ngen(0), m_nskip(0), m_newSource(true), m_sourceType(eUnknown), m_lorentzTransformationAngle(
-				0.), m_zSmearingParam(0.) {
+		Module("EventSourceManager"), m_currentEventSource(0), m_filename(""), m_fileIsSet(false),
+		m_newFilename(false), m_ngen(0), m_nskip(0), m_newSource(true), m_sourceType(eUnknown),
+		m_lorentzTransformationAngle(0.), m_zSmearingParam(0.), _enablePrintEvent(false) {
 
 	// messenger with generator command macro bindings
 	m_messenger = new GeneratorMessenger();
@@ -98,16 +100,16 @@ void EventSourceManager::setSourceType(ESourceType egt) {
 
 const std::string& EventSourceManager::getSourceNameFromType(ESourceType egt) const {
 	if (egt == eStdHep) {
-		return m_stdhepStr;
+		return STDHEP;
 	} else if (egt == eLCIO) {
-		return m_lcioStr;
+		return LCIO;
 	} else if (egt == eGPS) {
-		return m_gpsStr;
+		return GPS;
 	} else if (egt == eParticleGun) {
-		return m_gunStr;
+		return PARTICLE_GUN;
 	}
 
-	return m_unknownStr;
+	return UNKNOWN;
 }
 
 EventSourceManager::ESourceType EventSourceManager::getSourceTypeFromName(const std::string& s) const {
@@ -115,13 +117,13 @@ EventSourceManager::ESourceType EventSourceManager::getSourceTypeFromName(const 
 
 	ESourceType egt = eUnknown;
 
-	if (sl == m_stdhepStr) {
+	if (sl == STDHEP) {
 		egt = eStdHep;
-	} else if (sl == m_gpsStr) {
+	} else if (sl == GPS) {
 		egt = eGPS;
-	} else if (sl == m_gunStr) {
+	} else if (sl == PARTICLE_GUN) {
 		egt = eParticleGun;
-	} else if (sl == m_lcioStr) {
+	} else if (sl == LCIO) {
 		egt = eLCIO;
 	}
 
@@ -137,7 +139,7 @@ const std::string& EventSourceManager::getCurrentSourceName() {
 }
 
 void EventSourceManager::dumpCurrentEvent() {
-	m_currentEventSource->dumpCurrentEvent();
+	m_currentEventSource->printCurrentEvent();
 }
 
 void EventSourceManager::printNumEventsGenerated() {
@@ -241,6 +243,10 @@ void EventSourceManager::beginEvent(const G4Event* anEvent) {
 
 void EventSourceManager::endEvent(const G4Event* anEvent) {
 	m_currentEventSource->endEvent(anEvent);
+
+	if (_enablePrintEvent) {
+	    m_currentEventSource->printCurrentEvent();
+	}
 }
 
 void EventSourceManager::beginRun(const G4Run* aRun) {
@@ -261,10 +267,10 @@ void EventSourceManager::beginRun(const G4Run* aRun) {
 
 		// Reset event counter.
 		m_ngen = 0;
-	} /*else {
+	} else {
 		log() << LOG::fatal << "No event generator was setup." << LOG::done;
 		RunManager::instance()->abortRun(SlicApplication::GENERATOR_NOT_SETUP);
-	}*/
+	}
 }
 
 void EventSourceManager::setupEventSource() {
@@ -286,11 +292,8 @@ bool EventSourceManager::isEOF() {
 	bool eof = false;
 	if (isFileSource()) {
 		EventSourceWithInputFile* src = dynamic_cast<EventSourceWithInputFile*>(m_currentEventSource);
-
 		if (src) {
 			eof = src->isEOF();
-		} else {
-			G4Exception("", "", JustWarning, "Cast to EventSourceWithInputFile failed.");
 		}
 	}
 	return eof;
@@ -338,7 +341,7 @@ G4ParticleGun* EventSourceManager::getParticleGun() {
 	return gun;
 }
 
-void EventSourceManager::GeneratePrimaryVertex(G4Event* evt) {
+void EventSourceManager::generateNextEvent(G4Event* evt) {
 	generate(evt);
 }
 
@@ -346,10 +349,7 @@ void EventSourceManager::setLorentzTransformationAngle(const G4double lorentzTra
 
 	m_lorentzTransformationAngle = lorentzTransformationAngle;
 #ifdef SLIC_LOG
-	log() << LOG::always
-	<< "Set Lorentz transformation angle to "
-	<< G4BestUnit(m_lorentzTransformationAngle, "Angle")
-	<< LOG::done;
+	log() << LOG::always << "Set Lorentz transformation angle to " << G4BestUnit(m_lorentzTransformationAngle, "Angle") << LOG::done;
 #endif
 
 }

@@ -45,7 +45,7 @@ public:
     /**
      * Dump information about the current event.
      */
-    virtual void dumpCurrentEvent() = 0;
+    virtual void printCurrentEvent() = 0;
 
     /**
      * Reset the event source.

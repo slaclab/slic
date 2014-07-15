@@ -40,7 +40,7 @@ public:
     /**
      * Dump the current event to std::cout.
      */
-    void dumpCurrentEvent();
+    void printCurrentEvent();
 
     /**
      * Get the Geant4 general particle source class.

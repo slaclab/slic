@@ -11,7 +11,7 @@ EventSource::~EventSource() {
 }
 
 EventSource::EventSource(const std::string& name) :
-		Module(name), m_name(name) {
+		Module(name), m_name(name), nEventsGenerated(0) {
 }
 
 void EventSource::reset() {

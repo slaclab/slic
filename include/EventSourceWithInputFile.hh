@@ -95,7 +95,7 @@ public:
     /**
      * Dump the current event to std::cout.
      */
-    virtual void dumpCurrentEvent() = 0;
+    virtual void printCurrentEvent() = 0;
 
 protected:
 

@@ -40,6 +40,13 @@ public:
 	 */
 	void UserSteppingAction(const G4Step* step);
 
+    /**
+     * Return true if this track appears to be backscattering from a non-tracking region
+     * into the tracking region.
+     * @return True if track is backscattering; false if not.
+     */
+	bool isBackScattering(const G4Step* step);
+
 private:
 
 	/**

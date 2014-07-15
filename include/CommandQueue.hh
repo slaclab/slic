@@ -1,6 +1,6 @@
 // $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/CommandQueue.hh,v 1.4 2013-11-06 00:23:35 jeremy Exp $
-#ifndef SLIC_COMMANDQUEUE_HH
-#define SLIC_COMMANDQUEUE_HH
+#ifndef slic_CommandQueue_hh_
+#define slic_CommandQueue_hh_ 1
 
 // SLIC
 #include "Module.hh"

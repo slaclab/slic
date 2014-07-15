@@ -2,6 +2,7 @@
 #include "G4MagIntegratorStepperFactory.hh"
 
 // G4
+#include "G4SystemOfUnits.hh"
 #include "G4Mag_UsualEqRhs.hh"
 #include "G4ChordFinder.hh"
 #include "G4MagIntegratorStepper.hh"

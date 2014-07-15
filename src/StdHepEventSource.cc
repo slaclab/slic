@@ -1,85 +1,66 @@
 // $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/StdHepEventSource.cc,v 1.10 2013-11-06 00:23:37 jeremy Exp $
 #include "StdHepEventSource.hh"
 
-// slic
+// SLIC
 #include "LcioManager.hh"
-#include "LcioMcpManager.hh"
+#include "MCParticleManager.hh"
+
+// LCIO
+#include "UTIL/LCTOOLS.h"
 
 namespace slic {
 StdHepEventSource::StdHepEventSource(const std::string& fname) :
-		EventSourceWithInputFile("StdHepEventSource", fname), m_convertor(0) {
-	// create loader with internal reader
-	m_loader = new StdHepLoader();
-
-	// create new convertor
-	m_convertor = new StdHepToLcioConvertor();
+		EventSourceWithInputFile("StdHepEventSource", fname),
+		m_eventGenerator(0) {
 }
 
 void StdHepEventSource::generate(G4Event* anEvent) {
-	LcioManager::instance()->getGenerator()->generatePrimaryVertexFromMcpCollection(
-			LcioMcpManager::instance()->getInitialMcpCollection(), anEvent);
+    //std::cout << "StdHepEventSource::generate" << std::endl;
+
+    m_eventGenerator->generateEvent(anEvent);
 }
 
 // open the current file
 void StdHepEventSource::open() {
-	m_loader->openStdHepFile(m_filename);
+
+    /* Initialize the event generator using the current file name. */
+    m_eventGenerator = new StdHepGenerator(getFilename());
+
 	m_fileIsOpen = true;
 }
 
 // close the current file
 void StdHepEventSource::close() {
-	m_loader->closeStdHepFile();
+    delete m_eventGenerator;
 	m_fileIsOpen = false;
 }
 
 // read the next event
 void StdHepEventSource::readNextEvent() {
-	m_loader->readNextEvent();
 
-	if (m_loader->isEndOfInput()) {
-		m_eof = true;
+	m_eventGenerator->readNextEvent();
+	if (m_eventGenerator->getCurrentParticleCollection() == 0) {
+	    m_eof = true;
 	}
 }
 
-void StdHepEventSource::dumpCurrentEvent() {
-	log() << LOG::okay << "Dumping StdHep event info ..." << LOG::done;
-
-	lStdHep* rdr = m_loader->getStdHepReader();
-
-	if (rdr) {
-		rdr->printEventTable();
-	} else {
-		log() << LOG::error << "No current StdHep reader." << LOG::done;
-	}
-
-	log() << LOG::okay << LOG::endl;
+void StdHepEventSource::printCurrentEvent() {
+    if (MCParticleManager::instance()->getMCParticleCollection() != NULL)
+        UTIL::LCTOOLS::printMCParticles(MCParticleManager::instance()->getMCParticleCollection());
 }
 
 void StdHepEventSource::beginRun(const G4Run* aRun) {
+
 	// do superclass setup
 	EventSourceWithInputFile::beginRun(aRun);
-
-	// setup convertor
-	assert( m_loader->getStdHepReader());
-	m_convertor->setStdHepReader(m_loader->getStdHepReader());
 }
 
 void StdHepEventSource::beginEvent(const G4Event* anEvent) {
+
+    //std::cout << "StdHepEventSource::beginEvent" << std::endl;
+
 	// read an event
 	EventSourceWithInputFile::beginEvent(anEvent);
-
-	// not EOF?
-	if (!isEOF()) {
-
-		// set convertor's coll
-		m_convertor->setParticleCollection(LcioMcpManager::instance()->getInitialMcpCollection());
-
-		// run convertor
-		m_convertor->fillParticleCollection();
-	}
 }
 
-lStdHep* StdHepEventSource::getStdHepReader() {
-	return m_loader->getStdHepReader();
-}
 }

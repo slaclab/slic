@@ -56,7 +56,7 @@ private:
     G4UIcommand* m_resetCmd;
     G4UIcmdWithAnInteger* m_skipEventsCmd;
     G4UIcommand* m_filenameCmd;
-    G4UIcommand* m_dumpCurrentEventCmd;
+    G4UIcommand* m_enablePrintEventCmd;
     G4UIcommand* m_printNumEventsGeneratedCmd;
     G4UIcmdWithADoubleAndUnit* m_setLorentzTransformationAngleCmd;
     G4UIcmdWithADouble* m_setZSmearingParameterCmd;

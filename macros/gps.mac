@@ -1,3 +1,4 @@
+/generator/select gps
 /gps/verbose 2
 /gps/particle mu-
 /gps/energy 10 GeV

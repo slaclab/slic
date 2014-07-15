@@ -1,8 +1,9 @@
-#
-# CMake configuration for SLIC application.
-#
-# @author Jeremy McCormick <jeremym@slac.stanford.edu>
-#
+##########################################################
+# CMake configuration for SLIC application.              #
+#                                                        #
+# @author Jeremy McCormick <jeremym@slac.stanford.edu>   #
+#                                                        #
+##########################################################
 
 # minimum cmake version
 CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
@@ -11,9 +12,9 @@ CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
 PROJECT( SLIC )
 
 # project version
-SET( SLIC_VERSION_MAJOR 3 )
-SET( SLIC_VERSION_MINOR 1 )
-SET( SLIC_VERSION_PATCH 7 )
+SET( SLIC_VERSION_MAJOR 4 )
+SET( SLIC_VERSION_MINOR 0 )
+SET( SLIC_VERSION_PATCH 0 )
 
 # option for enabling and disabling the logging system
 OPTION( ENABLE_SLIC_LOG "enable slic logging system" ON )
@@ -79,15 +80,16 @@ ENDIF()
 
 # find LCDD
 FIND_PACKAGE( HEPPDT REQUIRED )
-IF ( NOT LCDD_FOUND )
+IF ( NOT HEPPDT_FOUND )
     MESSAGE( FATAL_ERROR "HEPPDT was not found!" )
 ELSE()
-    MESSAGE( STATUS "Found HEPPDT: ${HEPPDT_ROOT}" )
+    MESSAGE( STATUS "Found HEPPDT: ${HEPPDT_DIR}" )
 ENDIF()
 
 # configure files
 CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh.in ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh)
 CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh.in ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh )
+CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh.in ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh )
 
 # additional compilation flags for Geant4
 ADD_DEFINITIONS( ${Geant4_DEFINITIONS} )
@@ -98,12 +100,9 @@ IF ( ENABLE_SLIC_LOG STREQUAL "ON" )
     ADD_DEFINITIONS( -DSLIC_LOG )
 ENDIF()
 
-# enable gprof when using debug build
-IF ( CMAKE_BUILD_TYPE MATCHES DEBUG )
-    MESSAGE( STATUS "Enabling gprof in DEBUG build" )
-    ADD_DEFINITIONS( "-pg" )
-    SET( CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} -pg" )
-ENDIF()
+# debug flags
+SET ( CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -DDEBUG=1 -pg -ggdb" )
+SET ( CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3" )
 
 # local includes
 SET( SLIC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include )
@@ -159,10 +158,10 @@ ELSE()
     MESSAGE( STATUS "INSTALL_DOC is set to OFF.  Documentation will not be created." )
 ENDIF()
 
-# print CMake environment if enabled
-IF ( PRINT_CMAKE_VARIABLES STREQUAL "ON" )
-    GET_CMAKE_PROPERTY( _variableNames VARIABLES )
-    FOREACH ( _variableName ${_variableNames} )
-        MESSAGE(STATUS "${_variableName}=${${_variableName}}" )
-    ENDFOREACH()
-ENDIF()
+# install
+INSTALL( TARGETS slic slic DESTINATION bin )
+
+#get_cmake_property(_variableNames VARIABLES)
+#foreach (_variableName ${_variableNames})
+#    message(STATUS "${_variableName}=${${_variableName}}")
+#endforeach()

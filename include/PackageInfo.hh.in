@@ -2,6 +2,8 @@
 #ifndef SLIC_PACKAGE_INFO_HH
 #define SLIC_PACKAGE_INFO_HH 1
 
+#include "lcdd/util/StringUtil.hh"
+
 namespace slic {
 
 /**
@@ -17,16 +19,27 @@ public:
      * Get the version string of the application.
      * @return The version string.
      */
-	static std::string& getVersionString() {
+	static std::string& getVersion() {
         static std::string ver_str = "@SLIC_VERSION@";
         return ver_str;
     }
+    
+    /**
+     * Get the version string with given seperator character and padding.
+     * @return The version string with seperator and padding.
+     */
+    static std::string getVersion(std::string& sep, int width = 2) {        
+        std::string version = StringUtil::pad(std::string("@SLIC_VERSION_MAJOR@"), width);
+        version += sep + StringUtil::pad(std::string("@SLIC_VERSION_MINOR@"), width);
+        version += sep + StringUtil::pad(std::string("@SLIC_VERSION_PATCH@"), width);
+        return version;
+    }     
 
     /**
      * Get the full name of the application.
      * @return The full name of the application.
      */
-    static std::string& getNameString() {
+    static std::string& getFullName() {
         static std::string name_str = "Simulation for the Linear Collider";
         return name_str;
     }
@@ -35,8 +48,8 @@ public:
      * Get the abbreviated name of the application.
      * @return The abbreviated name of the application.
      */            
-    static std::string& getAbbrevString() {
-        static std::string abbrev_str = "slic";
+    static std::string& getShortName() {
+        static std::string abbrev_str = "SLIC";
         return abbrev_str;
     }
 
@@ -44,8 +57,8 @@ public:
      * Get a string fully describing the application.
      * @return The description of the application.
      */            
-    static std::string getFullApplicationString() {
-        static std::string fullVerStr = getNameString() + " " + getVersionString();
+    static std::string getApplication() {
+        static std::string fullVerStr = getShortName() + " " + getVersion();
         return fullVerStr;
     }
 

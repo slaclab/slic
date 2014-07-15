@@ -1,6 +1,6 @@
 // $id: $
-#ifndef SLIC_COMMANDLINEPROCESSOR_HH
-#define SLIC_COMMANDLINEPROCESSOR_HH
+#ifndef slic_CommandLineProcessor_hh_
+#define slic_CommandLineProcessor_hh_ 1
 
 // STL
 #include <string>
@@ -88,8 +88,8 @@ public:
      * Print the version information.
      */
     void printVersion() {
-        log() << LOG::okay << PackageInfo::getFullApplicationString() << LOG::done;
-        log() << LOG::okay << "Geant4 " << Geant4VersionInfo::getFullVersion() << LOG::done;
+        log() << LOG::okay << PackageInfo::getShortName() << " " << PackageInfo::getVersion() << LOG::done;
+        log() << LOG::okay << "Geant4 " << Geant4VersionInfo::getVersion() << LOG::done;
     }
 
     /**

@@ -62,7 +62,8 @@ private:
 	G4UIcommand* m_mcpFilenameCmd;
 	G4UIcmdWithAnInteger* m_setRunNumberCmd;
 	G4UIcommand* m_autonameCmd;
-	G4UIcmdWithABool* m_dumpEventCmd;
+	G4UIcmdWithABool* m_printEventCmd;
+	G4UIcmdWithABool* _writeCompleteEventCmd;
 };
 }
 

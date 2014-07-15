@@ -19,7 +19,7 @@ void ParticleGunEventSource::generate(G4Event* evt) {
 	m_generator->GeneratePrimaryVertex(evt);
 }
 
-void ParticleGunEventSource::dumpCurrentEvent() {
+void ParticleGunEventSource::printCurrentEvent() {
 	log() << LOG::okay << "Dumping ParticleGun Event info..." << LOG::done;
 
 	G4ParticleDefinition* pdef = m_generator->GetParticleDefinition();

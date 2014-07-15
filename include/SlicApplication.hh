@@ -21,12 +21,20 @@ class FieldMessenger;
 class SlicApplicationMessenger;
 class RunManager;
 
-static const char* ErrorCodeStrings[] = { "okay", "unknown error", "caught unknown exception", "caught STD exception", "output file already exists",
-        "failed to delete old output file", "event underflow", "invalid geometry setup", "event generator was never setup" };
+static const char* ErrorCodeStrings[] = {
+        "okay",
+        "unknown error",
+        "caught unknown exception",
+        "caught STD exception",
+        "output file already exists",
+        "failed to delete old output file",
+        "event underflow",
+        "invalid geometry setup",
+        "event generator was never setup" };
 
 /**
  * @class SlicApplication
- * @brief Singleton class for a Geant4 application.
+ * @brief Singleton class for a Geant4 application
  * @note  Instantiates manager and messenger classes, including
  *        user actions, G4RunManager, GeneratorManager, and PhysicsListManager.
  */
@@ -38,7 +46,8 @@ public:
      * Indicates the run mode: batch or interactive.
      */
     enum ERunMode {
-        eBatch = 1, eInteractive = 2
+        eBatch = 1,
+        eInteractive = 2
     };
 
     /**
@@ -169,12 +178,6 @@ public:
     void setReturnCode(int rc);
 
     /**
-     * Get the Geant4 version string.
-     * @return The Geant4 version string.
-     */
-    std::string getGeant4VersionString();
-
-    /**
      * Get a string representation of an error code.
      * @param[in] errorCode The errorCode.
      * @return The string representation of the error code.
@@ -229,9 +232,6 @@ protected:
 
     // return code
     int m_returnCode;
-
-    // hack to make aborting G4 work (doesn't seem to function properly)
-    bool m_setRunAbort;
 
     // Has the initialize() function been called?
     bool m_isInitialized;

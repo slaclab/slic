@@ -9,6 +9,7 @@
 #include "PrimaryGeneratorAction.hh"
 #include "RunAction.hh"
 #include "SlicApplication.hh"
+#include "StackingAction.hh"
 #include "SteppingAction.hh"
 #include "TrackingAction.hh"
 
@@ -30,11 +31,12 @@ RunManager::~RunManager() {
 }
 
 void RunManager::initializeUserActions() {
-	SetUserAction(new PrimaryGeneratorAction);
-	SetUserAction(new RunAction);
-	SetUserAction(new EventAction);
-	SetUserAction(new TrackingAction);
-	SetUserAction(new SteppingAction);
+	SetUserAction(new PrimaryGeneratorAction());
+	SetUserAction(new RunAction());
+	SetUserAction(new EventAction());
+	SetUserAction(new TrackingAction());
+	SetUserAction(new SteppingAction());
+	SetUserAction(new StackingAction());
 	m_userActionsInitialized = true;
 }
 

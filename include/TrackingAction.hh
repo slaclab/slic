@@ -12,7 +12,7 @@ class TrajectoryManager;
 
 /**
  * @class TrackingAction
- * @brief Implementation of G4UserTrackingAction.
+ * @brief Implementation of G4UserTrackingAction
  */
 class TrackingAction: public G4UserTrackingAction {
 
@@ -21,12 +21,14 @@ public:
     /**
      * Class constructor.
      */
-	TrackingAction();
+	TrackingAction() {
+	}
 
 	/**
 	 * Class destructor.
 	 */
-	~TrackingAction();
+	~TrackingAction() {
+	}
 
 public:
 
@@ -34,17 +36,13 @@ public:
 	 * Pre tracking action.
 	 * @param[in] aTrack The G4Track.
 	 */
-	void PreUserTrackingAction(const G4Track* aTrack);
+	void PreUserTrackingAction(const G4Track*);
 
 	/**
 	 * Post tracking action.
 	 * @param[in] aTrack The G4Track.
 	 */
-	void PostUserTrackingAction(const G4Track* aTrack);
-
-private:
-
-	TrajectoryManager* m_trjMgr;
+	void PostUserTrackingAction(const G4Track*);
 };
 }
 

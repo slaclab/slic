@@ -103,8 +103,6 @@ protected:
      */
     void InitializeGeometry();
 
-    //void DoEventLoop(G4int, const char*, G4int);
-
 private:
 
     /**

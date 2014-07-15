@@ -9,11 +9,8 @@
 #include "lcdd/hits/TrackerHit.hh"
 
 // slic
-#include "LcioPrimaryGenerator.hh"
-#include "LcioMcpManager.hh"
 #include "LcioHitsCollectionBuilder.hh"
 #include "LcioFileNamer.hh"
-#include "Trajectory.hh"
 #include "Singleton.hh"
 
 // lcio
@@ -36,7 +33,6 @@
 
 class G4Run;
 class G4VHitsCollection;
-class G4TrajectoryContainer;
 
 namespace slic {
 
@@ -99,18 +95,6 @@ public:
     void setAutonameFields(const std::vector<std::string>& fields);
 
     /**
-     * Get the output path for the LCIO files.
-     * @return The output path for the LCIO files.
-     */
-    const std::string& getPath() const;
-
-    /**
-     * Get the output file name.
-     * @return The output file path.
-     */
-    const std::string& getFilename() const;
-
-    /**
      * Get the path plus the filename and optionally include the extension.
      * @param[in] withExtension Whether or not to include the file extension.
      * @return The full output file path.
@@ -156,11 +140,6 @@ public:
     IMPL::LCEventImpl* createLCEvent();
 
     /**
-     * Create the final output particle collction.
-     */
-    void createFinalMcpCollection();
-
-    /**
      * Add a collection to the LCEvent.
      * @param[in] lcsevent The LCEvent.
      * @param[in] collection The collection.
@@ -173,11 +152,6 @@ public:
      * @param[in] The collection.
      */
     void addCollection(EVENT::LCCollection* collection, const std::string& name);
-
-    /**
-     * Add the initial particle collection.
-     */
-    void addInitialMCParticleCollection();
 
     /**
      * End of event hook to write out an LCIO file.
@@ -233,26 +207,10 @@ public:
     }
 
     /**
-     * Get the LCIO generator.
-     * @return The LCIO generator.
-     */
-    inline LcioPrimaryGenerator* getGenerator() {
-        return m_eventGenerator;
-    }
-
-    /**
-     * Get the MCParticle manager.
-     * @return The MCParticle manager.
-     */
-    inline LcioMcpManager* getMcpManager() {
-        return m_mcpManager;
-    }
-
-    /**
      * Get the LcioHitsCollectionBuilder for creating output hit collections.
      * @return The LcioHitsCollectionBuilder.
      */
-    inline LcioHitsCollectionBuilder* getHCBuilder() {
+    inline LcioHitsCollectionBuilder* getHitsCollectionBuilder() {
         return m_HCBuilder;
     }
 
@@ -270,6 +228,18 @@ public:
      */
     void enableDumpEvent(bool p = true) {
         m_enableDumpEvent = p;
+    }
+
+    /**
+     * Enable writing complete event to MCParticle collection.
+     * @param[in] writeCompleteEvent Set to true to write complete event.
+     */
+    void setWriteCompleteEvent(G4bool writeCompleteEvent) {
+        _writeCompleteEvent = writeCompleteEvent;
+    }
+
+    G4bool getWriteCompleteEvent() {
+        return _writeCompleteEvent;
     }
 
 private:
@@ -320,15 +290,7 @@ private:
      */
     void addActiveSubdetectors();
 
-    /**
-     * Reset the instance variables of this class.
-     */
-    void reset();
-
 private:
-
-    // final Mcp collection with all info from McpInitial, Trajectories, Primaries
-    IMPL::LCCollectionVec* m_McpFinalColl;
 
     // writer
     IO::LCWriter* m_writer;
@@ -340,11 +302,8 @@ private:
     std::string m_filename;
     std::string m_path;
 
-    // Mcp manager
-    LcioMcpManager* m_mcpManager;
-
     // event generator from MCP Coll
-    LcioPrimaryGenerator* m_eventGenerator;
+    //LcioPrimaryGenerator* m_eventGenerator;
 
     // creation of HCs
     LcioHitsCollectionBuilder* m_HCBuilder;
@@ -369,7 +328,7 @@ private:
     bool m_enableDumpEvent;
     bool m_writerIsOpen;
     bool m_usingAutoname;
-    //bool m_abortCurrentRun;
+    bool _writeCompleteEvent;
 };
 }
 

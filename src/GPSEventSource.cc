@@ -35,7 +35,7 @@ void GPSEventSource::generate(G4Event* evt) {
 }
 
 /** This is mostly wrong until after the first event generation. */
-void GPSEventSource::dumpCurrentEvent() {
+void GPSEventSource::printCurrentEvent() {
 	log() << LOG::okay << "Dumping GPS Event info..." << LOG::done;
 
 	G4ParticleDefinition* pdef = m_generator->GetParticleDefinition();

@@ -1,9 +1,11 @@
 // $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/RunAction.cc,v 1.23 2013-06-26 01:57:02 jeremy Exp $
 
 // SLIC
-#include "LcioManager.hh"
+//#include "LcioManager.hh"
 #include "EventSourceManager.hh"
-#include "EventDebugger.hh"
+#include "LcioManager.hh"
+//#include "EventDebugger.hh"
+#include "TrackManager.hh"
 
 // LCDD
 #include "lcdd/core/GeometryManager.hh"
@@ -22,6 +24,7 @@ RunAction::~RunAction() {
 }
 
 void RunAction::BeginOfRunAction(const G4Run *aRun) {
+
 	// Start the run clock.
 	startRunTimer();
 
@@ -44,6 +47,7 @@ void RunAction::BeginOfRunAction(const G4Run *aRun) {
 }
 
 void RunAction::EndOfRunAction(const G4Run *run) {
+
 	// LcioManager's action
 	LcioManager::instance()->endRun(run);
 

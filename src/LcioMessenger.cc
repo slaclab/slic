@@ -3,9 +3,7 @@
 // SLIC
 #include "LcioMessenger.hh"
 #include "LcioManager.hh"
-#include "LcioMcpManager.hh"
 #include "LcioFileNamer.hh"
-#include "TrajectoryManager.hh"
 
 // LCDD
 #include "lcdd/util/StringUtil.hh"
@@ -62,8 +60,8 @@ void LcioMessenger::SetNewValue(G4UIcommand* cmd, G4String newVals) {
 		m_mgr->setAutonameFields(fields);
 	}
 	/* dump event */
-	else if (cmd == m_dumpEventCmd) {
-		m_mgr->enableDumpEvent(m_dumpEventCmd->GetNewBoolValue(newVals.c_str()));
+	else if (cmd == m_printEventCmd) {
+		m_mgr->enableDumpEvent(m_printEventCmd->GetNewBoolValue(newVals.c_str()));
 	}
 	// flags
 	else if (cmd == m_setLongFlagCmd || cmd == m_setPDGFlagCmd) {
@@ -76,7 +74,7 @@ void LcioMessenger::SetNewValue(G4UIcommand* cmd, G4String newVals) {
 			flag_set = StringUtil::toBool(s);
 		}
 
-		LcioHitsCollectionBuilder* hcb = m_mgr->getHCBuilder();
+		LcioHitsCollectionBuilder* hcb = m_mgr->getHitsCollectionBuilder();
 
 		if (hcb) {
 
@@ -91,6 +89,10 @@ void LcioMessenger::SetNewValue(G4UIcommand* cmd, G4String newVals) {
 		} else {
 			G4Exception("", "", FatalException, "LcioHitsCollectionBuilder is null.");
 		}
+	}
+	else if (cmd == _writeCompleteEventCmd) {
+	    G4bool writeCompleteEvent = StringUtil::toBool(s);
+	    LcioManager::instance()->setWriteCompleteEvent(writeCompleteEvent);
 	}
 	// bad command; shouldn't happen
 	else {
@@ -154,9 +156,14 @@ void LcioMessenger::defineCommands() {
 	m_autonameCmd->SetParameter(p);
 
 	/* dumping of event data */
-	m_dumpEventCmd = new G4UIcmdWithABool("/lcio/dumpEvent", this);
-	m_dumpEventCmd->SetGuidance("Dump information about collections in the event");
-	m_dumpEventCmd->SetParameterName("enable", true);
-	m_dumpEventCmd->SetDefaultValue(true);
+	m_printEventCmd = new G4UIcmdWithABool("/lcio/printEvent", this);
+	m_printEventCmd->SetGuidance("Dump information about collections in the event");
+	m_printEventCmd->SetParameterName("enable", true);
+	m_printEventCmd->SetDefaultValue(true);
+
+	_writeCompleteEventCmd = new G4UIcmdWithABool("/lcio/writeCompleteEvent", this);
+	_writeCompleteEventCmd->SetGuidance("Write complete event to MCParticle output.");
+	_writeCompleteEventCmd->SetParameterName("enable", true);
+	_writeCompleteEventCmd->SetDefaultValue(true);
 }
 }

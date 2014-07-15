@@ -5,12 +5,13 @@
 #include "lcdd/util/StringUtil.hh"
 
 // SLIC
-#include "LcioManager.hh"
-#include "TrajectoryManager.hh"
 #include "EventSourceManager.hh"
-#include "SlicApplication.hh"
 #include "EventMessenger.hh"
-#include "EventDebugger.hh"
+#include "LcioManager.hh"
+#include "MCParticleManager.hh"
+#include "RunManager.hh"
+//#include "SlicApplication.hh"
+#include "TrackManager.hh"
 
 // Geant4
 #include "G4RunManager.hh"
@@ -28,48 +29,35 @@ EventAction::~EventAction() {
 }
 
 void EventAction::BeginOfEventAction(const G4Event *anEvent) {
-	// check aborted
-	if (!anEvent->IsAborted()) {
-
-		// debugger
-		//EventDebugger::instance()->beginEvent( anEvent );
-
-		// trj mgr
-		TrajectoryManager::instance()->beginEvent(anEvent);
-
-		/* MCP begin event */
-		LcioMcpManager::instance()->beginEvent(anEvent);
-	}
-#ifdef SLIC_LOG
-	else {
-		log().warning("aborted EventAction::BeginOfEventAction");
-	}
-#endif
 }
 
 void EventAction::EndOfEventAction(const G4Event *anEvent) {
-	// check aborted
-	if (!SlicApplication::instance()->isAborting()) {
-		// LcioManager's action
+
+	/* Only execute these hooks if run was not aborted. */
+    if (!RunManager::instance()->isRunAborted()) {
+
+	    /* Create an empty LCEvent. */
+	    LcioManager::instance()->createLCEvent();
+
+	    /* Save track information to MCParticle collection in LCIO output event. */
+	    TrackManager::instance()->saveTrackSummaries(anEvent, LcioManager::instance()->getCurrentLCEvent());
+
+        /* End of event processing for the current event generator. */
+        EventSourceManager::instance()->endEvent(anEvent);
+
+		/* Execute LcioManager's end of event action. */
 		LcioManager::instance()->endEvent(anEvent);
 	}
 
-	// event source (generator) action
-	EventSourceManager::instance()->endEvent(anEvent);
-
-	// event timer
+	/* Stop the event timer. */
 	stopEventTimer();
 
-	// debugger
-	//EventDebugger::instance()->endEvent(anEvent);
-
-	// end event mesg
+	/* Print the end event message. */
 	printEndEventMessage(anEvent);
 }
 
 void EventAction::printEndEventMessage(const G4Event *anEvent) {
-	log() << LOG::okay << ">>>> EndEvent <" + StringUtil::toString(anEvent->GetEventID()) + ">" << LOG::endl
-			<< LOG::done;
+	log() << LOG::okay << ">>>> EndEvent <" + StringUtil::toString(anEvent->GetEventID()) + ">" << LOG::endl << LOG::done;
 }
 
 EventAction* EventAction::getEventAction() {

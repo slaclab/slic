@@ -58,8 +58,9 @@ void GeneratorMessenger::SetNewValue(G4UIcommand* cmd, G4String newVals) {
 		mgr->setFilename(s);
 	}
 	// dumpCurrentEvent
-	else if (cmd == m_dumpCurrentEventCmd) {
-		mgr->dumpCurrentEvent();
+	else if (cmd == m_enablePrintEventCmd) {
+	    G4bool enablePrintEvent = StringUtil::toBool(s);
+		mgr->enablePrintEvent(true);
 	}
 	// printNumEventsGenerated
 	else if (cmd == m_printNumEventsGeneratedCmd) {
@@ -124,8 +125,8 @@ void GeneratorMessenger::defineCommands() {
 	m_filenameCmd->SetParameter(p);
 
 	// dumpCurrentEvent
-	m_dumpCurrentEventCmd = new G4UIcommand("/generator/dumpEvent", this);
-	m_dumpCurrentEventCmd->SetGuidance("Dump information about the current generator event.");
+	m_enablePrintEventCmd = new G4UIcommand("/generator/printEvent", this);
+	m_enablePrintEventCmd->SetGuidance("Dump information about the current generator event.");
 
 	// printNumEventsGenerated
 	m_printNumEventsGeneratedCmd = new G4UIcommand("/generator/printNumEventsGenerated", this);

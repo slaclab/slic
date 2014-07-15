@@ -4,7 +4,6 @@
 #include "SlicApplication.hh"
 #include "CommandLineProcessor.hh"
 #include "CommandQueue.hh"
-#include "EventDebugger.hh"
 #include "FieldManager.hh"
 #include "SlicApplicationMessenger.hh"
 #include "LcioManager.hh"
@@ -12,38 +11,29 @@
 #include "PackageInfo.hh"
 #include "RunManager.hh"
 #include "TimeUtil.hh"
-#include "TrajectoryManager.hh"
 #include "HepPDTManager.hh"
 #include "VRML2WriterMessenger.hh"
+#include "PhysicsListManager.hh"
 
 // LCDD
 #include "lcdd/util/StringUtil.hh"
 #include "lcdd/core/LCDDDetectorConstruction.hh"
 
-// geant4
+// Geant4
 #include "G4ApplicationState.hh"
-#include "G4ScoringManager.hh"
 #include "G4StateManager.hh"
 
-// geant4 visualization
 #ifdef G4VIS_USE
 #include "G4VisExecutive.hh"
 #endif
 
-// geant4 UI
 #include "G4UIExecutive.hh"
-
-#ifdef HAVE_G4VERSION
-#include "G4Version.hh"
-#endif
-
-#include "PhysicsListManager.hh"
 
 namespace slic {
 
 SlicApplication::SlicApplication() :
 		Module("SlicApplication", false), m_appMessenger(0), m_runManager(0), m_mode(SlicApplication::eBatch), m_returnCode(
-				0), m_setRunAbort(false), m_isInitialized(false), m_geant4VersionString(0) {
+				0), m_isInitialized(false), m_geant4VersionString(0) {
 #ifdef SLIC_LOG
 	log() << LOG::okay << LOG::head << "SLIC is starting." << LOG::done;
 #endif
@@ -100,9 +90,6 @@ void SlicApplication::initialize() {
 
 		// Create a new RunManager.
 		m_runManager = new RunManager();
-
-		// Activate command-based scorer.
-		G4ScoringManager::GetScoringManager();
 
 		// Initialize the physics list manager.
 		PhysicsListManager::instance();
@@ -177,17 +164,10 @@ SlicApplication::ERunMode SlicApplication::getMode() const {
 	return m_mode;
 }
 
-void SlicApplication::setAborting(bool a) {
-	if (a) {
-		// FIXME: Does this actually do anything to current G4Event?
-		G4RunManager::GetRunManager()->AbortRun(a);
+void SlicApplication::setAborting(bool abort) {
+	if (abort) {
+		G4RunManager::GetRunManager()->AbortRun(abort);
 	}
-
-	m_setRunAbort = a;
-}
-
-bool SlicApplication::isAborting() const {
-	return m_setRunAbort;
 }
 
 RunManager* SlicApplication::getRunManager() {
@@ -228,48 +208,13 @@ void SlicApplication::printVersion() {
 void SlicApplication::printSplashScreen() {
 	log() << LOG::done;
 	log() << LOG::always << "*************************************************************" << LOG::done;
-	log() << LOG::always << " Application : " << PackageInfo::getNameString() << LOG::done;
-			//" ("
-			//<< PackageInfo::getAbbrevString() << ")" << LOG::done;
-	log() << LOG::always << " Version : " << PackageInfo::getVersionString() << LOG::done;
-
-	//log() << LOG::always << " Date    : " << PackageInfo::getChangeDateString() << LOG::done;
-	//log() << LOG::always << " Authors : " << PackageInfo::getAuthorString() << LOG::done;
-	//log() << LOG::always << " Inst    : " << PackageInfo::getInstitutionString() << LOG::done;
-	//log() << LOG::always << " WWW     : " << PackageInfo::getWWW() << LOG::done;
-	//log() << LOG::always << " Contact : " << PackageInfo::getEmail() << LOG::done;
+	log() << LOG::always << " Application : " << PackageInfo::getFullName() << " (" << PackageInfo::getShortName() << ")" << LOG::done;
+	log() << LOG::always << " Version : " << PackageInfo::getVersion() << LOG::done;
 	log() << LOG::always << "*************************************************************" << LOG::done;
 }
 
 void SlicApplication::printUsage() {
 	CommandLineProcessor::instance()->printUsage();
-}
-
-std::string SlicApplication::getGeant4VersionString() {
-	if (m_geant4VersionString == 0) {
-		std::string g4ver;
-#ifdef HAVE_G4VERSION
-		g4ver = StringUtil::toString(G4VERSION_NUMBER);
-#else
-		// Massage the string returned by G4RunManager into format
-		// returned by G4Version in recent Geant4 versions.
-		g4ver = G4RunManager::GetRunManager()->GetVersionString();
-		std::string::size_type start = g4ver.find("geant4-", 0) + 7;
-		std::string::size_type end = g4ver.find(" ", start);
-		g4ver = g4ver.substr(start, end - start);
-		std::string g4major = g4ver.substr(1, 1);
-		std::string g4minor = g4ver.substr(4, 1);
-		std::string g4patch = "0";
-		if (g4ver.find("patch") != string::npos) {
-			g4patch = g4ver.substr(13, 1);
-		}
-		g4ver = g4major + g4minor + g4patch;
-#endif
-		std::stringstream s;
-		s << "geant4-" << "v" << g4ver[0] << "r" << g4ver[1] << "p" << g4ver[2];
-		m_geant4VersionString = new std::string(s.str());
-	}
-	return *m_geant4VersionString;
 }
 
 } // namespace slic

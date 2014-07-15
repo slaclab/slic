@@ -3,10 +3,11 @@
 #ifndef SLIC_PRIMARYGENERATORACTION_HH
 #define SLIC_PRIMARYGENERATORACTION_HH 1
 
-// slic
+// SLIC
+#include "EventSourceManager.hh"
 #include "Module.hh"
 
-// G4
+// Geant4
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "G4GeneralParticleSource.hh"
 #include "G4ParticleGun.hh"
@@ -17,7 +18,6 @@ namespace slic {
 /**
  * @class PrimaryGeneratorAction
  * @brief Implementation of G4VUserPrimaryGeneratorAction.
- * @note  Delegates all control to EventSourceManager.
  */
 class PrimaryGeneratorAction: public G4VUserPrimaryGeneratorAction, public Module {
 
@@ -41,26 +41,16 @@ public:
      */
     virtual void GeneratePrimaries(G4Event *anEvent);
 
-    /**
-     * Apply Lorentz transformation to event.  The lorentz transformation
-     * is retrieved from the singleton EventSourceManager.
-     * @param[in] anEvent The current Geant4 event.
-     */
-    void applyLorentzTransformation(G4Event *anEvent);
-
-    /**
-     * Apply Z smearing to event.  The Z spread parameter is retrieved
-     * from the singleton EventSourceManager.
-     * @param[in] anEvent The current Geant4 event.
-     */
-    void zsmear(G4Event* anEvent);
-
 private:
 
     /**
      * Begin the beginning of event message.
      */
     void printBeginEventMessage(G4Event* anEvent);
+
+private:
+
+    EventSourceManager* _manager;
 };
 }
 

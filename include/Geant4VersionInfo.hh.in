@@ -1,6 +1,10 @@
 #ifndef Geant4VersionInfo_hh
 #define Geant4VersionInfo_hh 1
 
+// LCDD
+#include "lcdd/util/StringUtil.hh"
+
+// STL
 #include <string>
 
 /**
@@ -9,23 +13,35 @@
   */
 class Geant4VersionInfo
 {
-    private:
+private:
     
-        /**
-         * Class constructor.
-         */
-        Geant4VersionInfo() {;}
+    /**
+     * Class constructor.
+     */
+    Geant4VersionInfo() {;}
 
-    public:
+public:
    
-        /** 
-         * Get the Geant4 version string in format "##.##.##" 
-         * or "[release].[version].[patch]".
-         * @return The Geant4 version string.
-         */
-        static std::string getFullVersion() {
-            return "@Geant4_VERSION@";
-        }
+    /** 
+     * Get the Geant4 version string in format "##.##.##" 
+     * or "[release].[version].[patch]".
+     * @return The Geant4 version string.
+     */
+    static std::string getVersion() {
+        return "@Geant4_VERSION@";
+    }
+        
+    /** 
+     * Get the Geant4 version string in format "##_##_##" 
+     * or "[release]_[version]_[patch]".
+     * @return The Geant4 version string.
+     */
+    static std::string getVersion(std::string& sep, int width = 2) {            
+        std::string version = StringUtil::pad(std::string("@Geant4_VERSION_MAJOR@"), width);
+        version += sep + StringUtil::pad(std::string("@Geant4_VERSION_MINOR@"), width);
+        version += sep + StringUtil::pad(std::string("@Geant4_VERSION_PATCH@"), width);
+        return version;
+    }               
 };
 
 #endif

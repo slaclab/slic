@@ -40,7 +40,7 @@ public:
     /**
      * Dump information on the current event to the log.
      */
-    void dumpCurrentEvent();
+    void printCurrentEvent();
 
     /**
      * Get the associated G4ParticleGun.

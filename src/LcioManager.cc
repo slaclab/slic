@@ -1,26 +1,25 @@
 // $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/LcioManager.cc,v 1.96 2013-11-06 00:23:37 jeremy Exp $
 #include "LcioManager.hh"
 
-// slic
+// SLIC
 #include "EventSourceManager.hh"
 #include "StdHepEventSource.hh"
 #include "FileUtil.hh"
 #include "TimeUtil.hh"
 #include "PackageInfo.hh"
 #include "LcioMessenger.hh"
-#include "LcioMcpManager.hh"
 #include "LcioFileNamer.hh"
-#include "TrajectoryManager.hh"
 #include "SlicApplication.hh"
 #include "RunManager.hh"
+#include "Geant4VersionInfo.hh"
 
-// lcdd
+// LCDD
 #include "lcdd/hits/CalorimeterHit.hh"
 #include "lcdd/hits/TrackerHit.hh"
 #include "lcdd/core/LCDDProcessor.hh"
 #include "lcdd/util/StringUtil.hh"
 
-// lcio
+// LCIO
 #include "EVENT/LCIO.h"
 #include "IMPL/LCCollectionVec.h"
 #include "IOIMPL/LCFactory.h"
@@ -28,7 +27,7 @@
 #include "UTIL/LCTOOLS.h"
 #include "UTIL/lStdHep.hh"
 
-// geant4
+// Geant4
 #include "G4EventManager.hh"
 #include "G4Run.hh"
 #include "G4RunManager.hh"
@@ -36,7 +35,7 @@
 #include "G4VHitsCollection.hh"
 #include "G4SDManager.hh"
 
-// std
+// STL
 #include <ctime>
 
 using IMPL::LCRunHeaderImpl;
@@ -51,20 +50,13 @@ using std::string;
 
 namespace slic {
 
-string LcioManager::m_defaultFileName = "outfile";
+string LcioManager::m_defaultFileName = "slicEvents";
 
 LcioManager::LcioManager() :
-		Module("LcioManager"), m_McpFinalColl(0), m_writer(0), m_runHdr(0), m_fileExistsAction(
-				LcioManager::eFail), m_runNumber(0), m_enableDumpEvent(false), m_writerIsOpen(false), m_usingAutoname(
-				false) {
+		Module("LcioManager"), m_writer(0), m_runHdr(0), m_fileExistsAction(LcioManager::eFail),
+		m_runNumber(0), m_enableDumpEvent(false), m_writerIsOpen(false), m_usingAutoname(false) {
 	// Initialize the Geant4 UI messenger for the LCIO.
 	m_messenger = new LcioMessenger(this);
-
-	// Initialize the LCIO-based event generator.
-	m_eventGenerator = new LcioPrimaryGenerator(this);
-
-	// Initialize the LCIO MCParticle manager.
-	m_mcpManager = LcioMcpManager::instance();
 
 	// Initialize the LCIO HitsCollectionBuilder.
 	m_HCBuilder = new LcioHitsCollectionBuilder();
@@ -80,12 +72,12 @@ LcioManager::LcioManager() :
 }
 
 LcioManager::~LcioManager() {
-	deleteWriter();
+
+    deleteWriter();
 
 	if (m_messenger != 0) {
 		delete m_messenger;
 	}
-
 }
 
 void LcioManager::openLcioFile() {
@@ -251,11 +243,10 @@ void LcioManager::createRunHeader(const G4Run*) {
 	m_runHdr = new LCRunHeaderImpl();
 
 	// Write SLIC version into run header.
-	m_runHdr->parameters().setValue("SLIC_VERSION", PackageInfo::getVersionString());
+	m_runHdr->parameters().setValue("SLIC_VERSION", PackageInfo::getVersion());
 
 	// Write Geant4 version into run header.
-	m_runHdr->parameters().setValue("GEANT4_VERSION",
-			SlicApplication::instance()->getGeant4VersionString().replace(0, 7, ""));
+	m_runHdr->parameters().setValue("GEANT4_VERSION", Geant4VersionInfo::getVersion());
 
 	// set run number
 	m_runHdr->setRunNumber(m_runNumber);
@@ -329,43 +320,42 @@ void LcioManager::makeAutoname() {
 	}
 }
 
-const string& LcioManager::getPath() const {
-	return m_path;
-}
-
-const string& LcioManager::getFilename() const {
-	return m_filename;
-}
-
 LCEventImpl* LcioManager::createLCEvent(const G4Event* anEvent) {
-	assert( anEvent);
 
+	/* Create the LCEvent and set basic parameters. */
 	LCEventImpl* lcevt = new LCEventImpl();
 	lcevt->setEventNumber(anEvent->GetEventID());
 	lcevt->setRunNumber(m_runHdr->getRunNumber());
 	lcevt->setDetectorName(m_runHdr->getDetectorName());
 
-	// Set the event weight and idrup from the StdHep file.
-	EventSourceManager* genMgr = EventSourceManager::instance();
-	if (genMgr->getCurrentSourceType() == EventSourceManager::eStdHep) {
-		lStdHep* stdhep = ((StdHepEventSource*) (genMgr->getCurrentSource()))->getStdHepReader();
-		if (stdhep->isStdHepEv4()) {
-			lcevt->parameters().setValue("_weight", (float) stdhep->eventweight());
-			lcevt->parameters().setValue("idrup", (int) stdhep->idrup());
-		}
-	} else {
-		lcevt->parameters().setValue("_weight", (float) 1.0);
-		lcevt->parameters().setValue("idrup", (float) 0.0);
-	}
+	/* Get the current MCParticle collection. */
+    LCCollection* mcpColl = MCParticleManager::instance()->getMCParticleCollection();
 
-	// Write Geant4 version into event header.
-	lcevt->parameters().setValue("GEANT4_VERSION",
-			SlicApplication::instance()->getGeant4VersionString().replace(0, 7, ""));
+    if (mcpColl != 0) {
 
-	// Write SLIC version into event header.
-	lcevt->parameters().setValue("SLIC_VERSION", PackageInfo::getVersionString());
+        /* Set the event weight. */
+        float eventWeight = mcpColl->getParameters().getFloatVal("_weight");
+        if (eventWeight != 0.0) {
+            lcevt->setWeight(eventWeight);
+        }
 
+        /* Set the idrup. */
+        int idrup = mcpColl->getParameters().getIntVal("_idrup");
+        //G4cout << "idrup = " << idrup << G4endl;
+        if (idrup != 0) {
+            lcevt->parameters().setValue("_idrup", idrup);
+        }
+    }
+
+    // Write SLIC version into event header.
+    lcevt->parameters().setValue("SLIC_VERSION", PackageInfo::getVersion());
+
+    // Write Geant4 version into event header.
+    lcevt->parameters().setValue("GEANT4_VERSION", Geant4VersionInfo::getVersion());
+
+	/* Set the current LCEvent. */
 	setCurrentLCEvent(lcevt);
+
 	return lcevt;
 }
 
@@ -374,43 +364,27 @@ LCEventImpl* LcioManager::createLCEvent() {
 }
 
 void LcioManager::endEvent(const G4Event*) {
-	if (!RunManager::instance()->isRunAborted()) {
 
-		// create LCEvent
-		createLCEvent();
+    // create HC in current LCEvent from current G4Event using builder
+    createHitsCollections();
 
-		// create Mcp coll in LcioMcpManager
-		m_mcpManager->endEvent(G4EventManager::GetEventManager()->GetNonconstCurrentEvent());
+    // Dump event stats.
+    if (m_enableDumpEvent) {
+        LCTOOLS::dumpEventDetailed(m_currentLCEvent);
+    }
 
-		// create mcp collection from input event
-		createFinalMcpCollection();
+    // set timestamp
+    setEventTimeStamp();
 
-		// If selected, add the initial MCParticle collection to the event.
-		if (LcioMcpManager::instance()->writeInitialMCParticleCollection()) {
-			addInitialMCParticleCollection();
-		}
+    // write event
+    m_writer->writeEvent(m_currentLCEvent);
 
-		// create HC in current LCEvent from current G4Event using builder
-		createHitsCollections();
+    // flush writer
+    m_writer->flush();
 
-		// Dump event stats.
-		if (m_enableDumpEvent) {
-			LCTOOLS::dumpEventDetailed(m_currentLCEvent);
-			//LCTOOLS::printMCParticles( LcioMcpManager::instance()->getFinalMcpCollection() );
-		}
-
-		// set timestamp
-		setEventTimeStamp();
-
-		// write event
-		m_writer->writeEvent(m_currentLCEvent);
-
-		// flush writer
-		m_writer->flush();
-
-		// delete event's transient objects, including current LCEvent
-		reset();
-	}
+    // delete event's transient objects, including current LCEvent
+    delete m_currentLCEvent;
+    m_currentLCEvent = 0;
 }
 
 void LcioManager::setEventTimeStamp() {
@@ -419,20 +393,6 @@ void LcioManager::setEventTimeStamp() {
 
 void LcioManager::createHitsCollections() {
 	m_HCBuilder->createHitCollectionsFromEvent(G4EventManager::GetEventManager()->GetNonconstCurrentEvent(), m_currentLCEvent);
-}
-
-void LcioManager::reset() {
-	// delete transient event container
-	delete m_currentLCEvent;
-	m_currentLCEvent = 0;
-
-	// reset mcp mgr, including clearing maps
-	m_mcpManager->reset();
-}
-
-void LcioManager::createFinalMcpCollection() {
-	// add Mcp coll to current event
-	getCurrentLCEvent()->addCollection(m_mcpManager->getFinalMcpCollection(), LCIO::MCPARTICLE);
 }
 
 void LcioManager::addCollection(EVENT::LCEvent* event, EVENT::LCCollection* collection,
@@ -444,8 +404,4 @@ void LcioManager::addCollection(EVENT::LCCollection* collection, const std::stri
 	getCurrentLCEvent()->addCollection(collection, collectionName);
 }
 
-void LcioManager::addInitialMCParticleCollection() {
-	const std::string& name = std::string(LCIO::MCPARTICLE) + std::string("Initial");
-	addCollection(LcioMcpManager::instance()->getInitialMcpCollection(), name);
-}
 }

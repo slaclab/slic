@@ -1,7 +1,7 @@
 // $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/CommandLineOption.hh,v 1.3 2013-11-06 00:23:35 jeremy Exp $
 
-#ifndef SLIC_COMMANDLINEOPTION_HH
-#define SLIC_COMMANDLINEOPTION_HH
+#ifndef slic_CommandLineOption_hh_
+#define slic_CommandLineOption_hh_ 1
 
 // STL
 #include <map>

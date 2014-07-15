@@ -19,6 +19,7 @@
 #include "G4UnitsTable.hh"
 
 namespace slic {
+
 /**
  * @class EventSourceManager
  * @brief This singleton is responsible for managing physics event sources.
@@ -36,8 +37,14 @@ public:
 
 public:
 
+    /**
+     * Class destructor.
+     */
     virtual ~EventSourceManager();
 
+    /**
+     * Class constructor.
+     */
     EventSourceManager();
 
 public:
@@ -274,61 +281,69 @@ public:
      */
     void setZSmearing(const G4double zSmear) {
         m_zSmearingParam = zSmear;
-        G4cout << "Set m_zSmearingParam = " << m_zSmearingParam << G4endl;}
+        G4cout << "Set m_zSmearingParam = " << m_zSmearingParam << G4endl;
+    }
 
-        /**
-         * Get the Z smearing parameter.
-         * @return The Z smearing parameter.
-         */
-        G4double getZSmearing() {
-            return m_zSmearingParam;
-        }
+    /**
+     * Get the Z smearing parameter.
+     * @return The Z smearing parameter.
+     */
+    G4double getZSmearing() {
+        return m_zSmearingParam;
+    }
 
-    public:
+    void enablePrintEvent(G4bool enablePrintEvent) {
+        _enablePrintEvent = enablePrintEvent;
+    }
 
-        virtual void GeneratePrimaryVertex(G4Event* evt);
+public:
 
-    private:
+    void generateNextEvent(G4Event* evt);
 
-        // generator messenger
-                GeneratorMessenger* m_messenger;
+private:
 
-                // current event source
-                EventSource* m_currentEventSource;
+    // generator messenger
+    GeneratorMessenger* m_messenger;
 
-                // ParticleGun source.  Always enabled.
-                EventSource* m_particleGunSource;
+    // current event source
+    EventSource* m_currentEventSource;
 
-                // filename
-                std::string m_filename;
-                bool m_fileIsSet;
-                bool m_newFilename;
+    // ParticleGun source.  Always enabled.
+    EventSource* m_particleGunSource;
 
-                // num events generated on current generator
-                int m_ngen;
+    // filename
+    std::string m_filename;
+    bool m_fileIsSet;
+    bool m_newFilename;
 
-                // num events to skip
-                unsigned int m_nskip;
+    // num events generated on current generator
+    int m_ngen;
 
-                // need to setup a new source new run?
-                bool m_newSource;
+    // num events to skip
+    unsigned int m_nskip;
 
-                // gen strings
-                static std::string m_stdhepStr;
-                static std::string m_lcioStr;
-                static std::string m_gpsStr;
-                static std::string m_gunStr;
-                static std::string m_unknownStr;
+    // need to setup a new source new run?
+    bool m_newSource;
 
-                // source type
-                ESourceType m_sourceType;
+    // gen strings
+    static std::string STDHEP;
+    static std::string LCIO;
+    static std::string GPS;
+    static std::string PARTICLE_GUN;
+    static std::string UNKNOWN;
 
-                // Lorentz transformation angle which will be applied to event.
-                G4double m_lorentzTransformationAngle;
+    // source type
+    ESourceType m_sourceType;
 
-                // Parameter which will be used to smear vertex Z position.
-                G4double m_zSmearingParam;
-            };
-        }
+    // Lorentz transformation angle which will be applied to event.
+    G4double m_lorentzTransformationAngle;
+
+    // Parameter which will be used to smear vertex Z position.
+    G4double m_zSmearingParam;
+
+    G4bool _enablePrintEvent;
+
+};
+}
 
 #endif
