@@ -68,6 +68,10 @@ void LCExtendedParticles::ConstructParticle() {
 }
 
 void LCExtendedParticles::ConstructProcess() {
+
+#if ( G4VERSION_NUMBER < 960 )
+	G4ParticleTable::G4PTblDicIterator* aParticleIterator = G4ParticleTable::GetParticleTable()->GetIterator();
+#endif
 	aParticleIterator->reset();
 	while ((*aParticleIterator)()) {
 		G4ParticleDefinition* pdef = aParticleIterator->value();
