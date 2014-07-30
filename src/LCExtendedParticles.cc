@@ -1,10 +1,13 @@
 #include "LCExtendedParticles.hh"
 
-// slic
+// SLIC
 #include "HepPDTManager.hh"
 
-// geant4
+// Geant4
+#include "G4Version.hh"
+#include "G4ParticleTable.hh"
 #include "G4ProcessManager.hh"
+#include "G4ParticleDefinition.hh"
 #include "G4SystemOfUnits.hh"
 
 namespace slic {
@@ -31,7 +34,7 @@ void LCExtendedParticles::ConstructParticle() {
 		// Check for a built-in definition of this particle.
 		G4ParticleDefinition* pdef = G4ParticleTable::GetParticleTable()->FindParticle(pdata.pid());
 
-		// Add particles that Geant4 does not already know about.  
+		// Add particles that Geant4 does not already know about.
 		if (pdef == 0) {
 
 		    //std::cout << "constructing new particle: " << pdata.PDTname() << std::endl;

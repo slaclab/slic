@@ -10,8 +10,8 @@
 
 #include "LCOpticalPhysics.hh"
 
-// slic
-#include "Geant4VersionInfo.hh"
+// Geant4
+#include "G4Version.hh"
 
 LCOpticalPhysics::LCOpticalPhysics(const G4String& name) :
 		G4VPhysicsConstructor(name) {

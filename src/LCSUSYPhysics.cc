@@ -1,10 +1,11 @@
 #include "LCSUSYPhysics.hh"
 
-// slic
+// SLIC
 #include "HepPDTManager.hh"
 #include "LCSUSYDecay.hh"
 
-// geant4
+// Geant4
+#include "G4Version.hh"
 #include "G4ProcessManager.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4UnknownDecay.hh"
