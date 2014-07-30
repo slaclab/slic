@@ -1,5 +1,5 @@
-#ifndef SLIC_HEPPDTMANAGER_HH 
-#define SLIC_HEPPDTMANAGER_HH 1
+#ifndef SLIC_HEPPDTMANAGER_HH_
+#define SLIC_HEPPDTMANAGER_HH_ 1
 
 // HepPDT
 #include "HepPDT/TableBuilder.hh"

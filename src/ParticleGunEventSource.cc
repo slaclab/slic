@@ -1,4 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/ParticleGunEventSource.cc,v 1.6 2012-11-27 19:32:19 jeremy Exp $
 #include "ParticleGunEventSource.hh"
 
 // geant4

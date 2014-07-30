@@ -1,7 +1,6 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/SteppingAction.cc,v 1.16 2013-07-01 21:01:31 jeremy Exp $
+#include "SteppingAction.hh"
 
 // SLIC
-#include "SteppingAction.hh"
 #include "UserTrackInformation.hh"
 #include "TrackUtil.hh"
 

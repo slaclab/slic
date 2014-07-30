@@ -1,5 +1,5 @@
-#ifndef SLIC_LCEXTENDEDDECAY_HH
-#define SLIC_LCEXTENDEDDECAY_HH 1
+#ifndef SLIC_LCEXTENDEDDECAY_HH_
+#define SLIC_LCEXTENDEDDECAY_HH_ 1
 
 #include "G4UnknownDecay.hh"
 

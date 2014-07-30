@@ -1,4 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/SlicApplicationMessenger.cc,v 1.2 2012-11-27 19:32:19 jeremy Exp $
 #include "SlicApplicationMessenger.hh"
 
 // slic

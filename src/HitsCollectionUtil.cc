@@ -1,4 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/HitsCollectionUtil.cc,v 1.7 2013-07-01 21:01:31 jeremy Exp $
 #include "HitsCollectionUtil.hh"
 
 // LCDD

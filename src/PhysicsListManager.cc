@@ -1,4 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/PhysicsListManager.cc,v 1.29 2013-11-06 16:24:10 jeremy Exp $
 #include "PhysicsListManager.hh"
 
 // geant4

@@ -1,7 +1,6 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/GeneratorMessenger.cc,v 1.19 2013-06-26 01:57:02 jeremy Exp $
+#include "GeneratorMessenger.hh"
 
 // SLIC
-#include "GeneratorMessenger.hh"
 #include "EventSourceManager.hh"
 
 // LCDD

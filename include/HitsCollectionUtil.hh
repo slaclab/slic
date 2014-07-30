@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/HitsCollectionUtil.hh,v 1.11 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_HITSCOLLECTIONUTIL_HH
-#define SLIC_HITSCOLLECTIONUTIL_HH 1
+#ifndef SLIC_HITSCOLLECTIONUTIL_HH_
+#define SLIC_HITSCOLLECTIONUTIL_HH_ 1
 
 // std
 #include <vector>

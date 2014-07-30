@@ -1,7 +1,6 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/EventAction.cc,v 1.32 2013-06-26 01:57:02 jeremy Exp $
+#include "EventAction.hh"
 
 // LCDD
-#include "EventAction.hh"
 #include "lcdd/util/StringUtil.hh"
 
 // SLIC
@@ -10,7 +9,6 @@
 #include "LcioManager.hh"
 #include "MCParticleManager.hh"
 #include "RunManager.hh"
-//#include "SlicApplication.hh"
 #include "TrackManager.hh"
 
 // Geant4

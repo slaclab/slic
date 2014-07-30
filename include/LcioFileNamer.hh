@@ -1,15 +1,13 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/LcioFileNamer.hh,v 1.11 2013-11-06 00:23:35 jeremy Exp $
+#ifndef SLIC_LCIOFILENAMER_HH_
+#define SLIC_LCIOFILENAMER_HH_ 1
 
-#ifndef SLIC_LCIOFILENAMER_HH
-#define SLIC_LCIOFILENAMER_HH 1
-
-// slic
+// SLIC
 #include "Module.hh"
 
-// geant4
+// Geant4
 #include "G4ThreeVector.hh"
 
-// std
+// STL
 #include <string>
 #include <vector>
 

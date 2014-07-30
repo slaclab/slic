@@ -1,4 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/LcioManager.cc,v 1.96 2013-11-06 00:23:37 jeremy Exp $
 #include "LcioManager.hh"
 
 // SLIC

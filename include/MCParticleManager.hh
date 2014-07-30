@@ -1,5 +1,5 @@
-#ifndef slic_MCParticleManager_hh_
-#define slic_MCParticleManager_hh_ 1
+#ifndef SLIC_MCPARTICLE_MANAGER_HH_
+#define SLIC_MCPARTICLE_MANAGER_HH_ 1
 
 // SLIC
 #include "Module.hh"
@@ -37,6 +37,7 @@ typedef set<MCParticle*> MCParticleSet;
 
 /**
  * @class MCParticleManager
+ * @brief Management of global MCParticle information
  *
  * @note
  * This class is responsible for management of MCParticle information

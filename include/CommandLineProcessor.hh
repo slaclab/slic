@@ -1,6 +1,5 @@
-// $id: $
-#ifndef slic_CommandLineProcessor_hh_
-#define slic_CommandLineProcessor_hh_ 1
+#ifndef SLIC_COMMANDLINEPROCESSOR_HH_
+#define SLIC_COMMANDLINEPROCESSOR_HH_ 1
 
 // STL
 #include <string>

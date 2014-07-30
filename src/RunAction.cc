@@ -1,10 +1,6 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/RunAction.cc,v 1.23 2013-06-26 01:57:02 jeremy Exp $
-
 // SLIC
-//#include "LcioManager.hh"
 #include "EventSourceManager.hh"
 #include "LcioManager.hh"
-//#include "EventDebugger.hh"
 #include "TrackManager.hh"
 
 // LCDD
@@ -41,9 +37,6 @@ void RunAction::BeginOfRunAction(const G4Run *aRun) {
 
 	// Execute GeometryManager's beginRun action.
 	GeometryManager::instance()->beginRun(aRun);
-
-	// Execute EventDebugger's beginRun action.
-	//EventDebugger::instance()->beginRun( aRun );
 }
 
 void RunAction::EndOfRunAction(const G4Run *run) {

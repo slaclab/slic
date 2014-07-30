@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/LcioMessenger.hh,v 1.23 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_LCIOMESSENGER_HH
-#define SLIC_LCIOMESSENGER_HH 1
+#ifndef SLIC_LCIOMESSENGER_HH_
+#define SLIC_LCIOMESSENGER_HH_ 1
 
 // Geant4
 #include "G4UImessenger.hh"

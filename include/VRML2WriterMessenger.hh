@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/VRML2WriterMessenger.hh,v 1.3 2013-11-06 00:23:36 jeremy Exp $
-
-#ifndef SLIC_VRML2WRITERMESSENGER_HH
-#define SLIC_VRML2WRITERMESSENGER_HH 1
+#ifndef SLIC_VRML2WRITERMESSENGER_HH_
+#define SLIC_VRML2WRITERMESSENGER_HH_ 1
 
 #include "G4UImessenger.hh"
 

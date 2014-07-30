@@ -1,5 +1,3 @@
-// $Id: SlicMain.cc,v 1.7 2012-11-28 01:40:48 jeremy Exp $
-
 #include "SlicMain.hh"
 
 // slic

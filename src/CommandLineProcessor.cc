@@ -2,7 +2,7 @@
 
 #include "CommandLineProcessor.hh"
 
-// slic
+// SLIC
 #include "PackageInfo.hh"
 #include "CommandQueue.hh"
 #include "CommandLineOption.hh"
@@ -10,7 +10,7 @@
 // getopt
 #include "getopt.h"
 
-// stl
+// STL
 #include <sstream>
 #include <cassert>
 

@@ -1,7 +1,6 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/G4MagIntegratorStepperFactory.cc,v 1.8 2012-11-27 19:32:19 jeremy Exp $
 #include "G4MagIntegratorStepperFactory.hh"
 
-// G4
+// Geant4
 #include "G4SystemOfUnits.hh"
 #include "G4Mag_UsualEqRhs.hh"
 #include "G4ChordFinder.hh"
@@ -13,7 +12,6 @@
 #include "G4HelixImplicitEuler.hh"
 #include "G4HelixSimpleRunge.hh"
 #include "G4ImplicitEuler.hh"
-//#include "G4RKG3_Stepper.hh"
 #include "G4SimpleHeum.hh"
 #include "G4SimpleRunge.hh"
 #include "G4CashKarpRKF45.hh"

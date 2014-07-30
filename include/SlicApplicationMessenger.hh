@@ -1,9 +1,7 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/SlicApplicationMessenger.hh,v 1.3 2013-11-06 00:23:35 jeremy Exp $
+#ifndef SLIC_SLICAPPLICATIONMESSENGER_HH_
+#define SLIC_SLICAPPLICATIONMESSENGER_HH_ 1
 
-#ifndef SLIC_SLICAPPLICATIONMESSENGER_HH
-#define SLIC_SLICAPPLICATIONMESSENGER_HH 1
-
-// geant4
+// Geant4
 #include "G4UImessenger.hh"
 #include "G4UIdirectory.hh"
 #include "G4UIcommand.hh"

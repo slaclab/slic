@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/LcioManager.hh,v 1.62 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_LCIOMANAGER_HH
-#define SLIC_LCIOMANAGER_HH 1
+#ifndef SLIC_LCIOMANAGER_HH_
+#define SLIC_LCIOMANAGER_HH_ 1
 
 // lcdd
 #include "lcdd/detectors/SensitiveDetector.hh"

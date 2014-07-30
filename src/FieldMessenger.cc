@@ -1,11 +1,10 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/FieldMessenger.cc,v 1.9 2012-11-27 19:32:19 jeremy Exp $
 #include "FieldMessenger.hh"
 
-// slic
+// SLIC
 #include "FieldManager.hh"
 #include "G4MagIntegratorStepperFactory.hh"
 
-// geant4
+// Geant4
 #include "G4UIcmdWithADoubleAndUnit.hh"
 #include "G4FieldManager.hh"
 #include "G4UIcommand.hh"

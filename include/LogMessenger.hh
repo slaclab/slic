@@ -1,8 +1,7 @@
-// $Id: LogMessenger.hh,v 1.12 2013-11-06 00:23:35 jeremy Exp $
-#ifndef LOG_MESSENGER_HH
-#define LOG_MESSENGER_HH 1
+#ifndef SLIC_LOG_MESSENGER_HH_
+#define SLIC_LOG_MESSENGER_HH_ 1
 
-// geant4
+// Geant4
 #include "G4UImessenger.hh"
 
 class G4UIdirectory;
@@ -10,6 +9,7 @@ class G4UIcmdWithAnInteger;
 class G4UIcmdWithAString;
 
 namespace slic {
+
 class LogStream;
 
 /**

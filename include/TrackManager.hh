@@ -1,5 +1,5 @@
-#ifndef slic_TrackManager_hh_
-#define slic_TrackManager_hh_ 1
+#ifndef SLIC_TRACKMANAGER_HH_
+#define SLIC_TRACKMANAGER_HH_ 1
 
 // SLIC
 #include "Module.hh"

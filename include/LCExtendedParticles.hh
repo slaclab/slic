@@ -1,10 +1,10 @@
-#ifndef SLIC_LCEXTENDEDPARTICLES_HH
-#define SLIC_LCEXTENDEDPARTICLES_HH
+#ifndef SLIC_LCEXTENDEDPARTICLES_HH_
+#define SLIC_LCEXTENDEDPARTICLES_HH_ 1
 
-// slic
+// SLIC
 #include "LCExtendedDecay.hh"
 
-// geant4
+// Geant4
 #include "G4VPhysicsConstructor.hh"
 #include "G4Decay.hh"
 #include "G4hIonisation.hh"

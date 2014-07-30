@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/PhysicsListManager.hh,v 1.24 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_PHYSICSLISTMANAGER_HH
-#define SLIC_PHYSICSLISTMANAGER_HH 1
+#ifndef SLIC_PHYSICSLISTMANAGER_HH_
+#define SLIC_PHYSICSLISTMANAGER_HH_ 1
 
 // lcdd
 #include "Module.hh"

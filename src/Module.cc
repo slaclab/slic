@@ -1,10 +1,9 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/Module.cc,v 1.9 2013-06-26 01:57:02 jeremy Exp $
-
 // SLIC
 #include "Module.hh"
 #include "ModuleRegistry.hh"
 
 namespace slic {
+
 Module::Module(const std::string& name, bool deleteOnExit, bool autoRegister) :
 		m_deleteOnExit(deleteOnExit) {
 	m_name = name;

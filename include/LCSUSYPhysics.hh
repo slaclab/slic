@@ -1,11 +1,11 @@
-#ifndef SLIC_LCSUSYPHYSICS_H 
-#define SLIC_LCSUSYPHYSICS_H 1
+#ifndef SLIC_LCSUSYPHYSICS_HH_
+#define SLIC_LCSUSYPHYSICS_HH_ 1
 
-// slic
+// SLIC
 #include "Module.hh"
 #include "LCSUSYDecay.hh"
 
-// geant4
+// Geant4
 #include "G4VPhysicsConstructor.hh"
 #include "G4ProcessManager.hh"
 #include "G4hIonisation.hh"

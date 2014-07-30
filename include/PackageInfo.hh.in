@@ -1,6 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/PackageInfo.hh.in,v 1.8 2013-11-06 00:23:35 jeremy Exp $
-#ifndef SLIC_PACKAGE_INFO_HH
-#define SLIC_PACKAGE_INFO_HH 1
+#ifndef SLIC_PACKAGE_INFO_HH_
+#define SLIC_PACKAGE_INFO_HH_ 1
 
 #include "lcdd/util/StringUtil.hh"
 

@@ -1,11 +1,6 @@
-/*
- * StackingAction.cc
- *
- *  Created on: Jun 26, 2014
- *      Author: jeremym
- */
-
 #include "StackingAction.hh"
+
+// Geant4
 #include "G4Track.hh"
 #include "G4DecayProducts.hh"
 #include "G4ios.hh"

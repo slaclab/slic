@@ -1,5 +1,5 @@
-#ifndef slic_TrackSummary_hh
-#define slic_TrackSummary_hh 1
+#ifndef SLIC_TRACKSUMMARY_HH_
+#define SLIC_TRACKSUMMARY_HH_ 1
 
 // LCIO
 #include "lcio.h"

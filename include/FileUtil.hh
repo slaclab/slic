@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/FileUtil.hh,v 1.12 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_FILEUTIL_HH
-#define SLIC_FILEUTIL_HH 1
+#ifndef SLIC_FILEUTIL_HH_
+#define SLIC_FILEUTIL_HH_ 1
 
 // STL
 #include <string>

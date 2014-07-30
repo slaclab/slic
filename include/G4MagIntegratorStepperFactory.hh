@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/G4MagIntegratorStepperFactory.hh,v 1.7 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_G4MAGINTEGRATORSTEPPERFACTORY_HH
-#define SLIC_G4MAGINTEGRATORSTEPPERFACTORY_HH 1
+#ifndef SLIC_G4MAGINTEGRATORSTEPPERFACTORY_HH_
+#define SLIC_G4MAGINTEGRATORSTEPPERFACTORY_HH_ 1
 
 // std
 #include <string>

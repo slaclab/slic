@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/ParticleGunEventSource.hh,v 1.9 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_PARTICLEGUNEVENTSOURCE_HH
-#define SLIC_PARTICLEGUNEVENTSOURCE_HH 1
+#ifndef SLIC_PARTICLEGUNEVENTSOURCE_HH_
+#define SLIC_PARTICLEGUNEVENTSOURCE_HH_ 1
 
 // slic
 #include "EventSource.hh"

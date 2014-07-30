@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/EventAction.hh,v 1.14 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_EVENTACTION_HH
-#define SLIC_EVENTACTION_HH 1
+#ifndef SLIC_EVENTACTION_HH_
+#define SLIC_EVENTACTION_HH_ 1
 
 // SLIC
 #include "Module.hh"

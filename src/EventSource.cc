@@ -1,7 +1,6 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/EventSource.cc,v 1.8 2012-11-27 19:32:19 jeremy Exp $
 #include "EventSource.hh"
 
-// geant4
+// Geant4
 #include "G4Run.hh"
 #include "G4Event.hh"
 

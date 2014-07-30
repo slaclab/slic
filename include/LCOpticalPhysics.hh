@@ -1,15 +1,5 @@
-//
-////////////////////////////////////////////////////////////////
-//                                                            //
-//  Title:  Optical physics for a Linear Collider Detector      //
-//  Date:                                         //
-//  Author:                                 //
-//                                                            //
-////////////////////////////////////////////////////////////////
-//
-
-#ifndef LCOpticalPhysics_hh
-#define LCOpticalPhysics_hh 1
+#ifndef SLIC_LCOPTICALPHYSICS_HH_
+#define SLIC_LCOPTICALPHYSICS_HH_ 1
 
 // Geant4
 #include "G4VPhysicsConstructor.hh"

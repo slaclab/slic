@@ -1,6 +1,5 @@
-// $Id: SlicMain.hh,v 1.3 2013-11-06 00:23:35 jeremy Exp $
-#ifndef SLIC_SLICMAIN_HH
-#define SLIC_SLICMAIN_HH 1
+#ifndef SLIC_SLICMAIN_HH_
+#define SLIC_SLICMAIN_HH_ 1
 
 #include "Module.hh"
 

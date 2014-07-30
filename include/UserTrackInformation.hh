@@ -1,5 +1,5 @@
-#ifndef slic_UserTrackInformation_hh_
-#define slic_UserTrackInformation_hh_ 1
+#ifndef SLIC_USERTRACKINFORMATION_HH_
+#define SLIC_USERTRACKINFORMATION_HH_ 1
 
 // LCDD
 #include "lcdd/geant4/VUserTrackInformation.hh"

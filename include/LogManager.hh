@@ -1,5 +1,5 @@
-#ifndef SLIC_LOGMANAGER_HH
-#define SLIC_LOGMANAGER_HH 1
+#ifndef SLIC_LOGMANAGER_HH_
+#define SLIC_LOGMANAGER_HH_ 1
 
 // SLIC
 #include "LogStream.hh"

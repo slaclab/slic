@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/SteppingAction.hh,v 1.17 2013-11-06 00:23:36 jeremy Exp $
-
-#ifndef SLIC_STEPPINGACTION_HH
-#define SLIC_STEPPINGACTION_HH 1
+#ifndef SLIC_STEPPINGACTION_HH_
+#define SLIC_STEPPINGACTION_HH_ 1
 
 // SLIC
 #include "Module.hh"

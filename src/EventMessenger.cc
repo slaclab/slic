@@ -1,10 +1,9 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/EventMessenger.cc,v 1.5 2012-11-27 19:32:19 jeremy Exp $
 #include "EventMessenger.hh"
 
-// slic
+// SLIC
 #include "EventAction.hh"
 
-// geant4
+// Geant4
 #include "G4UIcmdWithABool.hh"
 
 namespace slic {

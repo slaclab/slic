@@ -1,8 +1,6 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/CommandQueue.cc,v 1.5 2013-11-06 00:23:36 jeremy Exp $
-
 #include "CommandQueue.hh"
 
-// geant4
+// Geant4
 #include "G4UImanager.hh"
 
 namespace slic {

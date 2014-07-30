@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/StdHepEventSource.hh,v 1.11 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_STDHEPEVENTSOURCE_HH
-#define SLIC_STDHEPEVENTSOURCE_HH 1
+#ifndef SLIC_STDHEPEVENTSOURCE_HH_
+#define SLIC_STDHEPEVENTSOURCE_HH_ 1
 
 // SLIC
 #include "EventSourceWithInputFile.hh"

@@ -1,5 +1,5 @@
-#ifndef slic_MCParticleGenerator_hh_
-#define slic_MCParticleGenerator_hh_ 1
+#ifndef SLIC_MCPARTICLEGENERATOR_HH_
+#define SLIC_MCPARTICLEGENERATOR_HH_ 1
 
 // LCIO
 #include "EVENT/LCEvent.h"
@@ -25,7 +25,7 @@ namespace slic {
 class MCParticleManager;
 
 /**
- * @class MCParticle
+ * @class MCParticleGenerator
  * @brief Converts from MCParticle collection into a G4Event
  */
 class MCParticleGenerator {

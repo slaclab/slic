@@ -1,11 +1,9 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/VRML2WriterMessenger.cc,v 1.2 2012-11-27 19:32:19 jeremy Exp $
-
 #include "VRML2WriterMessenger.hh"
 
-// slic
+// SLIC
 #include "VRML2Writer.hh"
 
-// geant4
+// Geant4
 #include "G4UIcommand.hh"
 #include "G4UIdirectory.hh"
 #include "G4UIcmdWithAString.hh"

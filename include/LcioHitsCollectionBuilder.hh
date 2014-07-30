@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/LcioHitsCollectionBuilder.hh,v 1.13 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_LCIOHITSCOLLECTIONBUILDER_HH
-#define SLIC_LCIOHITSCOLLECTIONBUILDER_HH
+#ifndef SLIC_LCIOHITSCOLLECTIONBUILDER_HH_
+#define SLIC_LCIOHITSCOLLECTIONBUILDER_HH_ 1
 
 // SLIC
 #include "Module.hh"
@@ -19,7 +17,7 @@
 #include "IMPL/SimCalorimeterHitImpl.h"
 #include "IMPL/SimTrackerHitImpl.h"
 
-// geant4
+// Geant4
 #include "G4Event.hh"
 
 namespace slic {

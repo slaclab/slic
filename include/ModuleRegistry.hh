@@ -1,4 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/ModuleRegistry.hh,v 1.8 2013-11-06 00:23:35 jeremy Exp $
+#ifndef SLIC_MODULEREGISTRY_HH_
+#define SLIC_MODULEREGISTRY_HH_ 1
 
 // std
 #include <map>
@@ -76,3 +77,5 @@ private:
     ModuleMap m_modules;
 };
 }
+
+#endif

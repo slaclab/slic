@@ -1,13 +1,10 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/EventSourceManager.cc,v 1.26 2013-06-26 01:57:02 jeremy Exp $
 #include "EventSourceManager.hh"
 
 // SLIC
 #include "FileUtil.hh"
-
 #include "EventAction.hh"
 #include "RunManager.hh"
 #include "SlicApplication.hh"
-
 #include "GPSEventSource.hh"
 #include "LcioEventSource.hh"
 #include "ParticleGunEventSource.hh"

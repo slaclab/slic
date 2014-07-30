@@ -1,8 +1,7 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/TrackingAction.hh,v 1.10 2013-11-06 00:23:36 jeremy Exp $
-#ifndef SLIC_TRACKINGACTION_HH
-#define SLIC_TRACKINGACTION_HH 1
+#ifndef SLIC_TRACKINGACTION_HH_
+#define SLIC_TRACKINGACTION_HH_ 1
 
-// geant4
+// Geant4
 #include "G4UserTrackingAction.hh"
 #include "G4TrackingManager.hh"
 

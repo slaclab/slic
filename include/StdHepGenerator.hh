@@ -1,5 +1,5 @@
-#ifndef slic_StdhepGenerator_hh_
-#define slic_StdhepGenerator_hh_ 1
+#ifndef SLIC_STDHEPGENERATOR_HH_
+#define SLIC_STDHEPGENERATOR_HH_ 1
 
 // SLIC
 #include "MCParticleManager.hh"

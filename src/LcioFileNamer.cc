@@ -1,5 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/LcioFileNamer.cc,v 1.24 2013-11-06 00:23:37 jeremy Exp $
-
 // SLIC
 #include "LcioFileNamer.hh"
 #include "EventSourceManager.hh"

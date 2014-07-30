@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/GeneratorMessenger.hh,v 1.12 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_GENERATORMESSENGER_HH
-#define SLIC_GENERATORMESSENGER_HH 1
+#ifndef SLIC_GENERATORMESSENGER_HH_
+#define SLIC_GENERATORMESSENGER_HH_ 1
 
 // geant4
 #include "G4UImessenger.hh"

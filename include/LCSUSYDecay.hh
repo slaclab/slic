@@ -1,6 +1,7 @@
 #ifndef SLIC_LCSUSYDECAY_HH
 #define SLIC_LCSUSYDECAY_HH 1
 
+// Geant4
 #include "G4UnknownDecay.hh"
 
 namespace slic {

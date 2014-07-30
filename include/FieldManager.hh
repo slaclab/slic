@@ -1,7 +1,5 @@
-// $Id: FieldManager.hh,v 1.4 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_FIELDMANAGER_HH
-#define SLIC_FIELDMANAGER_HH 1
+#ifndef SLIC_FIELDMANAGER_HH_
+#define SLIC_FIELDMANAGER_HH_ 1
 
 // SLIC
 #include "Module.hh"

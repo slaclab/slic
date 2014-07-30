@@ -1,7 +1,6 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/FileUtil.cc,v 1.14 2012-11-27 19:32:19 jeremy Exp $
 #include "FileUtil.hh"
 
-// std
+// STL
 #include <iostream>
 #include <stdio.h>
 #include <fstream>

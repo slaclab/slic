@@ -1,5 +1,5 @@
-#ifndef SLIC_VRML2WRITER_HH
-#define SLIC_VRML2WRITER_HH 1
+#ifndef SLIC_VRML2WRITER_HH_
+#define SLIC_VRML2WRITER_HH_ 1
 
 #include <fstream>
 #include <iostream>

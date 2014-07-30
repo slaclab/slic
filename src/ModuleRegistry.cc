@@ -1,4 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/ModuleRegistry.cc,v 1.7 2012-11-27 19:32:19 jeremy Exp $
 #include "ModuleRegistry.hh"
 
 // slic

@@ -1,5 +1,5 @@
-#ifndef Geant4VersionInfo_hh
-#define Geant4VersionInfo_hh 1
+#ifndef SLIC_GEANT4VERSIONINFO_HH_
+#define SLIC_GEANT4VERSIONINFO_HH_ 1
 
 // LCDD
 #include "lcdd/util/StringUtil.hh"

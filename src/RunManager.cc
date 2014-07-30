@@ -1,5 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/RunManager.cc,v 1.23 2013-06-26 01:57:02 jeremy Exp $
-
 // SLIC
 #include "RunManager.hh"
 #include "EventAction.hh"

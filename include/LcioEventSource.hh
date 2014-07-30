@@ -1,14 +1,12 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/LcioEventSource.hh,v 1.9 2012-11-27 19:32:17 jeremy Exp $
+#ifndef SLIC_LCIOEVENTSOURCE_HH_
+#define SLIC_LCIOEVENTSOURCE_HH_ 1
 
-#ifndef SLIC_LCIOEVENTSOURCE_HH
-#define SLIC_LCIOEVENTSOURCE_HH 1
-
-// slic
+// SLIC
 #include "EventSourceWithInputFile.hh"
 #include "MCParticleGenerator.hh"
 #include "LcioManager.hh"
 
-// lcio
+// LCIO
 #include "EVENT/LCEvent.h"
 #include "EVENT/LCCollection.h"
 #include "IOIMPL/LCFactory.h"

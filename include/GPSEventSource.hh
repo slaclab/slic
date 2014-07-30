@@ -1,12 +1,10 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/GPSEventSource.hh,v 1.10 2013-11-06 00:23:35 jeremy Exp $
+#ifndef SLIC_GPSEVENTSOURCE_HH_
+#define SLIC_GPSEVENTSOURCE_HH_ 1
 
-#ifndef SLIC_GPSEVENTSOURCE_HH
-#define SLIC_GPSEVENTSOURCE_HH 1
-
-// slic
+// SLIC
 #include "EventSource.hh"
 
-// geant4
+// Geant4
 #include "G4GeneralParticleSource.hh"
 
 namespace slic {

@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/EventSourceManager.hh,v 1.15 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_EVENTSOURCEMANAGER_HH
-#define SLIC_EVENTSOURCEMANAGER_HH 1
+#ifndef SLIC_EVENTSOURCEMANAGER_HH_
+#define SLIC_EVENTSOURCEMANAGER_HH_ 1
 
 // SLIC
 #include "Module.hh"

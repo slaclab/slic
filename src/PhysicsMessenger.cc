@@ -1,5 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/PhysicsMessenger.cc,v 1.27 2013-06-26 01:57:02 jeremy Exp $
-
 // SLIC
 #include "PhysicsMessenger.hh"
 #include "PhysicsListManager.hh"

@@ -1,7 +1,6 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/LcioHitsCollectionBuilder.cc,v 1.33 2013-11-06 00:23:37 jeremy Exp $
+#include "LcioHitsCollectionBuilder.hh"
 
 // SLIC
-#include "LcioHitsCollectionBuilder.hh"
 #include "HitsCollectionUtil.hh"
 #include "MCParticleManager.hh"
 #include "SlicApplication.hh"

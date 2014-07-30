@@ -1,4 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/TimeUtil.hh,v 1.12 2013-11-06 00:23:36 jeremy Exp $
 #ifndef SLIC_TIMEUTIL_HH
 #define SLIC_TIMEUTIL_HH 1
 
@@ -7,6 +6,8 @@
 #include <cstdio>
 #include <iostream>
 #include <string>
+
+namespace slic {
 
 /**
  * @class TimeUtil
@@ -50,5 +51,7 @@ public:
 	    return timeinfo;
 	}
 };
+
+} // namespace slic
 
 #endif

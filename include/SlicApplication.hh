@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/SlicApplication.hh,v 1.44 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_SLICAPPLICATION_HH
-#define SLIC_SLICAPPLICATION_HH 1
+#ifndef SLIC_SLICAPPLICATION_HH_
+#define SLIC_SLICAPPLICATION_HH_ 1
 
 // SLIC
 #include "Singleton.hh"

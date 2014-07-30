@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/EventMessenger.hh,v 1.8 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_EVENTMESSENGER_HH
-#define SLIC_EVENTMESSENGER_HH 1
+#ifndef SLIC_EVENTMESSENGER_HH_
+#define SLIC_EVENTMESSENGER_HH_ 1
 
 // Geant4
 #include "G4UImessenger.hh"

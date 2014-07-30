@@ -1,4 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/TrackingAction.cc,v 1.14 2012-11-27 19:32:19 jeremy Exp $
 #include "TrackingAction.hh"
 
 // LCDD

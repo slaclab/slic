@@ -1,7 +1,7 @@
 // $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/EventSourceWithInputFile.cc,v 1.10 2012-11-27 19:32:19 jeremy Exp $
 #include "EventSourceWithInputFile.hh"
 
-// slic
+// SLIC
 #include "EventSourceManager.hh"
 
 namespace slic {

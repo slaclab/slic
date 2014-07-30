@@ -1,5 +1,5 @@
-#ifndef slic_TrackUtil_hh_
-#define slic_TrackUtil_hh_ 1
+#ifndef SLIC_TRACKUTIL_HH_
+#define SLIC_TRACKUTIL_HH_ 1
 
 // LCDD
 #include "lcdd/geant4/UserRegionInformation.hh"

@@ -1,7 +1,5 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/include/Module.hh,v 1.13 2013-11-06 00:23:35 jeremy Exp $
-
-#ifndef SLIC_MODULE_HH
-#define SLIC_MODULE_HH 1
+#ifndef SLIC_MODULE_HH_
+#define SLIC_MODULE_HH_ 1
 
 // slic
 #include "LogManager.hh"

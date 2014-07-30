@@ -1,7 +1,7 @@
-#ifndef SLIC_LOGSTREAM_HH
-#define SLIC_LOGSTREAM_HH 1
+#ifndef SLIC_LOGSTREAM_HH_
+#define SLIC_LOGSTREAM_HH_ 1
 
-// SLIC
+// LCDD
 #include "TimeUtil.hh"
 
 // STL
@@ -42,20 +42,29 @@ static std::string levelNames[LOG::nlevels] = { "NONE", "ALWAYS", "FATAL", "ERRO
 namespace slic {
 
 /**
+ * @class LogStream
+ *
+ * @brief A class for streaming messages to a log
+ *
+ * @note
  * LogStream provides methods for logging messages at a certain level.  The
  * LogStream has a default level, and if a message's log level is greater
  * than the current log level, it is discarded.
  *
+ * @note
  * The stream operators are overloaded so that the LogStream can be used
  * similarly to std::cout.
  *
+ * @note
  * The manipulator LOG::done should be used to terminate a log message.
  *
+ * @note
  * Some of the code, particularly the handling of ios manipulators,
  * is based on Gaudi's
  * <a href="http://isscvs.cern.ch/cgi-bin/cvsweb.cgi/GaudiKernel/GaudiKernel/MsgStream.h?rev=1.41;content-type=text%2Fplain;cvsroot=Gaudi">MsgStream</a>
  * class.
  *
+ * @note
  * For more information on the STL IO library see
  * <a href="http://www.cplusplus.com/reference/iolibrary/">this reference page</a>.
  */

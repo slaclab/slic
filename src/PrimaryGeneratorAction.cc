@@ -1,5 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/PrimaryGeneratorAction.cc,v 1.38 2013-06-26 01:57:02 jeremy Exp $
-
 // SLIC
 #include "EventSourceManager.hh"
 #include "LcioManager.hh"

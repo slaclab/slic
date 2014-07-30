@@ -1,5 +1,3 @@
-// $Header: /nfs/slac/g/lcd/cvs/lcdroot/slic/src/SlicApplication.cc,v 1.61 2013-10-29 20:29:43 jeremy Exp $
-
 // SLIC
 #include "SlicApplication.hh"
 #include "CommandLineProcessor.hh"
