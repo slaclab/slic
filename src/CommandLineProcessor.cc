@@ -29,16 +29,30 @@ CommandLineProcessor::~CommandLineProcessor() {
 
 void CommandLineProcessor::process(int argc, char** argv) {
 	// Description of SLIC's options in getopt's format.
-	static struct option long_options[] = { { "help", no_argument, 0, 'h' }, { "help", no_argument, 0, '?' },
-			{ "version", no_argument, 0, 'v' }, { "interactive", no_argument, 0, 'n' }, { "macro",
-					required_argument, 0, 'm' }, { "event-file", required_argument, 0, 'i' }, { "lcdd-url",
-					required_argument, 0, 'g' }, { "lcio-file", required_argument, 0, 'o' }, { "lcio-path",
-					required_argument, 0, 'p' }, { "autoname", optional_argument, 0, 'O' }, { "lcio-delete",
-					no_argument, 0, 'x' }, { "run-events", required_argument, 0, 'r' }, { "skip-events",
-					required_argument, 0, 's' }, { "physics-list", required_argument, 0, 'l' }, { "log-file",
-					required_argument, 0, 'L' }, { "seed", required_argument, 0, 'd' }, { "dump-gdml",
-					required_argument, 0, 'G' }, { "optical", no_argument, 0, 'c' }, { "pdg-file",
-					required_argument, 0, 'P' }, { 0, 0, 0, 0 } };
+	static struct option long_options[] = {
+	        { "help", no_argument, 0, 'h' },
+	        { "help", no_argument, 0, '?' },
+			{ "version", no_argument, 0, 'v' },
+			{ "interactive", no_argument, 0, 'n' },
+			{ "macro", required_argument, 0, 'm' },
+			{ "event-file", required_argument, 0, 'i' },
+			{ "lcdd-url", required_argument, 0, 'g' },
+			{ "lcio-file", required_argument, 0, 'o' },
+			{ "lcio-path", required_argument, 0, 'p' },
+			{ "autoname", optional_argument, 0, 'O' },
+			{ "lcio-delete", no_argument, 0, 'x' },
+			{ "run-events", required_argument, 0, 'r' },
+			{ "skip-events", required_argument, 0, 's' },
+			{ "physics-list", required_argument, 0, 'l' },
+			{ "log-file", required_argument, 0, 'L' },
+			{ "seed", required_argument, 0, 'd' },
+			{ "dump-gdml", required_argument, 0, 'G' },
+			{ "optical", no_argument, 0, 'c' },
+			{ "pdg-file", required_argument, 0, 'P' },
+			{ "lcdd-version", required_argument, 0, 'V' },
+			{ "lcdd-setup", required_argument, 0, 'S' },
+			{ 0, 0, 0, 0 }
+	};
 
 	const char* optstr = m_getoptOptions.c_str();
 
@@ -180,37 +194,28 @@ void CommandLineProcessor::registerOptions() {
 	addOption(new CommandLineOption("?", "help", "Print SLIC usage.", 0, 0, "/slic/usage"));
 
 	// Run in interactive mode.
-	addOption(
-			new CommandLineOption("n", "interactive", "Start a Geant4 interactive session.", 0, 0,
-					"/control/interactive"));
+	addOption(new CommandLineOption("n", "interactive", "Start a Geant4 interactive session.", 0, 0, "/control/interactive"));
 
 	// Print SLIC version info.
 	addOption(new CommandLineOption("v", "version", "Print SLIC version.", 0, 0, "/slic/version"));
 
 	// Execute the commands from a macro file.
-	addOption(
-			new CommandLineOption("m", "macro", "Execute Geant4 commands from a file.", 1, 1,
-					"/control/execute"));
+	addOption(new CommandLineOption("m", "macro", "Execute Geant4 commands from a file.", 1, 1, "/control/execute"));
 
 	// Set the URL of the input LCDD file. 
 	addOption(new CommandLineOption("g", "lcdd-url", "Set LCDD geometry file URL.", 1, 1, "/lcdd/url"));
 
 	// Set the path to a generator file, e.g. StdHep or LCIO.
-	addOption(
-			new CommandLineOption("i", "event-file", "Set event input file full path.", 1, 1,
-					"/generator/filename"));
+	addOption(new CommandLineOption("i", "event-file", "Set event input file full path.", 1, 1, "/generator/filename"));
 
 	// Set the name of the LCIO output file. 
-	addOption(
-			new CommandLineOption("o", "lcio-file", "Set name of LCIO output file.", 1, 1, "/lcio/filename"));
+	addOption(new CommandLineOption("o", "lcio-file", "Set name of LCIO output file.", 1, 1, "/lcio/filename"));
 
 	// Set the path of output files. 
 	addOption(new CommandLineOption("p", "lcio-path", "Set directory for LCIO output.", 1, 1, "/lcio/path"));
 
 	// Automatically name the LCIO output file.
-	addOption(
-			new CommandLineOption("O", "autoname", "Automatically name the LCIO output file.", 0, 1,
-					"/lcio/autoname"));
+	addOption(new CommandLineOption("O", "autoname", "Automatically name the LCIO output file.", 0, 1, "/lcio/autoname"));
 
 	// Overwrite an existing LCIO output file.
 	addOption(
@@ -221,34 +226,31 @@ void CommandLineProcessor::registerOptions() {
 	addOption(new CommandLineOption("r", "run-events", "Run # of events.", 1, 1, "/run/beamOn"));
 
 	// Set number of events to skip from a file-based event source (e.g. StdHep).
-	addOption(
-			new CommandLineOption("s", "skip-events", "Set number of events to skip.", 1, 1,
-					"/generator/skipEvents"));
+	addOption( new CommandLineOption("s", "skip-events", "Set number of events to skip.", 1, 1, "/generator/skipEvents"));
 
 	// Set the physics list. 
-	addOption(
-			new CommandLineOption("l", "physics-list", "Set Geant4 physics list.", 1, 1, "/physics/select"));
+	addOption(new CommandLineOption("l", "physics-list", "Set Geant4 physics list.", 1, 1, "/physics/select"));
 
 	// Set the name of the log file. 
 	addOption(new CommandLineOption("L", "log-file", "Set logfile name.", 0, 0, "/log/filename"));
 
 	// Set the random seed.
-	addOption(
-			new CommandLineOption("d", "seed", "Set the random seed.  (No argument seeds with time.)", 0, 1,
-					"/random/seed"));
+	addOption(new CommandLineOption("d", "seed", "Set the random seed. (No argument seeds with time.)", 0, 1, "/random/seed"));
 
 	// Dump the loaded Geant4 geometry to a GDML file.
 	addOption(new CommandLineOption("G", "dump-gdml", "Dump geometry to GDML file.", 1, 1, "/lcdd/dumpGDML"));
 
 	// Enable optical physics processes.
-	addOption(
-			new CommandLineOption("c", "optical", "Enable optical physics processes.", 0, 0,
-					"/physics/enableOptical"));
+	addOption(new CommandLineOption("c", "optical", "Enable optical physics processes.", 0, 0, "/physics/enableOptical"));
 
 	// Set location of particle.tbl.
-	addOption(
-			new CommandLineOption("P", "pdg-file", "Set location of particle.tbl file.", 1, 1,
-					"/physics/setPDGFile"));
+	addOption(new CommandLineOption("P", "pdg-file", "Set location of particle.tbl file.", 1, 1, "/physics/setPDGFile"));
+
+	// Set the version of the GDML setup.
+	addOption(new CommandLineOption("V", "lcdd-version", "Set the version of the GDML setup tag.", 1, 1, "/lcdd/version"));
+
+	// Set the name of the GMDL setup.
+	addOption(new CommandLineOption("S", "lcdd-setup", "Set the name of the GDML setup tag.", 1, 1, "/lcdd/setupName"));
 }
 
 void CommandLineProcessor::processOption(const string& opt) {
@@ -286,6 +288,12 @@ void CommandLineProcessor::addOption(CommandLineOption* opt) {
 void CommandLineProcessor::processOptions() {
 	// Logger.
 	processOption("L");
+
+	// GDML file version in setup tag.
+	processOption("V");
+
+	// GDML name in setup tag.
+	processOption("S");
 
 	// Geometry file.
 	processOption("g");
