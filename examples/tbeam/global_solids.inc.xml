@@ -1,3 +1,0 @@
-<!-- global solids, global_solids.inc -->
-<!-- world -->
-<box name="WorldBox" x="world_side" y="world_side" z="world_side" />
