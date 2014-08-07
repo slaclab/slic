@@ -2,7 +2,7 @@
 #define SLIC_TRACKUTIL_HH_ 1
 
 // LCDD
-#include "lcdd/geant4/UserRegionInformation.hh"
+#include "lcdd/core/UserRegionInformation.hh"
 
 // SLIC
 #include "TrackManager.hh"

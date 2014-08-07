@@ -26,10 +26,18 @@ public:
      * @param[in] maxArgs The maximum number of arguments.
      * @param[in] macroCommand The corresponding Geant4 macro string.
      */
-    CommandLineOption(const std::string& shortname, const std::string& longname, const std::string& description, unsigned int minArgs = 0,
-            unsigned int maxArgs = 0, const std::string& macroCommand = "") :
-            m_shortname(shortname), m_longname(longname), m_description(description), m_g4cmdstr(macroCommand), m_minArgs(minArgs), m_maxArgs(maxArgs) {
-        ;
+    CommandLineOption(const std::string& shortname,
+            const std::string& longname,
+            const std::string& description,
+            unsigned int minArgs = 0,
+            unsigned int maxArgs = 0,
+            const std::string& macroCommand = "") :
+                m_shortname(shortname),
+                m_longname(longname),
+                m_description(description),
+                m_g4cmdstr(macroCommand),
+                m_minArgs(minArgs),
+                m_maxArgs(maxArgs) {
     }
 
     /**

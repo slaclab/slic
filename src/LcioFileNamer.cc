@@ -44,17 +44,17 @@ std::string LcioFileNamer::getFieldValue(std::string field) {
 
 	static std::string sep("-");
 
-	if (field == "application" || field == "app") {
+	if (field == "application") {
 		value = PackageInfo::getShortName() + "-v" + PackageInfo::getVersion(sep);
-	} else if (field == "geometry" || field == "geo") {
+	} else if (field == "geometry") {
 		value = LCDDProcessor::instance()->getDetectorName();
 	} else if (field == "date") {
 		value = TimeUtil::getDate();
 	} else if (field == "event" || field == "evt") {
 		value = LcioFileNamer::makeEventName();
-	} else if (field == "eventNumber" || field == "evtNum") {
+	} else if (field == "eventNumber") {
 		value = LcioFileNamer::makeEventNumberString();
-	} else if (field == "run" || field == "runNumber" || field == "runNum") {
+	} else if (field == "run") {
 		value = LcioFileNamer::makeRunNumberString();
 	} else if (field == "binary") {
 		value = SlicApplication::instance()->getBinaryBasename();

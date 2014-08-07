@@ -50,13 +50,11 @@ public:
      * Enum for setting what action to take when an output LCIO file already exists.
      */
     enum EFileExistsAction {
-        eInvalid = -1, eFail = 0, eDelete = 1, eAppend = 2
+        eInvalid = -1,
+        eFail = 0,
+        eDelete = 1,
+        eAppend = 2
     };
-
-    /**
-     * Typedef for run number.
-     */
-    typedef unsigned int RunNumberType;
 
 public:
 
@@ -110,7 +108,7 @@ public:
      * Set the current run number.
      * @param[in] runNumber The run number.
      */
-    void setRunNumber(RunNumberType runNumber);
+    void setRunNumber(int runNumber);
 
     /**
      * Begin of run hook.
@@ -316,7 +314,7 @@ private:
     EFileExistsAction m_fileExistsAction;
 
     // starting run number
-    RunNumberType m_runNumber;
+    int m_runNumber;
 
     LcioFileNamer* m_namer;
 

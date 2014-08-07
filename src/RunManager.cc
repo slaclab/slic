@@ -79,11 +79,13 @@ void RunManager::InitializePhysics() {
 }
 
 void RunManager::InitializeGeometry() {
+    // Was a valid LCDD setup given?
 	if (!LCDDParser::instance()->isValidSetup()) {
-		//G4Exception("", "", FatalException, "Current LCDD geometry setup is not valid.");
+	    // Abort the run as the LCDD URL was probably not set.
 		SlicApplication::instance()->setReturnCode(SlicApplication::INVALID_GEOMETRY_SETUP);
 		this->abortRun();
 	} else {
+	    // Initialize the geometry.
 		G4RunManager::InitializeGeometry();
 	}
 }

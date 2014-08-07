@@ -2,7 +2,7 @@
 #define SLIC_USERTRACKINFORMATION_HH_ 1
 
 // LCDD
-#include "lcdd/geant4/VUserTrackInformation.hh"
+#include "lcdd/core/VUserTrackInformation.hh"
 
 // SLIC
 #include "TrackSummary.hh"

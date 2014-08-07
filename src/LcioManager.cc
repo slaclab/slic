@@ -52,8 +52,15 @@ namespace slic {
 string LcioManager::m_defaultFileName = "slicEvents";
 
 LcioManager::LcioManager() :
-		Module("LcioManager"), m_writer(0), m_runHdr(0), m_fileExistsAction(LcioManager::eFail),
-		m_runNumber(0), m_enableDumpEvent(false), m_writerIsOpen(false), m_usingAutoname(false) {
+		Module("LcioManager"),
+		m_writer(NULL),
+		m_runHdr(NULL),
+		m_fileExistsAction(LcioManager::eFail),
+		m_runNumber(0),
+		m_enableDumpEvent(false),
+		m_writerIsOpen(false),
+		m_usingAutoname(false) {
+
 	// Initialize the Geant4 UI messenger for the LCIO.
 	m_messenger = new LcioMessenger(this);
 
@@ -143,10 +150,9 @@ LcioManager::EFileExistsAction LcioManager::getFileExistsActionFromString(const 
 	return fea;
 }
 
-void LcioManager::setRunNumber(RunNumberType rnt) {
-	m_runNumber = rnt;
-
-	log().verbose("Set starting run number <" + StringUtil::toString((int) m_runNumber) + ">");
+void LcioManager::setRunNumber(int runNumber) {
+	m_runNumber = runNumber;
+	log().verbose("Set starting run number <" + StringUtil::toString((int) runNumber) + ">");
 }
 
 void LcioManager::createWriter() {
@@ -191,18 +197,16 @@ string LcioManager::getFullOutputPath(bool withExtension) {
 
 void LcioManager::beginRun(const G4Run* aRun) {
 
-	// Automatically create LCIO output file name if option was selected.
-	if (m_usingAutoname) {
-		makeAutoname();
-	}
-
 	// Set the G4Run counter.
-	G4RunManager::GetRunManager()->SetRunIDCounter(m_runNumber);
+    G4RunManager::GetRunManager()->GetNonConstCurrentRun()->SetRunID(m_runNumber);
+
+    // Automatically create LCIO output file name if option was selected.
+    if (m_usingAutoname) {
+        makeAutoname();
+    }
 
 	// Open the LCIO output file for writing.
 	openLcioFile();
-
-	//std::cout << "abortCurrentRun = " << m_abortCurrentRun << std::endl;
 
 	// Run aborted, because LCIO output file already exists.
 	if (!RunManager::instance()->isRunAborted()) {

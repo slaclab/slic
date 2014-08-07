@@ -5,7 +5,7 @@
 #include "TrackUtil.hh"
 
 // LCDD
-#include "lcdd/geant4/UserRegionInformation.hh"
+#include "lcdd/core/UserRegionInformation.hh"
 
 // Geant4
 #include "G4SteppingManager.hh"
