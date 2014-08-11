@@ -8,7 +8,7 @@ valgrind -v \
 --tool=memcheck \
 --log-file-exactly=valgrind.log \
 --suppressions=./valgrind.supp \
-$SLIC_BASE/bin/$G4SYSTEM/slic $@
+./build/bin/slic $@
 
 # gdb
 #--gdb-attach=yes \
