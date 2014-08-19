@@ -198,7 +198,12 @@ string LcioManager::getFullOutputPath(bool withExtension) {
 void LcioManager::beginRun(const G4Run* aRun) {
 
 	// Set the G4Run counter.
+#if ( G4VERSION_NUMBER >= 1000 )
     G4RunManager::GetRunManager()->GetNonConstCurrentRun()->SetRunID(m_runNumber);
+#else
+    // Alternate code for backward compatibility.
+    const_cast<G4Run*>(G4RunManager::GetRunManager()->GetCurrentRun())->SetRunID(m_runNumber);
+#endif
 
     // Automatically create LCIO output file name if option was selected.
     if (m_usingAutoname) {

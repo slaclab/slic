@@ -72,7 +72,7 @@ void LCExtendedParticles::ConstructParticle() {
 
 void LCExtendedParticles::ConstructProcess() {
 
-#if ( G4VERSION_NUMBER < 960 )
+#if ( G4VERSION_NUMBER < 1000 )
 	G4ParticleTable::G4PTblDicIterator* aParticleIterator = G4ParticleTable::GetParticleTable()->GetIterator();
 #endif
 	aParticleIterator->reset();
