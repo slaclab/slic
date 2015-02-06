@@ -23,7 +23,7 @@ SteppingAction::~SteppingAction() {
 void SteppingAction::UserSteppingAction(const G4Step* step) {
 
     /* Check for back scattering. */
-    if (isBackScattering(step)) {
+    if (isBackScattering(step) && step->GetStepLength() != 0.) {
 
         // Get track information.
         UserTrackInformation* trackInfo =
