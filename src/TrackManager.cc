@@ -101,6 +101,9 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
         }
     }
 
+    /* Set flag so it is saved. */
+    mcpVec->setFlag(0xe0000000);
+
     /* Save the MCParticle collection into the event. */
     lcEvent->addCollection((LCCollection*)mcpVec, "MCParticle");
 
