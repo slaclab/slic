@@ -5,9 +5,11 @@
 #include "FieldManager.hh"
 #include "SlicApplicationMessenger.hh"
 #include "LcioManager.hh"
+#include "MCParticleManager.hh"
 #include "ModuleRegistry.hh"
 #include "PackageInfo.hh"
 #include "RunManager.hh"
+#include "TrackManager.hh"
 #include "TimeUtil.hh"
 #include "HepPDTManager.hh"
 #include "VRML2WriterMessenger.hh"
@@ -100,6 +102,12 @@ void SlicApplication::initialize() {
 
 		// Setup the LCDD subsystem.
 		initializeLCDD();
+
+		// Initialize the tracker manager.
+		TrackManager::instance();
+
+		// Initialize the MCParticle manager.
+		MCParticleManager::instance();
 
 		// Initialize visualization.
 #ifdef G4VIS_USE
