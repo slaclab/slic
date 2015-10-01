@@ -33,6 +33,9 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
     /* Copy MCParticle pointers into the corresponding TrackSummary objects for primary particles. */
     PrimaryParticleMap* particleMap = MCParticleManager::instance()->getPrimaryParticleMap();
     for (PrimaryParticleMapIterator it = particleMap->begin(); it != particleMap->end(); it++) {
+        if (it->second == 0) {
+            G4Exception("", "", FatalException, "MCParticle was mapped to null G4PrimaryParticle.");
+        }
         if (it->second->GetTrackID() < 0) continue;
         for(int j = _trackSummaries->size() - 1; j >= 0; j--){
             if( _trackSummaries->operator[](j)->getTrackID() == it->second->GetTrackID()  ) {
