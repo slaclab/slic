@@ -32,6 +32,7 @@ namespace slic {
 
 typedef map<G4int, MCParticle*> TrackIDMap;
 typedef map<MCParticle*, G4PrimaryParticle*> PrimaryParticleMap;
+typedef map<G4PrimaryParticle*, MCParticle*> MCParticleMap;
 typedef PrimaryParticleMap::iterator PrimaryParticleMapIterator;
 typedef set<MCParticle*> MCParticleSet;
 
@@ -102,7 +103,7 @@ public:
     void reset() {
         _trackIDMap.clear();
         _primaryMap.clear();
-        _visitedParticles.clear();
+        _mcpMap.clear();
         _mcpVec = 0;
     }
 
@@ -116,7 +117,7 @@ public:
     }
 
     /**
-     * Generate a G4Event from a collection of MCParticles.
+     * Generate an event from a collection of MCParticles.
      * @param[in] mcparticles The MCParticle collection.
      * @param[in] event The output G4Event.
      */
@@ -136,14 +137,27 @@ public:
      */
     G4double smearZPosition(const G4double rms);
 
-private:
+    /**
+     * Create a primary particle from an MCParticle and recursively create primaries for all its daughters.
+     * @param[in] mcp the input MCParticle
+     * @return the primary particle converted from the MCParticle
+     */
+    std::set<G4PrimaryParticle*> createPrimary(G4PrimaryParticle* parent, MCParticle* mcp);
 
     /**
-     * Get the relevant G4ParticleParticle objects from an MCParticle.
-     * @param[in] p The MCParticle.
-     * @return The set of relevant G4PrimaryParticle objects.
+     * Create a primary vertex from an MCParticle.
+     * @param[in] mcp the input MCParticle
+     * @return the primary vertex converted from the MCParticle
      */
-    std::set<G4PrimaryParticle*> getRelevantParticles(MCParticle* p);
+    G4PrimaryVertex* createVertex(MCParticle* mcp);
+
+    /**
+     * Return true if particle is a daughter of another primary.
+     * @return true if particle is a daughter
+     */
+    bool isDaughter(G4PrimaryParticle* particle, const std::set<G4PrimaryParticle*>& primaries);
+
+private:
 
     /**
      * Set the MCParticle collection.
@@ -161,9 +175,9 @@ private:
     PrimaryParticleMap _primaryMap;
 
     /**
-     * Set keeping track of which MCParticles have been processed in generator.
+     * Reverse map of G4PrimaryParticle to MCParticle.
      */
-    MCParticleSet _visitedParticles;
+    MCParticleMap _mcpMap;
 
     /**
      * Map of MCParticle to track ID.

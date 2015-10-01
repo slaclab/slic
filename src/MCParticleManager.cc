@@ -5,181 +5,199 @@
 
 // Geant4
 #include "G4SystemOfUnits.hh"
+#include "globals.hh"
 #include "Randomize.hh"
 
 namespace slic {
 
 void MCParticleManager::generateEvent(LCCollectionVec* particles, G4Event* event) {
 
-    /* Apply Z smearing to input particles. */
+#if SLIC_LOG
+    log() << LOG::head << LOG::debug << "generating event " << event->GetEventID() << " from " << particles->size() << " MCParticles" << LOG::done;
+#endif
+
+    // Apply Z smearing to input particles.
+#if SLIC_LOG
+    log() << LOG::debug << "applying Z smearing: " << EventSourceManager::instance()->getZSmearing() << LOG::done;
+#endif
     G4double z = smearZPosition(EventSourceManager::instance()->getZSmearing());
 
-    /* Apply the Lorentz Transformation to input particles. */
+    /// Apply the Lorentz Transformation to input particles.
+#if SLIC_LOG
+    log() << LOG::debug << "applying Lorentz transform: " << EventSourceManager::instance()->getLorentzTransformationAngle() << LOG::done;
+#endif
     applyLorentzTransformation(particles, EventSourceManager::instance()->getLorentzTransformationAngle());
 
-    /*
-     * Process particles and add them to the primary vertex of the event.
-     */
-    G4ThreeVector particlePosition(0, 0, z);
-    G4double particleTime;
-    G4PrimaryVertex* vertex = new G4PrimaryVertex(particlePosition, particleTime);
-    for(size_t i=0; i < particles->size(); i++) {
-        MCParticle* mcp = (MCParticle*)(*particles)[i];
-        if (mcp->getParents().size()==0) {
-            //std::cout << "construct tree of relevant G4PrimaryParticles for initial MCParticle " << i << " " << std::flush;
-            std::set<G4PrimaryParticle*> primaries = getRelevantParticles(mcp);
-            //std::cout << "... finished" << std::endl;
-            std::set<G4PrimaryParticle*>::iterator primaryIt;
-            for (primaryIt = primaries.begin(); primaryIt != primaries.end(); primaryIt++) {
-                vertex->SetPrimary(*primaryIt);
-                //std::cout << "G4PrimaryParticle ("<< (*primaryIt)->GetPDGcode() << ") added to G4PrimaryVertex." << std::endl;
+    log() << LOG::endl;
+
+    // Loop over MCParticle input list.
+    for (size_t i = 0; i < particles->size(); i++) {
+
+        // Get the next MCParticle.
+        MCParticle* mcp = (MCParticle*) (*particles)[i];
+
+        // Debug print information about the particle.
+#ifdef SLIC_LOG
+        log() <<  LOG::debug << "processing MCParticle " << i << LOG::done;
+        log() << LOG::debug
+                << "PDG: " << mcp->getPDG() << LOG::endl
+                << "gen status: " << mcp->getGeneratorStatus() << LOG::endl
+                << "sim status: " << mcp->getSimulatorStatus() << LOG::endl
+                << "energy: " << mcp->getEnergy() << LOG::endl
+                << "time: " << mcp->getTime() << LOG::endl
+                << "daughters: " << mcp->getDaughters().size() << LOG::endl
+                << "vertex: ( " << mcp->getVertex()[0] << " " << mcp->getVertex()[1] << " " << mcp->getVertex()[2] << " )" << LOG::endl
+                << "p: ( " << mcp->getMomentum()[0] << ", " << mcp->getMomentum()[1] << ", " << mcp->getMomentum()[2] << " )" << LOG::endl
+                << "charge: " << mcp->getCharge() << LOG::endl
+                << "mass: " << mcp->getMass() << LOG::endl
+                << "daughters: " << mcp->getDaughters().size() << LOG::endl
+                << "parents: " << mcp->getParents().size()
+                << LOG::done;
+        log() << LOG::endl;
+#endif
+
+        // Only make vertices for particles without parents.
+        if (mcp->getParents().size() == 0) {
+
+#ifdef SLIC_LOG
+            log() << LOG::debug << "creating new vertex for MCParticle " << i << LOG::done;
+#endif
+
+            // Create a new primary vertex.
+            G4PrimaryVertex* vertex = 0;
+
+            if (mcp->getGeneratorStatus() == 1 || mcp->getGeneratorStatus() == 2) {
+                vertex = createVertex(mcp);
             }
+
+#ifdef SLIC_LOG
+            log() << LOG::debug << "creating primary for MCParticle " << i << LOG::done;
+#endif
+
+            // Create a primary particle and recursively create its daughters.
+            const std::set<G4PrimaryParticle*> primaries = createPrimary(0, mcp);
+
+            // Loop over returned set of primary particles.
+            for (std::set<G4PrimaryParticle*>::const_iterator it = primaries.begin(); it != primaries.end(); it++) {
+
+                // Is this a top-level particle with no daughters?
+                if (!MCParticleManager::isDaughter((*it), primaries)) {
+
+                    // Create a new vertex if necessary.
+                    if (vertex == 0) {
+                        // Create vertex by looking up MCParticle from the primary.
+                        vertex = createVertex(_mcpMap[(*it)]);
+                    }
+
+                    // Add the primary particle to the vertex.
+                    vertex->SetPrimary(*it);
+                }
+            }
+
+            // Add the vertex to the event.
+            event->AddPrimaryVertex(vertex);
         }
+#ifdef SLIC_LOG
+        log() << "-------------------------------------------------" << LOG::endl;
+#endif
     }
 
-    /* Add the primary vertex to Geant4. */
-    event->AddPrimaryVertex(vertex);
-
-    /* Register the collection of MCParticles that was created. */
+    // Register the collection of MCParticles that was created.
     setMCParticleCollection(particles);
 }
 
+std::set<G4PrimaryParticle*> MCParticleManager::createPrimary(G4PrimaryParticle* parent, MCParticle* mcp) {
 
-std::set<G4PrimaryParticle*> MCParticleManager::getRelevantParticles(MCParticle* p) {
-
-    //log each particle which has been called, to avoid double counting and increase efficiency
-    _visitedParticles.insert(p);
-    PrimaryParticleMap::iterator mcpIT;
-    std::set<G4PrimaryParticle*> relevantParticlesSet; //holds all relevant decay particles of p
-
-    /*
-     * Case #1:
-     *
-     * If p is a stable particle: search for it in LCIO2Geant4Map
-     *
-     * If exists in map: get the G4PrimaryParticle version of p from LCIO2Geant4Map
-     * Else: create G4PrimaryParticle version write it to LCIO2Geant4Map
-     *
-     * Finally: insert the G4PrimaryParticle verion of p into the relevant particle list
-     * and return the list.
-     */
-    if (p->getGeneratorStatus() == 1) {
-        G4PrimaryParticle* g4p;
-        mcpIT = _primaryMap.find(p);
-        if (mcpIT != _primaryMap.end()) {
-            g4p = mcpIT->second;
-        } else {
-            G4int IDHEP = p->getPDG();
-            G4double PHEP1 = p->getMomentum()[0];
-            G4double PHEP2 = p->getMomentum()[1];
-            G4double PHEP3 = p->getMomentum()[2];
-            G4double PHEP5 = p->getMass();
-            // create G4PrimaryParticle object
-            g4p = new G4PrimaryParticle(IDHEP, PHEP1 * GeV, PHEP2 * GeV, PHEP3 * GeV);
-            g4p->SetMass(PHEP5 * GeV);
-            _primaryMap[p] = g4p;
-            //std::cout << "*" << std::flush;
-        }
-        //std::cout << g4p->GetPDGcode() << std::flush;
-        relevantParticlesSet.insert(g4p);
-        return relevantParticlesSet;
+    // The MCParticle argument should not be null.
+    if (mcp == 0) {
+        G4Exception("", "", FatalException, "MCParticle is null.");
     }
 
-    /*
-     * CASE #2:
-     *
-     * If p is not stable: get first decay daughter and calculate the proper time of p.
-     *
-     * If proper time is not zero: particle is "relevant", since it carries vertex information.
-     *
-     * If p is already in LCIO2Geant4Map: take it.
-     * Else: create G4PrimaryParticle version of p and write it to LCIO2Geant4Map
-     *
-     * Collect all relevant particles of all daughters and setup "relevant mother-
-     * daughter-relations" between relevant decay particles and G4PrimaryParticle version of p
-     *
-     * Finally: insert only the G4PrimaryParticle version of p to the relevant particle list and return this "list".
-     * The added particle has now the correct pre-assigned decay products and (hopefully) the right lifetime.
-     */
-    else if (p->getDaughters().size() > 0) {  //fg: require that there is at least one daughter - otherwise forget the particle
-        // calculate proper time
-        MCParticle* dp = p->getDaughters()[0];
+    // Set of primaries that will be returned.
+    std::set<G4PrimaryParticle*> primaries;
 
-        double proper_time = fabs((dp->getTime() - p->getTime()) * p->getMass()) / p->getEnergy();
-        //  fix by S.Morozov for real != 0
-        double aPrecision = dp->getTime() * p->getMass() / p->getEnergy();
-        double bPrecision = p->getTime() * p->getMass() / p->getEnergy();
+    G4PrimaryParticle* primary = 0;
 
-        double proper_time_Precision = pow(10, -DBL_DIG)*fmax(fabs(aPrecision),fabs(bPrecision));
+    // Is this primary not created yet and does it have a valid generator status?
+    if (_primaryMap.count(mcp) == 0 && (mcp->getGeneratorStatus() == 1 || mcp->getGeneratorStatus() == 2)) {
 
-        bool isProperTimeZero = (proper_time <= proper_time_Precision);
+        // Create the primary particle from the MCParticle's information.
+        primary = new G4PrimaryParticle();
+        primary->SetPDGcode(mcp->getPDG());
+        primary->SetCharge(mcp->getCharge());
+        primary->SetMass(mcp->getMass() * GeV);
+        const double* p = mcp->getMomentum();
+        primary->SetMomentum(p[0] * GeV, p[1] * GeV, p[2] * GeV);
 
-        // -- remove original --- if (proper_time != 0) {
-        if (isProperTimeZero == false) {
-
-            G4PrimaryParticle* g4p;
-            mcpIT = _primaryMap.find(p);
-            if (mcpIT != _primaryMap.end()) {
-                g4p = mcpIT->second;
-            } else {
-                G4int IDHEP = p->getPDG();
-                G4double PHEP1 = p->getMomentum()[0];
-                G4double PHEP2 = p->getMomentum()[1];
-                G4double PHEP3 = p->getMomentum()[2];
-                G4double PHEP5 = p->getMass();
-                // create G4PrimaryParticle object
-                g4p = new G4PrimaryParticle(IDHEP, PHEP1 * GeV, PHEP2 * GeV, PHEP3 * GeV);
-                g4p->SetMass(PHEP5 * GeV);
-                g4p->SetProperTime(proper_time * ns);
-                _primaryMap[p] = g4p;
-                std::set<G4PrimaryParticle*> vec3;
-                for (size_t i = 0; i < p->getDaughters().size(); i++) {
-                    if (_visitedParticles.count(p->getDaughters()[i]) == 0) {
-                        std::set<G4PrimaryParticle*> vec2 = getRelevantParticles(p->getDaughters()[i]);
-                        std::set<G4PrimaryParticle*>::iterator setit;
-                        for (setit = vec2.begin(); setit != vec2.end(); setit++) {
-                            vec3.insert(*setit);
-                        }
-                    }
-                }
-                std::set<G4PrimaryParticle*>::iterator setit;
-                for (setit = vec3.begin(); setit != vec3.end(); setit++) {
-                    g4p->SetDaughter(*setit);
-                }
-                //std::cout << "*" << std::flush;
-            }
-            //std::cout << g4p->GetPDGcode() << std::flush;
-            relevantParticlesSet.insert(g4p);
-            return relevantParticlesSet;
+        // Set the proper time by subtracting from daughter's time.
+        if (mcp->getDaughters().size() > 0) {
+            MCParticle* dp = mcp->getDaughters()[0];
+            double properTime = fabs((dp->getTime() - mcp->getTime()) * mcp->getMass()) / mcp->getEnergy();
+#ifdef SLIC_LOG
+            log() << LOG::debug << "proper time set to " << properTime << LOG::done;
+#endif
+            primary->SetProperTime(mcp->getTime() * ns);
         }
-        /* CASE #3:
-         *
-         * If p is not stable AND has zero lifetime: forget about p and retrieve all relevant
-         * decay particles of all daughters of p.
-         *
-         * In this case this step of recursion is just there for collecting all relevant decay
-         * products of daughters and returning them.
-         */
-        else {
-            for (size_t i = 0; i < p->getDaughters().size(); i++) {
-                if (_visitedParticles.count(p->getDaughters()[i]) == 0) {
-                    std::set<G4PrimaryParticle*> vec2 = getRelevantParticles(p->getDaughters()[i]);
-                    std::set<G4PrimaryParticle*>::iterator setit;
-                    for (setit = vec2.begin(); setit != vec2.end(); setit++) {
-                        relevantParticlesSet.insert(*setit);
-                    }
-                }
-            }
-            return relevantParticlesSet;
+
+        // Map primary to MCParticle.
+#ifdef SLIC_LOG
+            log() << LOG::debug << "mapping MCParticle " << mcp << " to primary " << primary << LOG::done;
+#endif
+        _primaryMap[mcp] = primary;
+
+        // Map MCParticle to primary.
+        _mcpMap[primary] = mcp;
+
+        if (parent != 0) {
+#ifdef SLIC_LOG
+            log() << LOG::debug << "setting parent primary on daughter" << LOG::done;
+#endif
+            parent->SetDaughter(primary);
         }
+
+        primaries.insert(primary);
     }
-    return relevantParticlesSet;
+
+    for (int i = 0; i < mcp->getDaughters().size(); i++) {
+#ifdef SLIC_LOG
+        log() << LOG::debug << "creating primary for dau particle " << i << LOG::done;
+#endif
+        std::set<G4PrimaryParticle*> daughters = createPrimary(primary, mcp->getDaughters()[i]);
+#ifdef SLIC_LOG
+        log() << LOG::debug << "created " << daughters.size() << " daughter primaries" << LOG::done;
+#endif
+
+        primaries.insert(daughters.begin(), daughters.end());
+    }
+#ifdef SLIC_LOG
+        log().getOutputStream().flush();
+#endif
+    return primaries;
+}
+
+G4PrimaryVertex* MCParticleManager::createVertex(MCParticle* mcp) {
+
+    // Get the particle's origin.
+    const double* particleVertex = mcp->getVertex();
+    G4ThreeVector particlePosition(particleVertex[0], particleVertex[1], particleVertex[2]);
+
+    // Get the particle's time.
+    G4double particleTime = mcp->getTime();
+
+    // Create a new vertex for this particle.
+#ifdef SLIC_LOG
+    log() << LOG::debug << "creating vertex at position " << particlePosition << " with time " << particleTime << LOG::done;
+#endif
+    G4PrimaryVertex* vertex = new G4PrimaryVertex(particlePosition, particleTime);
+
+    return vertex;
 }
 
 void MCParticleManager::applyLorentzTransformation(LCCollection* particles, const G4double alpha) {
 
-    if (alpha == 0)
+    if (alpha == 0) {
         return; // nothing to do
+    }
 
     //G4cout << "Applying Lorentz Transformation angle: " << alpha << G4endl;
 
@@ -206,7 +224,6 @@ void MCParticleManager::applyLorentzTransformation(LCCollection* particles, cons
 
             // after the transformation (boost in x-direction)
             pPrime[0] = betagamma * sqrt(sqr(p[0]) + sqr(p[1]) + sqr(p[2]) + sqr(m)) + gamma * p[0];
-
             pPrime[1] = p[1];
             pPrime[2] = p[2];
 
@@ -223,9 +240,23 @@ G4double MCParticleManager::smearZPosition(const G4double rms) {
     if (rms != 0) {
         // Generate smeared Z position.
         z = G4RandGauss::shoot(0, rms/mm);
-        G4cout << "Smeared Z position: " << z << G4endl;
+        //G4cout << "Smeared Z position: " << z << G4endl;
     }
     return z;
 }
 
-};
+bool MCParticleManager::isDaughter(G4PrimaryParticle* particle, const std::set<G4PrimaryParticle*>& primaries) {
+    for (std::set<G4PrimaryParticle*>::iterator it = primaries.begin(); it != primaries.end(); it++) {
+        G4PrimaryParticle* dau = (*it)->GetDaughter();
+        while (dau != 0) {
+            if (dau == particle) {
+                return true;
+            }
+            dau = dau->GetNext();
+        }
+    }
+    return false;
+}
+
+}
+;
