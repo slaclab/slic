@@ -2,6 +2,7 @@
 
 // LCDD
 #include "lcdd/util/StringUtil.hh"
+#include "lcdd/detectors/CurrentTrackState.hh"
 
 // SLIC
 #include "EventSourceManager.hh"
@@ -27,6 +28,8 @@ EventAction::~EventAction() {
 }
 
 void EventAction::BeginOfEventAction(const G4Event *anEvent) {
+    // Reset current track state.
+    CurrentTrackState::setCurrentTrackID(-1);
 }
 
 void EventAction::EndOfEventAction(const G4Event *anEvent) {
