@@ -79,7 +79,7 @@ protected:
      * @param[in] os The output stream for printing message.
      */
     LogStream(std::string name, LOG::ELevel level, ostream* os = &std::cout) :
-            m_name(name), m_outputLevel(level), m_currentMessageLevel(LOG::okay), m_os(os), m_active(true), m_fos(0) {
+            m_name(name), m_outputLevel(level), m_currentMessageLevel(LOG::none), m_os(os), m_active(true), m_fos(0) {
         ;
     }
 
@@ -87,7 +87,7 @@ protected:
      * Class constructor providing default arguments.
      */
     LogStream() :
-            m_name("NONE"), m_outputLevel(LOG::always), m_currentMessageLevel(LOG::okay), m_os(&std::cout), m_active(true), m_fos(0) {
+            m_name("NONE"), m_outputLevel(LOG::okay), m_currentMessageLevel(LOG::none), m_os(&std::cout), m_active(true), m_fos(0) {
         ;
     }
 
@@ -169,15 +169,7 @@ public:
      */
     LogStream& operator <<(const LOG::ELevel& level) {
 
-        //std::cout << "setting level: " << level << std::endl;
-        //std::cout << "current level: " << getCurrentLevel() << std::endl;
-
         setCurrentLevel(level);
-
-        //std::cout << "name: " << m_name << std::endl;
-        //std::cout << "current level: " << getCurrentLevel() << std::endl;
-        //std::cout << "output level: " << getOutputLevel() << std::endl;
-        //std::cout << std::endl;
 
         if (getCurrentLevel() <= getOutputLevel()) {
             // Set active state.
