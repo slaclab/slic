@@ -117,6 +117,22 @@ public:
     }
 
     /**
+     * Find index of an MCParticle in a collection.
+     * @return The index of the particle in the collection.
+     */
+    inline int indexOf(MCParticle* particle) {
+        return std::find(_inputVec->begin(), _inputVec->end(), particle) - _inputVec->begin();
+    }
+
+    /**
+     * Find index of a primary particle matching an MCParticle index.
+     * @return The index of the primary particle.
+     */
+    inline int indexOf(G4PrimaryParticle* primary) {
+        return std::find(_primaryVec.begin(), _primaryVec.end(), primary) - _primaryVec.begin();
+    }
+
+    /**
      * Generate an event from a collection of MCParticles.
      * @param[in] mcparticles The MCParticle collection.
      * @param[in] event The output G4Event.
@@ -184,12 +200,16 @@ private:
      */
     TrackIDMap _trackIDMap;
 
+    LCCollectionVec* _inputVec;
+
     /**
      * The output MCParticle collection.  This pointer is "taken" from the input reader,
      * because it is added to the output event, which then automatically deletes it once the
      * event is written (I think?).
      */
     LCCollectionVec* _mcpVec;
+
+    std::vector<G4PrimaryParticle*> _primaryVec;
 };
 
 }

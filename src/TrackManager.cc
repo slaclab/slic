@@ -37,10 +37,16 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
             G4Exception("", "", FatalException, "MCParticle was mapped to null G4PrimaryParticle.");
         }
         if (it->second->GetTrackID() < 0) continue;
-        for(int j = _trackSummaries->size() - 1; j >= 0; j--){
+        for (int j = _trackSummaries->size() - 1; j >= 0; j--) {
             if( _trackSummaries->operator[](j)->getTrackID() == it->second->GetTrackID()  ) {
                 //std::cout << "setting MCParticle " << it->first << " on TrackSummary from primary" << std::endl;
                 _trackSummaries->operator[](j)->setMCParticle(dynamic_cast<MCParticleImpl*>(it->first));
+
+#ifdef SLIC_LOG
+                log() << LOG:: debug << "primary " << MCParticleManager::instance()->indexOf(it->second)
+                        << " had track ID " << _trackSummaries->operator[](j)->getTrackID() << LOG::done;
+#endif
+
                 break ;
             }
         }
@@ -63,7 +69,7 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
 
     /* Save TrackSummary objects to LCIO collection. */
 #ifdef SLIC_LOG
-    log() << LOG::always << "TrackManager processing " << _trackSummaries->size() << " TrackSummary objects." << LOG::done;
+    log() << LOG::okay << "TrackManager processing " << _trackSummaries->size() << " TrackSummary objects." << LOG::done;
 #endif
     size_t l;
     TrackSummary* trackSummary;
@@ -92,8 +98,8 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
                 if (trackSummary->getMCParticle() != NULL) {
                     mcpVec->push_back(trackSummary->getMCParticle());
                     // DEBUG
-                    if (trackSummary->getParentID() <= 0)
-                        G4cout << "WARNING: sim particle with track ID " << trackSummary->getTrackID() << " has no parent!" << G4endl;
+                    //if (trackSummary->getParentID() <= 0)
+                    //    G4cout << "WARNING: sim particle with track ID " << trackSummary->getTrackID() << " has no parent!" << G4endl;
                 }
             }
         } else {

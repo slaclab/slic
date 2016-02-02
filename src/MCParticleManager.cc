@@ -12,6 +12,9 @@ namespace slic {
 
 void MCParticleManager::generateEvent(LCCollectionVec* particles, G4Event* event) {
 
+    _inputVec = particles;
+    _primaryVec = std::vector<G4PrimaryParticle*>(particles->size());
+
 #if SLIC_LOG
     log() << LOG::debug << LOG::head << "generating event " << event->GetEventID() << " from " << particles->size() << " particles" << LOG::endl << LOG::done;
 #endif
@@ -28,7 +31,9 @@ void MCParticleManager::generateEvent(LCCollectionVec* particles, G4Event* event
 #endif
     applyLorentzTransformation(particles, EventSourceManager::instance()->getLorentzTransformationAngle());
 
+#if SLIC_LOG
     log() << LOG::endl;
+#endif
 
     // Loop over MCParticle input list.
     for (size_t i = 0; i < particles->size(); i++) {
@@ -38,14 +43,14 @@ void MCParticleManager::generateEvent(LCCollectionVec* particles, G4Event* event
 
         // Debug print information about the particle.
 #ifdef SLIC_LOG
-        log() <<  LOG::debug << "processing particle " << i << LOG::endl
+        log() <<  LOG::debug << "processing MC particle " << i << LOG::endl
                 << "  PDG: " << mcp->getPDG() << LOG::endl
                 << "  gen status: " << mcp->getGeneratorStatus() << LOG::endl
                 << "  sim status: " << mcp->getSimulatorStatus() << LOG::endl
                 << "  energy: " << mcp->getEnergy() << LOG::endl
                 << "  time: " << mcp->getTime() << LOG::endl
                 << "  daughters: " << mcp->getDaughters().size() << LOG::endl
-                << "  vertex: ( " << mcp->getVertex()[0] << " " << mcp->getVertex()[1] << " " << mcp->getVertex()[2] << " )" << LOG::endl
+                << "  vertex: ( " << mcp->getVertex()[0] << ", " << mcp->getVertex()[1] << ", " << mcp->getVertex()[2] << " )" << LOG::endl
                 << "  p: ( " << mcp->getMomentum()[0] << ", " << mcp->getMomentum()[1] << ", " << mcp->getMomentum()[2] << " )" << LOG::endl
                 << "  charge: " << mcp->getCharge() << LOG::endl
                 << "  mass: " << mcp->getMass() << LOG::endl
@@ -64,11 +69,13 @@ void MCParticleManager::generateEvent(LCCollectionVec* particles, G4Event* event
             // Create a new primary vertex.
             G4PrimaryVertex* vertex = createVertex(mcp);
 
-            if (vertex == 0) {
 #ifdef SLIC_LOG
-                log() << LOG::debug << "no vertex created for particle " << i << LOG::done;
-#endif
+            if (vertex != 0) {
+                log() << LOG::debug << "created vertex for MCParticle " << i << " at " << vertex->GetPosition() << LOG::done;
+            } else {
+                log() << LOG::debug << "no new vertex created for particle " << i << LOG::done;
             }
+#endif
 
 #ifdef SLIC_LOG
             log() << LOG::debug << "creating primary for MCParticle " << i << LOG::done;
@@ -77,8 +84,16 @@ void MCParticleManager::generateEvent(LCCollectionVec* particles, G4Event* event
             // Create a primary particle and recursively create primaries for its daughters.
             const std::set<G4PrimaryParticle*> primaries = createPrimary(0, mcp);
 
+#ifdef SLIC_LOG
+            log() << LOG::debug << "found " << primaries.size() << " relevant primaries" << LOG::done;
+#endif
+
             // Were any primaries created?
             if (primaries.size() > 0) {
+
+#ifdef SLIC_LOG
+                log() << LOG::debug << "created " << primaries.size() << " for MCParticle " << i << LOG::done;
+#endif
 
                 // Loop over returned set of primary particles.
                 for (std::set<G4PrimaryParticle*>::const_iterator it = primaries.begin(); it != primaries.end(); it++) {
@@ -86,10 +101,14 @@ void MCParticleManager::generateEvent(LCCollectionVec* particles, G4Event* event
                     // Is this a top-level particle with no daughters?
                     if (!MCParticleManager::isDaughter((*it), primaries)) {
 
+#ifdef SLIC_LOG
+                        log () << LOG::debug << "found primary " << indexOf((*it)) << " with no parent" << LOG::done;
+#endif
+
                         // Create a new vertex if necessary.
                         if (vertex == 0) {
 #ifdef SLIC_LOG
-                            log() << "creating vertex from primary " << *it << LOG::done;
+                            log() << "creating vertex for MCParticle " << indexOf(_mcpMap[(*it)]) << LOG::done;
 #endif
                             // Create vertex by looking up MCParticle from the primary.
                             vertex = createVertex(_mcpMap[(*it)]);
@@ -97,18 +116,19 @@ void MCParticleManager::generateEvent(LCCollectionVec* particles, G4Event* event
 
                         // Add the primary particle to the vertex.
 #ifdef SLIC_LOG
-                        log() << "adding primary daughter particle " << *it << " to vertex" << LOG::done;
+                        log() << "setting primary " << indexOf((*it)) << " on vertex" << LOG::done;
 #endif
                         vertex->SetPrimary(*it);
                     }
                 }
 
                 // Add the vertex to the event.
+                log() << LOG::debug << "adding primary vertex to event" << LOG::done;
                 event->AddPrimaryVertex(vertex);
 
             } else {
 #ifdef SLIC_LOG
-                log() << LOG::warning << "skipping particle " << i << " with no primaries" << LOG::done;
+                log() << LOG::debug << "no primary created for " << i << LOG::done;
 #endif
                 // No primaries created so this record and its daughters are skipped!
                 if (vertex != 0) {
@@ -119,10 +139,36 @@ void MCParticleManager::generateEvent(LCCollectionVec* particles, G4Event* event
                 }
             }
         }
-#ifdef SLIC_LOG
-        log() << LOG::debug << LOG::endl << "-------------------------------------------------" << LOG::endl << LOG::done;
-#endif
     }
+
+#ifdef SLIC_LOG
+    log() << LOG::endl << "generated " << _primaryVec.size() << " primaries" << LOG::endl;
+    for (std::vector<G4PrimaryParticle*>::iterator it = _primaryVec.begin();
+            it != _primaryVec.end();
+            it++) {
+        G4PrimaryParticle* primary = (*it);
+        if (primary != 0) {
+            log() << LOG::endl << LOG::debug << "created primary " << indexOf(primary) << LOG::endl
+                    << "  PDG: " << primary->GetPDGcode() << LOG::endl
+                    << "  mass: " << primary->GetMass() << LOG::endl
+                    << "  charge: " << primary->GetCharge() << LOG::endl
+                    << "  momentum: " << primary->GetMomentum() << LOG::endl
+                    << "  proper time: " << primary->GetProperTime() << LOG::endl
+                    << "  has dau: " << (primary->GetDaughter() != 0) << LOG::endl;
+            if (primary->GetDaughter() != 0) {
+                std::vector<int> dauIndices;
+                G4PrimaryParticle* daughter = primary->GetDaughter();
+                while (daughter) {
+                    dauIndices.push_back(indexOf(daughter));
+                    daughter = daughter->GetNext();
+                }
+                log() << "  daughters: " << dauIndices << LOG::endl;
+            }
+        } /* else {
+            log() << "primary is null!" << LOG::endl;
+        } */
+    }
+#endif
 
     // Register the collection of MCParticles that was created.
     setMCParticleCollection(particles);
@@ -143,6 +189,10 @@ std::set<G4PrimaryParticle*> MCParticleManager::createPrimary(G4PrimaryParticle*
     // Is this primary not created yet and does it have a valid generator status?
     if (_primaryMap.count(mcp) == 0 && (mcp->getGeneratorStatus() == 1 || mcp->getGeneratorStatus() == 2)) {
 
+#ifdef SLIC_LOG
+        log() << LOG::debug << "creating primary for MC particle " << indexOf(mcp) << LOG::done;
+#endif
+
         // Create the primary particle from the MCParticle's information.
         primary = new G4PrimaryParticle();
         primary->SetPDGcode(mcp->getPDG());
@@ -151,49 +201,84 @@ std::set<G4PrimaryParticle*> MCParticleManager::createPrimary(G4PrimaryParticle*
         const double* p = mcp->getMomentum();
         primary->SetMomentum(p[0] * GeV, p[1] * GeV, p[2] * GeV);
 
-        // Set the proper time by subtracting from daughter's time.
+        // Set the proper time by subtracting from first daughter's time.
         if (mcp->getDaughters().size() > 0) {
+#ifdef SLIC_LOG
+            log() << LOG::debug << "MCParticle " << indexOf(mcp) << " has "
+                    << mcp->getDaughters().size() << " daughters " << LOG::done;
+#endif
+
             MCParticle* dp = mcp->getDaughters()[0];
             double properTime = fabs((dp->getTime() - mcp->getTime()) * mcp->getMass()) / mcp->getEnergy();
+            primary->SetProperTime(properTime * ns);
+
 #ifdef SLIC_LOG
-            log() << LOG::debug << "proper time set to " << properTime << LOG::done;
+            log() << LOG::debug << "proper time for MCParticle " << indexOf(mcp) << " set to " << (properTime * ns) << LOG::done;
 #endif
-            primary->SetProperTime(mcp->getTime() * ns);
         }
 
         // Map primary to MCParticle.
-#ifdef SLIC_LOG
-            log() << LOG::debug << "mapping particle " << mcp << " to primary " << primary << LOG::done;
-#endif
         _primaryMap[mcp] = primary;
 
         // Map MCParticle to primary.
         _mcpMap[primary] = mcp;
 
+        // DEBUG: store index of primary matching the MCParticle
+        _primaryVec[indexOf(mcp)] = primary;
+
         if (parent != 0) {
-#ifdef SLIC_LOG
-            log() << LOG::debug << "setting parent primary on daughter" << LOG::done;
-#endif
             parent->SetDaughter(primary);
+#ifdef SLIC_LOG
+            log() << LOG::debug << "added dau primary " << MCParticleManager::indexOf(primary) << " to parent "
+                    << MCParticleManager::indexOf(parent) << LOG::done;
+#endif
+        } else {
+#ifdef SLIC_LOG
+            log() << LOG::debug << "skipping create primary on DOC particle" << LOG::done;
+#endif
         }
 
         primaries.insert(primary);
+
+        // DEBUG: print primary info
+#ifdef SLIC_LOG
+        if (primary != 0) {
+            log() << LOG::endl << LOG::debug << "created primary " << indexOf(primary) << LOG::endl
+                    << "  PDG: " << primary->GetPDGcode() << LOG::endl
+                    << "  mass: " << primary->GetMass() << LOG::endl
+                    << "  charge: " << primary->GetCharge() << LOG::endl
+                    << "  momentum: " << primary->GetMomentum() << LOG::endl
+                    << "  proper time: " << primary->GetProperTime() << LOG::endl
+                    << "  has dau: " << (primary->GetDaughter() != 0) << LOG::endl
+                    << LOG::done;
+        }
+#endif
+
+    } else {
+#ifdef SLIC_LOG
+        if (_primaryMap.count(mcp) == 0) {
+            log() << LOG::debug << "primary was already created for MCParticle " << MCParticleManager::indexOf(mcp) << LOG::done;
+        }
+#endif
     }
 
     for (int i = 0; i < mcp->getDaughters().size(); i++) {
 #ifdef SLIC_LOG
-        log() << LOG::debug << "creating primary for daughter " << i << LOG::done;
+        log() << LOG::debug << "recursively creating primaries for " << indexOf(primary) << LOG::done;
 #endif
         std::set<G4PrimaryParticle*> daughters = createPrimary(primary, mcp->getDaughters()[i]);
 #ifdef SLIC_LOG
         log() << LOG::debug << "created " << daughters.size() << " daughter primaries" << LOG::done;
 #endif
 
-        primaries.insert(daughters.begin(), daughters.end());
+        if (daughters.size() > 0) {
+            primaries.insert(daughters.begin(), daughters.end());
+        }
     }
 #ifdef SLIC_LOG
         log().getOutputStream().flush();
 #endif
+
     return primaries;
 }
 
@@ -203,6 +288,10 @@ G4PrimaryVertex* MCParticleManager::createVertex(MCParticle* mcp) {
 
     if (mcp->getGeneratorStatus() == 1 || mcp->getGeneratorStatus() == 2) {
 
+#ifdef SLIC_LOG
+        log() << LOG::debug << "creating vertex for MC particle " << indexOf(mcp) << LOG::done;
+#endif
+
         // Get the particle's origin.
         const double* particleVertex = mcp->getVertex();
         G4ThreeVector particlePosition(particleVertex[0], particleVertex[1], particleVertex[2]);
@@ -211,10 +300,18 @@ G4PrimaryVertex* MCParticleManager::createVertex(MCParticle* mcp) {
         G4double particleTime = mcp->getTime();
 
         // Create a new vertex for this particle.
-#ifdef SLIC_LOG
-        log() << LOG::debug << "creating vertex at position " << particlePosition << " with time " << particleTime << LOG::done;
-#endif
         vertex = new G4PrimaryVertex(particlePosition, particleTime);
+
+#ifdef SLIC_LOG
+        log() << LOG::debug << LOG::endl << "created vertex for " << indexOf(mcp) << LOG::endl
+                << "  position: " << vertex->GetPosition() << LOG::endl
+                << "  time: " << particleTime << LOG::endl
+                << LOG::done;
+#endif
+    } else {
+#ifdef SLIC_LOG
+        log() << LOG::debug << "skipped vertex creation for DOC particle " << indexOf(mcp) << LOG::done;
+#endif
     }
 
     return vertex;
@@ -225,8 +322,6 @@ void MCParticleManager::applyLorentzTransformation(LCCollection* particles, cons
     if (alpha == 0) {
         return; // nothing to do
     }
-
-    //G4cout << "Applying Lorentz Transformation angle: " << alpha << G4endl;
 
     // parameters of the Lorentz transformation matrix
     const G4double gamma = sqrt(1 + sqr(tan(alpha)));
