@@ -14,7 +14,7 @@ PROJECT( SLIC )
 # project version
 SET( SLIC_VERSION_MAJOR 5 )
 SET( SLIC_VERSION_MINOR 0 )
-SET( SLIC_VERSION_PATCH 0 )
+SET( SLIC_VERSION_PATCH 1 )
 
 # option for enabling and disabling the logging system
 OPTION( ENABLE_SLIC_LOG "enable slic logging system" ON )
