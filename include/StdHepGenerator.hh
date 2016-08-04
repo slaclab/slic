@@ -5,7 +5,7 @@
 #include "MCParticleManager.hh"
 
 // LCIO
-#include "UTIL/LCStdHepRdr.h"
+#include "UTIL/LCStdHepRdrNew.h"
 #include "EVENT/MCParticle.h"
 #include "IMPL/LCCollectionVec.h"
 
@@ -16,7 +16,7 @@
 // STL
 #include <set>
 
-using UTIL::LCStdHepRdr;
+using UTIL::LCStdHepRdrNew;
 using EVENT::MCParticle;
 using EVENT::LCCollection;
 using IMPL::LCCollectionVec;
@@ -60,7 +60,7 @@ public:
     LCCollectionVec* getCurrentParticleCollection();
 
 private:
-    LCStdHepRdr* _reader;
+    LCStdHepRdrNew* _reader;
     LCCollectionVec* _particles;
 };
 

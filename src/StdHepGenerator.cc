@@ -9,7 +9,7 @@
 // Geant4
 #include "G4SystemOfUnits.hh"
 
-using UTIL::LCStdHepRdr;
+using UTIL::LCStdHepRdrNew;
 using EVENT::MCParticle;
 using EVENT::LCCollection;
 using IMPL::MCParticleImpl;
@@ -18,7 +18,7 @@ namespace slic {
 
 StdHepGenerator::StdHepGenerator(G4String eventFile)
     : _particles(0) {
-    _reader = new LCStdHepRdr(eventFile.data());
+    _reader = new LCStdHepRdrNew(eventFile.data());
 }
 
 StdHepGenerator::~StdHepGenerator() {
