@@ -246,6 +246,7 @@ private:
     G4int _hepEvtStatus;
     std::bitset<32> _simstatus;
     G4ThreeVector _momentum;
+    G4ThreeVector _momentumAtEndpoint;
     TrackSummary* _parent;
     G4int _PDG;
     G4ThreeVector _vertex;

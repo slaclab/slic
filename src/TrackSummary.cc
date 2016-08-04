@@ -63,7 +63,7 @@ void TrackSummary::update(const G4Track* track) {
     /* Set the end point. */
     _endPoint = track->GetPosition();
 
-    /* Set the track lenght. */
+    /* Set the track length. */
     _trackLength = track->GetTrackLength();
 
     /* Set the generator status. */
@@ -125,6 +125,9 @@ void TrackSummary::update(const G4Track* track) {
     if (myParent)
         if (myParent->getEndPoint().isNear(getVertex()))
             _simstatus[MCParticle::BITVertexIsNotEndpointOfParent] = 1;
+
+    // set momentum at endpoint from the current momentum
+    _momentumAtEndpoint = track->GetMomentum();
 }
 
 void TrackSummary::setParentToBeSaved() {
@@ -183,7 +186,6 @@ void TrackSummary::buildMCParticle() {
     // if we have an MCParticle already we just need to update it
     // otherwise we need to create one ...
     if (_mcparticle == 0) {
-
         _mcparticle = new MCParticleImpl;
         _simstatus[MCParticle::BITCreatedInSimulation] = 1;    // created in simulation
         _mcparticle->setGeneratorStatus(getHepEvtStatus());
@@ -223,6 +225,13 @@ void TrackSummary::buildMCParticle() {
 
     /* Set global time. */
     _mcparticle->setTime(_globalTime);
+
+    /* Set momentum at endpoint. */
+    float momentumAtEndpoint[3];
+    momentumAtEndpoint[0] = _momentumAtEndpoint(0) / GeV;
+    momentumAtEndpoint[1] = _momentumAtEndpoint(1) / GeV;
+    momentumAtEndpoint[2] = _momentumAtEndpoint(2) / GeV;
+    _mcparticle->setMomentumAtEndpoint(momentumAtEndpoint);
 
     /* Set up to date. */
     _mcParticleIsUpToDate = true;
