@@ -1,4 +1,4 @@
-FIND_PATH( LCDD_INCLUDE_DIR include/lcdd/core/LCDDProcessor.hh ${LCDD_DIR}/include )
+FIND_PATH( LCDD_INCLUDE_DIR lcdd/core/LCDDProcessor.hh ${LCDD_DIR}/include )
 
 FIND_LIBRARY( LCDD_LIBRARY lcdd ${LCDD_DIR}/lib/ )
 
