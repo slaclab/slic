@@ -14,15 +14,17 @@
 namespace slic {
 LCSUSYPhysics::LCSUSYPhysics(const G4String& name) :
 		G4VPhysicsConstructor(name) {
-	;
 }
 
 LCSUSYPhysics::~LCSUSYPhysics() {
-	;
 }
 
+#ifndef aParticleIterator
+#define aParticleIterator ((subInstanceManager.offset[g4vpcInstanceID])._aParticleIterator)
+#endif
+
 void LCSUSYPhysics::ConstructParticle() {
-	// Get the particle data table to be imported.
+        // Get the particle data table to be imported.
 	HepPDT::ParticleDataTable* pdtbl = HepPDTManager::instance()->getParticleDataTable();
 
 	// Loop over all particles.
@@ -57,10 +59,6 @@ void LCSUSYPhysics::ConstructParticle() {
 }
 
 void LCSUSYPhysics::ConstructProcess() {
-
-#if ( G4VERSION_NUMBER < 1000 )
-	G4ParticleTable::G4PTblDicIterator* aParticleIterator = G4ParticleTable::GetParticleTable()->GetIterator();
-#endif
 	aParticleIterator->reset();
 	while ((*aParticleIterator)()) {
 		G4ParticleDefinition* pdef = aParticleIterator->value();

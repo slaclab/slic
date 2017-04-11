@@ -19,6 +19,10 @@ void LCOpticalPhysics::ConstructProcess() {
 	ConstructOp();
 }
 
+#ifndef aParticleIterator
+#define aParticleIterator ((subInstanceManager.offset[g4vpcInstanceID])._aParticleIterator)
+#endif
+
 void LCOpticalPhysics::ConstructOp() {
 	theCerenkovProcess = new G4Cerenkov("Cerenkov");
 	theScintillationProcess = new G4Scintillation("Scintillation");
@@ -29,9 +33,9 @@ void LCOpticalPhysics::ConstructOp() {
 	theCerenkovProcess->SetMaxNumPhotonsPerStep(300);
 	theScintillationProcess->SetScintillationYieldFactor(1.);
 
-#if ( G4VERSION_NUMBER < 1000 )
-	G4ParticleTable::G4PTblDicIterator* aParticleIterator = G4ParticleTable::GetParticleTable()->GetIterator();
-#endif
+//if ( G4VERSION_NUMBER < 1000 )
+//	G4ParticleTable::G4PTblDicIterator* aParticleIterator = G4ParticleTable::GetParticleTable()->GetIterator();
+//#endif
 	aParticleIterator->reset();
 
 	while ((*aParticleIterator)()) {

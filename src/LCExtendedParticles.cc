@@ -19,6 +19,10 @@ LCExtendedParticles::LCExtendedParticles(const G4String& name) :
 LCExtendedParticles::~LCExtendedParticles() {
 }
 
+#ifndef aParticleIterator
+#define aParticleIterator ((subInstanceManager.offset[g4vpcInstanceID])._aParticleIterator)
+#endif
+
 void LCExtendedParticles::ConstructParticle() {
 
     //std::cout << "LCExtendedParticles::ConstructParticle" << std::endl;
@@ -72,9 +76,6 @@ void LCExtendedParticles::ConstructParticle() {
 
 void LCExtendedParticles::ConstructProcess() {
 
-#if ( G4VERSION_NUMBER < 1000 )
-	G4ParticleTable::G4PTblDicIterator* aParticleIterator = G4ParticleTable::GetParticleTable()->GetIterator();
-#endif
 	aParticleIterator->reset();
 	while ((*aParticleIterator)()) {
 		G4ParticleDefinition* pdef = aParticleIterator->value();
