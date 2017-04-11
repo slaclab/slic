@@ -22,69 +22,33 @@ OPTION( ENABLE_SLIC_LOG "enable slic logging system" ON )
 # option to dump CMake variables after cmake is executed
 OPTION( PRINT_CMAKE_VARIABLES "print CMake environment" OFF )
 
-# find ilcutil
-FIND_PACKAGE( ILCUTIL COMPONENTS ILCSOFT_CMAKE_MODULES REQUIRED )
-
-# load default settings from ILCSOFT_CMAKE_MODULES
-INCLUDE( ilcsoft_default_settings )
-INCLUDE( ExternalProject )
-
 # add path containing CMake macros for this project
 LIST( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
 
-# macro for generating configuration output
-INCLUDE( MacroGeneratePackageConfigFiles )
-
 # find Xerces C++
 find_package ( XERCES REQUIRED )
-IF( NOT XERCES_FOUND )
-	MESSAGE( FATAL_ERROR "Xerces was not found!" )
-ENDIF()
+MESSAGE( STATUS "Found Xerces: ${XERCES_DIR}" )
 
 # find LCIO
 FIND_PACKAGE( LCIO REQUIRED )
-IF ( NOT LCIO_FOUND )
-    MESSAGE( FATAL_ERROR "LCIO was not found!" )
-ELSE()
-    MESSAGE( STATUS "Found LCIO: ${LCIO_ROOT}" )
-ENDIF()
+MESSAGE( STATUS "Found LCIO: ${LCIO_ROOT}" )
 
 # find Geant4
-find_package(Geant4 REQUIRED)
-IF ( NOT Geant4_FOUND )
-    MESSAGE( FATAL_ERROR "Geant4 was not found!  Define Geant4_DIR when calling cmake." )
-ELSE()
-    MESSAGE( STATUS "Found Geant4: ${Geant4_DIR}" )
-ENDIF()
-
-MESSAGE( STATUS "Geant4_VERSION=${Geant4_VERSION}" )
-
-# enable visualization
-find_package(Geant4 REQUIRED vis_all)
+FIND_PACKAGE(Geant4 REQUIRED vis_all)
+MESSAGE( STATUS "Found Geant4: ${Geant4_DIR}" )
+#MESSAGE( STATUS "Geant4 version: ${Geant4_VERSION}" )
 
 # find GDML
 FIND_PACKAGE( GDML REQUIRED )
-IF ( NOT GDML_FOUND )
-    MESSAGE( FATAL_ERROR "Geant4 was not found!" )
-ELSE()
-    MESSAGE( STATUS "Found GDML: ${GDML_DIR}" )
-ENDIF()
+MESSAGE( STATUS "Found GDML: ${GDML_DIR}" )
 
 # find LCDD
 FIND_PACKAGE( LCDD REQUIRED )
-IF ( NOT LCDD_FOUND )
-    MESSAGE( FATAL_ERROR "LCDD was not found!" )
-ELSE()
-    MESSAGE( STATUS "Found LCDD: ${LCDD_DIR}" )
-ENDIF()
+MESSAGE( STATUS "Found LCDD: ${LCDD_DIR}" )
 
 # find LCDD
 FIND_PACKAGE( HEPPDT REQUIRED )
-IF ( NOT HEPPDT_FOUND )
-    MESSAGE( FATAL_ERROR "HEPPDT was not found!" )
-ELSE()
-    MESSAGE( STATUS "Found HEPPDT: ${HEPPDT_DIR}" )
-ENDIF()
+MESSAGE( STATUS "Found HEPPDT: ${HEPPDT_DIR}" )
 
 # configure files
 CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh.in ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh)
@@ -101,8 +65,8 @@ IF ( ENABLE_SLIC_LOG STREQUAL "ON" )
 ENDIF()
 
 # debug flags
-SET ( CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -DDEBUG=1 -pg -ggdb" )
-SET ( CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3" )
+#SET ( CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -DDEBUG=1 -pg -ggdb" )
+#SET ( CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3" )
 
 # local includes
 SET( SLIC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include )
@@ -160,8 +124,3 @@ ENDIF()
 
 # install
 INSTALL( TARGETS slic slic DESTINATION bin )
-
-#get_cmake_property(_variableNames VARIABLES)
-#foreach (_variableName ${_variableNames})
-#    message(STATUS "${_variableName}=${${_variableName}}")
-#endforeach()
