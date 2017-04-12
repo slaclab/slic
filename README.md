@@ -9,7 +9,7 @@ For now the installation is done manually by first building SLIC's dependencies 
 ### Tools
 
 * gcc 4.8 or greater (prob 4.9 or greater is preferable)
-** You cannot use the default gcc on RHE6 or similarly old distros so you would need to install one yourself or use a dev toolset.
+    * You cannot use the default gcc on RHE6 or similarly old distros so you would need to install one yourself or use a dev toolset.
 * CMake ~3.0 or greater (tested with 3.6)
 
 ### Initial Setup
