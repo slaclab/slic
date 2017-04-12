@@ -1,0 +1,19 @@
+#!/bin/sh
+
+export LD_LIBRARY_PATH=@HEPPDT_DIR@/lib/:@GDML_DIR@/lib:@LCDD_DIR@/lib:@LCIO_DIR@/lib:@XERCES_DIR@/lib
+
+if [ "@CMAKE_CXX_COMPILER@" != "/usr/bin/g++" ]
+then
+    export LD_LIBRARY_PATH=$(dirname @CMAKE_CXX_COMPILER@)/../lib64:$LD_LIBRARY_PATH
+fi
+
+export GDML_SCHEMA_DIR=@GDML_DIR@/schemas
+
+. @Geant4_DIR@/../../bin/geant4.sh
+
+export PATH=@CMAKE_INSTALL_PREFIX@/bin:$PATH
+
+echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
+echo "GDML_SCHEMA_DIR=$GDML_SCHEMA_DIR"
+env | grep G4 | sort
+which slic
