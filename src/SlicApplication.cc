@@ -91,9 +91,6 @@ void SlicApplication::initialize() {
 		// Create a new RunManager.
 		m_runManager = new RunManager();
 
-		// Initialize the physics list manager.
-		PhysicsListManager::instance();
-
 		// Initialize the LcioManager.
 		LcioManager::instance();
 
@@ -113,9 +110,6 @@ void SlicApplication::initialize() {
 #ifdef G4VIS_USE
 		initializeVis();
 #endif
-
-		HepPDTManager::instance();
-
 		// Set state variable.
 		m_isInitialized = true;
 	} else {

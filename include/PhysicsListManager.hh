@@ -5,19 +5,18 @@
 #include "Module.hh"
 
 // slic
-//#include "PhysicsListFactory.hh"
 #include "PhysicsMessenger.hh"
 #include "Singleton.hh"
 
 // geant4
 #include "G4VUserPhysicsList.hh"
-#include "G4RunManager.hh"
 #include "G4Decay.hh"
 
 // std
 #include <string>
 
 class G4PhysListFactory;
+class G4VUserPhysicsList;
 
 namespace slic {
 
@@ -45,8 +44,10 @@ public:
 
     /**
      * Initialize the currently selected physics list.
+     * This will also register option physics such as optical
+     * and extended particle set.
      */
-    void initializePhysicsList();
+    G4VUserPhysicsList* createPhysicsList();
 
     /**
      * Set the name of the current physics list.
@@ -116,23 +117,14 @@ public:
 private:
 
     /**
-     * Setup optical physics.
-     */
-    void setupOpticalProcesses();
-
-    /**
      * Setup SUSY physics.
      */
     void setupSUSY();
 
-    /**
-     * Setup extended particle set from HepPDT.
-     */
-    void setupExtended();
-
 private:
 
     G4VUserPhysicsList* m_currentList;
+
     bool m_isInitialized;
     bool m_isFromDefault;
     bool m_enableLimits;

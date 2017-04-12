@@ -22,29 +22,27 @@
 namespace slic {
 
 RunManager::RunManager() :
-		Module("RunManager", false), m_userActionsInitialized(false), m_abortRun(false) {
+		Module("RunManager", false),m_abortRun(false) {
 }
 
 RunManager::~RunManager() {
 }
 
-void RunManager::initializeUserActions() {
-	SetUserAction(new PrimaryGeneratorAction());
-	SetUserAction(new RunAction());
-	SetUserAction(new EventAction());
-	SetUserAction(new TrackingAction());
-	SetUserAction(new SteppingAction());
-	SetUserAction(new StackingAction());
-	m_userActionsInitialized = true;
-}
-
 void RunManager::Initialize() {
+
+    // Init physics list.
+    G4VUserPhysicsList* list = PhysicsListManager::instance()->createPhysicsList();
+    G4RunManager::GetRunManager()->SetUserInitialization(list);
+
 	// This makes sure that physics initialization occurs before other user actions.
 	G4RunManager::Initialize();
 
-	// Initialize user actions here to avoid ordering problems.
-	if (!m_userActionsInitialized)
-		initializeUserActions();
+    SetUserAction(new PrimaryGeneratorAction());
+    SetUserAction(new RunAction());
+    SetUserAction(new EventAction());
+    SetUserAction(new TrackingAction());
+    SetUserAction(new SteppingAction());
+    SetUserAction(new StackingAction());
 
 	// Initialize the event generation manager.
 	EventSourceManager::instance();
@@ -59,23 +57,26 @@ void RunManager::Initialize() {
 }
 
 void RunManager::InitializePhysics() {
-	// Initialize the physics list.
-	PhysicsListManager::instance()->initializePhysicsList();
-
-	// Call the G4RunManager's intitialization method.
-	G4RunManager::InitializePhysics();
 
 	// Check if the LCDD subsystem got some limits.
 	LCDDProcessor* lcdd = LCDDProcessor::instance();
 	PhysicsListManager* pmgr = PhysicsListManager::instance();
 	if (lcdd->getLimitSetsBegin() != lcdd->getLimitSetsEnd()) {
+	    std::cout << "enabling phys limits" << std::endl;
 		pmgr->enableLimits(true);
 	}
 
 	// Enable physics limits, if necessary.
 	if (pmgr->enableLimits()) {
+	    std::cout << "setting up user limits processes" << std::endl;
 		pmgr->setupUserLimitsProcesses();
 	}
+
+    // Call the G4RunManager's intitialization method.
+    G4RunManager::InitializePhysics();
+
+    // Print out particle table.
+    //G4ParticleTable::GetParticleTable()->DumpTable();
 }
 
 void RunManager::InitializeGeometry() {

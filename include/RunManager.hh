@@ -103,14 +103,6 @@ protected:
 
 private:
 
-    /**
-     * Initialize the user actions defined by this application.
-     */
-    void initializeUserActions();
-
-private:
-
-    bool m_userActionsInitialized;
     int m_numberOfEventsToRun;
     bool m_abortRun;
 };

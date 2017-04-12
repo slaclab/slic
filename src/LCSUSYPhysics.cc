@@ -24,7 +24,8 @@ LCSUSYPhysics::~LCSUSYPhysics() {
 #endif
 
 void LCSUSYPhysics::ConstructParticle() {
-        // Get the particle data table to be imported.
+
+    // Get the particle data table to be imported.
 	HepPDT::ParticleDataTable* pdtbl = HepPDTManager::instance()->getParticleDataTable();
 
 	// Loop over all particles.
