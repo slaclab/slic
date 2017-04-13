@@ -16,6 +16,15 @@ SET( SLIC_VERSION_MAJOR 6 )
 SET( SLIC_VERSION_MINOR 0 )
 SET( SLIC_VERSION_PATCH 0 )
 
+INCLUDE( ExternalProject )
+
+IF( NOT GLOBAL_INSTALL_DIR )
+    SET( GLOBAL_INSTALL_DIR "$ENV{HOME}/slic" )
+    MESSAGE( "GLOBAL_INSTALL_DIR='${GLOBAL_INSTALL_DIR}'" )
+ENDIF()
+
+SET( CMAKE_INSTALL_PREFIX ${GLOBAL_INSTALL_DIR}/slic )
+
 # option for enabling and disabling the logging system
 OPTION( ENABLE_SLIC_LOG "enable slic logging system" ON )
 
@@ -25,33 +34,65 @@ OPTION( PRINT_CMAKE_VARIABLES "print CMake environment" OFF )
 # add path containing CMake macros for this project
 LIST( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
 
+# get list of sources
+FILE( GLOB_RECURSE library_sources ${PROJECT_SOURCE_DIR}/src/*.cc )
+
+# set executable target
+ADD_EXECUTABLE( slic ${library_sources} slic.cc )
+
+# dependency list in build order
+SET( DEPENDENCIES XERCES Geant4 LCIO HEPPDT GDML LCDD )
+FOREACH( dependency ${DEPENDENCIES} ) 
+    MESSAGE( STATUS "Finding ${dependency}" )
+    IF( ${dependency}_DIR )
+        FIND_PACKAGE( ${dependency} REQUIRED ${${dependency}_OPTIONS} )
+        MESSAGE( STATUS "Found ${dependency} at: ${${dependency}_DIR}" )
+    ELSE()
+        MESSAGE( STATUS "${dependency} will be installed as external project." )
+        INCLUDE( Install${dependency} )
+        ADD_DEPENDENCIES( slic ${dependency} )
+    ENDIF()
+ENDFOREACH()
+
 # find Xerces C++
-find_package ( XERCES REQUIRED )
-MESSAGE( STATUS "Found Xerces: ${XERCES_DIR}" )
+#find_package ( XERCES REQUIRED )
+#MESSAGE( STATUS "Found Xerces: ${XERCES_DIR}" )
 
 # find LCIO
-FIND_PACKAGE( LCIO REQUIRED )
-MESSAGE( STATUS "Found LCIO: ${LCIO_ROOT}" )
+#if(NOT LCIO_DIR)
+#    MESSAGE( STATUS "LCIO will be installed as external project." )
+#    INCLUDE(InstallLCIO)
+#    ADD_DEPENDENCIES(slic LCIO)
+#ELSE()
+#    FIND_PACKAGE( LCIO REQUIRED )
+#    MESSAGE( STATUS "Found LCIO: ${LCIO_ROOT}" )
+#ENDIF()
 
 # find Geant4
-FIND_PACKAGE(Geant4 REQUIRED vis_all)
-MESSAGE( STATUS "Found Geant4: ${Geant4_DIR}" )
-MESSAGE( STATUS "Geant4 version: ${Geant4_VERSION}" )
-IF(Geant4_VERSION_MAJOR LESS 10)
-    MESSAGE(FATAL "Geant4 version ${Geant4_VERSION} is too old.")
-ENDIF()
+#FIND_PACKAGE(Geant4 REQUIRED vis_all)
+#MESSAGE( STATUS "Found Geant4: ${Geant4_DIR}" )
+#MESSAGE( STATUS "Geant4 version: ${Geant4_VERSION}" )
+#IF(Geant4_VERSION_MAJOR LESS 10)
+#    MESSAGE(FATAL "Geant4 version ${Geant4_VERSION} is too old.")
+#ENDIF()
 
 # find GDML
-FIND_PACKAGE( GDML REQUIRED )
-MESSAGE( STATUS "Found GDML: ${GDML_DIR}" )
+#FIND_PACKAGE( GDML REQUIRED )
+#MESSAGE( STATUS "Found GDML: ${GDML_DIR}" )
 
-# find LCDD
-FIND_PACKAGE( LCDD REQUIRED )
-MESSAGE( STATUS "Found LCDD: ${LCDD_DIR}" )
+# install LCDD
+#IF(NOT LCDD_DIR)
+#    MESSAGE( STATUS "LCDD will be installed as external project." )
+#    INCLUDE(InstallLCDD)
+#    ADD_DEPENDENCIES( slic LCDD )
+#ELSEIF()
+#    FIND_PACKAGE( LCDD REQUIRED )
+#    MESSAGE( STATUS "Found LCDD: ${LCDD_DIR}" )
+#ENDIF()
 
-# find LCDD
-FIND_PACKAGE( HEPPDT REQUIRED )
-MESSAGE( STATUS "Found HEPPDT: ${HEPPDT_DIR}" )
+# find HepPDT
+#FIND_PACKAGE( HEPPDT REQUIRED )
+#MESSAGE( STATUS "Found HEPPDT: ${HEPPDT_DIR}" )
 
 # configure files
 CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh.in ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh)
@@ -66,10 +107,6 @@ IF ( ENABLE_SLIC_LOG STREQUAL "ON" )
     MESSAGE( STATUS "Enabling slic log system" )
     ADD_DEFINITIONS( -DSLIC_LOG )
 ENDIF()
-
-# debug flags
-#SET ( CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -DDEBUG=1 -pg -ggdb" )
-#SET ( CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3" )
 
 # local includes
 SET( SLIC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include )
@@ -91,14 +128,8 @@ LINK_LIBRARIES( ${LCDD_LIBRARY} )
 LINK_LIBRARIES( ${HEPPDT_LIBRARIES} )
 LINK_LIBRARIES( ${LCIO_LIBRARIES} )
 
-# get list of sources
-FILE( GLOB_RECURSE library_sources ${PROJECT_SOURCE_DIR}/src/*.cc )
-
-# executable
-ADD_EXECUTABLE( slic ${library_sources} slic.cc )
-
 # configure and output documentation using doxygen
-OPTION( INSTALL_DOC "Set to OFF to skip build/install documentation" ON )
+OPTION( INSTALL_DOC "Set to OFF to skip build/install documentation" OFF )
 IF ( INSTALL_DOC )
 
     # find doxygen

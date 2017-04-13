@@ -1,0 +1,19 @@
+EXTERNALPROJECT_ADD(
+    HEPPDT
+
+    URL "http://lcgapp.cern.ch/project/simu/HepPDT/download/HepPDT-3.04.01.tar.gz"
+
+    SOURCE_DIR "${CMAKE_BINARY_DIR}/extdep/HEPPDT"
+    
+    UPDATE_COMMAND ""
+    PATCH_COMMAND ""
+    
+    CONFIGURE_COMMAND "${CMAKE_BINARY_DIR}/extdep/HEPPDT/configure" --prefix=${GLOBAL_INSTALL_DIR}/heppdt
+)
+
+SET( HEPPDT_DIR ${GLOBAL_INSTALL_DIR}/HEPPDT )
+
+# TODO: move to UseHEPPDT macro
+SET( HEPPDT_INCLUDE_DIR ${HEPPDT_DIR}/include )
+SET( HEPPDT_LIBRARY_DIR ${HEPPDT_DIR}/lib )
+LIST( APPEND HEPPDT_LIBRARIES HepPDT HepPID )

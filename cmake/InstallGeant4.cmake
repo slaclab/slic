@@ -1,0 +1,18 @@
+IF( NOT Geant4_VERSION )
+    SET( Geant_VERSION "master" )
+ENDIF()
+
+EXTERNALPROJECT_ADD(
+    Geant4
+
+    GIT_REPOSITORY "https://github.com/Geant4/geant4"
+    GIT_TAG "${GEANT4_VERSION}"
+    
+    UPDATE_COMMAND ""
+    PATCH_COMMAND ""
+
+    SOURCE_DIR "${CMAKE_BINARY_DIR}/extdep/geant4"
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${GLOBAL_INSTALL_DIR}/geant4 -DGEANT4_INSTALL_DATA=ON
+    
+    BUILD_COMMAND make -j4
+)
