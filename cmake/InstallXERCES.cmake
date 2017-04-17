@@ -13,7 +13,7 @@ EXTERNALPROJECT_ADD(
 
 SET( XERCES_DIR ${GLOBAL_INSTALL_DIR}/xerces CACHE PATH "XERCES install dir" FORCE )
 
-MESSAGE( "install set XERCES_DIR='${XERCES_DIR}'" )
+#MESSAGE( "install set XERCES_DIR='${XERCES_DIR}'" )
 
 # TODO: move to UseXerces macro
 SET( XERCES_INCLUDE_DIR ${XERCES_DIR}/include )

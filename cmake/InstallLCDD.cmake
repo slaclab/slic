@@ -21,7 +21,7 @@ EXTERNALPROJECT_ADD(
 
 SET( LCDD_DIR ${GLOBAL_INSTALL_DIR}/lcdd CACHE PATH "LCDD install dir" FORCE )
 
-MESSAGE( "install set LCDD_DIR='${LCDD_DIR}'" )
+#MESSAGE( "install set LCDD_DIR='${LCDD_DIR}'" )
 
 # TODO: move to UseLCDD macro
 SET( LCDD_INCLUDE_DIR ${LCDD_DIR}/include )

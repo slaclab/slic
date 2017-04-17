@@ -19,7 +19,7 @@ EXTERNALPROJECT_ADD(
 
 SET( LCIO_DIR ${GLOBAL_INSTALL_DIR}/lcio CACHE PATH "LCIO install dir" FORCE )
 
-MESSAGE( "install set LCIO_DIR='${LCIO_DIR}'" )
+#MESSAGE( "install set LCIO_DIR='${LCIO_DIR}'" )
 
 # TODO: move to UseLCIO macro
 SET( LCIO_INCLUDE_DIRS ${LCIO_DIR}/include )
