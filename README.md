@@ -1,6 +1,6 @@
 # SLIC
 
-Simulation for the Linear Collider (SLIC) Geant4 simulation application
+Simulation for the Linear Collider (SLIC) - Geant4 simulation application
 
 ## Installation
 
