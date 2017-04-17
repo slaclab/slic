@@ -58,6 +58,9 @@ void RunManager::Initialize() {
 
 void RunManager::InitializePhysics() {
 
+    // Call the G4RunManager's intitialization method.
+    G4RunManager::InitializePhysics();
+
 	// Check if the LCDD subsystem got some limits.
 	LCDDProcessor* lcdd = LCDDProcessor::instance();
 	PhysicsListManager* pmgr = PhysicsListManager::instance();
@@ -71,9 +74,6 @@ void RunManager::InitializePhysics() {
 	    std::cout << "setting up user limits processes" << std::endl;
 		pmgr->setupUserLimitsProcesses();
 	}
-
-    // Call the G4RunManager's intitialization method.
-    G4RunManager::InitializePhysics();
 
     // Print out particle table.
     //G4ParticleTable::GetParticleTable()->DumpTable();
