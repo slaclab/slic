@@ -5,6 +5,8 @@ ENDIF()
 EXTERNALPROJECT_ADD(
     LCDD
 
+    DEPENDS XERCES Geant4 GDML
+
     GIT_REPOSITORY "https://github.com/slaclab/lcdd"
     GIT_TAG "${LCDD_VERSION}"
     
@@ -17,7 +19,9 @@ EXTERNALPROJECT_ADD(
     BUILD_COMMAND make -j4
 )
 
-SET( LCDD_DIR ${GLOBAL_INSTALL_DIR}/lcdd )
+SET( LCDD_DIR ${GLOBAL_INSTALL_DIR}/lcdd CACHE PATH "LCDD install dir" FORCE )
+
+MESSAGE( "install set LCDD_DIR='${LCDD_DIR}'" )
 
 # TODO: move to UseLCDD macro
 SET( LCDD_INCLUDE_DIR ${LCDD_DIR}/include )

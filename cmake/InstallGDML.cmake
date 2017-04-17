@@ -3,7 +3,10 @@ IF( NOT GDML_VERSION )
 ENDIF()
 
 EXTERNALPROJECT_ADD(
+
     GDML
+
+    DEPENDS XERCES Geant4 
 
     GIT_REPOSITORY "https://github.com/slaclab/gdml"
     GIT_TAG "${GDML_VERSION}"
@@ -17,7 +20,9 @@ EXTERNALPROJECT_ADD(
     BUILD_COMMAND make -j4
 )
 
-SET( GDML_DIR ${GLOBAL_INSTALL_DIR}/gdml )
+SET( GDML_DIR ${GLOBAL_INSTALL_DIR}/gdml CACHE PATH "GDML install dir" FORCE )
+
+MESSAGE( "install set GDML_DIR='${GDML_DIR}'" )
 
 # TODO: move to UseGDML macro
 SET( GDML_INCLUDE_DIR ${GDML_DIR}/include )
