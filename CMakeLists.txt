@@ -68,8 +68,8 @@ FOREACH( dependency ${DEPENDENCIES} )
 ENDFOREACH()
 
 IF ( DEPENDENCIES_NOTFOUND )
-    MESSAGE( "Some dependencies were not found.  Run 'make' to build them, or CMake cmake with their directory arguments (e.g. Geant4_DIR etc.)." ) 
-    MESSAGE( "After building the dependencies you will need to rerun CMake." )
+    MESSAGE( "Some dependencies were not found.  Run 'make' to build them, or rerun CMake and provide their location (e.g. Geant4_DIR etc.)." ) 
+    MESSAGE( "After building any missing dependencies you will need to rerun CMake." )
 ELSE()
 
     MESSAGE( "All dependencies were found.  Run 'make' to build SLIC and 'make install' to install to '${CMAKE_INSTALL_PREFIX}'." )
