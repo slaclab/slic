@@ -21,14 +21,14 @@ INCLUDE( ExternalProject )
 
 IF( NOT GLOBAL_INSTALL_DIR )
     SET( GLOBAL_INSTALL_DIR "$ENV{HOME}/slic" )
-    MESSAGE( STATUS "GLOBAL_INSTALL_DIR='${GLOBAL_INSTALL_DIR}'" )
+    MESSAGE( STATUS "Base install dir set to: ${GLOBAL_INSTALL_DIR}" )
 ENDIF()
 
 # turn on compilation flag for enabling log statements that are defined within preprocessor blocks
 IF ( ENABLE_SLIC_LOG STREQUAL "ON" )
-    MESSAGE( STATUS "Enabling slic log system" )
     ADD_DEFINITIONS( -DSLIC_LOG )
 ENDIF()
+MESSAGE( STATUS "Enable slic log system: ${ENABLE_SLIC_LOG}" )
 
 SET( CMAKE_INSTALL_PREFIX ${GLOBAL_INSTALL_DIR}/slic )
 
@@ -36,7 +36,7 @@ SET( CMAKE_INSTALL_PREFIX ${GLOBAL_INSTALL_DIR}/slic )
 OPTION( ENABLE_SLIC_LOG "enable slic logging system" ON )
 
 # option to dump CMake variables after cmake is executed
-OPTION( PRINT_CMAKE_VARIABLES "print CMake environment" OFF )
+#OPTION( PRINT_CMAKE_VARIABLES "print CMake environment" OFF )
 
 # add path containing CMake macros for this project
 LIST( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
@@ -49,11 +49,10 @@ SET( DEPENDENCIES XERCES Geant4 LCIO HEPPDT GDML LCDD )
 
 ADD_CUSTOM_TARGET( extdeps )
 FOREACH( dependency ${DEPENDENCIES} )
-    MESSAGE( "${dependency}_DIR='${${dependency}_DIR}'" )
     IF ( ${dependency}_DIR )
         FIND_PACKAGE( ${dependency} QUIET )
         IF ( ${dependency}_FOUND )
-            MESSAGE( STATUS "${dependency} was found at: '${${dependency}_DIR}'" )
+            MESSAGE( STATUS "${dependency} was found at: ${${dependency}_DIR}" )
             IF( NOT TARGET ${dependency} )
                 ADD_CUSTOM_TARGET( ${dependency} )
             ENDIF()
@@ -61,7 +60,7 @@ FOREACH( dependency ${DEPENDENCIES} )
             MESSAGE( FATAL_ERROR "You specified ${dependency}_DIR but this does not appear to point to a valid install of ${dependency}." )
         ENDIF()
     ELSE()
-        MESSAGE( STATUS "${dependency} was not found and will be installed as external project." )
+        MESSAGE( STATUS "${dependency} was not found and will be installed as an external project." )
         INCLUDE( Install${dependency} )
         SET( DEPENDENCIES_NOTFOUND "YES" FORCE )
     ENDIF()
@@ -69,14 +68,16 @@ FOREACH( dependency ${DEPENDENCIES} )
 ENDFOREACH()
 
 IF ( DEPENDENCIES_NOTFOUND )
-    MESSAGE( "Some dependencies were not found.  Run 'make' to build them or rerun cmake with their directory arguments (e.g. Geant4_DIR)." ) 
+    MESSAGE( "Some dependencies were not found.  Run 'make' to build them, or CMake cmake with their directory arguments (e.g. Geant4_DIR etc.)." ) 
+    MESSAGE( "After building the dependencies you will need to rerun CMake." )
 ELSE()
 
-    MESSAGE( "All dependencies were found.  Building SLIC executable ..." )
+    MESSAGE( "All dependencies were found.  Run 'make' to build SLIC and 'make install' to install to '${CMAKE_INSTALL_PREFIX}'." )
 
     # set executable target
     ADD_EXECUTABLE( slic ${library_sources} slic.cc )
 
+    # make slic depend on its external deps (is this necessary???)
     ADD_DEPENDENCIES( slic extdeps )
 
     # local includes
@@ -84,9 +85,9 @@ ELSE()
     INCLUDE_DIRECTORIES( ${SLIC_INCLUDE_DIR} )
 
     # configure files
-    #CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh.in ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh)
-    #CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh.in ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh )
-    #CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh.in ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh )
+    CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh.in ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh)
+    CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh.in ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh )
+    CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh.in ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh )
 
     # additional compilation flags for Geant4
     INCLUDE( ${Geant4_USE_FILE} )
@@ -109,36 +110,32 @@ ELSE()
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 ENDIF()
 
-get_cmake_property(_variableNames VARIABLES)
-foreach(_variableName ${_variableNames})
-    message(STATUS "${_variableName}=${${_variableName}}")
-endforeach()
-
 # configure and output documentation using doxygen
-#OPTION( INSTALL_DOC "Set to OFF to skip build/install documentation" OFF )
-#IF ( INSTALL_DOC )
+OPTION( INSTALL_DOC "Build documentation using doxygen" OFF )
+IF ( INSTALL_DOC )
 
     # find doxygen
-#    FIND_PROGRAM( DOXYGEN_EXECUTABLE doxygen ${PATH} )
-#    IF ( DOXYGEN_EXECUTABLE-NOTFOUND )
-#        MESSAGE( FATAL_ERROR "The doxygen executable was not found." )
-#    ENDIF()
+    FIND_PROGRAM( DOXYGEN_EXECUTABLE doxygen ${PATH} )
+    IF ( DOXYGEN_EXECUTABLE-NOTFOUND )
+        MESSAGE( FATAL_ERROR "The doxygen executable was not found." )
+    ENDIF()
 
     # find dot
-#    FIND_PROGRAM( DOT_EXECUTABLE dot ${PATH} )
-#    IF ( DOT_EXECUTABLE-NOTFOUND )
-#        MESSAGE( FATAL_ERROR "The dot executable was not found." )
-#    ENDIF()
+    FIND_PROGRAM( DOT_EXECUTABLE dot ${PATH} )
+    IF ( DOT_EXECUTABLE-NOTFOUND )
+        MESSAGE( FATAL_ERROR "The dot executable was not found." )
+    ENDIF()
 
     # configure doxygen output
-#    MESSAGE( STATUS "Configuring doxygen input file" )
-#    CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/config/doxygen/slic_doxygen.cfg.in ${PROJECT_SOURCE_DIR}/config/doxygen/slic_doxygen.cfg )
+    CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/config/doxygen/slic_doxygen.cfg.in ${PROJECT_SOURCE_DIR}/config/doxygen/slic_doxygen.cfg )
 
     # add doxygen documentation to install step
-#    INSTALL( CODE "EXECUTE_PROCESS( COMMAND doxygen ${PROJECT_SOURCE_DIR}/config/doxygen/slic_doxygen.cfg)" )
+    INSTALL( CODE "EXECUTE_PROCESS( COMMAND doxygen ${PROJECT_SOURCE_DIR}/config/doxygen/slic_doxygen.cfg)" )
 
-#ELSE()
-    # message that documentation is off for this build
-#    MESSAGE( STATUS "INSTALL_DOC is set to OFF.  Documentation will not be created." )
-#ENDIF()
+ENDIF()
+MESSAGE( STATUS "Install documentation using doxygen: ${INSTALL_DOC}" )
 
+#get_cmake_property(_variableNames VARIABLES)
+#foreach(_variableName ${_variableNames})
+#    message(STATUS "${_variableName}=${${_variableName}}")
+#endforeach()
