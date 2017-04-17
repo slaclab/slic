@@ -84,29 +84,21 @@ ELSE()
     INCLUDE_DIRECTORIES( ${SLIC_INCLUDE_DIR} )
 
     # configure files
-    CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh.in ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh)
-    CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh.in ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh )
-    CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh.in ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh )
+    #CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh.in ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh)
+    #CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh.in ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh )
+    #CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh.in ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh )
 
     # additional compilation flags for Geant4
     INCLUDE( ${Geant4_USE_FILE} )
-    #ADD_DEFINITIONS( ${Geant4_DEFINITIONS} )
 
     # include directories
     INCLUDE_DIRECTORIES( ${XERCES_INCLUDE_DIR} ${LCIO_INCLUDE_DIRS} ${Geant4_INCLUDE_DIRS} ${GDML_INCLUDE_DIR} ${LCDD_INCLUDE_DIR} ${HEPPDT_INCLUDE_DIR} )
 
-    # add GDML link directory
-    LINK_DIRECTORIES( ${GDML_LIBRARY_DIR} )
-    LINK_DIRECTORIES( ${LCDD_LIBRARY_DIR} )
-    LINK_DIRECTORIES( ${LCIO_LIBRARY_DIRS} )
-
     # libraries
-    LINK_LIBRARIES( ${XERCES_LIBRARY} )
-    LINK_LIBRARIES( ${Geant4_LIBRARIES} )
-    LINK_LIBRARIES( ${GDML_LIBRARY} )
-    LINK_LIBRARIES( ${LCDD_LIBRARY} )
-    LINK_LIBRARIES( ${HEPPDT_LIBRARIES} )
-    LINK_LIBRARIES( ${LCIO_LIBRARIES} )
+    TARGET_LINK_LIBRARIES( slic ${XERCES_LIBRARY} ${Geant4_LIBRARIES} ${GDML_LIBRARY} ${LCDD_LIBRARY} ${HEPPDT_LIBRARIES} ${LCIO_LIBRARIES} )
+
+    # link directories
+    LINK_DIRECTORIES( ${GDML_LIBRARY_DIR} ${LCDD_LIBRARY_DIR} ${LCIO_LIBRARY_DIRS} )
 
     # install
     INSTALL( TARGETS slic slic DESTINATION bin )
@@ -116,6 +108,11 @@ ELSE()
     INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh DESTINATION bin 
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 ENDIF()
+
+get_cmake_property(_variableNames VARIABLES)
+foreach(_variableName ${_variableNames})
+    message(STATUS "${_variableName}=${${_variableName}}")
+endforeach()
 
 # configure and output documentation using doxygen
 #OPTION( INSTALL_DOC "Set to OFF to skip build/install documentation" OFF )
