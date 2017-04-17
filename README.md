@@ -49,10 +49,31 @@ The default installation directory for SLIC and its dependencies is `~/slic` whi
 
 ## Running SLIC
 
+The build system generates a shell script that will setup the necessary environment for running the application:
+
 ```
 source /scratch/slic/install/slic/bin/slic-env.sh
+```
+
+Now you can run the executable from the command line:
+
+```
 slic [options]
 ```
+
+Print the help menu:
+
+```
+slic --help
+```
+
+An actual command might look something like:
+
+```
+slic -g mygeom.lcdd -i events.stdhep -m commands.mac -r 10
+```
+
+Read the help to get an idea of the actual commands that are available.
 
 ### Specifying Dependencies
 
