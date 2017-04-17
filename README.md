@@ -4,9 +4,9 @@ Simulation for the Linear Collider (SLIC) Geant4 simulation application
 
 ## Installation
 
-For now the installation is done manually by first building SLIC's dependencies and then the main package.  Step-by-step instructions are given below.
+SLIC is a C++ application that is built using the standard GCC compiler toolchain and the CMake build generation system.
 
-### Tools
+### Required Tools
 
 * gcc 4.8 or greater (prob 4.9 or greater is preferable)
     * You cannot use the default gcc on RHE6 or similarly old distros so you would need to install one yourself or use a dev toolset.
@@ -14,17 +14,15 @@ For now the installation is done manually by first building SLIC's dependencies 
 
 ### Initial Setup
 
-There will be a `build` dir where all the packages are built and configured and an `install` dir where they are installed out of source.  
-This structure can be setup as follows:
+You will create a build directory where all the required packages are configured and compiled.
+
+Create the build directory within your slic project directory:
 
 ```
-cd /scratch
-mkdir slic; cd slic
-mkdir install; cd install
-export install_dir=$PWD
-cd ..
-mkdir build; cd build
+mkdir build
 ```
+
+All build commands will be executed from within this build directory (*not* from the slic project directory).
 
 ### Quick Build Instructions
 
@@ -33,11 +31,11 @@ The SLIC build system is able to download and install all dependencies for the p
 Start by executing CMake from the build dir:
 
 ```
-cd build
+cd slic/build
 cmake ..
 ```
 
-If no directory arguments were provided pointing CMake at locally installed packages, you will see a message stating "Some dependencies were not found."  This is not an error, but to complete the build you will need to build these dependencies and then rerun CMake so they are resolved.
+If no directory arguments are provided that point to locally installed packages, you will see a message stating "Some dependencies were not found."  This is not an error, but to complete the build you will need to build these dependencies and then rerun CMake so they are resolved.
 
 To build the dependencies, execute the following:
 
@@ -55,6 +53,29 @@ The default installation directory for SLIC and its dependencies is `~/slic` whi
 source /scratch/slic/install/slic/bin/slic-env.sh
 slic [options]
 ```
+
+### Specifying Dependencies
+
+You may also have one or more of SLIC's dependencies installed locally, which you can use in your build by providing CMake with their root directories.
+
+For instance, to use your own Geant4 installation, the command would be something like the following:
+
+```
+cmake -DGeant4_DIR=/path/to/geant4/lib64/Geant4-10.3.1/ ..
+```
+
+This table shows the full list of dependency variables accepted by SLIC:
+
+| Dependency | Variable    |
+| ---------- | ----------- |
+| Geant4     | Geant4_DIR  |
+| Xerces C++ | XERCES_DIR  |
+| LCIO       | LCIO_DIR    |
+| HepPDT     | HEPPDT_DIR  |
+| GDML       | GDML_DIR    |
+| LCDD       | LCDD_DIR    |
+
+Instructions for manually installing these dependencies are given below.
 
 ## Installing Dependencies
 
