@@ -89,7 +89,8 @@ ELSE()
     CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh.in ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh )
 
     # additional compilation flags for Geant4
-    ADD_DEFINITIONS( ${Geant4_DEFINITIONS} )
+    INCLUDE( ${Geant4_USE_FILE} )
+    #ADD_DEFINITIONS( ${Geant4_DEFINITIONS} )
 
     # include directories
     INCLUDE_DIRECTORIES( ${XERCES_INCLUDE_DIR} ${LCIO_INCLUDE_DIRS} ${Geant4_INCLUDE_DIRS} ${GDML_INCLUDE_DIR} ${LCDD_INCLUDE_DIR} ${HEPPDT_INCLUDE_DIR} )
