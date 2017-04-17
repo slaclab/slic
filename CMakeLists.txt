@@ -19,24 +19,26 @@ SET( SLIC_VERSION_PATCH 0 )
 
 INCLUDE( ExternalProject )
 
-IF( NOT GLOBAL_INSTALL_DIR )
+IF ( NOT GLOBAL_INSTALL_DIR )
     SET( GLOBAL_INSTALL_DIR "$ENV{HOME}/slic" )
-    MESSAGE( STATUS "Base install dir set to: ${GLOBAL_INSTALL_DIR}" )
+    MESSAGE( STATUS "Global install dir set to: ${GLOBAL_INSTALL_DIR}" )
 ENDIF()
 
-# turn on compilation flag for enabling log statements that are defined within preprocessor blocks
+IF( CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT )
+    SET( CMAKE_INSTALL_PREFIX ${GLOBAL_INSTALL_DIR}/slic )
+ENDIF()
+
+MESSAGE( STATUS "SLIC install dir set to: ${CMAKE_INSTALL_PREFIX}" )
+
+# option for logg messages
+OPTION( ENABLE_SLIC_LOG "Enable slic logging system" ON )
 IF ( ENABLE_SLIC_LOG STREQUAL "ON" )
     ADD_DEFINITIONS( -DSLIC_LOG )
 ENDIF()
 MESSAGE( STATUS "Enable slic log system: ${ENABLE_SLIC_LOG}" )
 
-SET( CMAKE_INSTALL_PREFIX ${GLOBAL_INSTALL_DIR}/slic )
-
-# option for enabling and disabling the logging system
-OPTION( ENABLE_SLIC_LOG "enable slic logging system" ON )
-
 # option to dump CMake variables after cmake is executed
-#OPTION( PRINT_CMAKE_VARIABLES "print CMake environment" OFF )
+OPTION( PRINT_CMAKE_VARIABLES "Print CMake environment" OFF )
 
 # add path containing CMake macros for this project
 LIST( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
@@ -135,7 +137,10 @@ IF ( INSTALL_DOC )
 ENDIF()
 MESSAGE( STATUS "Install documentation using doxygen: ${INSTALL_DOC}" )
 
-#get_cmake_property(_variableNames VARIABLES)
-#foreach(_variableName ${_variableNames})
-#    message(STATUS "${_variableName}=${${_variableName}}")
-#endforeach()
+IF ( PRINT_CMAKE_VARIABLES )
+    GET_CMAKE_PROPERTY(_variableNames VARIABLES)
+    MESSAGE( "Dumping CMake variables ..." )
+    FOREACH(_variableName ${_variableNames})
+        MESSAGE(STATUS "${_variableName}=${${_variableName}}")
+    ENDFOREACH()
+ENDIF()
