@@ -91,6 +91,8 @@ void SlicApplication::initialize() {
 		// Create a new RunManager.
 		m_runManager = new RunManager();
 
+		PhysicsListManager::instance();
+
 		// Initialize the LcioManager.
 		LcioManager::instance();
 
