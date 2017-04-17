@@ -23,5 +23,3 @@ EXTERNALPROJECT_ADD(
 
 STRING( REPLACE "v" "" Geant4_VERSION_NUMBER ${Geant4_VERSION} )
 SET( Geant4_DIR ${GLOBAL_INSTALL_DIR}/geant4/lib64/Geant4-${Geant4_VERSION_NUMBER} CACHE PATH "Geant4 install dir" FORCE )
-
-#MESSAGE( "install set Geant4_DIR='${Geant4_DIR}'" )

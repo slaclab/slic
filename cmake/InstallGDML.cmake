@@ -21,10 +21,3 @@ EXTERNALPROJECT_ADD(
 )
 
 SET( GDML_DIR ${GLOBAL_INSTALL_DIR}/gdml CACHE PATH "GDML install dir" FORCE )
-
-#MESSAGE( "install set GDML_DIR='${GDML_DIR}'" )
-
-# TODO: move to UseGDML macro
-SET( GDML_INCLUDE_DIR ${GDML_DIR}/include )
-SET( GDML_LIBRARY_DIR ${GDML_DIR}/lib )
-SET( GDML_LIBRARY gdml )
