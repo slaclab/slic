@@ -24,7 +24,7 @@ mkdir build
 
 All build commands will be executed from within this build directory (*not* from the slic project directory).
 
-### Quick Build Instructions
+### Basic Build Instructions
 
 The SLIC build system is able to download and install all dependencies for the project if they are not found on your system.
 
@@ -46,6 +46,29 @@ make
 Once this is done, then you need to rerun `cmake ..` from the build directory.  If the dependencies all installed successfully, then the message "All dependencies were found." should print.  Now you can just type `make; make install` to complete the build using these installed dependencies.
 
 The default installation directory for SLIC and its dependencies is `~/slic` which you can change by providing an argument `-DGLOBAL_INSTALL_DIR=/my/install/dir` to the CMake command.
+
+### Specifying Dependencies
+
+You may also have one or more of SLIC's dependencies installed locally, which you can use in your build by providing CMake with their root directories.
+
+For instance, to use your own Geant4 installation, the command would be something like the following:
+
+```
+cmake -DGeant4_DIR=/path/to/geant4/lib64/Geant4-10.3.1/ ..
+```
+
+This table shows the full list of dependency variables accepted by SLIC:
+
+| Dependency | Variable    |
+| ---------- | ----------- |
+| Geant4     | Geant4_DIR  |
+| Xerces C++ | XERCES_DIR  |
+| LCIO       | LCIO_DIR    |
+| HepPDT     | HEPPDT_DIR  |
+| GDML       | GDML_DIR    |
+| LCDD       | LCDD_DIR    |
+
+Instructions for manually installing these dependencies are given below.
 
 ## Running SLIC
 
@@ -75,32 +98,12 @@ slic -g mygeom.lcdd -i events.stdhep -m commands.mac -r 10
 
 Read the help to get an idea of the actual commands that are available.
 
-### Specifying Dependencies
 
-You may also have one or more of SLIC's dependencies installed locally, which you can use in your build by providing CMake with their root directories.
+## Installing Dependencies Manually
 
-For instance, to use your own Geant4 installation, the command would be something like the following:
+This section covers in detail the manual installation of SLIC's dependencies.  
 
-```
-cmake -DGeant4_DIR=/path/to/geant4/lib64/Geant4-10.3.1/ ..
-```
-
-This table shows the full list of dependency variables accepted by SLIC:
-
-| Dependency | Variable    |
-| ---------- | ----------- |
-| Geant4     | Geant4_DIR  |
-| Xerces C++ | XERCES_DIR  |
-| LCIO       | LCIO_DIR    |
-| HepPDT     | HEPPDT_DIR  |
-| GDML       | GDML_DIR    |
-| LCDD       | LCDD_DIR    |
-
-Instructions for manually installing these dependencies are given below.
-
-## Installing Dependencies
-
-Should you wish to install dependencies manually, the following instructions can be followed.
+These procedures are entirely optional, as running `cmake` without providing paths to pre-installed dependencies will cause them to be installed automatically.
 
 #### Geant4
 
