@@ -3,7 +3,11 @@ IF( NOT Geant4_VERSION )
 ENDIF()
 
 IF ( Geant4_VERSION EQUAL "master" )
-    MESSAGE( FATAL "Installing Geant4 from github master is not allowed." )
+    MESSAGE( FATAL_ERROR "Installing Geant4 from github master is not allowed." )
+ENDIF()
+
+IF ( NOT GEANT4_INSTALL_DATA )
+    SET( GEANT4_INSTALL_DATA "OFF" )
 ENDIF()
 
 EXTERNALPROJECT_ADD(
@@ -15,9 +19,9 @@ EXTERNALPROJECT_ADD(
     UPDATE_COMMAND ""
     PATCH_COMMAND ""
 
-    SOURCE_DIR "${CMAKE_BINARY_DIR}/extdep/geant4"
-    # TODO: provide user flag for G4 data install
-    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}/geant4 -DGEANT4_INSTALL_DATA=OFF
+    SOURCE_DIR "${CMAKE_BINARY_DIR}/geant4"
+    
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}/geant4 -DGEANT4_INSTALL_DATA=${GEANT4_INSTALL_DATA}
     
     BUILD_COMMAND make -j4
 )
