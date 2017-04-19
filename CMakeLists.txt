@@ -19,13 +19,9 @@ SET( SLIC_VERSION_PATCH 0 )
 
 INCLUDE( ExternalProject )
 
-IF ( NOT GLOBAL_INSTALL_DIR )
-    SET( GLOBAL_INSTALL_DIR "$ENV{HOME}/slic" )
-    MESSAGE( STATUS "Global install dir set to: ${GLOBAL_INSTALL_DIR}" )
-ENDIF()
-
-#IF( CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT )
-SET( CMAKE_INSTALL_PREFIX ${GLOBAL_INSTALL_DIR}/slic )
+#IF ( NOT CMAKE_INSTALL_PREFIX )
+#    SET( CMAKE_INSTALL_PREFIX "$ENV{HOME}/slic" )
+#    MESSAGE( STATUS "Global install dir set to: ${CMAKE_INSTALL_PREFIX}" )
 #ENDIF()
 
 MESSAGE( STATUS "SLIC install dir set to: ${CMAKE_INSTALL_PREFIX}" )
@@ -47,19 +43,16 @@ LIST( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
 FILE( GLOB_RECURSE library_sources ${PROJECT_SOURCE_DIR}/src/*.cc )
 
 # dependency list in build order
-SET( DEPENDENCIES XERCES Geant4 LCIO HEPPDT GDML LCDD )
+SET( DEPENDENCIES XERCES Geant4 GDML LCDD LCIO HEPPDT )
 
 ADD_CUSTOM_TARGET( extdeps )
 FOREACH( dependency ${DEPENDENCIES} )
-    IF ( ${dependency}_DIR )
-        FIND_PACKAGE( ${dependency} QUIET )
-        IF ( ${dependency}_FOUND )
-            MESSAGE( STATUS "${dependency} was found at: ${${dependency}_DIR}" )
-            IF( NOT TARGET ${dependency} )
-                ADD_CUSTOM_TARGET( ${dependency} )
-            ENDIF()
-        ELSE()
-            MESSAGE( FATAL_ERROR "You specified ${dependency}_DIR but this does not appear to point to a valid install of ${dependency}." )
+    MESSAGE( "processing dep: ${dependency}" )
+    FIND_PACKAGE( ${dependency} )
+    IF ( ${dependency}_FOUND )
+        MESSAGE( STATUS "${dependency} was found at: ${${dependency}_DIR}" )
+        IF( NOT TARGET ${dependency} )
+            ADD_CUSTOM_TARGET( ${dependency} )
         ENDIF()
     ELSE()
         MESSAGE( STATUS "${dependency} was not found and will be installed as an external project." )
@@ -67,6 +60,9 @@ FOREACH( dependency ${DEPENDENCIES} )
         SET( DEPENDENCIES_NOTFOUND "YES" FORCE )
     ENDIF()
     ADD_DEPENDENCIES( extdeps ${dependency} )
+    MESSAGE("  ${dependency}_DIR=${${dependency}_DIR}" )
+    MESSAGE("  ${dependency}_VERSION=${${dependency}_VERSION}" )
+    MESSAGE("  ${dependency}_FOUND=${${dependency}_FOUND}" )
 ENDFOREACH()
 
 IF ( DEPENDENCIES_NOTFOUND )
@@ -89,7 +85,7 @@ ELSE()
     # configure files
     CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh.in ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh)
     CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh.in ${PROJECT_SOURCE_DIR}/include/Geant4VersionInfo.hh )
-    CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh.in ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh )
+    #CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh.in ${PROJECT_SOURCE_DIR}/scripts/create_slic_tarball.sh )
 
     # additional compilation flags for Geant4
     INCLUDE( ${Geant4_USE_FILE} )
@@ -104,11 +100,11 @@ ELSE()
     LINK_DIRECTORIES( ${GDML_LIBRARY_DIR} ${LCDD_LIBRARY_DIR} ${LCIO_LIBRARY_DIRS} )
 
     # install
-    INSTALL( TARGETS slic slic DESTINATION bin )
+    INSTALL( TARGETS slic slic DESTINATION slic/bin )
 
     # install env setup script
     CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/slic-env.sh.in ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh )
-    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh DESTINATION bin 
+    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh DESTINATION slic/bin 
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 ENDIF()
 

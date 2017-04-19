@@ -8,7 +8,7 @@ EXTERNALPROJECT_ADD(
     UPDATE_COMMAND ""
     PATCH_COMMAND ""
     
-    CONFIGURE_COMMAND "${CMAKE_BINARY_DIR}/extdep/heppdt/configure" --prefix=${GLOBAL_INSTALL_DIR}/heppdt
+    CONFIGURE_COMMAND "${CMAKE_BINARY_DIR}/extdep/heppdt/configure" --prefix=${CMAKE_INSTALL_PREFIX}/heppdt
 )
 
-SET( HEPPDT_DIR ${GLOBAL_INSTALL_DIR}/heppdt CACHE PATH "HEPPDT install dir" FORCE )
+SET( HEPPDT_DIR ${CMAKE_INSTALL_PREFIX}/heppdt CACHE PATH "HEPPDT install dir" FORCE )
