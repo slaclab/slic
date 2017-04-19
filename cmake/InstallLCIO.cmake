@@ -6,7 +6,7 @@ EXTERNALPROJECT_ADD(
     LCIO
 
     GIT_REPOSITORY "https://github.com/iLCSoft/LCIO"
-    GIT_TAG "${LCIO_VERSION}"
+    GIT_TAG ${LCIO_VERSION}
     
     UPDATE_COMMAND ""
     PATCH_COMMAND ""

@@ -1,14 +1,14 @@
 IF( NOT LCDD_VERSION )
     SET( LCDD_VERSION "master" )
 ENDIF()
-SET( "InstallLCDD - prefix: ${CMAKE_INSTALL_PREFIX}" )
+#SET( "InstallLCDD - prefix: ${CMAKE_INSTALL_PREFIX}" )
 EXTERNALPROJECT_ADD(
     LCDD
 
     DEPENDS XERCES Geant4 GDML
 
     GIT_REPOSITORY "https://github.com/slaclab/lcdd"
-    GIT_TAG "${LCDD_VERSION}"
+    GIT_TAG ${LCDD_VERSION}
     
     UPDATE_COMMAND ""
     PATCH_COMMAND ""
@@ -20,4 +20,4 @@ EXTERNALPROJECT_ADD(
 )
 
 SET( LCDD_DIR "${CMAKE_INSTALL_PREFIX}/lcdd" CACHE PATH "LCDD install dir" FORCE )
-SET( "InstallLCDD - LCDD_DIR='${LCDD_DIR}'" )
+#SET( "InstallLCDD - LCDD_DIR='${LCDD_DIR}'" )
