@@ -19,18 +19,9 @@ SET( SLIC_VERSION_PATCH 0 )
 
 INCLUDE( ExternalProject )
 
-IF ( NOT GLOBAL_INSTALL_DIR )
-    SET( GLOBAL_INSTALL_DIR "$ENV{HOME}/slic" )
-    MESSAGE( STATUS "Global install dir set to: ${GLOBAL_INSTALL_DIR}" )
-ENDIF()
-
-#IF( CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT )
-SET( CMAKE_INSTALL_PREFIX ${GLOBAL_INSTALL_DIR}/slic )
-#ENDIF()
-
 MESSAGE( STATUS "SLIC install dir set to: ${CMAKE_INSTALL_PREFIX}" )
 
-# option for logg messages
+# option for log messages
 OPTION( ENABLE_SLIC_LOG "Enable slic logging system" ON )
 IF ( ENABLE_SLIC_LOG STREQUAL "ON" )
     ADD_DEFINITIONS( -DSLIC_LOG )
@@ -51,22 +42,26 @@ SET( DEPENDENCIES XERCES Geant4 LCIO HEPPDT GDML LCDD )
 
 ADD_CUSTOM_TARGET( extdeps )
 FOREACH( dependency ${DEPENDENCIES} )
-    IF ( ${dependency}_DIR )
-        FIND_PACKAGE( ${dependency} QUIET )
-        IF ( ${dependency}_FOUND )
-            MESSAGE( STATUS "${dependency} was found at: ${${dependency}_DIR}" )
-            IF( NOT TARGET ${dependency} )
-                ADD_CUSTOM_TARGET( ${dependency} )
-            ENDIF()
-        ELSE()
-            MESSAGE( FATAL_ERROR "You specified ${dependency}_DIR but this does not appear to point to a valid install of ${dependency}." )
+    MESSAGE( "processing dependency ${dependency} ..." )
+    #IF ( ${dependency}_DIR )
+    FIND_PACKAGE( ${dependency} QUIET )
+    IF ( ${dependency}_FOUND )
+        MESSAGE( STATUS "${dependency} was found at: ${${dependency}_DIR}" )
+        IF( NOT TARGET ${dependency} )
+            ADD_CUSTOM_TARGET( ${dependency} )
         ENDIF()
+        #ELSE()
+        #    MESSAGE( FATAL_ERROR "You specified ${dependency}_DIR but this does not appear to point to a valid install of ${dependency}." )
+        #ENDIF()
     ELSE()
         MESSAGE( STATUS "${dependency} was not found and will be installed as an external project." )
         INCLUDE( Install${dependency} )
+        MESSAGE( "${dependency}_VERSION='${${dependency}_VERSION}'" )
         SET( DEPENDENCIES_NOTFOUND "YES" FORCE )
     ENDIF()
     ADD_DEPENDENCIES( extdeps ${dependency} )
+    MESSAGE( "  ${dependency}_DIR=${${dependency}_DIR}" )
+    MESSAGE( "  ${dependency}_VERSION=${${dependency}_VERSION}" )
 ENDFOREACH()
 
 IF ( DEPENDENCIES_NOTFOUND )
@@ -79,7 +74,7 @@ ELSE()
     # set executable target
     ADD_EXECUTABLE( slic ${library_sources} slic.cc )
 
-    # make slic depend on its external deps (is this necessary???)
+    # make slic depend on its external deps being installed first
     ADD_DEPENDENCIES( slic extdeps )
 
     # local includes
@@ -104,11 +99,11 @@ ELSE()
     LINK_DIRECTORIES( ${GDML_LIBRARY_DIR} ${LCDD_LIBRARY_DIR} ${LCIO_LIBRARY_DIRS} )
 
     # install
-    INSTALL( TARGETS slic slic DESTINATION bin )
+    INSTALL( TARGETS slic slic DESTINATION slic/bin )
 
     # install env setup script
     CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/slic-env.sh.in ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh )
-    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh DESTINATION bin 
+    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh DESTINATION slic/bin 
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 ENDIF()
 
