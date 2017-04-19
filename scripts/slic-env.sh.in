@@ -11,7 +11,7 @@ export GDML_SCHEMA_DIR=@GDML_DIR@/schemas
 
 . @Geant4_DIR@/../../bin/geant4.sh
 
-export PATH=@CMAKE_INSTALL_PREFIX@/bin:$PATH
+export PATH=@CMAKE_INSTALL_PREFIX@/slic/bin:$PATH
 
 echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
 echo "GDML_SCHEMA_DIR=$GDML_SCHEMA_DIR"
