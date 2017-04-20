@@ -33,9 +33,7 @@
 .cproject
 
 # ignore configured files
-/include/Geant4VersionInfo.hh
 /include/PackageInfo.hh
-/scripts/create_slic_tarball.sh
 
 # build dir
 /build/
