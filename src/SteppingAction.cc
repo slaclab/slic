@@ -37,8 +37,8 @@ void SteppingAction::UserSteppingAction(const G4Step* step) {
         TrackSummary* trackSummary = trackInfo->getTrackSummary();
 
         //G4cout << "setting backscattering flag" << G4endl;
-        trackInfo->getTrackSummary()->update(fpSteppingManager->GetTrack());
-        trackInfo->getTrackSummary()->setBackScattering();
+        trackSummary->update(fpSteppingManager->GetTrack());
+        trackSummary->getTrackSummary()->setBackScattering();
 
         // Suspend backscattering tracks to postpone them to the end of shower development.
         fpSteppingManager->GetTrack()->SetTrackStatus(fSuspend);

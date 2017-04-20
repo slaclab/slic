@@ -23,7 +23,7 @@ void MCParticleManager::generateEvent(LCCollectionVec* particles, G4Event* event
 #if SLIC_LOG
     log() << LOG::debug << "applying Z smearing: " << EventSourceManager::instance()->getZSmearing() << LOG::done;
 #endif
-    G4double z = smearZPosition(EventSourceManager::instance()->getZSmearing());
+    smearZPosition(EventSourceManager::instance()->getZSmearing());
 
     /// Apply the Lorentz Transformation to input particles.
 #if SLIC_LOG
