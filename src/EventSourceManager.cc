@@ -24,7 +24,7 @@ std::string EventSourceManager::UNKNOWN = std::string("unknown");
 EventSourceManager::EventSourceManager() :
 		Module("EventSourceManager"), m_currentEventSource(0), m_filename(""), m_fileIsSet(false),
 		m_newFilename(false), m_ngen(0), m_nskip(0), m_newSource(true), m_sourceType(eUnknown),
-		m_lorentzTransformationAngle(0.), m_zSmearingParam(0.), _enablePrintEvent(false) {
+		m_lorentzTransformationAngle(0.), m_zSmearingParam(0.), m_enablePrintEvent(false) {
 
 	// messenger with generator command macro bindings
 	m_messenger = new GeneratorMessenger();
@@ -241,7 +241,7 @@ void EventSourceManager::beginEvent(const G4Event* anEvent) {
 void EventSourceManager::endEvent(const G4Event* anEvent) {
 	m_currentEventSource->endEvent(anEvent);
 
-	if (_enablePrintEvent) {
+	if (m_enablePrintEvent) {
 	    m_currentEventSource->printCurrentEvent();
 	}
 }

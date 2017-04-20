@@ -59,7 +59,7 @@ void GeneratorMessenger::SetNewValue(G4UIcommand* cmd, G4String newVals) {
 	// dumpCurrentEvent
 	else if (cmd == m_enablePrintEventCmd) {
 	    G4bool enablePrintEvent = StringUtil::toBool(s);
-		mgr->enablePrintEvent(true);
+		mgr->enablePrintEvent(enablePrintEvent);
 	}
 	// printNumEventsGenerated
 	else if (cmd == m_printNumEventsGeneratedCmd) {
