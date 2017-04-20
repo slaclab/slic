@@ -7,7 +7,6 @@
 #include "RunManager.hh"
 #include "TimeUtil.hh"
 #include "PhysicsListManager.hh"
-#include "Geant4VersionInfo.hh"
 
 // LCDD
 #include "lcdd/core/LCDDProcessor.hh"
@@ -31,7 +30,6 @@ LcioFileNamer::LcioFileNamer() :
 		Module("LcioFileNamer") {
 	m_defaultFields.push_back("event");
 	m_defaultFields.push_back("application");
-	m_defaultFields.push_back("geant4");
 	m_defaultFields.push_back("physics");
 	m_defaultFields.push_back("geometry");
 }
@@ -60,15 +58,12 @@ std::string LcioFileNamer::getFieldValue(std::string field) {
 		value = SlicApplication::instance()->getBinaryBasename();
 	} else if (field == "physics") {
 		value = PhysicsListManager::instance()->getCurrentListName();
-	} else if (field == "geant4") {
-		value = "Geant4-v" + Geant4VersionInfo::getVersion(sep);
 	} else {
 #ifdef SLIC_LOG      
-		log() << LOG::error << "Ignoring unknown autoname field <" << field << ">." << LOG::done;
+            log() << LOG::error << "Ignoring unknown autoname field <" << field << ">." << LOG::done;
 #endif
-		value = "";
+            value = "";
 	}
-
 	return value;
 }
 

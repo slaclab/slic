@@ -290,8 +290,8 @@ public:
         return m_zSmearingParam;
     }
 
-    void enablePrintEvent(G4bool enablePrintEvent) {
-        _enablePrintEvent = enablePrintEvent;
+    void enablePrintEvent(G4bool enable) {
+        m_enablePrintEvent = enable;
     }
 
 public:
@@ -339,7 +339,7 @@ private:
     // Parameter which will be used to smear vertex Z position.
     G4double m_zSmearingParam;
 
-    G4bool _enablePrintEvent;
+    G4bool m_enablePrintEvent;
 
 };
 }

@@ -27,7 +27,7 @@ EventAction::EventAction() :
 EventAction::~EventAction() {
 }
 
-void EventAction::BeginOfEventAction(const G4Event *anEvent) {
+void EventAction::BeginOfEventAction(const G4Event*) {
     // Reset current track state.
     CurrentTrackState::setCurrentTrackID(-1);
 }

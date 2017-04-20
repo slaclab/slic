@@ -9,7 +9,6 @@
 // SLIC
 #include "CommandLineOption.hh"
 #include "CommandQueue.hh"
-#include "Geant4VersionInfo.hh"
 #include "Module.hh"
 #include "PackageInfo.hh"
 #include "Singleton.hh"
@@ -88,7 +87,6 @@ public:
      */
     void printVersion() {
         log() << LOG::okay << PackageInfo::getShortName() << " " << PackageInfo::getVersion() << LOG::done;
-        log() << LOG::okay << "Geant4 " << Geant4VersionInfo::getVersion() << LOG::done;
     }
 
     /**

@@ -218,7 +218,7 @@ public:
      * @param[in] file The file name.
      */
     void setOutputFile(const std::string& file) {
-        ofstream* m_fos = new ofstream();
+        m_fos = new ofstream();
         m_fos->open(file.c_str(), ios::app | ios::out);
         m_os = m_fos;
     }

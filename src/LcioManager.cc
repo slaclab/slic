@@ -10,7 +10,6 @@
 #include "LcioFileNamer.hh"
 #include "SlicApplication.hh"
 #include "RunManager.hh"
-#include "Geant4VersionInfo.hh"
 
 // LCDD
 #include "lcdd/hits/CalorimeterHit.hh"
@@ -253,9 +252,6 @@ void LcioManager::createRunHeader(const G4Run*) {
 	// Write SLIC version into run header.
 	m_runHdr->parameters().setValue("SLIC_VERSION", PackageInfo::getVersion());
 
-	// Write Geant4 version into run header.
-	m_runHdr->parameters().setValue("GEANT4_VERSION", Geant4VersionInfo::getVersion());
-
 	// set run number
 	m_runHdr->setRunNumber(m_runNumber);
 
@@ -357,9 +353,6 @@ LCEventImpl* LcioManager::createLCEvent(const G4Event* anEvent) {
 
     // Write SLIC version into event header.
     lcevt->parameters().setValue("SLIC_VERSION", PackageInfo::getVersion());
-
-    // Write Geant4 version into event header.
-    lcevt->parameters().setValue("GEANT4_VERSION", Geant4VersionInfo::getVersion());
 
 	/* Set the current LCEvent. */
 	setCurrentLCEvent(lcevt);

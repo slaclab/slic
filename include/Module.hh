@@ -104,56 +104,49 @@ public:
      * Begin of event hook.
      * @param[in] event The G4Event.
      */
-    virtual void beginEvent(const G4Event* event) {
-        ;
+    virtual void beginEvent(const G4Event*) {
     }
 
     /**
      * End of event hook.
      * @param[in] event The G4Event.
      */
-    virtual void endEvent(const G4Event* event) {
-        ;
+    virtual void endEvent(const G4Event*) {
     }
 
     /**
      * Begin of run hook.
      * @param[in] run The G4Run.
      */
-    virtual void beginRun(const G4Run* run) {
-        ;
+    virtual void beginRun(const G4Run*) {
     }
 
     /**
      * End run hook.
      * @param[in] run The G4Run.
      */
-    virtual void endRun(const G4Run* run) {
-        ;
+    virtual void endRun(const G4Run*) {
     }
 
     /**
      * Pre-tracking hook called for new G4Track objects.
      * @param[in] track The G4Track.
      */
-    virtual void preTracking(const G4Track* track) {
-        ;
+    virtual void preTracking(const G4Track* ) {
     }
 
     /**
      * Post-tracking hook called before G4Track deletion.
      * @param[in] track The G4Track.
      */
-    virtual void postTracking(const G4Track* track) {
-        ;
+    virtual void postTracking(const G4Track*) {
     }
 
     /**
      * Stepping hook called before a G4Step is executed.
      * @param[in] step The G4Step.
      */
-    virtual void stepping(const G4Step* step) {
-        ;
+    virtual void stepping(const G4Step*) {
     }
 
 public:
