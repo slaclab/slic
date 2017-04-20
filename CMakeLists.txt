@@ -19,11 +19,6 @@ SET( SLIC_VERSION_PATCH 0 )
 
 INCLUDE( ExternalProject )
 
-#IF ( NOT CMAKE_INSTALL_PREFIX )
-#    SET( CMAKE_INSTALL_PREFIX "$ENV{HOME}/slic" )
-#    MESSAGE( STATUS "Global install dir set to: ${CMAKE_INSTALL_PREFIX}" )
-#ENDIF()
-
 MESSAGE( STATUS "SLIC install dir set to: ${CMAKE_INSTALL_PREFIX}" )
 
 # option for logg messages
@@ -35,6 +30,8 @@ MESSAGE( STATUS "Enable slic log system: ${ENABLE_SLIC_LOG}" )
 
 # option to dump CMake variables after cmake is executed
 OPTION( PRINT_CMAKE_VARIABLES "Print CMake environment" OFF )
+
+OPTION( INSTALL_DEPS "Install external dependencies automatically" OFF )
 
 # add path containing CMake macros for this project
 LIST( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
@@ -55,9 +52,13 @@ FOREACH( dependency ${DEPENDENCIES} )
             ADD_CUSTOM_TARGET( ${dependency} )
         ENDIF()
     ELSE()
-        MESSAGE( STATUS "${dependency} was not found and will be installed as an external project." )
-        INCLUDE( Install${dependency} )
-        SET( DEPENDENCIES_NOTFOUND "YES" FORCE )
+        IF ( NOT INSTALL_DEPS )
+            MESSAGE( FATAL_ERROR "${dependency} was not found and dependency installation is disabled.\nUse the option '-DINSTALL_DEPS=ON' to enable automatic dependency installation." )
+        ELSE()
+            MESSAGE( STATUS "${dependency} was not found and will be installed as an external project." )
+            INCLUDE( Install${dependency} )
+            SET( DEPENDENCIES_NOTFOUND "YES" FORCE )
+        ENDIF()
     ENDIF()
     ADD_DEPENDENCIES( extdeps ${dependency} )
     #MESSAGE("  ${dependency}_DIR=${${dependency}_DIR}" )
