@@ -7,7 +7,7 @@ then
     export LD_LIBRARY_PATH=$(dirname @CMAKE_CXX_COMPILER@)/../lib64:$LD_LIBRARY_PATH
 fi
 
-export GDML_SCHEMA_DIR=@GDML_DIR@/schemas
+#export GDML_SCHEMA_DIR=@GDML_DIR@/schemas
 
 . @Geant4_DIR@/../../bin/geant4.sh
 
