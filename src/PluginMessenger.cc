@@ -45,7 +45,7 @@ void PluginMessenger::SetNewValue(G4UIcommand* command, G4String newValues) {
     is >> pluginName >> libName;
 
     if (libName.size() == 0 || libName == "") {
-        libName = "libSimPlugins.so";
+        libName = "libslicPlugins.so";
     }
 
     if (command == loadCmd_) {
