@@ -27,9 +27,11 @@ EventAction::EventAction() :
 EventAction::~EventAction() {
 }
 
-void EventAction::BeginOfEventAction(const G4Event*) {
+void EventAction::BeginOfEventAction(const G4Event* anEvent) {
     // Reset current track state.
     CurrentTrackState::setCurrentTrackID(-1);
+
+    m_pluginManager->beginEvent(anEvent);
 }
 
 void EventAction::EndOfEventAction(const G4Event *anEvent) {
@@ -49,6 +51,8 @@ void EventAction::EndOfEventAction(const G4Event *anEvent) {
 		/* Execute LcioManager's end of event action. */
 		LcioManager::instance()->endEvent(anEvent);
 	}
+
+    m_pluginManager->endEvent(anEvent);
 
 	/* Stop the event timer. */
 	stopEventTimer();

@@ -37,6 +37,8 @@ void RunAction::BeginOfRunAction(const G4Run *aRun) {
 
 	// Execute GeometryManager's beginRun action.
 	GeometryManager::instance()->beginRun(aRun);
+
+	 m_pluginManager->beginRun(aRun);
 }
 
 void RunAction::EndOfRunAction(const G4Run *run) {
@@ -46,6 +48,8 @@ void RunAction::EndOfRunAction(const G4Run *run) {
 
 	// event source mgr
 	EventSourceManager::instance()->endRun(run);
+
+	m_pluginManager->endRun(run);
 
 	// stop run clock
 	stopRunTimer();

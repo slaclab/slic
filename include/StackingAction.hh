@@ -1,8 +1,12 @@
 #ifndef SLIC_STACKINGACTION_HH_
 #define SLIC_STACKINGACTION_HH_ 1
 
+#include "PluginManagerAccessor.hh"
+
 #include "globals.hh"
 #include "G4UserStackingAction.hh"
+
+namespace slic {
 
 /**
  * @class StackingAction
@@ -15,7 +19,7 @@
  * suspends backscattering tracks until the end
  * of shower development.
  */
-class StackingAction : public G4UserStackingAction {
+class StackingAction : public G4UserStackingAction, public PluginManagerAccessor {
 
 public:
     StackingAction();
@@ -24,7 +28,13 @@ public:
 public:
 
     G4ClassificationOfNewTrack ClassifyNewTrack(const G4Track* aTrack);
+
+    void NewStage();
+
+    void PrepareNewEvent();
 };
+
+}
 
 #endif
 

@@ -73,12 +73,17 @@ ELSE()
 
     MESSAGE( "All dependencies were found.  Run 'make' to build SLIC and 'make install' to install to '${CMAKE_INSTALL_PREFIX}'." )
 
+    # build user plugin library
+    FILE( GLOB_RECURSE plugin_sources ${PROJECT_SOURCE_DIR}/plugins/*.cc )
+    ADD_LIBRARY( slicPlugins SHARED ${plugin_sources} )
+    INSTALL( TARGETS slicPlugins DESTINATION ${CMAKE_INSTALL_PREFIX}/slic/lib )
+
     # set executable target
     ADD_EXECUTABLE( slic ${library_sources} slic.cc )
 
-    # make slic depend on its external deps (is this necessary???)
-    ADD_DEPENDENCIES( slic extdeps )
-
+    # make slic depend on its external deps
+    ADD_DEPENDENCIES( slic extdeps slicPlugins )
+    
     # local includes
     SET( SLIC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include )
     INCLUDE_DIRECTORIES( ${SLIC_INCLUDE_DIR} )
@@ -93,7 +98,7 @@ ELSE()
     INCLUDE_DIRECTORIES( ${XERCES_INCLUDE_DIR} ${LCIO_INCLUDE_DIRS} ${Geant4_INCLUDE_DIRS} ${GDML_INCLUDE_DIR} ${LCDD_INCLUDE_DIR} ${HEPPDT_INCLUDE_DIR} )
 
     # libraries
-    TARGET_LINK_LIBRARIES( slic ${XERCES_LIBRARY} ${Geant4_LIBRARIES} ${GDML_LIBRARY} ${LCDD_LIBRARY} ${HEPPDT_LIBRARIES} ${LCIO_LIBRARIES} )
+    TARGET_LINK_LIBRARIES( slic ${XERCES_LIBRARY} ${Geant4_LIBRARIES} ${GDML_LIBRARY} ${LCDD_LIBRARY} ${HEPPDT_LIBRARIES} ${LCIO_LIBRARIES} slicPlugins )
 
     # link directories
     LINK_DIRECTORIES( ${GDML_LIBRARY_DIR} ${LCDD_LIBRARY_DIR} ${LCIO_LIBRARY_DIRS} )
