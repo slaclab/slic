@@ -48,6 +48,8 @@ void SteppingAction::UserSteppingAction(const G4Step* step) {
 
 	/* Check if the track should be killed. */
 	checkKillTrack(step);
+
+	m_pluginManager->stepping(step);
 }
 
 void SteppingAction::checkKillTrack(const G4Step* aStep) {

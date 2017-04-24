@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export LD_LIBRARY_PATH=@HEPPDT_DIR@/lib/:@GDML_DIR@/lib:@LCDD_DIR@/lib:@LCIO_DIR@/lib:@XERCES_DIR@/lib
+export LD_LIBRARY_PATH=@HEPPDT_DIR@/lib/:@GDML_DIR@/lib:@LCDD_DIR@/lib:@LCIO_DIR@/lib:@XERCES_DIR@/lib:@CMAKE_INSTALL_PREFIX@/slic/lib
 
 if [ "@CMAKE_CXX_COMPILER@" != "/usr/bin/g++" ]
 then

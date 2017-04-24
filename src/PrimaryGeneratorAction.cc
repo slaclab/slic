@@ -51,6 +51,8 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent) {
 	if (_manager->isEOF()) {
 		SlicApplication::instance()->setAborting(true);
 	}
+
+	m_pluginManager->generatePrimary(anEvent);
 }
 
 void PrimaryGeneratorAction::printBeginEventMessage(G4Event* anEvent) {

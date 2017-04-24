@@ -1,6 +1,8 @@
 #ifndef SLIC_TRACKINGACTION_HH_
 #define SLIC_TRACKINGACTION_HH_ 1
 
+#include "PluginManagerAccessor.hh"
+
 // Geant4
 #include "G4UserTrackingAction.hh"
 #include "G4TrackingManager.hh"
@@ -13,7 +15,7 @@ class TrajectoryManager;
  * @class TrackingAction
  * @brief Implementation of G4UserTrackingAction
  */
-class TrackingAction: public G4UserTrackingAction {
+class TrackingAction: public G4UserTrackingAction, public PluginManagerAccessor {
 
 public:
 

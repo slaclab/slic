@@ -3,6 +3,7 @@
 
 // SLIC
 #include "Module.hh"
+#include "PluginManagerAccessor.hh"
 
 // Geant4
 #include "G4UserSteppingAction.hh"
@@ -18,7 +19,7 @@ namespace slic {
  * @class SteppingAction
  * @brief Implementation of G4UserSteppingAction.
  */
-class SteppingAction: public G4UserSteppingAction, Module {
+class SteppingAction: public G4UserSteppingAction, public Module, public PluginManagerAccessor {
 
 public:
 

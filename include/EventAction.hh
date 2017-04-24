@@ -3,6 +3,7 @@
 
 // SLIC
 #include "Module.hh"
+#include "PluginManagerAccessor.hh"
 
 // LCDD
 #include "lcdd/hits/CalorimeterHit.hh"
@@ -21,7 +22,7 @@ namespace slic {
  * @brief Implementation of G4UserEventAction.
  * @note  Calls actions of TrajectoryManager and LcioManager.
  */
-class EventAction: public G4UserEventAction, public Module {
+class EventAction: public G4UserEventAction, public Module, public PluginManagerAccessor {
 
 public:
 

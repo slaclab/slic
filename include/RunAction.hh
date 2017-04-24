@@ -3,6 +3,7 @@
 
 // slic
 #include "Module.hh"
+#include "PluginManagerAccessor.hh"
 
 // geant4
 #include "G4UserRunAction.hh"
@@ -14,7 +15,7 @@ namespace slic {
  * @class RunAction
  * @brief Implementation of G4UserRunAction.
  */
-class RunAction: public G4UserRunAction, public Module {
+class RunAction: public G4UserRunAction, public Module, public PluginManagerAccessor {
 
 public:
 

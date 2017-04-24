@@ -4,6 +4,7 @@
 // SLIC
 #include "EventSourceManager.hh"
 #include "Module.hh"
+#include "PluginManagerAccessor.hh"
 
 // Geant4
 #include "G4VUserPrimaryGeneratorAction.hh"
@@ -17,7 +18,7 @@ namespace slic {
  * @class PrimaryGeneratorAction
  * @brief Implementation of G4VUserPrimaryGeneratorAction.
  */
-class PrimaryGeneratorAction: public G4VUserPrimaryGeneratorAction, public Module {
+class PrimaryGeneratorAction: public G4VUserPrimaryGeneratorAction, public Module, public PluginManagerAccessor {
 
 public:
 

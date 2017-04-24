@@ -6,6 +6,7 @@
 
 // slic
 #include "Module.hh"
+#include "PluginManager.hh"
 #include "SlicApplication.hh"
 
 namespace slic {
@@ -105,6 +106,7 @@ private:
 
     int m_numberOfEventsToRun;
     bool m_abortRun;
+    PluginManager* m_pluginManager;
 };
 }
 

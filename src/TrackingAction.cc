@@ -64,6 +64,8 @@ void TrackingAction::PreUserTrackingAction(const G4Track* track) {
             fpTrackingManager->SetStoreTrajectory(false);
         }
     }
+
+    m_pluginManager->preTracking(track);
 }
 
 void TrackingAction::PostUserTrackingAction(const G4Track* track) {
@@ -85,6 +87,8 @@ void TrackingAction::PostUserTrackingAction(const G4Track* track) {
         // Update the track summary.
         trackSummary->update(track);
     }
+
+    m_pluginManager->postTracking(track);
 }
 
 } // namespace slic

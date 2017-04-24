@@ -10,6 +10,7 @@
 #include "StackingAction.hh"
 #include "SteppingAction.hh"
 #include "TrackingAction.hh"
+#include "PluginMessenger.hh"
 
 // LCDD
 #include "lcdd/core/LCDDParser.hh"
@@ -26,6 +27,7 @@ RunManager::RunManager() :
 }
 
 RunManager::~RunManager() {
+    delete m_pluginManager;
 }
 
 void RunManager::Initialize() {
@@ -37,12 +39,29 @@ void RunManager::Initialize() {
 	// This makes sure that physics initialization occurs before other user actions.
 	G4RunManager::Initialize();
 
-    SetUserAction(new PrimaryGeneratorAction());
-    SetUserAction(new RunAction());
-    SetUserAction(new EventAction());
-    SetUserAction(new TrackingAction());
-    SetUserAction(new SteppingAction());
-    SetUserAction(new StackingAction());
+	m_pluginManager = new PluginManager();
+	new PluginMessenger(m_pluginManager);
+
+	PrimaryGeneratorAction* genAction = new PrimaryGeneratorAction;
+	RunAction* runAction = new RunAction;
+	EventAction* eventAction = new EventAction;
+	TrackingAction* trackingAction = new TrackingAction;
+	SteppingAction* steppingAction = new SteppingAction;
+	StackingAction* stackingAction = new StackingAction;
+
+	genAction->setPluginManager(m_pluginManager);
+	runAction->setPluginManager(m_pluginManager);
+	eventAction->setPluginManager(m_pluginManager);
+	trackingAction->setPluginManager(m_pluginManager);
+	steppingAction->setPluginManager(m_pluginManager);
+	stackingAction->setPluginManager(m_pluginManager);
+
+    SetUserAction(genAction);
+    SetUserAction(runAction);
+    SetUserAction(eventAction);
+    SetUserAction(trackingAction);
+    SetUserAction(steppingAction);
+    SetUserAction(stackingAction);
 
 	// Initialize the event generation manager.
 	EventSourceManager::instance();
@@ -141,3 +160,4 @@ bool RunManager::isRunAborted() {
 	return m_abortRun;
 }
 } // namespace slic
+
