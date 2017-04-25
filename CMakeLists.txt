@@ -42,6 +42,10 @@ FILE( GLOB_RECURSE library_sources ${PROJECT_SOURCE_DIR}/src/*.cc )
 # dependency list in build order
 SET( DEPENDENCIES XERCES Geant4 GDML LCDD LCIO HEPPDT )
 
+IF ( NOT DEPENDENCY_INSTALL_DIR )
+    SET( DEPENDENCY_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/extdeps )
+ENDIF()
+
 ADD_CUSTOM_TARGET( extdeps )
 FOREACH( dependency ${DEPENDENCIES} )
     #MESSAGE( "processing dep: ${dependency}" )
@@ -68,15 +72,16 @@ ENDFOREACH()
 
 IF ( DEPENDENCIES_NOTFOUND )
     MESSAGE( "Some dependencies were not found.  Run 'make' to build them, or rerun CMake and provide their location (e.g. Geant4_DIR etc.)." ) 
-    MESSAGE( "After building any missing dependencies you will need to rerun CMake." )
+    MESSAGE( "Set '-DDEPENDENCY_INSTALL_DIR=/my/install/dir' to set the directory where external projects will be installed." )
+    MESSAGE( "After building any missing dependencies you will need to rerun CMake to resolve them for the build." )
 ELSE()
 
-    MESSAGE( "All dependencies were found.  Run 'make' to build SLIC and 'make install' to install to '${CMAKE_INSTALL_PREFIX}'." )
+    MESSAGE( "All dependencies were found.  Run 'make' to build SLIC and 'make install' to install to: ${CMAKE_INSTALL_PREFIX}" )
 
     # build user plugin library
     FILE( GLOB_RECURSE plugin_sources ${PROJECT_SOURCE_DIR}/plugins/*.cc )
     ADD_LIBRARY( slicPlugins SHARED ${plugin_sources} )
-    INSTALL( TARGETS slicPlugins DESTINATION ${CMAKE_INSTALL_PREFIX}/slic/lib )
+    INSTALL( TARGETS slicPlugins DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
 
     # set executable target
     ADD_EXECUTABLE( slic ${library_sources} slic.cc )
@@ -104,11 +109,11 @@ ELSE()
     LINK_DIRECTORIES( ${GDML_LIBRARY_DIR} ${LCDD_LIBRARY_DIR} ${LCIO_LIBRARY_DIRS} )
 
     # install
-    INSTALL( TARGETS slic slic DESTINATION slic/bin )
+    INSTALL( TARGETS slic slic DESTINATION bin )
 
     # install env setup script
     CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/slic-env.sh.in ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh )
-    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh DESTINATION slic/bin 
+    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh DESTINATION bin 
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 ENDIF()
 
