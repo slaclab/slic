@@ -4,8 +4,8 @@
  * @author Jeremy McCormick, SLAC National Accelerator Laboratory
  */
 
-#ifndef SIMPLUGINS_DUMMYSIMPLUGIN_H_
-#define SIMPLUGINS_DUMMYSIMPLUGIN_H_
+#ifndef SLIC_DUMMYSIMPLUGIN_H_
+#define SLIC_DUMMYSIMPLUGIN_H_
 
 // LDMX
 #include "UserActionPlugin.hh"
