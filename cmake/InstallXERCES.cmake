@@ -8,7 +8,7 @@ EXTERNALPROJECT_ADD(
     UPDATE_COMMAND ""
     PATCH_COMMAND ""
     
-    CONFIGURE_COMMAND "${CMAKE_BINARY_DIR}/xerces/configure" --enable-shared --disable-static --prefix=${CMAKE_INSTALL_PREFIX}/xerces
+    CONFIGURE_COMMAND "${CMAKE_BINARY_DIR}/xerces/configure" --enable-shared --disable-static --prefix=${DEPENDENCY_INSTALL_DIR}/xerces
 )
 
-SET( XERCES_DIR ${CMAKE_INSTALL_PREFIX}/xerces CACHE PATH "XERCES install dir" FORCE )
+SET( XERCES_DIR ${DEPENDENCY_INSTALL_DIR}/xerces CACHE PATH "XERCES install dir" FORCE )
