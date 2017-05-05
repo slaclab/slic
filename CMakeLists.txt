@@ -102,6 +102,28 @@ ELSE()
     # include directories
     INCLUDE_DIRECTORIES( ${XERCES_INCLUDE_DIR} ${LCIO_INCLUDE_DIRS} ${Geant4_INCLUDE_DIRS} ${GDML_INCLUDE_DIR} ${LCDD_INCLUDE_DIR} ${HEPPDT_INCLUDE_DIR} )
 
+    # check for LCStdHepRdrNew class in LCIO
+    IF ( EXISTS "${LCIO_INCLUDE_DIRS}/UTIL/LCStdHepRdrNew.h" )
+        ADD_DEFINITIONS( -DHAVE_STDHEPRDRNEW_H )
+    ENDIF()
+
+    # check if MCParticle implementation has endpoint momentum 
+    SET( CMAKE_REQUIRED_INCLUDES ${LCIO_INCLUDE_DIRS} )
+    INCLUDE(CheckCXXSourceCompiles)
+    CHECK_CXX_SOURCE_COMPILES(
+        "
+        #include \"EVENT/MCParticle.h\"
+        int main() {
+            EVENT::MCParticle* p;
+            p->getMomentumAtEndpoint();
+            return 0;
+        }
+        " MCPARTICLE_HAS_MOMENTUMATENDPOINT
+    )
+    IF ( MCPARTICLE_HAS_MOMENTUMATENDPOINT )
+        ADD_DEFINITIONS( -DMCPARTICLE_HAS_MOMENTUMATENDPOINT )
+    ENDIF()
+
     # libraries
     TARGET_LINK_LIBRARIES( slic ${XERCES_LIBRARY} ${Geant4_LIBRARIES} ${GDML_LIBRARY} ${LCDD_LIBRARY} ${HEPPDT_LIBRARIES} ${LCIO_LIBRARIES} slicPlugins )
 

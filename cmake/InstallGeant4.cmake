@@ -1,8 +1,8 @@
-IF( NOT Geant4_VERSION )
-    SET( Geant4_VERSION "v10.3.1" )
+IF( NOT Geant4_TAG )
+    SET( Geant4_TAG "v10.3.1" )
 ENDIF()
 
-IF ( Geant4_VERSION EQUAL "master" )
+IF ( Geant4_TAG EQUAL "master" )
     MESSAGE( FATAL_ERROR "Installing Geant4 from github master is not allowed." )
 ENDIF()
 
@@ -14,7 +14,7 @@ EXTERNALPROJECT_ADD(
     Geant4
 
     GIT_REPOSITORY "https://github.com/Geant4/geant4"
-    GIT_TAG ${GEANT4_VERSION}
+    GIT_TAG ${GEANT4_TAG}
     
     UPDATE_COMMAND ""
     PATCH_COMMAND ""
@@ -26,5 +26,5 @@ EXTERNALPROJECT_ADD(
     BUILD_COMMAND make -j4
 )
 
-STRING( REPLACE "v" "" Geant4_VERSION_NUMBER ${Geant4_VERSION} )
+STRING( REPLACE "v" "" Geant4_VERSION_NUMBER ${Geant4_TAG} )
 SET( Geant4_DIR ${DEPENDENCY_INSTALL_DIR}/geant4/lib64/Geant4-${Geant4_VERSION_NUMBER} CACHE PATH "Geant4 install dir" FORCE )

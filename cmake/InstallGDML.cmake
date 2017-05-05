@@ -1,5 +1,5 @@
-IF( NOT GDML_VERSION )
-    SET( GDML_VERSION "master" )
+IF( NOT GDML_TAG )
+    SET( GDML_TAG "master" )
 ENDIF()
 
 EXTERNALPROJECT_ADD(
@@ -9,7 +9,7 @@ EXTERNALPROJECT_ADD(
     DEPENDS XERCES Geant4 
 
     GIT_REPOSITORY "https://github.com/slaclab/gdml"
-    GIT_TAG ${GDML_VERSION}
+    GIT_TAG ${GDML_TAG}
     
     UPDATE_COMMAND ""
     PATCH_COMMAND ""
