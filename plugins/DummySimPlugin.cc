@@ -1,11 +1,8 @@
 /**
- * @file DummySimPlugin.h
+ * @file DummySimPlugin.cc
  * @brief Class that defines a dummy simulation plugin
  * @author Jeremy McCormick, SLAC National Accelerator Laboratory
  */
-
-#ifndef SLIC_DUMMYSIMPLUGIN_H_
-#define SLIC_DUMMYSIMPLUGIN_H_
 
 // LDMX
 #include "UserActionPlugin.hh"
@@ -107,9 +104,6 @@ namespace slic {
                 std::cout << "DummySimPlugin::generatorPrimary - event " << event->GetEventID() << std::endl;
             }
     };
-
 }
 
 DECLARE_PLUGIN(slic, DummySimPlugin)
-
-#endif
