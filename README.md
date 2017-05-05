@@ -32,20 +32,18 @@ Start by executing CMake from the build dir:
 
 ```
 cd slic/build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/my/slic/install/dir -DGEANT4_INSTALL_DATA=ON -DINSTALL_DEPENDENCIES=ON ..
 ```
 
-If no directory arguments are provided that point to locally installed packages, you will see a message stating "Some dependencies were not found."  This is not an error, but to complete the build you will need to build these dependencies and then rerun CMake so they are resolved.
+If no directory arguments are provided that point to locally installed packages, you will see a message stating "Some dependencies were not found."  This is not an error, but to complete the build you will need to build these dependencies and then rerun CMake so they are resolved by the build system.
 
-To build the dependencies, execute the following:
+Now to build the dependencies, execute the following:
 
 ```
 make
 ```
 
 Once this is done, then you need to rerun `cmake ..` from the build directory.  If the dependencies all installed successfully, then the message "All dependencies were found." should print.  Now you can just type `make; make install` to complete the build using these installed dependencies.
-
-The default installation directory for SLIC and its dependencies is `~/slic` which you can change by providing an argument `-DGLOBAL_INSTALL_DIR=/my/install/dir` to the CMake command.
 
 ### Specifying Dependencies
 
@@ -103,14 +101,15 @@ Read the help to get an idea of the actual commands that are available.
 
 This section covers in detail the manual installation of SLIC's dependencies.  
 
-These procedures are entirely optional, as running `cmake` without providing paths to pre-installed dependencies will cause them to be installed automatically.
+These procedures are entirely optional, as running `cmake` without providing paths to pre-installed dependencies will cause them to be installed automatically as long as the CMake variable `INSTALL_DEPENDENCIES` is set to `ON`.
 
 #### Geant4
 
 Download the 10.3.p01 tarball from the Geant4 website and untar it or you may clone a tag from the Geant4 github.
 
 ```
-cd geant4.10.03.p01; mkdir build; cd build
+cd geant4.10.03.p01
+mkdir build; cd build
 cmake -DGEANT4_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX=$install_dir/geant4 ..
 make -j4
 make install
@@ -120,7 +119,8 @@ make install
 
 ```
 git clone https://github.com/iLCSoft/LCIO.git lcio
-cd lcio; mkdir build
+cd lcio; git checkout v02-06
+mkdir build; cd build
 cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=$install_dir/lcio ..
 make -j4
 make install
