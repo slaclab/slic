@@ -1,5 +1,5 @@
-IF( NOT LCDD_VERSION )
-    SET( LCDD_VERSION "master" )
+IF( NOT LCDD_TAG )
+    SET( LCDD_TAG "master" )
 ENDIF()
 
 EXTERNALPROJECT_ADD(
@@ -8,7 +8,7 @@ EXTERNALPROJECT_ADD(
     DEPENDS XERCES Geant4 GDML
 
     GIT_REPOSITORY "https://github.com/slaclab/lcdd"
-    GIT_TAG ${LCDD_VERSION}
+    GIT_TAG ${LCDD_TAG}
     
     UPDATE_COMMAND ""
     PATCH_COMMAND ""

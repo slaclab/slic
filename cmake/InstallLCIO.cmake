@@ -1,12 +1,12 @@
-IF( NOT LCIO_VERSION )
-    SET( LCIO_VERSION "master" )
+IF( NOT LCIO_TAG )
+    SET( LCIO_TAG "master" )
 ENDIF()
 
 EXTERNALPROJECT_ADD(
     LCIO
 
     GIT_REPOSITORY "https://github.com/iLCSoft/LCIO"
-    GIT_TAG ${LCIO_VERSION}
+    GIT_TAG ${LCIO_TAG}
     
     UPDATE_COMMAND ""
     PATCH_COMMAND ""
