@@ -13,9 +13,10 @@ EXTERNALPROJECT_ADD(
 
     SOURCE_DIR "${CMAKE_BINARY_DIR}/lcio"
     CMAKE_ARGS -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=${DEPENDENCY_INSTALL_DIR}/lcio
-    
-    BUILD_COMMAND make -j4
-    INSTALL_COMMAND make install COMMAND mkdir ${DEPENDENCY_INSTALL_DIR}/lcio/cmake COMMAND cp ${CMAKE_BINARY_DIR}/lcio/cmake/MacroCheckPackageVersion.cmake ${DEPENDENCY_INSTALL_DIR}/lcio/cmake COMMAND cp ${CMAKE_BINARY_DIR}/lcio/cmake/MacroCheckPackageLibs.cmake ${DEPENDENCY_INSTALL_DIR}/lcio/cmake
 )
+
+#BUILD_COMMAND make -j4
+#INSTALL_COMMAND make install 
+#COMMAND mkdir ${DEPENDENCY_INSTALL_DIR}/lcio/cmake COMMAND cp ${CMAKE_BINARY_DIR}/lcio/cmake/MacroCheckPackageVersion.cmake ${DEPENDENCY_INSTALL_DIR}/lcio/cmake COMMAND cp ${CMAKE_BINARY_DIR}/lcio/cmake/MacroCheckPackageLibs.cmake ${DEPENDENCY_INSTALL_DIR}/lcio/cmake
 
 SET( LCIO_DIR ${DEPENDENCY_INSTALL_DIR}/lcio CACHE PATH "LCIO install dir" FORCE )
