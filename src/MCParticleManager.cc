@@ -262,19 +262,23 @@ std::set<G4PrimaryParticle*> MCParticleManager::createPrimary(G4PrimaryParticle*
 #endif
     }
 
-    for (int i = 0; i < mcp->getDaughters().size(); i++) {
+    if (_recursionBlockSet.count(mcp) == 0) {
+	_recursionBlockSet.insert(mcp);
+
+	for (int i = 0; i < mcp->getDaughters().size(); i++) {
 #ifdef SLIC_LOG
-        log() << LOG::debug << "recursively creating primaries for " << indexOf(primary) << LOG::done;
+	    log() << LOG::debug << "recursively creating primaries for " << indexOf(primary) << LOG::done;
 #endif
-        std::set<G4PrimaryParticle*> daughters = createPrimary(primary, mcp->getDaughters()[i]);
+	    std::set<G4PrimaryParticle*> daughters = createPrimary(primary, mcp->getDaughters()[i]);
 #ifdef SLIC_LOG
-        log() << LOG::debug << "created " << daughters.size() << " daughter primaries" << LOG::done;
+	    log() << LOG::debug << "created " << daughters.size() << " daughter primaries" << LOG::done;
 #endif
 
-        if (daughters.size() > 0) {
-            primaries.insert(daughters.begin(), daughters.end());
-        }
+	    if (daughters.size() > 0)
+		primaries.insert(daughters.begin(), daughters.end());
+	}
     }
+
 #ifdef SLIC_LOG
         log().getOutputStream().flush();
 #endif

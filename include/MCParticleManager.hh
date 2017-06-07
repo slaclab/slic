@@ -105,6 +105,7 @@ public:
         _primaryMap.clear();
         _mcpMap.clear();
         _mcpVec = 0;
+	_recursionBlockSet.clear();
     }
 
     /**
@@ -199,6 +200,9 @@ private:
      * Map of MCParticle to track ID.
      */
     TrackIDMap _trackIDMap;
+
+    // Set to keep track of particles whose daughters have already been added by createPrimary()
+    std::set<MCParticle *> _recursionBlockSet;
 
     LCCollectionVec* _inputVec;
 
