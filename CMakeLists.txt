@@ -137,6 +137,9 @@ ELSE()
     CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/scripts/slic-env.sh.in ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh )
     INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/slic-env.sh DESTINATION bin 
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+
+    # install particle data tbl
+    INSTALL(FILES data/particle.tbl DESTINATION share PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
 ENDIF()
 
 # configure and output documentation using doxygen
