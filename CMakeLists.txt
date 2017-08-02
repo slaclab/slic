@@ -21,7 +21,7 @@ INCLUDE( ExternalProject )
 
 MESSAGE( STATUS "SLIC install dir set to: ${CMAKE_INSTALL_PREFIX}" )
 
-# option for logg messages
+# option for log messages
 OPTION( ENABLE_SLIC_LOG "Enable slic logging system" ON )
 IF ( ENABLE_SLIC_LOG STREQUAL "ON" )
     ADD_DEFINITIONS( -DSLIC_LOG )
@@ -31,7 +31,7 @@ MESSAGE( STATUS "Enable slic log system: ${ENABLE_SLIC_LOG}" )
 # option to dump CMake variables after cmake is executed
 OPTION( PRINT_CMAKE_VARIABLES "Print CMake environment" OFF )
 
-OPTION( INSTALL_DEPENDENCIES "Install external dependencies automatically" OFF )
+OPTION( INSTALL_DEPENDENCIES "Install external dependencies automatically" ON )
 
 # add path containing CMake macros for this project
 LIST( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
