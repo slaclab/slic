@@ -2,10 +2,6 @@ IF( NOT Geant4_TAG )
     SET( Geant4_TAG "v10.3.1" )
 ENDIF()
 
-IF ( Geant4_TAG EQUAL "master" )
-    MESSAGE( FATAL_ERROR "Installing Geant4 from github master is not allowed." )
-ENDIF()
-
 IF ( NOT GEANT4_INSTALL_DATA )
     SET( GEANT4_INSTALL_DATA "ON" )
 ENDIF()
