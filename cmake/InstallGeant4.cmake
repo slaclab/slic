@@ -7,14 +7,14 @@ IF ( Geant4_TAG EQUAL "master" )
 ENDIF()
 
 IF ( NOT GEANT4_INSTALL_DATA )
-    SET( GEANT4_INSTALL_DATA "OFF" )
+    SET( GEANT4_INSTALL_DATA "ON" )
 ENDIF()
 
 EXTERNALPROJECT_ADD(
     Geant4
 
     GIT_REPOSITORY "https://github.com/Geant4/geant4"
-    GIT_TAG ${GEANT4_TAG}
+    GIT_TAG ${Geant4_TAG}
     
     UPDATE_COMMAND ""
     PATCH_COMMAND ""
