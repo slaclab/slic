@@ -12,7 +12,7 @@
 #include "G4PhysicalConstants.hh"
 #include "G4RunManager.hh"
 
-namespace ldmx {
+namespace slic {
 
     LHEPrimaryGenerator::LHEPrimaryGenerator(LHEReader* theReader) :
             reader_(theReader) {

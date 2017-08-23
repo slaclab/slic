@@ -8,7 +8,7 @@
 #include <sstream>
 #include <stdexcept>
 
-namespace ldmx {
+namespace slic {
 
     LHEEvent::LHEEvent(std::string& line) {
 

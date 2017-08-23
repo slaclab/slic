@@ -10,7 +10,7 @@
 // Geant4
 #include "globals.hh"
 
-namespace ldmx {
+namespace slic {
 
     LHEParticle::LHEParticle(std::string& line) {
 

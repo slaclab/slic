@@ -13,7 +13,7 @@
 // STL
 #include <fstream>
 
-namespace ldmx {
+namespace slic {
 
 /**
  * @class LHEReader
@@ -27,7 +27,7 @@ class LHEReader {
          * Class constructor.
          * @param fileName The input file name.
          */
-        LHEReader(std::string& fileName);
+        LHEReader(const std::string& fileName);
 
         /**
          * Class destructor.

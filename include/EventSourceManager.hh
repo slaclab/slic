@@ -30,7 +30,7 @@ class EventSourceManager: public Module, public Singleton<EventSourceManager> {
          * Enum for different source types.
          */
         enum ESourceType {
-            eUnknown = 0, eStdHep = 1, eLCIO, eGPS, eParticleGun
+            eUnknown = 0, eStdHep, eLCIO, eGPS, eParticleGun, eLHE
         };
 
     public:
@@ -328,6 +328,7 @@ class EventSourceManager: public Module, public Singleton<EventSourceManager> {
         static std::string LCIO;
         static std::string GPS;
         static std::string PARTICLE_GUN;
+        static std::string LHE;
         static std::string UNKNOWN;
 
         // source type

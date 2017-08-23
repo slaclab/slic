@@ -4,9 +4,9 @@
 #include <iostream>
 #include <stdexcept>
 
-namespace ldmx {
+namespace slic {
 
-    LHEReader::LHEReader(std::string& filename) {
+    LHEReader::LHEReader(const std::string& filename) {
         std::cout << "Opening LHE file " << filename << std::endl;
         ifs_.open(filename.c_str(), std::ifstream::in);
     }

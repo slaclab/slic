@@ -13,7 +13,7 @@
 // LDMX
 #include "LHEReader.hh"
 
-namespace ldmx {
+namespace slic {
 
 /**
  * @class LHEPrimaryGenerator
