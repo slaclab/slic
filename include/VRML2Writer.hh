@@ -20,81 +20,81 @@ namespace slic {
  */
 class VRML2Writer {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    VRML2Writer(const std::string& filename);
+        /**
+         * Class constructor.
+         */
+        VRML2Writer(const std::string& filename);
 
-    /**
-     * Class destructor.
-     */
-	~VRML2Writer();
+        /**
+         * Class destructor.
+         */
+        ~VRML2Writer();
 
-	/**
-	 * Write out VRML to the current file.
-	 */
-	void write();
+        /**
+         * Write out VRML to the current file.
+         */
+        void write();
 
-private:
+    private:
 
-	/**
-	 * Recursively process volumes from the top.
-	 * @param[in] The top volume.
-	 */
-	void processTopVolume(G4VPhysicalVolume* volume);
+        /**
+         * Recursively process volumes from the top.
+         * @param[in] The top volume.
+         */
+        void processTopVolume(G4VPhysicalVolume* volume);
 
-	/**
-	 * Process a physical volume.
-	 * @param[in] volume The physical volume.
-	 */
-	void processPhysicalVolume(G4VPhysicalVolume* volume);
+        /**
+         * Process a physical volume.
+         * @param[in] volume The physical volume.
+         */
+        void processPhysicalVolume(G4VPhysicalVolume* volume);
 
-	/**
-	 * Process the visualization settings of the volume.
-	 * @param[in] volume The physical volume.
-	 */
-	void processVisualization(G4VPhysicalVolume* volume);
+        /**
+         * Process the visualization settings of the volume.
+         * @param[in] volume The physical volume.
+         */
+        void processVisualization(G4VPhysicalVolume* volume);
 
-	/**
-	 * Process a solid.
-	 * @param[in] solid The G4VSolid.
-	 */
-	void processSolid(G4VSolid* solid);
+        /**
+         * Process a solid.
+         * @param[in] solid The G4VSolid.
+         */
+        void processSolid(G4VSolid* solid);
 
-	/**
-	 * Process a box shape.
-	 * @param[in] box The G4Box.
-	 */
-	void processBox(G4Box* box);
+        /**
+         * Process a box shape.
+         * @param[in] box The G4Box.
+         */
+        void processBox(G4Box* box);
 
-	/**
-	 * Process a polyhedron.
-	 * @param[in] poly The G4Polyhedron.
-	 */
-	void processPolyhedron(G4Polyhedron* poly);
+        /**
+         * Process a polyhedron.
+         * @param[in] poly The G4Polyhedron.
+         */
+        void processPolyhedron(G4Polyhedron* poly);
 
-	/**
-	 * Write a line into the output.
-	 * @param[in] line The line of output.
-	 */
-	void writeLine(const std::string& line);
+        /**
+         * Write a line into the output.
+         * @param[in] line The line of output.
+         */
+        void writeLine(const std::string& line);
 
-	/**
-	 * Indent once in the output.
-	 */
-	void indent();
+        /**
+         * Indent once in the output.
+         */
+        void indent();
 
-	/**
-	 * Remove a level of indentation.
-	 */
-	void unindent();
+        /**
+         * Remove a level of indentation.
+         */
+        void unindent();
 
-private:
+    private:
 
-	std::ofstream _out;
-	int _indentLevel;
+        std::ofstream _out;
+        int _indentLevel;
 };
 }
 

@@ -15,30 +15,30 @@ namespace slic {
  */
 class VRML2WriterMessenger: public G4UImessenger {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-	VRML2WriterMessenger();
+        /**
+         * Class constructor.
+         */
+        VRML2WriterMessenger();
 
-	/**
-	 * Class destructor.
-	 */
-	virtual ~VRML2WriterMessenger();
+        /**
+         * Class destructor.
+         */
+        virtual ~VRML2WriterMessenger();
 
-public:
+    public:
 
-	/**
-	 * Execute macro command.
-	 * @param[in] cmd The macro command.
-	 * @param[in] newValues The command values.
-	 */
-	void SetNewValue(G4UIcommand* cmd, G4String newVals);
+        /**
+         * Execute macro command.
+         * @param[in] cmd The macro command.
+         * @param[in] newValues The command values.
+         */
+        void SetNewValue(G4UIcommand* cmd, G4String newVals);
 
-private:
-	G4UIdirectory* m_vrmlDir;
-	G4UIcmdWithAString* m_writeVrmlCmd;
+    private:
+        G4UIdirectory* m_vrmlDir;
+        G4UIcmdWithAString* m_writeVrmlCmd;
 };
 }
 

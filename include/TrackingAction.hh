@@ -17,33 +17,33 @@ class TrajectoryManager;
  */
 class TrackingAction: public G4UserTrackingAction, public PluginManagerAccessor {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-	TrackingAction() {
-	}
+        /**
+         * Class constructor.
+         */
+        TrackingAction() {
+        }
 
-	/**
-	 * Class destructor.
-	 */
-	~TrackingAction() {
-	}
+        /**
+         * Class destructor.
+         */
+        ~TrackingAction() {
+        }
 
-public:
+    public:
 
-	/**
-	 * Pre tracking action.
-	 * @param[in] aTrack The G4Track.
-	 */
-	void PreUserTrackingAction(const G4Track*);
+        /**
+         * Pre tracking action.
+         * @param[in] aTrack The G4Track.
+         */
+        void PreUserTrackingAction(const G4Track*);
 
-	/**
-	 * Post tracking action.
-	 * @param[in] aTrack The G4Track.
-	 */
-	void PostUserTrackingAction(const G4Track*);
+        /**
+         * Post tracking action.
+         * @param[in] aTrack The G4Track.
+         */
+        void PostUserTrackingAction(const G4Track*);
 };
 }
 

@@ -11,27 +11,27 @@ namespace slic {
  */
 class SlicMain: public Module {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    SlicMain();
+        /**
+         * Class constructor.
+         */
+        SlicMain();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~SlicMain();
+        /**
+         * Class destructor.
+         */
+        virtual ~SlicMain();
 
-public:
+    public:
 
-    /**
-     * Execute the main method by instantiating the SlicApplication
-     * and passing control to it.
-     * @param[in] argc The argument count.
-     * @param[in] argc The argument values.
-     */
-    int main(int argc, char** argv);
+        /**
+         * Execute the main method by instantiating the SlicApplication
+         * and passing control to it.
+         * @param[in] argc The argument count.
+         * @param[in] argc The argument values.
+         */
+        int main(int argc, char** argv);
 };
 }
 

@@ -19,7 +19,7 @@ namespace slic {
  * @class PluginMessenger
  * @brief Messenger class for loading and destroying user sim plugins using macro commands
  */
-class PluginMessenger : public G4UImessenger {
+class PluginMessenger: public G4UImessenger {
 
     public:
 

@@ -9,7 +9,7 @@
 namespace slic {
 
 LcioEventSource::LcioEventSource(const std::string& fname) :
-		EventSourceWithInputFile("LcioEventSource", fname), m_eventGenerator(0) {
+        EventSourceWithInputFile("LcioEventSource", fname), m_eventGenerator(0) {
 }
 
 LcioEventSource::~LcioEventSource() {
@@ -47,12 +47,12 @@ void LcioEventSource::generate(G4Event* anEvent) {
 }
 
 void LcioEventSource::beginRun(const G4Run* aRun) {
-	// do superclass action
-	EventSourceWithInputFile::beginRun(aRun);
+    // do superclass action
+    EventSourceWithInputFile::beginRun(aRun);
 }
 
 void LcioEventSource::beginEvent(const G4Event* anEvent) {
-	EventSourceWithInputFile::beginEvent(anEvent);
+    EventSourceWithInputFile::beginEvent(anEvent);
 }
 
 }

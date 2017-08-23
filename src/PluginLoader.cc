@@ -63,8 +63,8 @@ void PluginLoader::destroy(UserActionPlugin* plugin) {
 
             // Destroy the plugin by calling its destroy method from the lib.
             void (*destroyIt)(UserActionPlugin*);
-            destroyIt = (void (*)(UserActionPlugin*))dlsym(handle, std::string("destroy" + plugin->getName()).c_str());destroyIt
-            (plugin);
+            destroyIt = (void (*)(UserActionPlugin*))dlsym(handle, std::string("destroy" + plugin->getName()).c_str());
+            destroyIt(plugin);
 
             // Delete from plugin handles.
             std::map<UserActionPlugin*, void*>::iterator it;

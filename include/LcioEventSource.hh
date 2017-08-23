@@ -20,58 +20,58 @@ namespace slic {
  */
 class LcioEventSource: public EventSourceWithInputFile {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-	LcioEventSource(const std::string& fname = "");
+        /**
+         * Class constructor.
+         */
+        LcioEventSource(const std::string& fname = "");
 
-	/**
-	 * Class destructor.
-	 */
-	virtual ~LcioEventSource();
+        /**
+         * Class destructor.
+         */
+        virtual ~LcioEventSource();
 
-public:
+    public:
 
-	/**
-	 * Open the LCIO file.
-	 */
-	void open();
+        /**
+         * Open the LCIO file.
+         */
+        void open();
 
-	/**
-	 * Close the LCIO file.
-	 */
-	void close();
+        /**
+         * Close the LCIO file.
+         */
+        void close();
 
-	/**
-	 * Read the next event.
-	 */
-	void readNextEvent();
+        /**
+         * Read the next event.
+         */
+        void readNextEvent();
 
-	/**
-	 * Print out the current event.
-	 */
-	void printCurrentEvent();
+        /**
+         * Print out the current event.
+         */
+        void printCurrentEvent();
 
-	/**
-	 * Generate a G4Event from the current MCParticle collection.
-	 */
-	void generate(G4Event* anEvent);
+        /**
+         * Generate a G4Event from the current MCParticle collection.
+         */
+        void generate(G4Event* anEvent);
 
-	/**
-	 * Begin of run action which executes the superclass method.
-	 */
-	void beginRun(const G4Run* aRun);
+        /**
+         * Begin of run action which executes the superclass method.
+         */
+        void beginRun(const G4Run* aRun);
 
-    /**
-     * Begin of event action which executes the superclass method.
-     */
-	void beginEvent(const G4Event* anEvent);
+        /**
+         * Begin of event action which executes the superclass method.
+         */
+        void beginEvent(const G4Event* anEvent);
 
-private:
-	IO::LCReader* m_reader;
-	MCParticleGenerator* m_eventGenerator;
+    private:
+        IO::LCReader* m_reader;
+        MCParticleGenerator* m_eventGenerator;
 };
 }
 

@@ -30,40 +30,40 @@ class MCParticleManager;
  */
 class MCParticleGenerator {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    MCParticleGenerator(G4String eventFile);
+        /**
+         * Class constructor.
+         */
+        MCParticleGenerator(G4String eventFile);
 
-    /**
-     * Class destructor.
-     */
-    virtual ~MCParticleGenerator();
+        /**
+         * Class destructor.
+         */
+        virtual ~MCParticleGenerator();
 
-    /**
-     * Generate a G4Event from an MCParticleCollection in an LCEvent.
-     * @param[in,out] event The input G4Event to be created.
-     */
-    void generateEvent(G4Event* event);
+        /**
+         * Generate a G4Event from an MCParticleCollection in an LCEvent.
+         * @param[in,out] event The input G4Event to be created.
+         */
+        void generateEvent(G4Event* event);
 
-    /**
-     * Read the next LCEvent.
-     */
-    void readNextEvent();
+        /**
+         * Read the next LCEvent.
+         */
+        void readNextEvent();
 
-    /**
-     * Get the current LCEvent.
-     * @return The current LCEvent.
-     */
-    LCEvent* getCurrentEvent();
+        /**
+         * Get the current LCEvent.
+         * @return The current LCEvent.
+         */
+        LCEvent* getCurrentEvent();
 
-private:
+    private:
 
-    LCEvent* _lcevent;
-    LCReader* _reader;
-    MCParticleManager* _particleManager;
+        LCEvent* _lcevent;
+        LCReader* _reader;
+        MCParticleManager* _particleManager;
 };
 
 }

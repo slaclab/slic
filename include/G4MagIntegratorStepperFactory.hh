@@ -21,38 +21,38 @@ namespace slic {
  */
 class G4MagIntegratorStepperFactory: public Singleton<G4MagIntegratorStepperFactory>, public Module {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    G4MagIntegratorStepperFactory();
+        /**
+         * Class constructor.
+         */
+        G4MagIntegratorStepperFactory();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~G4MagIntegratorStepperFactory();
+        /**
+         * Class destructor.
+         */
+        virtual ~G4MagIntegratorStepperFactory();
 
-public:
+    public:
 
-    /**
-     * Setup an integrator stepper by name.
-     * @param[in] name The name of the stepper.
-     */
-    void setupG4MagIntegratorStepper(std::string name);
+        /**
+         * Setup an integrator stepper by name.
+         * @param[in] name The name of the stepper.
+         */
+        void setupG4MagIntegratorStepper(std::string name);
 
-private:
+    private:
 
-    /**
-     * Create an integrator stepper.
-     * @return The integrator stepper.
-     */
-    G4MagIntegratorStepper* createG4MagIntegratorStepper(std::string name);
+        /**
+         * Create an integrator stepper.
+         * @return The integrator stepper.
+         */
+        G4MagIntegratorStepper* createG4MagIntegratorStepper(std::string name);
 
-private:
-    G4Mag_EqRhs* m_fieldEquations;
-    G4FieldManager* m_fieldMgr;
-    G4MagneticField* m_field;
+    private:
+        G4Mag_EqRhs* m_fieldEquations;
+        G4FieldManager* m_fieldMgr;
+        G4MagneticField* m_field;
 };
 }
 

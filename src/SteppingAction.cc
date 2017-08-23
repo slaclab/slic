@@ -14,7 +14,8 @@
 
 namespace slic {
 
-SteppingAction::SteppingAction() : Module("SteppingAction", false, true) {
+SteppingAction::SteppingAction() :
+        Module("SteppingAction", false, true) {
 }
 
 SteppingAction::~SteppingAction() {
@@ -26,8 +27,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step) {
     if (isBackScattering(step) && step->GetStepLength() != 0.) {
 
         // Get track information.
-        UserTrackInformation* trackInfo =
-                (UserTrackInformation*)fpSteppingManager->GetTrack()->GetUserInformation();
+        UserTrackInformation* trackInfo = (UserTrackInformation*) fpSteppingManager->GetTrack()->GetUserInformation();
 
         // Need to start making track information if doesn't exist because these tracks or daughters could leave tracker hits.
         if (trackInfo == NULL)
@@ -46,20 +46,20 @@ void SteppingAction::UserSteppingAction(const G4Step* step) {
         //G4cout << "suspended backscattering track " << fpSteppingManager->GetTrack()->GetTrackID() << G4endl;
     }
 
-	/* Check if the track should be killed. */
-	checkKillTrack(step);
+    /* Check if the track should be killed. */
+    checkKillTrack(step);
 
-	m_pluginManager->stepping(step);
+    m_pluginManager->stepping(step);
 }
 
 void SteppingAction::checkKillTrack(const G4Step* aStep) {
-	/* Check if the region of the pre-point has tracking killing enabled. */
-	UserRegionInformation* regionInfo = UserRegionInformation::getRegionInformation(aStep->GetPreStepPoint());
-	if (regionInfo->getKillTracks()) {
-		/* Kill the track if region track kill flag is set to true. */
-		log() << LOG::always << "Killing track: " << aStep->GetTrack()->GetTrackID() << LOG::done;
-		aStep->GetTrack()->SetTrackStatus(fStopAndKill);
-	}
+    /* Check if the region of the pre-point has tracking killing enabled. */
+    UserRegionInformation* regionInfo = UserRegionInformation::getRegionInformation(aStep->GetPreStepPoint());
+    if (regionInfo->getKillTracks()) {
+        /* Kill the track if region track kill flag is set to true. */
+        log() << LOG::always << "Killing track: " << aStep->GetTrack()->GetTrackID() << LOG::done;
+        aStep->GetTrack()->SetTrackStatus(fStopAndKill);
+    }
 }
 
 bool SteppingAction::isBackScattering(const G4Step* step) {
@@ -67,15 +67,13 @@ bool SteppingAction::isBackScattering(const G4Step* step) {
     /* Get pre-point info. */
     const G4StepPoint* prePoint = step->GetPreStepPoint();
     const G4StepPoint* postPoint = step->GetPostStepPoint();
-    const UserRegionInformation* prePointRegionInfo =
-            (UserRegionInformation*)prePoint->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetRegion()->GetUserInformation();
+    const UserRegionInformation* prePointRegionInfo = (UserRegionInformation*) prePoint->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetRegion()->GetUserInformation();
     G4bool prePointInsideTrackerRegion = prePointRegionInfo->getStoreSecondaries();
 
     /* Get post-point info. */
     G4bool postPointInsideTrackerRegion = false;
     if (postPoint->GetTouchableHandle()->GetVolume() != NULL) {
-        const UserRegionInformation* postPointRegionInfo =
-                (UserRegionInformation*)postPoint->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetRegion()->GetUserInformation();
+        const UserRegionInformation* postPointRegionInfo = (UserRegionInformation*) postPoint->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetRegion()->GetUserInformation();
         postPointInsideTrackerRegion = postPointRegionInfo->getStoreSecondaries();
     }
 

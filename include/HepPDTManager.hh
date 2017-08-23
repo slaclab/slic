@@ -22,48 +22,48 @@ namespace slic {
  * @brief A class for managing the HepPDT particle table.
  */
 class HepPDTManager: public Module, public Singleton<HepPDTManager> {
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    HepPDTManager();
+        /**
+         * Class constructor.
+         */
+        HepPDTManager();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~HepPDTManager();
+        /**
+         * Class destructor.
+         */
+        virtual ~HepPDTManager();
 
-public:
+    public:
 
-    /**
-     * Get the particle data table, which is created on demand.
-     * @return The particle data table.
-     */
-    HepPDT::ParticleDataTable* getParticleDataTable();
+        /**
+         * Get the particle data table, which is created on demand.
+         * @return The particle data table.
+         */
+        HepPDT::ParticleDataTable* getParticleDataTable();
 
-    /**
-     * Set the path to the particle data table.
-     * @param[in] pdfile The path to the particle data table.
-     */
-    void setParticleDataFile(std::string pdfile);
+        /**
+         * Set the path to the particle data table.
+         * @param[in] pdfile The path to the particle data table.
+         */
+        void setParticleDataFile(std::string pdfile);
 
-private:
+    private:
 
-    /**
-     * Load all data into the particle data table object.
-     */
-    void loadParticleData();
+        /**
+         * Load all data into the particle data table object.
+         */
+        void loadParticleData();
 
-    /**
-     * Print out the particle table data.
-     */
-    void printParticleData();
+        /**
+         * Print out the particle table data.
+         */
+        void printParticleData();
 
-private:
-    HepPDT::ParticleDataTable* m_datacol;
-    std::string m_pdfile;
-    bool m_fileSet;
+    private:
+        HepPDT::ParticleDataTable* m_datacol;
+        std::string m_pdfile;
+        bool m_fileSet;
 };
 }
 

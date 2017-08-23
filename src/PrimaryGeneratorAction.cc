@@ -17,7 +17,7 @@
 namespace slic {
 
 PrimaryGeneratorAction::PrimaryGeneratorAction() :
-		Module("PrimaryGeneratorAction", false) {
+        Module("PrimaryGeneratorAction", false) {
     _manager = EventSourceManager::instance();
 }
 
@@ -47,15 +47,15 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent) {
         _manager->generateNextEvent(anEvent);
     }
 
-	/* If the event source hit the end of file, then abort the run. */
-	if (_manager->isEOF()) {
-		SlicApplication::instance()->setAborting(true);
-	}
+    /* If the event source hit the end of file, then abort the run. */
+    if (_manager->isEOF()) {
+        SlicApplication::instance()->setAborting(true);
+    }
 
-	m_pluginManager->generatePrimary(anEvent);
+    m_pluginManager->generatePrimary(anEvent);
 }
 
 void PrimaryGeneratorAction::printBeginEventMessage(G4Event* anEvent) {
-	log() << LOG::okay << ">>>> BeginEvent <" << StringUtil::toString(anEvent->GetEventID()) << ">" << LOG::done;
+    log() << LOG::okay << ">>>> BeginEvent <" << StringUtil::toString(anEvent->GetEventID()) << ">" << LOG::done;
 }
 }

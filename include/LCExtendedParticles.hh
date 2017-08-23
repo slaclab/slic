@@ -17,34 +17,34 @@ namespace slic {
  * @brief This class models the extended particle set from HepPDT.
  */
 class LCExtendedParticles: public G4VPhysicsConstructor {
-public:
+    public:
 
-    /**
-     * Class constructor.
-     * @param[in] name The name of the physics to be constructed.
-     */
-    LCExtendedParticles(const G4String& name = "LCExtendedParticles");
+        /**
+         * Class constructor.
+         * @param[in] name The name of the physics to be constructed.
+         */
+        LCExtendedParticles(const G4String& name = "LCExtendedParticles");
 
-    /**
-     * Class destructor.
-     */
-    virtual ~LCExtendedParticles();
+        /**
+         * Class destructor.
+         */
+        virtual ~LCExtendedParticles();
 
-    /**
-     * Construct the particles.
-     */
-    void ConstructParticle();
+        /**
+         * Construct the particles.
+         */
+        void ConstructParticle();
 
-    /**
-     * Construct the processes.
-     */
-    void ConstructProcess();
+        /**
+         * Construct the processes.
+         */
+        void ConstructProcess();
 
-private:
+    private:
 
-    G4Decay m_decay;
-    G4hIonisation m_ionise;
-    G4hMultipleScattering m_scatter;
+        G4Decay m_decay;
+        G4hIonisation m_ionise;
+        G4hMultipleScattering m_scatter;
 };
 }
 

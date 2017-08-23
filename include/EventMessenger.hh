@@ -13,36 +13,36 @@ namespace slic {
  * @brief Messenger for event-related commands.
  */
 class EventMessenger: public G4UImessenger {
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    EventMessenger();
+        /**
+         * Class constructor.
+         */
+        EventMessenger();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~EventMessenger();
+        /**
+         * Class destructor.
+         */
+        virtual ~EventMessenger();
 
-public:
+    public:
 
-    /**
-     * Process the macro command.
-     * @param[in] command The macro command.
-     * @param[in] newValues The argument values.
-     */
-    void SetNewValue(G4UIcommand* command, G4String newValues);
+        /**
+         * Process the macro command.
+         * @param[in] command The macro command.
+         * @param[in] newValues The argument values.
+         */
+        void SetNewValue(G4UIcommand* command, G4String newValues);
 
-private:
+    private:
 
-    /**
-     * Define the commands that this messenger with handle.
-     */
-    void defineCommands();
+        /**
+         * Define the commands that this messenger with handle.
+         */
+        void defineCommands();
 
-private:
-    G4UIcmdWithABool* m_eventTimerCmd;
+    private:
+        G4UIcmdWithABool* m_eventTimerCmd;
 };
 }
 

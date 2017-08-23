@@ -18,46 +18,46 @@ namespace slic {
  */
 class GeneratorMessenger: public G4UImessenger {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    GeneratorMessenger();
+        /**
+         * Class constructor.
+         */
+        GeneratorMessenger();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~GeneratorMessenger();
+        /**
+         * Class destructor.
+         */
+        virtual ~GeneratorMessenger();
 
-public:
+    public:
 
-    /**
-     * Process a macro command.
-     * @param[in] command The macro command.
-     * @param[in] newValues The command arguments.
-     */
-    virtual void SetNewValue(G4UIcommand* command, G4String newValues);
+        /**
+         * Process a macro command.
+         * @param[in] command The macro command.
+         * @param[in] newValues The command arguments.
+         */
+        virtual void SetNewValue(G4UIcommand* command, G4String newValues);
 
-private:
+    private:
 
-    /**
-     * Define the commands of the messenger.
-     */
-    void defineCommands();
+        /**
+         * Define the commands of the messenger.
+         */
+        void defineCommands();
 
-private:
+    private:
 
-    G4UIdirectory* m_generatorDir;
-    G4UIcommand* m_randomSeedCmd;
-    G4UIcommand* m_selectCmd;
-    G4UIcommand* m_resetCmd;
-    G4UIcmdWithAnInteger* m_skipEventsCmd;
-    G4UIcommand* m_filenameCmd;
-    G4UIcommand* m_enablePrintEventCmd;
-    G4UIcommand* m_printNumEventsGeneratedCmd;
-    G4UIcmdWithADoubleAndUnit* m_setLorentzTransformationAngleCmd;
-    G4UIcmdWithADouble* m_setZSmearingParameterCmd;
+        G4UIdirectory* m_generatorDir;
+        G4UIcommand* m_randomSeedCmd;
+        G4UIcommand* m_selectCmd;
+        G4UIcommand* m_resetCmd;
+        G4UIcmdWithAnInteger* m_skipEventsCmd;
+        G4UIcommand* m_filenameCmd;
+        G4UIcommand* m_enablePrintEventCmd;
+        G4UIcommand* m_printNumEventsGeneratedCmd;
+        G4UIcmdWithADoubleAndUnit* m_setLorentzTransformationAngleCmd;
+        G4UIcmdWithADouble* m_setZSmearingParameterCmd;
 };
 }
 

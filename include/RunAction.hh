@@ -17,59 +17,59 @@ namespace slic {
  */
 class RunAction: public G4UserRunAction, public Module, public PluginManagerAccessor {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    RunAction();
+        /**
+         * Class constructor.
+         */
+        RunAction();
 
-    /**
-     * Class destructor.
-     */
-    ~RunAction();
+        /**
+         * Class destructor.
+         */
+        ~RunAction();
 
-public:
+    public:
 
-    /**
-     * Implementation of begin of run action.
-     * @param[in] aRun The G4Run that is starting.
-     */
-    void BeginOfRunAction(const G4Run *aRun);
+        /**
+         * Implementation of begin of run action.
+         * @param[in] aRun The G4Run that is starting.
+         */
+        void BeginOfRunAction(const G4Run *aRun);
 
-    /**
-     * Implementation of end of run action.
-     * @param[in] aRun The G4Run that is ending.
-     */
-    void EndOfRunAction(const G4Run *aRun);
+        /**
+         * Implementation of end of run action.
+         * @param[in] aRun The G4Run that is ending.
+         */
+        void EndOfRunAction(const G4Run *aRun);
 
-private:
+    private:
 
-    /**
-     * Start the run timer.
-     */
-    void startRunTimer();
+        /**
+         * Start the run timer.
+         */
+        void startRunTimer();
 
-    /**
-     * Stop the run timer.
-     */
-    void stopRunTimer();
+        /**
+         * Stop the run timer.
+         */
+        void stopRunTimer();
 
-    /**
-     * Print the beginning of run message.
-     * @param[in] aRun The G4Run that is starting.
-     */
-    void printBeginOfRunMessage(const G4Run *aRun);
+        /**
+         * Print the beginning of run message.
+         * @param[in] aRun The G4Run that is starting.
+         */
+        void printBeginOfRunMessage(const G4Run *aRun);
 
-    /**
-     * Print the end of run message.
-     * @param[in] aRun The G4Run that is ending.
-     */
-    void printEndOfRunMessage(const G4Run *aRun);
+        /**
+         * Print the end of run message.
+         * @param[in] aRun The G4Run that is ending.
+         */
+        void printEndOfRunMessage(const G4Run *aRun);
 
-private:
+    private:
 
-    G4Timer m_runTimer;
+        G4Timer m_runTimer;
 };
 }
 

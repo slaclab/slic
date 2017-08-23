@@ -16,43 +16,43 @@
  */
 class LCOpticalPhysics: public G4VPhysicsConstructor {
 
-public:
+    public:
 
-    /**
-     * The class constructor.
-     * @param[in] name The name of the G4VPhysicsConstructor.
-     */
-	LCOpticalPhysics(const G4String& name = "optical");
+        /**
+         * The class constructor.
+         * @param[in] name The name of the G4VPhysicsConstructor.
+         */
+        LCOpticalPhysics(const G4String& name = "optical");
 
-	/**
-	 * Class destructor.
-	 */
-	virtual ~LCOpticalPhysics();
+        /**
+         * Class destructor.
+         */
+        virtual ~LCOpticalPhysics();
 
-	/**
-	 * This method will be invoked in the Construct() method where
-	 * each particle type will be instantiated.
-	 */
-	void ConstructParticle();
+        /**
+         * This method will be invoked in the Construct() method where
+         * each particle type will be instantiated.
+         */
+        void ConstructParticle();
 
-	/**
-	 * This method will be invoked in the Construct() method.
-	 * Each physics process will be instantiated and registered
-	 * to the process manager of each particle type
-	 */
-	void ConstructProcess();
+        /**
+         * This method will be invoked in the Construct() method.
+         * Each physics process will be instantiated and registered
+         * to the process manager of each particle type
+         */
+        void ConstructProcess();
 
-	/**
-	 * This method constructs physics processes and registers them.
-	 */
-	void ConstructOp();
+        /**
+         * This method constructs physics processes and registers them.
+         */
+        void ConstructOp();
 
-protected:
-	G4Cerenkov* theCerenkovProcess;
-	G4Scintillation* theScintillationProcess;
-	G4OpAbsorption* theAbsorptionProcess;
-	G4OpRayleigh* theRayleighScatteringProcess;
-	G4OpBoundaryProcess* theBoundaryProcess;
+    protected:
+        G4Cerenkov* theCerenkovProcess;
+        G4Scintillation* theScintillationProcess;
+        G4OpAbsorption* theAbsorptionProcess;
+        G4OpRayleigh* theRayleighScatteringProcess;
+        G4OpBoundaryProcess* theBoundaryProcess;
 };
 
 #endif

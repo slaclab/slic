@@ -23,8 +23,7 @@ G4Allocator<TrackSummary> TrackSummaryAllocator;
 TrackManager* TrackSummary::m_trackManager = TrackManager::instance();
 
 TrackSummary::TrackSummary(const G4Track* track, G4bool toBeSaved, G4bool backScattering) :
-        _parent(NULL), _toBeSaved(toBeSaved), _backScattering(backScattering), _mcparticle(NULL),
-        _hasTrackerHit(false), _mcParticleIsUpToDate(false), _trackLength(0), _hepEvtStatus(0) {
+        _parent(NULL), _toBeSaved(toBeSaved), _backScattering(backScattering), _mcparticle(NULL), _hasTrackerHit(false), _mcParticleIsUpToDate(false), _trackLength(0), _hepEvtStatus(0) {
 
     /* Set information of track that is immutable. */
     _charge = track->GetDefinition()->GetPDGCharge();
@@ -140,10 +139,10 @@ void TrackSummary::setParentToBeSaved() {
 
     TrackSummary* myParent = findParent();
     /*
-    if (myParent == this) {
-        G4cout << "summary for " << this->getTrackID() << " is its own parent (probably a primary)" << G4endl;
-    }
-    */
+     if (myParent == this) {
+     G4cout << "summary for " << this->getTrackID() << " is its own parent (probably a primary)" << G4endl;
+     }
+     */
     if (myParent) {
 
         // std::cout << " **** TrackSummary::SetParentToBeSaved for trackID: " << myParent->GetTrackID() << " this trackid: " << GetTrackID() << std::endl ;
@@ -165,12 +164,12 @@ void TrackSummary::setParentToBeSaved() {
                 _mcparticle->addParent(theParentMCParticle);
             }
         }
-    // DEBUG
+        // DEBUG
     } else {
         if (this->getParentID() != 0)
             G4cout << "WARNING: no parent track ID " << this->getParentID() << " found for " << this->getTrackID() << G4endl;
+        }
     }
-}
 
 TrackSummary* TrackSummary::findParent() const {
 

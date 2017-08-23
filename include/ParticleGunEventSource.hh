@@ -15,39 +15,39 @@ namespace slic {
  */
 class ParticleGunEventSource: public EventSource {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    ParticleGunEventSource();
+        /**
+         * Class constructor.
+         */
+        ParticleGunEventSource();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~ParticleGunEventSource();
+        /**
+         * Class destructor.
+         */
+        virtual ~ParticleGunEventSource();
 
-public:
+    public:
 
-    /**
-     * Generate an event.
-     * @param[in] event The target G4Event to fill.
-     */
-    virtual void generate(G4Event* event);
+        /**
+         * Generate an event.
+         * @param[in] event The target G4Event to fill.
+         */
+        virtual void generate(G4Event* event);
 
-    /**
-     * Dump information on the current event to the log.
-     */
-    void printCurrentEvent();
+        /**
+         * Dump information on the current event to the log.
+         */
+        void printCurrentEvent();
 
-    /**
-     * Get the associated G4ParticleGun.
-     * @return The G4ParticleGun associated with this source.
-     */
-    G4ParticleGun* getParticleGun();
+        /**
+         * Get the associated G4ParticleGun.
+         * @return The G4ParticleGun associated with this source.
+         */
+        G4ParticleGun* getParticleGun();
 
-private:
-    G4ParticleGun* m_generator;
+    private:
+        G4ParticleGun* m_generator;
 };
 }
 

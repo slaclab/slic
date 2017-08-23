@@ -15,44 +15,44 @@ class SlicApplication;
  * @brief G4UImessenger for the SLIC application.
  */
 class SlicApplicationMessenger: public G4UImessenger {
-public:
+    public:
 
-    /**
-     * Class constructor.
-     * @param[in] app The associated SlicApplication.
-     */
-    SlicApplicationMessenger(SlicApplication* app);
+        /**
+         * Class constructor.
+         * @param[in] app The associated SlicApplication.
+         */
+        SlicApplicationMessenger(SlicApplication* app);
 
-    /**
-     * Class destructor.
-     */
-    virtual ~SlicApplicationMessenger();
+        /**
+         * Class destructor.
+         */
+        virtual ~SlicApplicationMessenger();
 
-public:
+    public:
 
-    /**
-     * Execute macro command.
-     * @param[in] cmd The macro command.
-     * @param[in] newVals The argument values.
-     */
-    virtual void SetNewValue(G4UIcommand* cmd, G4String newVals);
+        /**
+         * Execute macro command.
+         * @param[in] cmd The macro command.
+         * @param[in] newVals The argument values.
+         */
+        virtual void SetNewValue(G4UIcommand* cmd, G4String newVals);
 
-private:
+    private:
 
-    /**
-     * Define commands handled by this macro.
-     */
-    void defineCommands();
+        /**
+         * Define commands handled by this macro.
+         */
+        void defineCommands();
 
-private:
+    private:
 
-    SlicApplication* m_app;
+        SlicApplication* m_app;
 
-    G4UIdirectory* m_slicDir;
+        G4UIdirectory* m_slicDir;
 
-    G4UIcommand* m_interactive;
-    G4UIcommand* m_slicUsage;
-    G4UIcommand* m_slicVersion;
+        G4UIcommand* m_interactive;
+        G4UIcommand* m_slicUsage;
+        G4UIcommand* m_slicVersion;
 };
 }
 

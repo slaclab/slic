@@ -18,72 +18,72 @@ namespace slic {
  */
 class EventSource: public Module {
 
-protected:
+    protected:
 
-    /**
-     * Class constructor.
-     */
-    EventSource(const std::string& name);
+        /**
+         * Class constructor.
+         */
+        EventSource(const std::string& name);
 
-public:
+    public:
 
-    /**
-     * Class destructor.
-     */
-    virtual ~EventSource();
+        /**
+         * Class destructor.
+         */
+        virtual ~EventSource();
 
-public:
+    public:
 
-    /**
-     * Generate an event.
-     * @param[in] event The Geant4 event to be modified.
-     */
-    virtual void generate(G4Event* event) = 0;
+        /**
+         * Generate an event.
+         * @param[in] event The Geant4 event to be modified.
+         */
+        virtual void generate(G4Event* event) = 0;
 
-    /**
-     * Dump information about the current event.
-     */
-    virtual void printCurrentEvent() = 0;
+        /**
+         * Dump information about the current event.
+         */
+        virtual void printCurrentEvent() = 0;
 
-    /**
-     * Reset the event source.
-     */
-    virtual void reset();
+        /**
+         * Reset the event source.
+         */
+        virtual void reset();
 
-    /**
-     * Skip a number of events in the source.
-     * @param[in] n The number of events to skip.
-     */
-    virtual unsigned int skipEvents(unsigned int n);
+        /**
+         * Skip a number of events in the source.
+         * @param[in] n The number of events to skip.
+         */
+        virtual unsigned int skipEvents(unsigned int n);
 
-    /**
-     * Hook for beginning of an event.
-     * @param[in] event The Geant4 event.
-     */
-    virtual void beginEvent(const G4Event* event);
+        /**
+         * Hook for beginning of an event.
+         * @param[in] event The Geant4 event.
+         */
+        virtual void beginEvent(const G4Event* event);
 
-    /**
-     * Hook for end of an event.
-     * @param[in] event The Geant4 event.
-     */
-    virtual void endEvent(const G4Event* event);
+        /**
+         * Hook for end of an event.
+         * @param[in] event The Geant4 event.
+         */
+        virtual void endEvent(const G4Event* event);
 
-    /**
-     * Hook for the beginning of a run.
-     * @param[in] run The Geant4 run.
-     */
-    virtual void beginRun(const G4Run* run);
+        /**
+         * Hook for the beginning of a run.
+         * @param[in] run The Geant4 run.
+         */
+        virtual void beginRun(const G4Run* run);
 
-    /**
-     * Hook for the end of a run.
-     * @param[in] run The Geant4 run.
-     */
-    virtual void endRun(const G4Run* run);
+        /**
+         * Hook for the end of a run.
+         * @param[in] run The Geant4 run.
+         */
+        virtual void endRun(const G4Run* run);
 
-private:
+    private:
 
-    std::string m_name;
-    int nEventsGenerated;
+        std::string m_name;
+        int nEventsGenerated;
 
 };
 }

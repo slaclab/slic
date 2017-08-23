@@ -10,23 +10,23 @@ namespace slic {
  * @brief This class triggers decays for the extended particle set from HepPDT.
  */
 class LCExtendedDecay: public G4UnknownDecay {
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    LCExtendedDecay() :
-            G4UnknownDecay("LCExtendedDecay") {
-        ;
-    }
+        /**
+         * Class constructor.
+         */
+        LCExtendedDecay() :
+                G4UnknownDecay("LCExtendedDecay") {
+            ;
+        }
 
-    /**
-     * Determine if the extended decay process is applicable to the given particle.
-     * @param[in] pdef The particle definition.
-     */
-    G4bool IsApplicable(const G4ParticleDefinition &pdef) {
-        return (pdef.GetParticleType() == "extended");
-    }
+        /**
+         * Determine if the extended decay process is applicable to the given particle.
+         * @param[in] pdef The particle definition.
+         */
+        G4bool IsApplicable(const G4ParticleDefinition &pdef) {
+            return (pdef.GetParticleType() == "extended");
+        }
 };
 }
 

@@ -31,41 +31,41 @@ class FieldManager;
 
 class FieldMessenger: public G4UImessenger {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    FieldMessenger(FieldManager* mgr);
+        /**
+         * Class constructor.
+         */
+        FieldMessenger(FieldManager* mgr);
 
-    /**
-     * Class destructor.
-     */
-    virtual ~FieldMessenger();
+        /**
+         * Class destructor.
+         */
+        virtual ~FieldMessenger();
 
-public:
+    public:
 
-    /**
-     * Process macro commands.
-     * @param[in] command The macro command.
-     * @param[in] newValues The command arguments.
-     */
-    virtual void SetNewValue(G4UIcommand* command, G4String newValues);
+        /**
+         * Process macro commands.
+         * @param[in] command The macro command.
+         * @param[in] newValues The command arguments.
+         */
+        virtual void SetNewValue(G4UIcommand* command, G4String newValues);
 
-private:
+    private:
 
-    /**
-     * Define the messenger's commands.
-     */
-    void defineCommands();
+        /**
+         * Define the messenger's commands.
+         */
+        void defineCommands();
 
-private:
+    private:
 
-    FieldManager* m_mgr;
-    G4UIdirectory* m_fieldDir;
-    G4UIcommand* m_selectStepperCmd;
-    G4UIcmdWithADoubleAndUnit* m_setDeltaOneStepCmd;
-    G4UIcmdWithADoubleAndUnit* m_setDeltaIntersectionCmd;
+        FieldManager* m_mgr;
+        G4UIdirectory* m_fieldDir;
+        G4UIcommand* m_selectStepperCmd;
+        G4UIcmdWithADoubleAndUnit* m_setDeltaOneStepCmd;
+        G4UIcmdWithADoubleAndUnit* m_setDeltaIntersectionCmd;
 };
 }
 

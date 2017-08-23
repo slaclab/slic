@@ -14,97 +14,97 @@ namespace slic {
  */
 class EventSourceWithInputFile: public EventSource {
 
-protected:
+    protected:
 
-    /**
-     * Class constructor.
-     * @param[in] name The name of the source.
-     * @param[in] filename The file name of the source.
-     */
-    EventSourceWithInputFile(const std::string& name, const std::string& filename = "") :
-            EventSource(name), m_filename(filename), m_eof(false), m_fileIsOpen(false), m_fileIsNew(false), m_fileIsSet(false) {
-    }
+        /**
+         * Class constructor.
+         * @param[in] name The name of the source.
+         * @param[in] filename The file name of the source.
+         */
+        EventSourceWithInputFile(const std::string& name, const std::string& filename = "") :
+                EventSource(name), m_filename(filename), m_eof(false), m_fileIsOpen(false), m_fileIsNew(false), m_fileIsSet(false) {
+        }
 
-public:
+    public:
 
-    /**
-     * Class destructor.
-     */
-    virtual ~EventSourceWithInputFile() {
-    }
+        /**
+         * Class destructor.
+         */
+        virtual ~EventSourceWithInputFile() {
+        }
 
-public:
+    public:
 
-    /**
-     * Set the file name of the source.
-     * @param[in] filename The file name.
-     */
-    void setFilename(const std::string& filename);
+        /**
+         * Set the file name of the source.
+         * @param[in] filename The file name.
+         */
+        void setFilename(const std::string& filename);
 
-    /**
-     * Get the file name of the source.
-     * @return The file name.
-     */
-    const std::string& getFilename();
+        /**
+         * Get the file name of the source.
+         * @return The file name.
+         */
+        const std::string& getFilename();
 
-    /**
-     * Reset the source back to the beginning of the file.
-     */
-    void reset();
+        /**
+         * Reset the source back to the beginning of the file.
+         */
+        void reset();
 
-    /**
-     * Skip a number of events in the source's file.
-     * @param[in] nevents The number of events to skip.
-     */
-    unsigned int skipEvents(unsigned int nevents);
+        /**
+         * Skip a number of events in the source's file.
+         * @param[in] nevents The number of events to skip.
+         */
+        unsigned int skipEvents(unsigned int nevents);
 
-    /**
-     * Check if the end of file has been reached.
-     */
-    bool isEOF();
+        /**
+         * Check if the end of file has been reached.
+         */
+        bool isEOF();
 
-    /**
-     * Begin of event hook.
-     * @param[in] event The Geant4 event.
-     */
-    void beginEvent(const G4Event* event);
+        /**
+         * Begin of event hook.
+         * @param[in] event The Geant4 event.
+         */
+        void beginEvent(const G4Event* event);
 
-    /**
-     * Begin run hook.
-     * @param[in] run The Geant4 run.
-     */
-    void beginRun(const G4Run* run);
+        /**
+         * Begin run hook.
+         * @param[in] run The Geant4 run.
+         */
+        void beginRun(const G4Run* run);
 
-    /**
-     * Open the file associated with the source.
-     */
-    virtual void open() = 0;
+        /**
+         * Open the file associated with the source.
+         */
+        virtual void open() = 0;
 
-    /**
-     * Close the file associated with the source.
-     */
-    virtual void close() = 0;
+        /**
+         * Close the file associated with the source.
+         */
+        virtual void close() = 0;
 
-    /**
-     * Read the next event.
-     */
-    virtual void readNextEvent() = 0;
+        /**
+         * Read the next event.
+         */
+        virtual void readNextEvent() = 0;
 
-    /**
-     * Dump the current event to std::cout.
-     */
-    virtual void printCurrentEvent() = 0;
+        /**
+         * Dump the current event to std::cout.
+         */
+        virtual void printCurrentEvent() = 0;
 
-protected:
+    protected:
 
-    // name of input file
-    std::string m_filename;
+        // name of input file
+        std::string m_filename;
 
-    // state vars
-    bool m_eof;
-    bool m_fileIsOpen;
-    bool m_fileIsNew;
-    bool m_fileIsSet;
+        // state vars
+        bool m_eof;
+        bool m_fileIsOpen;
+        bool m_fileIsNew;
+        bool m_fileIsSet;
 };
 }
 

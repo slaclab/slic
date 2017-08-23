@@ -36,18 +36,19 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
         if (it->second == 0) {
             G4Exception("", "", FatalException, "MCParticle was mapped to null G4PrimaryParticle.");
         }
-        if (it->second->GetTrackID() < 0) continue;
+        if (it->second->GetTrackID() < 0)
+            continue;
         for (int j = _trackSummaries->size() - 1; j >= 0; j--) {
-            if( _trackSummaries->operator[](j)->getTrackID() == it->second->GetTrackID()  ) {
+            if (_trackSummaries->operator[](j)->getTrackID() == it->second->GetTrackID()) {
                 //std::cout << "setting MCParticle " << it->first << " on TrackSummary from primary" << std::endl;
                 _trackSummaries->operator[](j)->setMCParticle(dynamic_cast<MCParticleImpl*>(it->first));
 
 #ifdef SLIC_LOG
                 log() << LOG:: debug << "primary " << MCParticleManager::instance()->indexOf(it->second)
-                        << " had track ID " << _trackSummaries->operator[](j)->getTrackID() << LOG::done;
+                << " had track ID " << _trackSummaries->operator[](j)->getTrackID() << LOG::done;
 #endif
 
-                break ;
+                break;
             }
         }
     }
@@ -55,13 +56,13 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
     G4bool writeCompleteEvent = LcioManager::instance()->getWriteCompleteEvent();
 
     // Set parents to be saved on particles that will be persisted.
-    for (G4int k = _trackSummaries->size()-1; k >= 0; k--) {
+    for (G4int k = _trackSummaries->size() - 1; k >= 0; k--) {
         // Save all TrackSummary objects if full event is being written.
         //if (writeCompleteEvent)
         //    (*_trackSummaries)[k]->setToBeSaved();
         // Force parents to be saved if TrackSummary will be saved.
         if (((*_trackSummaries)[k])->getToBeSaved())
-          ((*_trackSummaries)[k])->setParentToBeSaved();
+            ((*_trackSummaries)[k])->setParentToBeSaved();
     }
 
     /* Get the MCParticle collection created by event generation. */
@@ -84,9 +85,7 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
             }
 
             /* Associate the track ID to the MCParticle for the hit maker. */
-            MCParticleManager::instance()->addMCParticleTrackID(
-                    trackSummary->getTrackID(),
-                    trackSummary->getMCParticle());
+            MCParticleManager::instance()->addMCParticleTrackID(trackSummary->getTrackID(), trackSummary->getMCParticle());
 
             /*
              * Only particles created in the simulation need to be added, as the generator MCParticles
@@ -94,7 +93,7 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
              * such as the GPS or ParticleGun, then all particles with the save flag on should be added
              * here, as they will all be flagged as sim particles and would not have been added yet.
              */
-            if(trackSummary->getMCParticle()->getGeneratorStatus() == 0 || geant4Generator) {
+            if (trackSummary->getMCParticle()->getGeneratorStatus() == 0 || geant4Generator) {
                 if (trackSummary->getMCParticle() != NULL) {
                     mcpVec->push_back(trackSummary->getMCParticle());
                     // DEBUG
@@ -103,9 +102,9 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
                 }
             }
         } else {
-             // If the track will not be saved then associate the information to its first persisted ancestor.
-             // This will allow association between track IDs from sensitive detector's in LCDD to their appropriate
-             // MCParticle objects in the output collection.
+            // If the track will not be saved then associate the information to its first persisted ancestor.
+            // This will allow association between track IDs from sensitive detector's in LCDD to their appropriate
+            // MCParticle objects in the output collection.
             findFirstSavedAncestor(trackSummary);
         }
     }
@@ -114,7 +113,7 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
     mcpVec->setFlag(0xe0000000);
 
     /* Save the MCParticle collection into the event. */
-    lcEvent->addCollection((LCCollection*)mcpVec, "MCParticle");
+    lcEvent->addCollection((LCCollection*) mcpVec, "MCParticle");
 
 #ifdef SLIC_LOG
     log() << LOG::always << "Saved " << mcpVec->getNumberOfElements() << " MCParticles." << LOG::done;
@@ -127,9 +126,7 @@ TrackSummary* TrackManager::findFirstSavedAncestor(TrackSummary* trackSummary) {
     while (parent != 0) {
         if (parent->getToBeSaved() == true) {
             /* Associate the track ID to the first MCParticle up the tree that will be saved. */
-            MCParticleManager::instance()->addMCParticleTrackID(
-                    trackSummary->getTrackID(),
-                    parent->getMCParticle());
+            MCParticleManager::instance()->addMCParticleTrackID(trackSummary->getTrackID(), parent->getMCParticle());
             break;
         }
         parent = parent->findParent();

@@ -26,7 +26,7 @@ namespace slic {
  * a command for setting of the verbose level.  Users can override this
  * class to provide additional commands for their specific plugins.
  */
-class UserActionPluginMessenger : public G4UImessenger {
+class UserActionPluginMessenger: public G4UImessenger {
 
     public:
 
