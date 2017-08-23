@@ -199,7 +199,7 @@ class UserActionPlugin {
     protected:
 
         /** Protected access to verbose level for convenience of sub-classes. */
-        int verbose_ {1};
+        int verbose_ { 1 };
 };
 
 }

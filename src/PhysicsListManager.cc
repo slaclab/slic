@@ -18,8 +18,7 @@ namespace slic {
 const std::string PhysicsListManager::m_defaultListName = std::string("QGSP_BERT");
 
 PhysicsListManager::PhysicsListManager() :
-        Module("PhysicsListManager"), m_currentList(0), m_isInitialized(false), m_isFromDefault(false), m_enableLimits(
-                false), m_setupLimits(false), m_enableOptical(false) {
+        Module("PhysicsListManager"), m_currentList(0), m_isInitialized(false), m_isFromDefault(false), m_enableLimits(false), m_setupLimits(false), m_enableOptical(false) {
     // Set the current list to the default.
     m_currentListName = m_defaultListName;
 

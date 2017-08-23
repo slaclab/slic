@@ -17,43 +17,43 @@ namespace slic {
  */
 class PhysicsMessenger: public G4UImessenger {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    PhysicsMessenger();
+        /**
+         * Class constructor.
+         */
+        PhysicsMessenger();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~PhysicsMessenger();
+        /**
+         * Class destructor.
+         */
+        virtual ~PhysicsMessenger();
 
-public:
+    public:
 
-    /**
-     * Execute macro command.
-     * @param[in] cmd The command to execute.
-     * @param[in] newVals The command arguments.
-     */
-    virtual void SetNewValue(G4UIcommand* cmd, G4String newVals);
+        /**
+         * Execute macro command.
+         * @param[in] cmd The command to execute.
+         * @param[in] newVals The command arguments.
+         */
+        virtual void SetNewValue(G4UIcommand* cmd, G4String newVals);
 
-private:
+    private:
 
-    /**
-     * Define commands handled by this messenger.
-     */
-    void defineCommands();
+        /**
+         * Define commands handled by this messenger.
+         */
+        void defineCommands();
 
-private:
+    private:
 
-    G4UIdirectory* m_physicsListDir;
+        G4UIdirectory* m_physicsListDir;
 
-    G4UIcommand* m_selectCmd;
-    G4UIcmdWithoutParameter* m_printListsCmd;
-    G4UIcmdWithoutParameter* m_printCurrentCmd;
-    G4UIcmdWithABool* m_enableOpticalCmd;
-    G4UIcommand* m_pdgCmd;
+        G4UIcommand* m_selectCmd;
+        G4UIcmdWithoutParameter* m_printListsCmd;
+        G4UIcmdWithoutParameter* m_printCurrentCmd;
+        G4UIcmdWithABool* m_enableOpticalCmd;
+        G4UIcommand* m_pdgCmd;
 };
 }
 

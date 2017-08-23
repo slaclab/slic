@@ -17,64 +17,64 @@ namespace slic {
  */
 class ModuleRegistry: public Singleton<ModuleRegistry>, public Module {
 
-public:
+    public:
 
-    /**
-     * A map of names to Modules.
-     */
-    typedef std::map<std::string, Module*> ModuleMap;
+        /**
+         * A map of names to Modules.
+         */
+        typedef std::map<std::string, Module*> ModuleMap;
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    ModuleRegistry();
+        /**
+         * Class constructor.
+         */
+        ModuleRegistry();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~ModuleRegistry();
+        /**
+         * Class destructor.
+         */
+        virtual ~ModuleRegistry();
 
-public:
+    public:
 
-    /**
-     * Register a module by its name.
-     * @param[in] module The Module to register.
-     */
-    void registerModule(Module* module);
+        /**
+         * Register a module by its name.
+         * @param[in] module The Module to register.
+         */
+        void registerModule(Module* module);
 
-    /**
-     * Find a module by its name.
-     * @param[in] name The name of the Module to find.
-     * @return The Module with matching name or null if not found.
-     */
-    Module* findModule(const std::string& name);
+        /**
+         * Find a module by its name.
+         * @param[in] name The name of the Module to find.
+         * @return The Module with matching name or null if not found.
+         */
+        Module* findModule(const std::string& name);
 
-    /**
-     * Remove a Module from the registry.
-     * @param[in] module The Module to deregister.
-     */
-    void deregisterModule(Module* module);
+        /**
+         * Remove a Module from the registry.
+         * @param[in] module The Module to deregister.
+         */
+        void deregisterModule(Module* module);
 
-    /**
-     * Remove a Module from the registry by name.
-     * @param[in] name The name of the Module to deregister.
-     */
-    void deregisterModule(const std::string& name);
+        /**
+         * Remove a Module from the registry by name.
+         * @param[in] name The name of the Module to deregister.
+         */
+        void deregisterModule(const std::string& name);
 
-    /** 
-     * Print the list of registered modules to the log.
-     */
-    void print();
+        /** 
+         * Print the list of registered modules to the log.
+         */
+        void print();
 
-    /**
-     * Delete all modules.
-     */
-    void deleteModules();
+        /**
+         * Delete all modules.
+         */
+        void deleteModules();
 
-private:
-    ModuleMap m_modules;
+    private:
+        ModuleMap m_modules;
 };
 }
 

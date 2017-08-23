@@ -9,30 +9,30 @@ template<class T>
 
 class Singleton {
 
-public:
+    public:
 
-    /**
-     * Get the singleton instance.
-     */
-    static T* instance();
+        /**
+         * Get the singleton instance.
+         */
+        static T* instance();
 
-    /**
-     * Delete the current singleton instance.
-     */
-    void release();
+        /**
+         * Delete the current singleton instance.
+         */
+        void release();
 
-    /**
-     * Class constructor.
-     */
-    Singleton();
+        /**
+         * Class constructor.
+         */
+        Singleton();
 
-    /**
-     * Class destructor.
-     */
-    ~Singleton();
+        /**
+         * Class destructor.
+         */
+        ~Singleton();
 
-private:
-    static T* m_singleton;
+    private:
+        static T* m_singleton;
 };
 
 template<class T> T* Singleton<T>::m_singleton = 0;

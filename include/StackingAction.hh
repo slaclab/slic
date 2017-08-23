@@ -19,19 +19,19 @@ namespace slic {
  * suspends backscattering tracks until the end
  * of shower development.
  */
-class StackingAction : public G4UserStackingAction, public PluginManagerAccessor {
+class StackingAction: public G4UserStackingAction, public PluginManagerAccessor {
 
-public:
-    StackingAction();
-    virtual ~StackingAction();
+    public:
+        StackingAction();
+        virtual ~StackingAction();
 
-public:
+    public:
 
-    G4ClassificationOfNewTrack ClassifyNewTrack(const G4Track* aTrack);
+        G4ClassificationOfNewTrack ClassifyNewTrack(const G4Track* aTrack);
 
-    void NewStage();
+        void NewStage();
 
-    void PrepareNewEvent();
+        void PrepareNewEvent();
 };
 
 }

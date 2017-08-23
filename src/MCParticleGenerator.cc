@@ -20,8 +20,8 @@ using IOIMPL::LCFactory;
 
 namespace slic {
 
-MCParticleGenerator::MCParticleGenerator(G4String eventFile)
-    : _lcevent(0) {
+MCParticleGenerator::MCParticleGenerator(G4String eventFile) :
+        _lcevent(0) {
 
     _particleManager = MCParticleManager::instance();
 
@@ -48,7 +48,7 @@ LCEvent* MCParticleGenerator::getCurrentEvent() {
 void MCParticleGenerator::generateEvent(G4Event* event) {
 
     /* Get collection of MCParticles. */
-    LCCollectionVec* particles = (LCCollectionVec*)_lcevent->takeCollection("MCParticle");
+    LCCollectionVec* particles = (LCCollectionVec*) _lcevent->takeCollection("MCParticle");
 
     /* Generate the Geant4 event using the MCParticleManager. */
     _particleManager->generateEvent(particles, event);

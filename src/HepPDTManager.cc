@@ -61,11 +61,9 @@ void HepPDTManager::loadParticleData() {
 
 void HepPDTManager::printParticleData() {
     log() << LOG::always << "-- HepPDT Particle Data Table --" << LOG::endl;
-    log() << "ParticleDataTable has " << m_datacol->size() << " particles"
-            << LOG::endl;
+    log() << "ParticleDataTable has " << m_datacol->size() << " particles" << LOG::endl;
 
-    for (HepPDT::ParticleDataTable::const_iterator it = m_datacol->begin();
-            it != m_datacol->end(); it++) {
+    for (HepPDT::ParticleDataTable::const_iterator it = m_datacol->begin(); it != m_datacol->end(); it++) {
         HepPDT::ParticleID id = it->first;
         HepPDT::ParticleData pdata = it->second;
 

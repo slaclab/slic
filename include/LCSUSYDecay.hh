@@ -11,23 +11,22 @@ namespace slic {
  * @brief This class triggers decays for SUSY particles.
  */
 class LCSUSYDecay: public G4UnknownDecay {
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-	LCSUSYDecay() :
-			G4UnknownDecay("LCSUSYDecay") {
-		;
-	}
+        /**
+         * Class constructor.
+         */
+        LCSUSYDecay() :
+                G4UnknownDecay("LCSUSYDecay") {
+        }
 
-	/**
-	 * Make this class applicable to SUSY particles.
-	 * @return True if process is applicable; false if not.
-	 */
-	G4bool IsApplicable(const G4ParticleDefinition &pdef) {
-		return (pdef.GetParticleType() == "susy");
-	}
+        /**
+         * Make this class applicable to SUSY particles.
+         * @return True if process is applicable; false if not.
+         */
+        G4bool IsApplicable(const G4ParticleDefinition &pdef) {
+            return (pdef.GetParticleType() == "susy");
+        }
 };
 }
 

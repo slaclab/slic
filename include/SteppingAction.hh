@@ -21,38 +21,38 @@ namespace slic {
  */
 class SteppingAction: public G4UserSteppingAction, public Module, public PluginManagerAccessor {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-	SteppingAction();
+        /**
+         * Class constructor.
+         */
+        SteppingAction();
 
-	/**
-	 * Class destructor.
-	 */
-	virtual ~SteppingAction();
+        /**
+         * Class destructor.
+         */
+        virtual ~SteppingAction();
 
-	/**
-	 * Implementation of user stepping action.
-	 * @param[in] step The G4Step.
-	 */
-	void UserSteppingAction(const G4Step* step);
+        /**
+         * Implementation of user stepping action.
+         * @param[in] step The G4Step.
+         */
+        void UserSteppingAction(const G4Step* step);
 
-    /**
-     * Return true if this track appears to be backscattering from a non-tracking region
-     * into the tracking region.
-     * @return True if track is backscattering; false if not.
-     */
-	bool isBackScattering(const G4Step* step);
+        /**
+         * Return true if this track appears to be backscattering from a non-tracking region
+         * into the tracking region.
+         * @return True if track is backscattering; false if not.
+         */
+        bool isBackScattering(const G4Step* step);
 
-private:
+    private:
 
-	/**
-	 * Kill a G4Track if it is inside a track-killing region.
-	 * @param[in] step The G4Step.
-	 */
-	void checkKillTrack(const G4Step* step);
+        /**
+         * Kill a G4Track if it is inside a track-killing region.
+         * @param[in] step The G4Step.
+         */
+        void checkKillTrack(const G4Step* step);
 };
 }
 

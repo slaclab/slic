@@ -27,130 +27,130 @@ namespace slic {
 std::string LcioFileNamer::m_sep = "_";
 
 LcioFileNamer::LcioFileNamer() :
-		Module("LcioFileNamer") {
-	m_defaultFields.push_back("event");
-	m_defaultFields.push_back("application");
-	m_defaultFields.push_back("physics");
-	m_defaultFields.push_back("geometry");
+        Module("LcioFileNamer") {
+    m_defaultFields.push_back("event");
+    m_defaultFields.push_back("application");
+    m_defaultFields.push_back("physics");
+    m_defaultFields.push_back("geometry");
 }
 
 LcioFileNamer::~LcioFileNamer() {
 }
 
 std::string LcioFileNamer::getFieldValue(std::string field) {
-	std::string value;
+    std::string value;
 
-	static std::string sep("-");
+    static std::string sep("-");
 
-	if (field == "application") {
-		value = PackageInfo::getShortName() + "-v" + PackageInfo::getVersion(sep);
-	} else if (field == "geometry") {
-		value = LCDDProcessor::instance()->getDetectorName();
-	} else if (field == "date") {
-		value = TimeUtil::getDate();
-	} else if (field == "event" || field == "evt") {
-		value = LcioFileNamer::makeEventName();
-	} else if (field == "eventNumber") {
-		value = LcioFileNamer::makeEventNumberString();
-	} else if (field == "run") {
-		value = LcioFileNamer::makeRunNumberString();
-	} else if (field == "binary") {
-		value = SlicApplication::instance()->getBinaryBasename();
-	} else if (field == "physics") {
-		value = PhysicsListManager::instance()->getCurrentListName();
-	} else {
+    if (field == "application") {
+        value = PackageInfo::getShortName() + "-v" + PackageInfo::getVersion(sep);
+    } else if (field == "geometry") {
+        value = LCDDProcessor::instance()->getDetectorName();
+    } else if (field == "date") {
+        value = TimeUtil::getDate();
+    } else if (field == "event" || field == "evt") {
+        value = LcioFileNamer::makeEventName();
+    } else if (field == "eventNumber") {
+        value = LcioFileNamer::makeEventNumberString();
+    } else if (field == "run") {
+        value = LcioFileNamer::makeRunNumberString();
+    } else if (field == "binary") {
+        value = SlicApplication::instance()->getBinaryBasename();
+    } else if (field == "physics") {
+        value = PhysicsListManager::instance()->getCurrentListName();
+    } else {
 #ifdef SLIC_LOG      
-            log() << LOG::error << "Ignoring unknown autoname field <" << field << ">." << LOG::done;
+        log() << LOG::error << "Ignoring unknown autoname field <" << field << ">." << LOG::done;
 #endif
-            value = "";
-	}
-	return value;
+        value = "";
+    }
+    return value;
 }
 
 std::string LcioFileNamer::makeFileName(std::vector<std::string> fieldList) {
-	std::string filename = "";
-	if (fieldList.size() != 0) {
-		for (std::vector<std::string>::const_iterator it = fieldList.begin(); it != fieldList.end(); it++) {
-			std::string value = getFieldValue(*it);
-			if (value != "") {
-				filename = filename + value + m_sep;
-			}
-		}
-		if (filename != "") {
-			filename.erase(filename.end() - 1, filename.end());
-		}
-	} else {
-		filename = makeDefaultFileName();
-	}
-	return filename;
+    std::string filename = "";
+    if (fieldList.size() != 0) {
+        for (std::vector<std::string>::const_iterator it = fieldList.begin(); it != fieldList.end(); it++) {
+            std::string value = getFieldValue(*it);
+            if (value != "") {
+                filename = filename + value + m_sep;
+            }
+        }
+        if (filename != "") {
+            filename.erase(filename.end() - 1, filename.end());
+        }
+    } else {
+        filename = makeDefaultFileName();
+    }
+    return filename;
 }
 
 std::string LcioFileNamer::makeDefaultFileName() {
-	return makeFileName(m_defaultFields);
+    return makeFileName(m_defaultFields);
 }
 
 std::string LcioFileNamer::makeEventName() {
-	std::string evt;
+    std::string evt;
 
-	EventSourceManager::ESourceType est = EventSourceManager::instance()->getCurrentSourceType();
+    EventSourceManager::ESourceType est = EventSourceManager::instance()->getCurrentSourceType();
 
-	if (EventSourceManager::instance()->isFileSource()) {
-		evt = makeFileBasedName();
-	} else if (est == EventSourceManager::eGPS) {
-		evt = makeGPSName();
-	} else if (est == EventSourceManager::eParticleGun) {
-		evt = makeGunName();
-	} else {
-		evt = "events";
-	}
-	return evt;
+    if (EventSourceManager::instance()->isFileSource()) {
+        evt = makeFileBasedName();
+    } else if (est == EventSourceManager::eGPS) {
+        evt = makeGPSName();
+    } else if (est == EventSourceManager::eParticleGun) {
+        evt = makeGunName();
+    } else {
+        evt = "events";
+    }
+    return evt;
 }
 
 std::string LcioFileNamer::makeFileBasedName() {
-	std::string fname = EventSourceManager::instance()->getFilename();
+    std::string fname = EventSourceManager::instance()->getFilename();
 
-	// basename and remove file extension
-	fname = FileUtil::removeExtension(FileUtil::basename(fname));
+    // basename and remove file extension
+    fname = FileUtil::removeExtension(FileUtil::basename(fname));
 
-	return fname;
+    return fname;
 }
 
 std::string LcioFileNamer::makeGPSName() {
-	G4GeneralParticleSource* gps = EventSourceManager::instance()->getGPS();
+    G4GeneralParticleSource* gps = EventSourceManager::instance()->getGPS();
 
-	// particle name
-	std::string pname = gps->GetParticleDefinition()->GetParticleName();
+    // particle name
+    std::string pname = gps->GetParticleDefinition()->GetParticleName();
 
-	// energy
-	double ene = gps->GetCurrentSource()->GetEneDist()->GenerateOne(gps->GetParticleDefinition());
-	std::string eneStr = StringUtil::toString(ene / GeV) + "GeV";
+    // energy
+    double ene = gps->GetCurrentSource()->GetEneDist()->GenerateOne(gps->GetParticleDefinition());
+    std::string eneStr = StringUtil::toString(ene / GeV) + "GeV";
 
-	// full string
-	std::string evtname = pname + m_sep + eneStr;
+    // full string
+    std::string evtname = pname + m_sep + eneStr;
 
-	return evtname;
+    return evtname;
 }
 
 std::string LcioFileNamer::makeGunName() {
-	G4ParticleGun* gun = EventSourceManager::instance()->getParticleGun();
+    G4ParticleGun* gun = EventSourceManager::instance()->getParticleGun();
 
-	// particle name
-	std::string pname = gun->GetParticleDefinition()->GetParticleName();
+    // particle name
+    std::string pname = gun->GetParticleDefinition()->GetParticleName();
 
-	// energy
-	std::string pE = StringUtil::toString(gun->GetParticleEnergy() / GeV) + "GeV";
+    // energy
+    std::string pE = StringUtil::toString(gun->GetParticleEnergy() / GeV) + "GeV";
 
-	// full string
-	std::string evtname = pname + m_sep + pE;
+    // full string
+    std::string evtname = pname + m_sep + pE;
 
-	return evtname;
+    return evtname;
 }
 
 std::string LcioFileNamer::makeRunNumberString() {
-	return StringUtil::toString(G4RunManager::GetRunManager()->GetCurrentRun()->GetRunID());
+    return StringUtil::toString(G4RunManager::GetRunManager()->GetCurrentRun()->GetRunID());
 }
 
 std::string LcioFileNamer::makeEventNumberString() {
-	return StringUtil::toString(SlicApplication::instance()->getRunManager()->getNumberOfEventsToRun());
+    return StringUtil::toString(SlicApplication::instance()->getRunManager()->getNumberOfEventsToRun());
 }
 }

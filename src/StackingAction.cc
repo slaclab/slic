@@ -16,7 +16,8 @@ StackingAction::~StackingAction() {
 G4ClassificationOfNewTrack StackingAction::ClassifyNewTrack(const G4Track* aTrack) {
     // FIXME: Need to determine how these are supposed to work together!
     G4ClassificationOfNewTrack classification = m_pluginManager->stackingClassifyNewTrack(aTrack);
-    if(aTrack->GetTrackStatus() == fSuspend) classification = fWaiting;
+    if (aTrack->GetTrackStatus() == fSuspend)
+        classification = fWaiting;
 }
 
 void StackingAction::NewStage() {

@@ -19,34 +19,34 @@ namespace slic {
  */
 class LCSUSYPhysics: public G4VPhysicsConstructor {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     * @param[in] name The name of the G4VPhysicsConstructor.
-     */
-	LCSUSYPhysics(const G4String& name = "LCSUSYPhysics");
+        /**
+         * Class constructor.
+         * @param[in] name The name of the G4VPhysicsConstructor.
+         */
+        LCSUSYPhysics(const G4String& name = "LCSUSYPhysics");
 
-	/**
-	 * Class destructor.
-	 */
-	virtual ~LCSUSYPhysics();
+        /**
+         * Class destructor.
+         */
+        virtual ~LCSUSYPhysics();
 
-	/**
-	 * This is called from Construct() to create and register the SUSY particles.
-	 */
-	void ConstructParticle();
+        /**
+         * This is called from Construct() to create and register the SUSY particles.
+         */
+        void ConstructParticle();
 
-	/**
-	 * This is called from Construct() to create and register the physics processes.
-	 */
-	void ConstructProcess();
+        /**
+         * This is called from Construct() to create and register the physics processes.
+         */
+        void ConstructProcess();
 
-private:
+    private:
 
-	G4hMultipleScattering m_scatter;
-	LCSUSYDecay m_decay;
-	G4hIonisation m_ionise;
+        G4hMultipleScattering m_scatter;
+        LCSUSYDecay m_decay;
+        G4hIonisation m_ionise;
 };
 }
 

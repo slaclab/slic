@@ -15,47 +15,47 @@ namespace slic {
  */
 class GPSEventSource: public EventSource {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    GPSEventSource();
+        /**
+         * Class constructor.
+         */
+        GPSEventSource();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~GPSEventSource();
+        /**
+         * Class destructor.
+         */
+        virtual ~GPSEventSource();
 
-public:
+    public:
 
-    /**
-     * Generate a Geant4 event.
-     * @param[in] event The Geant4 event.
-     */
-    void generate(G4Event* event);
+        /**
+         * Generate a Geant4 event.
+         * @param[in] event The Geant4 event.
+         */
+        void generate(G4Event* event);
 
-    /**
-     * Dump the current event to std::cout.
-     */
-    void printCurrentEvent();
+        /**
+         * Dump the current event to std::cout.
+         */
+        void printCurrentEvent();
 
-    /**
-     * Get the Geant4 general particle source class.
-     * @return The general particle source.
-     */
-    G4GeneralParticleSource* getGPS();
+        /**
+         * Get the Geant4 general particle source class.
+         * @return The general particle source.
+         */
+        G4GeneralParticleSource* getGPS();
 
-private:
+    private:
 
-    /**
-     * Setup the default GPS event settings.
-     */
-    void setupGeneratorDefaults();
+        /**
+         * Setup the default GPS event settings.
+         */
+        void setupGeneratorDefaults();
 
-private:
+    private:
 
-    G4GeneralParticleSource* m_generator;
+        G4GeneralParticleSource* m_generator;
 
 };
 }

@@ -13,56 +13,56 @@ namespace slic {
  */
 class StdHepEventSource: public EventSourceWithInputFile {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     * @param[in] fname The file name.
-     */
-    StdHepEventSource(const std::string& fname);
+        /**
+         * Class constructor.
+         * @param[in] fname The file name.
+         */
+        StdHepEventSource(const std::string& fname);
 
-public:
+    public:
 
-    /**
-     * Generate events.
-     * @param[in] anEvent The target G4Event.
-     */
-    void generate(G4Event* anEvent);
+        /**
+         * Generate events.
+         * @param[in] anEvent The target G4Event.
+         */
+        void generate(G4Event* anEvent);
 
-    /**
-     * Open the current file for reading.
-     */
-    void open();
+        /**
+         * Open the current file for reading.
+         */
+        void open();
 
-    /**
-     * Close the current file.
-     */
-    void close();
+        /**
+         * Close the current file.
+         */
+        void close();
 
-    /**
-     * Read in the next event.
-     */
-    void readNextEvent();
+        /**
+         * Read in the next event.
+         */
+        void readNextEvent();
 
-    /**
-     * Print out the current event.
-     */
-    void printCurrentEvent();
+        /**
+         * Print out the current event.
+         */
+        void printCurrentEvent();
 
-    /**
-     * Begin of run action.
-     * @param[in] aRun The G4Run that is starting.
-     */
-    void beginRun(const G4Run* aRun);
+        /**
+         * Begin of run action.
+         * @param[in] aRun The G4Run that is starting.
+         */
+        void beginRun(const G4Run* aRun);
 
-    /**
-     * Begin of event action.
-     * @param[in] anEvent The G4Event that is tarting.
-     */
-    void beginEvent(const G4Event* anEvent);
+        /**
+         * Begin of event action.
+         * @param[in] anEvent The G4Event that is tarting.
+         */
+        void beginEvent(const G4Event* anEvent);
 
-private:
-    StdHepGenerator* m_eventGenerator;
+    private:
+        StdHepGenerator* m_eventGenerator;
 };
 }
 

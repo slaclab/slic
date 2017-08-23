@@ -44,287 +44,284 @@ class LcioMessenger;
  */
 class LcioManager: public Module, public Singleton<LcioManager> {
 
-public:
+    public:
 
-    /**
-     * Enum for setting what action to take when an output LCIO file already exists.
-     */
-    enum EFileExistsAction {
-        eInvalid = -1,
-        eFail = 0,
-        eDelete = 1,
-        eAppend = 2
-    };
+        /**
+         * Enum for setting what action to take when an output LCIO file already exists.
+         */
+        enum EFileExistsAction {
+            eInvalid = -1, eFail = 0, eDelete = 1, eAppend = 2
+        };
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    LcioManager();
+        /**
+         * Class constructor.
+         */
+        LcioManager();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~LcioManager();
+        /**
+         * Class destructor.
+         */
+        virtual ~LcioManager();
 
-public:
+    public:
 
-    /**
-     * Open the output LCIO file.
-     */
-    void openLcioFile();
+        /**
+         * Open the output LCIO file.
+         */
+        void openLcioFile();
 
-    /**
-     * Set the output path.
-     */
-    void setPath(const std::string& path);
+        /**
+         * Set the output path.
+         */
+        void setPath(const std::string& path);
 
-    /**
-     * Set the output file name, which will be appended to the path.
-     */
-    void setFilename(const std::string& filename);
+        /**
+         * Set the output file name, which will be appended to the path.
+         */
+        void setFilename(const std::string& filename);
 
-    /**
-     * Set the list of fields to use for output file autonaming.
-     */
-    void setAutonameFields(const std::vector<std::string>& fields);
+        /**
+         * Set the list of fields to use for output file autonaming.
+         */
+        void setAutonameFields(const std::vector<std::string>& fields);
 
-    /**
-     * Get the path plus the filename and optionally include the extension.
-     * @param[in] withExtension Whether or not to include the file extension.
-     * @return The full output file path.
-     */
-    std::string getFullOutputPath(bool withExtension = false);
+        /**
+         * Get the path plus the filename and optionally include the extension.
+         * @param[in] withExtension Whether or not to include the file extension.
+         * @return The full output file path.
+         */
+        std::string getFullOutputPath(bool withExtension = false);
 
-    /**
-     * Get the FileExists enum value from a string.
-     * @param[in] fileExists The file exists string.
-     * @return The file exists action from the string.
-     */
-    static EFileExistsAction getFileExistsActionFromString(const std::string& fileExists);
+        /**
+         * Get the FileExists enum value from a string.
+         * @param[in] fileExists The file exists string.
+         * @return The file exists action from the string.
+         */
+        static EFileExistsAction getFileExistsActionFromString(const std::string& fileExists);
 
-    /**
-     * Set the current run number.
-     * @param[in] runNumber The run number.
-     */
-    void setRunNumber(int runNumber);
+        /**
+         * Set the current run number.
+         * @param[in] runNumber The run number.
+         */
+        void setRunNumber(int runNumber);
 
-    /**
-     * Begin of run hook.
-     * @param[in] run The run.
-     */
-    void beginRun(const G4Run* run);
+        /**
+         * Begin of run hook.
+         * @param[in] run The run.
+         */
+        void beginRun(const G4Run* run);
 
-    /**
-     * End of run hook.
-     * @param[in] run The run.
-     */
-    void endRun(const G4Run* run);
+        /**
+         * End of run hook.
+         * @param[in] run The run.
+         */
+        void endRun(const G4Run* run);
 
-    /**
-     * Create the LCEvent from the G4Event.
-     * @param[in] anEvent The input G4Event.
-     * @return The output LCEvent.
-     */
-    IMPL::LCEventImpl* createLCEvent(const G4Event* anEvent);
+        /**
+         * Create the LCEvent from the G4Event.
+         * @param[in] anEvent The input G4Event.
+         * @return The output LCEvent.
+         */
+        IMPL::LCEventImpl* createLCEvent(const G4Event* anEvent);
 
-    /**
-     * Create the LCEvent from the current G4Event.
-     * @return The LCEvent.
-     */
-    IMPL::LCEventImpl* createLCEvent();
+        /**
+         * Create the LCEvent from the current G4Event.
+         * @return The LCEvent.
+         */
+        IMPL::LCEventImpl* createLCEvent();
 
-    /**
-     * Add a collection to the LCEvent.
-     * @param[in] lcsevent The LCEvent.
-     * @param[in] collection The collection.
-     * @param[in] name The name of the collection.
-     */
-    void addCollection(EVENT::LCEvent* lcevent, EVENT::LCCollection* collection, const std::string& name);
+        /**
+         * Add a collection to the LCEvent.
+         * @param[in] lcsevent The LCEvent.
+         * @param[in] collection The collection.
+         * @param[in] name The name of the collection.
+         */
+        void addCollection(EVENT::LCEvent* lcevent, EVENT::LCCollection* collection, const std::string& name);
 
-    /**
-     * Add a collection the current LCEvent.
-     * @param[in] The collection.
-     */
-    void addCollection(EVENT::LCCollection* collection, const std::string& name);
+        /**
+         * Add a collection the current LCEvent.
+         * @param[in] The collection.
+         */
+        void addCollection(EVENT::LCCollection* collection, const std::string& name);
 
-    /**
-     * End of event hook to write out an LCIO file.
-     * @param[in] The physics event.
-     */
-    void endEvent(const G4Event* anEvent);
+        /**
+         * End of event hook to write out an LCIO file.
+         * @param[in] The physics event.
+         */
+        void endEvent(const G4Event* anEvent);
 
-    /**
-     * Set the current output LCIO event.
-     * @param[in] anLCEvent The LCIO event.
-     */
-    void setCurrentLCEvent(IMPL::LCEventImpl* anLCEvent) {
-        m_currentLCEvent = anLCEvent;
-    }
-
-    /**
-     * Get the current LCEvent.
-     * @return The current LCEvent.
-     */
-    IMPL::LCEventImpl* getCurrentLCEvent() {
-        return m_currentLCEvent;
-    }
-
-    /**
-     * Set whether to store momentum in output hits.
-     * @param[in] s Setting for storing momentum in output hits.
-     */
-    void setStoreMomentum(bool s = true) {
-        m_HCBuilder->setStoreMomentum(s);
-    }
-
-    /**
-     * Set the file exists action.
-     * @param[in] fea The file exists action.
-     */
-    void setFileExistsAction(EFileExistsAction fea) {
-        if (fea == eInvalid) {
-#ifdef SLIC_LOG
-            log() << LOG::error << "Invalid setting for FileExistsAction." << LOG::done;
-#endif
-            return;
+        /**
+         * Set the current output LCIO event.
+         * @param[in] anLCEvent The LCIO event.
+         */
+        void setCurrentLCEvent(IMPL::LCEventImpl* anLCEvent) {
+            m_currentLCEvent = anLCEvent;
         }
 
-        m_fileExistsAction = fea;
-    }
+        /**
+         * Get the current LCEvent.
+         * @return The current LCEvent.
+         */
+        IMPL::LCEventImpl* getCurrentLCEvent() {
+            return m_currentLCEvent;
+        }
 
-    /**
-     * Get the file exists action.
-     * @return The file exists action.
-     */
-    EFileExistsAction getFileExistsAction() {
-        return m_fileExistsAction;
-    }
+        /**
+         * Set whether to store momentum in output hits.
+         * @param[in] s Setting for storing momentum in output hits.
+         */
+        void setStoreMomentum(bool s = true) {
+            m_HCBuilder->setStoreMomentum(s);
+        }
 
-    /**
-     * Get the LcioHitsCollectionBuilder for creating output hit collections.
-     * @return The LcioHitsCollectionBuilder.
-     */
-    inline LcioHitsCollectionBuilder* getHitsCollectionBuilder() {
-        return m_HCBuilder;
-    }
+        /**
+         * Set the file exists action.
+         * @param[in] fea The file exists action.
+         */
+        void setFileExistsAction(EFileExistsAction fea) {
+            if (fea == eInvalid) {
+#ifdef SLIC_LOG
+                log() << LOG::error << "Invalid setting for FileExistsAction." << LOG::done;
+#endif
+                return;
+            }
 
-    /**
-     * Get the LcioFileNamer for automatically naming output files.
-     * @return The LcioFileNamer for naming output files.
-     */
-    inline LcioFileNamer* getFileNamer() {
-        return m_namer;
-    }
+            m_fileExistsAction = fea;
+        }
 
-    /**
-     * Enable dump event output for debugging.
-     * @param[in] The dump event setting.
-     */
-    void enableDumpEvent(bool p = true) {
-        m_enableDumpEvent = p;
-    }
+        /**
+         * Get the file exists action.
+         * @return The file exists action.
+         */
+        EFileExistsAction getFileExistsAction() {
+            return m_fileExistsAction;
+        }
 
-    /**
-     * Enable writing complete event to MCParticle collection.
-     * @param[in] writeCompleteEvent Set to true to write complete event.
-     */
-    void setWriteCompleteEvent(G4bool writeCompleteEvent) {
-        _writeCompleteEvent = writeCompleteEvent;
-    }
+        /**
+         * Get the LcioHitsCollectionBuilder for creating output hit collections.
+         * @return The LcioHitsCollectionBuilder.
+         */
+        inline LcioHitsCollectionBuilder* getHitsCollectionBuilder() {
+            return m_HCBuilder;
+        }
 
-    G4bool getWriteCompleteEvent() {
-        return _writeCompleteEvent;
-    }
+        /**
+         * Get the LcioFileNamer for automatically naming output files.
+         * @return The LcioFileNamer for naming output files.
+         */
+        inline LcioFileNamer* getFileNamer() {
+            return m_namer;
+        }
 
-private:
+        /**
+         * Enable dump event output for debugging.
+         * @param[in] The dump event setting.
+         */
+        void enableDumpEvent(bool p = true) {
+            m_enableDumpEvent = p;
+        }
 
-    /**
-     * Make the LCIO output file name using the LcioFileNamer.
-     */
-    void makeAutoname();
+        /**
+         * Enable writing complete event to MCParticle collection.
+         * @param[in] writeCompleteEvent Set to true to write complete event.
+         */
+        void setWriteCompleteEvent(G4bool writeCompleteEvent) {
+            _writeCompleteEvent = writeCompleteEvent;
+        }
 
-    /**
-     * Create the hits collections using the current set of objects.
-     */
-    void createHitsCollections();
+        G4bool getWriteCompleteEvent() {
+            return _writeCompleteEvent;
+        }
 
-    /**
-     * Create the output LCWriter.
-     */
-    void createWriter();
+    private:
 
-    /**
-     * Delete the current LCWriter.
-     */
-    void deleteWriter();
+        /**
+         * Make the LCIO output file name using the LcioFileNamer.
+         */
+        void makeAutoname();
 
-    /**
-     * Create the run header from the Geant4 run.
-     * @param[in] run The Geant4 run.
-     */
-    void createRunHeader(const G4Run* run);
+        /**
+         * Create the hits collections using the current set of objects.
+         */
+        void createHitsCollections();
 
-    /**
-     * Delete the current run header.
-     */
-    void deleteRunHeader();
+        /**
+         * Create the output LCWriter.
+         */
+        void createWriter();
 
-    /**
-     * Set the detector name in the current run header.
-     */
-    void setDetectorName();
+        /**
+         * Delete the current LCWriter.
+         */
+        void deleteWriter();
 
-    /**
-     * Set the time stamp in the current event header.
-     */
-    void setEventTimeStamp();
+        /**
+         * Create the run header from the Geant4 run.
+         * @param[in] run The Geant4 run.
+         */
+        void createRunHeader(const G4Run* run);
 
-    /**
-     * Add the list of active subdetectors into the event header.
-     */
-    void addActiveSubdetectors();
+        /**
+         * Delete the current run header.
+         */
+        void deleteRunHeader();
 
-private:
+        /**
+         * Set the detector name in the current run header.
+         */
+        void setDetectorName();
 
-    // writer
-    IO::LCWriter* m_writer;
+        /**
+         * Set the time stamp in the current event header.
+         */
+        void setEventTimeStamp();
 
-    // run header
-    IMPL::LCRunHeaderImpl* m_runHdr;
+        /**
+         * Add the list of active subdetectors into the event header.
+         */
+        void addActiveSubdetectors();
 
-    // file info
-    std::string m_filename;
-    std::string m_path;
+    private:
 
-    // event generator from MCP Coll
-    //LcioPrimaryGenerator* m_eventGenerator;
+        // writer
+        IO::LCWriter* m_writer;
 
-    // creation of HCs
-    LcioHitsCollectionBuilder* m_HCBuilder;
+        // run header
+        IMPL::LCRunHeaderImpl* m_runHdr;
 
-    // current LCEvent
-    IMPL::LCEventImpl* m_currentLCEvent;
+        // file info
+        std::string m_filename;
+        std::string m_path;
 
-    // messenger
-    LcioMessenger* m_messenger;
+        // event generator from MCP Coll
+        //LcioPrimaryGenerator* m_eventGenerator;
 
-    // action when file exists
-    EFileExistsAction m_fileExistsAction;
+        // creation of HCs
+        LcioHitsCollectionBuilder* m_HCBuilder;
 
-    // starting run number
-    int m_runNumber;
+        // current LCEvent
+        IMPL::LCEventImpl* m_currentLCEvent;
 
-    LcioFileNamer* m_namer;
+        // messenger
+        LcioMessenger* m_messenger;
 
-    static std::string m_defaultFileName;
-    std::vector<std::string> m_currentAutonameFields;
+        // action when file exists
+        EFileExistsAction m_fileExistsAction;
 
-    bool m_enableDumpEvent;
-    bool m_writerIsOpen;
-    bool m_usingAutoname;
-    bool _writeCompleteEvent;
+        // starting run number
+        int m_runNumber;
+
+        LcioFileNamer* m_namer;
+
+        static std::string m_defaultFileName;
+        std::vector<std::string> m_currentAutonameFields;
+
+        bool m_enableDumpEvent;
+        bool m_writerIsOpen;
+        bool m_usingAutoname;
+        bool _writeCompleteEvent;
 };
 }
 

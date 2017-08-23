@@ -14,21 +14,21 @@ namespace slic {
  */
 class FieldManager: public Module, public Singleton<FieldManager> {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    FieldManager();
+        /**
+         * Class constructor.
+         */
+        FieldManager();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~FieldManager();
+        /**
+         * Class destructor.
+         */
+        virtual ~FieldManager();
 
-private:
+    private:
 
-    FieldMessenger* m_messenger;
+        FieldMessenger* m_messenger;
 };
 }
 

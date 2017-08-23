@@ -20,36 +20,36 @@ namespace slic {
  */
 class PrimaryGeneratorAction: public G4VUserPrimaryGeneratorAction, public Module, public PluginManagerAccessor {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    PrimaryGeneratorAction();
+        /**
+         * Class constructor.
+         */
+        PrimaryGeneratorAction();
 
-    /**
-     * Class destructor.
-     */
-    virtual ~PrimaryGeneratorAction();
+        /**
+         * Class destructor.
+         */
+        virtual ~PrimaryGeneratorAction();
 
-public:
+    public:
 
-    /**
-     * Generate G4PrimaryParticle objects into the G4Event.
-     * @param[in] anEvent The target G4Event.
-     */
-    virtual void GeneratePrimaries(G4Event *anEvent);
+        /**
+         * Generate G4PrimaryParticle objects into the G4Event.
+         * @param[in] anEvent The target G4Event.
+         */
+        virtual void GeneratePrimaries(G4Event *anEvent);
 
-private:
+    private:
 
-    /**
-     * Begin the beginning of event message.
-     */
-    void printBeginEventMessage(G4Event* anEvent);
+        /**
+         * Begin the beginning of event message.
+         */
+        void printBeginEventMessage(G4Event* anEvent);
 
-private:
+    private:
 
-    EventSourceManager* _manager;
+        EventSourceManager* _manager;
 };
 }
 

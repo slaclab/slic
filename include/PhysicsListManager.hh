@@ -28,115 +28,115 @@ namespace slic {
  */
 class PhysicsListManager: public Module, public Singleton<PhysicsListManager> {
 
-public:
+    public:
 
-    /**
-     * The class constructor.
-     */
-    PhysicsListManager();
+        /**
+         * The class constructor.
+         */
+        PhysicsListManager();
 
-    /**
-     * The class destructor.
-     */
-    virtual ~PhysicsListManager();
+        /**
+         * The class destructor.
+         */
+        virtual ~PhysicsListManager();
 
-public:
+    public:
 
-    /**
-     * Initialize the currently selected physics list.
-     * This will also register option physics such as optical
-     * and extended particle set.
-     */
-    G4VUserPhysicsList* createPhysicsList();
+        /**
+         * Initialize the currently selected physics list.
+         * This will also register option physics such as optical
+         * and extended particle set.
+         */
+        G4VUserPhysicsList* createPhysicsList();
 
-    /**
-     * Set the name of the current physics list.
-     * Only available in pre-init state.
-     * @param[in] name The name of the physics list.
-     */
-    void setCurrentListName(const std::string& name);
+        /**
+         * Set the name of the current physics list.
+         * Only available in pre-init state.
+         * @param[in] name The name of the physics list.
+         */
+        void setCurrentListName(const std::string& name);
 
-    /**
-     * Get the name of the current physics list.
-     * @return The name of the current physics list.
-     */
-    inline const std::string& getCurrentListName() {
-        return m_currentListName;
-    }
+        /**
+         * Get the name of the current physics list.
+         * @return The name of the current physics list.
+         */
+        inline const std::string& getCurrentListName() {
+            return m_currentListName;
+        }
 
-    /**
-     * Return true if the physics list has been initialized.
-     * @return True if list has been initialized; false if not.
-     */
-    inline bool isInitialized() {
-        return m_isInitialized;
-    }
+        /**
+         * Return true if the physics list has been initialized.
+         * @return True if list has been initialized; false if not.
+         */
+        inline bool isInitialized() {
+            return m_isInitialized;
+        }
 
-    /**
-     * Enable physics limits.
-     * @param[in] enableLimits True to enable limits; false to disable.
-     */
-    inline void enableLimits(bool enableLimits) {
-        m_enableLimits = enableLimits;
-    }
+        /**
+         * Enable physics limits.
+         * @param[in] enableLimits True to enable limits; false to disable.
+         */
+        inline void enableLimits(bool enableLimits) {
+            m_enableLimits = enableLimits;
+        }
 
-    /**
-     * Return true if physics limits are enabled.
-     * @return True if physics limits are enabled; false if not.
-     */
-    inline bool enableLimits() {
-        return m_enableLimits;
-    }
+        /**
+         * Return true if physics limits are enabled.
+         * @return True if physics limits are enabled; false if not.
+         */
+        inline bool enableLimits() {
+            return m_enableLimits;
+        }
 
-    /**
-     * Return true if optical physics are enabled.
-     * @return True if optical physics are enabled; false if not.
-     */
-    inline bool enableOptical() {
-        return m_enableOptical;
-    }
+        /**
+         * Return true if optical physics are enabled.
+         * @return True if optical physics are enabled; false if not.
+         */
+        inline bool enableOptical() {
+            return m_enableOptical;
+        }
 
-    /**
-     * Enable optical physics.
-     * @param[in] enableOptical Set to true to enable optical physics; false to disable.
-     */
-    inline void enableOptical(bool enableOptical) {
-        m_enableOptical = enableOptical;
-    }
+        /**
+         * Enable optical physics.
+         * @param[in] enableOptical Set to true to enable optical physics; false to disable.
+         */
+        inline void enableOptical(bool enableOptical) {
+            m_enableOptical = enableOptical;
+        }
 
-    /**
-     * Set up the user limits process.
-     */
-    void setupUserLimitsProcesses();
+        /**
+         * Set up the user limits process.
+         */
+        void setupUserLimitsProcesses();
 
-    /**
-     * Print a list of available physics lists.
-     */
-    void printAvailablePhysicsLists();
+        /**
+         * Print a list of available physics lists.
+         */
+        void printAvailablePhysicsLists();
 
-private:
+    private:
 
-    /**
-     * Setup SUSY physics.
-     */
-    void setupSUSY();
+        /**
+         * Setup SUSY physics.
+         */
+        void setupSUSY();
 
-private:
+    private:
 
-    G4VUserPhysicsList* m_currentList;
+        G4VUserPhysicsList* m_currentList;
 
-    bool m_isInitialized;
-    bool m_isFromDefault;
-    bool m_enableLimits;
-    bool m_setupLimits;
-    bool m_enableOptical;
+        bool m_isInitialized;
+        bool m_isFromDefault;
+        bool m_enableLimits;
+        bool m_setupLimits;
+        bool m_enableOptical;
 
-    PhysicsMessenger* m_messenger;
+        PhysicsMessenger* m_messenger;
 
-    std::string m_currentListName;
-    static const std::string m_defaultListName;
+        std::string m_currentListName;
+        static const std::string m_defaultListName;
 
-    G4PhysListFactory *m_factory;
+        G4PhysListFactory *m_factory;
 };
 }
 

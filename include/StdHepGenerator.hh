@@ -39,42 +39,42 @@ namespace slic {
  */
 class StdHepGenerator {
 
-public:
+    public:
 
-    /**
-     * Class constructor.
-     */
-    StdHepGenerator(G4String eventFile);
+        /**
+         * Class constructor.
+         */
+        StdHepGenerator(G4String eventFile);
 
-    /**
-     * Class destructor.
-     */
-    virtual ~StdHepGenerator();
+        /**
+         * Class destructor.
+         */
+        virtual ~StdHepGenerator();
 
-    /**
-     * Generate a G4Event from the current collection of MCParticles.
-     * @param[in] event The output G4Event.
-     */
-    void generateEvent(G4Event* event);
+        /**
+         * Generate a G4Event from the current collection of MCParticles.
+         * @param[in] event The output G4Event.
+         */
+        void generateEvent(G4Event* event);
 
-    /**
-     * Read the next event from the StdHep file.
-     */
-    void readNextEvent();
+        /**
+         * Read the next event from the StdHep file.
+         */
+        void readNextEvent();
 
-    /**
-     * Get the current MCParticle collection.
-     * @return The current MCParticle collection.
-     */
-    LCCollectionVec* getCurrentParticleCollection();
+        /**
+         * Get the current MCParticle collection.
+         * @return The current MCParticle collection.
+         */
+        LCCollectionVec* getCurrentParticleCollection();
 
-private:
+    private:
 #if HAVE_LCSTDHEPRDRNEW_H
-    LCStdHepRdrNew* _reader;
+        LCStdHepRdrNew* _reader;
 #else
-    LCStdHepRdr* _reader;
+        LCStdHepRdr* _reader;
 #endif
-    LCCollectionVec* _particles;
+        LCCollectionVec* _particles;
 };
 
 }

@@ -17,41 +17,41 @@ class LogStream;
  * @brief G4UImessenger assigned to a LogStream.
  */
 class LogMessenger: public G4UImessenger {
-public:
+    public:
 
-    /**
-     * Class constructor.
-     * @param[in] logstream The LogStream.
-     */
-	LogMessenger(LogStream* logstream);
+        /**
+         * Class constructor.
+         * @param[in] logstream The LogStream.
+         */
+        LogMessenger(LogStream* logstream);
 
-	/**
-	 * Class destructor.
-	 */
-	virtual ~LogMessenger();
+        /**
+         * Class destructor.
+         */
+        virtual ~LogMessenger();
 
-public:
+    public:
 
-	/**
-	 * Execute macro command.
-	 * @param[in] command The macro command.
-	 * @param[in] newValues The argument values.
-	 */
-	void SetNewValue(G4UIcommand* command, G4String newValues);
+        /**
+         * Execute macro command.
+         * @param[in] command The macro command.
+         * @param[in] newValues The argument values.
+         */
+        void SetNewValue(G4UIcommand* command, G4String newValues);
 
-private:
+    private:
 
-	/*
-	 * Define commands handled by this messenger.
-	 */
-	void defineCommands();
+        /*
+         * Define commands handled by this messenger.
+         */
+        void defineCommands();
 
-private:
-	LogStream* m_logStream;
+    private:
+        LogStream* m_logStream;
 
-	G4UIcmdWithAnInteger* m_setLevelCmd;
-	G4UIcmdWithAString* m_fileCmd;
-	G4UIdirectory* m_loggerDir;
+        G4UIcmdWithAnInteger* m_setLevelCmd;
+        G4UIcmdWithAString* m_fileCmd;
+        G4UIdirectory* m_loggerDir;
 };
 }
 

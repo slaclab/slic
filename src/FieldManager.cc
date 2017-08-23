@@ -3,11 +3,11 @@
 namespace slic {
 
 FieldManager::FieldManager() :
-		Module("FieldManager") {
-	m_messenger = new FieldMessenger(this);
+        Module("FieldManager") {
+    m_messenger = new FieldMessenger(this);
 }
 
 FieldManager::~FieldManager() {
-	delete m_messenger;
+    delete m_messenger;
 }
 }
