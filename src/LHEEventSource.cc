@@ -12,26 +12,22 @@ LHEEventSource::~LHEEventSource() {
 }
 
 void LHEEventSource::generate(G4Event* anEvent) {
-    std::cout << "LHEEventSource: generate event - " << anEvent->GetEventID() << std::endl;
     m_eventGenerator->GeneratePrimaryVertex(anEvent);
 }
 
 void LHEEventSource::open() {
-    std::cout << "LHEEventSource: opening " << getFilename() << std::endl;
     m_reader = new LHEReader(getFilename());
     m_eventGenerator = new LHEPrimaryGenerator(m_reader);
     m_fileIsOpen = true;
 }
 
 void LHEEventSource::close() {
-    std::cout << "LHEEventSource: closing " << getFilename() << std::endl;
     delete m_eventGenerator;
     m_fileIsOpen = false;
 }
 
 void LHEEventSource::readNextEvent() {
-    // Don't do anything here.  The LHEEventGenerator calls this method instead.
-    std::cout << "LHEEventSource: read next event (no-op)" << std::endl;
+    // The LHEEventGenerator will read the next event.
 }
 
 void LHEEventSource::printCurrentEvent() {

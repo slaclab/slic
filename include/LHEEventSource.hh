@@ -63,8 +63,8 @@ class LHEEventSource: public EventSourceWithInputFile {
         void beginEvent(const G4Event* anEvent);
 
     private:
-        LHEPrimaryGenerator* m_eventGenerator;
-        LHEReader* m_reader;
+        LHEPrimaryGenerator* m_eventGenerator{nullptr};
+        LHEReader* m_reader{nullptr};
 };
 }
 

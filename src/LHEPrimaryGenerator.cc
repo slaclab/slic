@@ -75,12 +75,13 @@ namespace slic {
                         vertex->SetPrimary(primary);
                     }
 
-                    primary->Print();
+                    // Uncomment to print out the G4 primary particle that was created.
+                    //primary->Print();
 
                 } else {
                 }
 
-                std::cout << std::endl;
+                //std::cout << std::endl;
 
                 ++particleIndex;
             }
