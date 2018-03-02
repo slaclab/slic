@@ -9,6 +9,7 @@
 #include "LcioEventSource.hh"
 #include "ParticleGunEventSource.hh"
 #include "StdHepEventSource.hh"
+#include "LHEEventSource.hh"
 
 // LCDD
 #include "lcdd/util/StringUtil.hh"
@@ -19,10 +20,13 @@ std::string EventSourceManager::STDHEP = std::string("stdhep");
 std::string EventSourceManager::LCIO = std::string("lcio");
 std::string EventSourceManager::GPS = std::string("gps");
 std::string EventSourceManager::PARTICLE_GUN = std::string("gun");
+std::string EventSourceManager::LHE = std::string("lhe");
 std::string EventSourceManager::UNKNOWN = std::string("unknown");
 
 EventSourceManager::EventSourceManager() :
-        Module("EventSourceManager"), m_currentEventSource(0), m_filename(""), m_fileIsSet(false), m_newFilename(false), m_ngen(0), m_nskip(0), m_newSource(true), m_sourceType(eUnknown), m_lorentzTransformationAngle(0.), m_zSmearingParam(0.), m_enablePrintEvent(false) {
+        Module("EventSourceManager"), m_currentEventSource(0), m_filename(""), m_fileIsSet(false),
+        m_newFilename(false), m_ngen(0), m_nskip(0), m_newSource(true), m_sourceType(eUnknown),
+        m_lorentzTransformationAngle(0.), m_zSmearingParam(0.), m_enablePrintEvent(false) {
 
     // messenger with generator command macro bindings
     m_messenger = new GeneratorMessenger();
@@ -65,6 +69,9 @@ EventSourceManager::ESourceType EventSourceManager::getSourceTypeFromFileExtensi
     /* StdHep files, which may have .xdr file ext */
     else if (fext == "stdhep" || fext == "xdr") {
         est = eStdHep;
+    /* LHE files */
+    } else if (fext == "lhe") {
+        est = eLHE;
     } else {
         log() << LOG::error << "WARNING: File <" << m_filename << "> does not have a known file extension." << LOG::done;
     }
@@ -102,6 +109,8 @@ const std::string& EventSourceManager::getSourceNameFromType(ESourceType egt) co
         return GPS;
     } else if (egt == eParticleGun) {
         return PARTICLE_GUN;
+    } else if (egt == eLHE) {
+        return LHE;
     }
 
     return UNKNOWN;
@@ -120,6 +129,8 @@ EventSourceManager::ESourceType EventSourceManager::getSourceTypeFromName(const 
         egt = eParticleGun;
     } else if (sl == LCIO) {
         egt = eLCIO;
+    } else if (sl == LHE) {
+        egt = eLHE;
     }
 
     return egt;
@@ -180,6 +191,8 @@ EventSource* EventSourceManager::createEventSource(ESourceType st) {
         src = new GPSEventSource();
     } else if (st == eParticleGun) {
         return m_particleGunSource;
+    } else if (st == eLHE) {
+        return new slic::LHEEventSource(getFilename());
     } else if (st == eUnknown) {
         log() << LOG::error << "The event source type <" << getSourceNameFromType(st) << " is flagged as unknown!" << LOG::done;
     } else {
