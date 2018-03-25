@@ -225,7 +225,7 @@ IMPL::SimCalorimeterHitImpl* LcioHitsCollectionBuilder::createHit(CalorimeterHit
 
     // position
     const G4ThreeVector hitPos = calHit->getPosition();
-    float pos[3] = { hitPos.x(), hitPos.y(), hitPos.z() };
+    float pos[3] = { (float)hitPos.x(), (float)hitPos.y(), (float)hitPos.z() };
     simCalHit->setPosition(pos);
 
     //  copy Mcp contrib info; energy is also incremented by contrib addition
