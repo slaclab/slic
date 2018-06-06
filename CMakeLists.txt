@@ -81,6 +81,7 @@ ELSE()
     # build user plugin library
     FILE( GLOB_RECURSE plugin_sources ${PROJECT_SOURCE_DIR}/plugins/*.cc )
     ADD_LIBRARY( slicPlugins SHARED ${plugin_sources} )
+    TARGET_LINK_LIBRARIES(slicPlugins ${Geant4_LIBRARIES} )
     INSTALL( TARGETS slicPlugins DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
 
     # set executable target
