@@ -53,10 +53,10 @@ SlicApplication::~SlicApplication() {
 #endif
 
     // Delete the G4RunManager, which also deletes all the Geant4-related modules.
-#ifdef SLIC_LOG
-    log().debug("Deleting G4RunManager ...");
-#endif
-    delete G4RunManager::GetRunManager();
+//#ifdef SLIC_LOG
+//    log().debug("Deleting G4RunManager ...");
+//#endif
+//    delete G4RunManager::GetRunManager();
 
 #ifdef SLIC_LOG
     log() << LOG::okay << LOG::head << "SLIC is exiting." << LOG::done;
