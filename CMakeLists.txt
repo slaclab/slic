@@ -15,7 +15,7 @@ ENDIF()
 
 SET( SLIC_VERSION_MAJOR 6 )
 SET( SLIC_VERSION_MINOR 0 )
-SET( SLIC_VERSION_PATCH 0 )
+SET( SLIC_VERSION_PATCH 1 )
 
 INCLUDE( ExternalProject )
 
@@ -23,7 +23,7 @@ MESSAGE( STATUS "SLIC install dir set to: ${CMAKE_INSTALL_PREFIX}" )
 
 # option for log messages
 OPTION( ENABLE_SLIC_LOG "Enable slic logging system" ON )
-IF ( ENABLE_SLIC_LOG STREQUAL "ON" )
+IF( ENABLE_SLIC_LOG STREQUAL "ON" )
     ADD_DEFINITIONS( -DSLIC_LOG )
 ENDIF()
 MESSAGE( STATUS "Enable slic log system: ${ENABLE_SLIC_LOG}" )
@@ -31,7 +31,11 @@ MESSAGE( STATUS "Enable slic log system: ${ENABLE_SLIC_LOG}" )
 # option to dump CMake variables after cmake is executed
 OPTION( PRINT_CMAKE_VARIABLES "Print CMake environment" OFF )
 
+# enable build and installation of external dependencies
 OPTION( INSTALL_DEPENDENCIES "Install external dependencies automatically" ON )
+
+# enable Geant4 visualization and UI components
+option( WITH_GEANT4_UIVIS "Build example with Geant4 UI and Vis drivers" ON )
 
 # add path containing CMake macros for this project
 LIST( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
@@ -42,18 +46,23 @@ FILE( GLOB_RECURSE library_sources ${PROJECT_SOURCE_DIR}/src/*.cc )
 # dependency list in build order
 SET( DEPENDENCIES XERCES Geant4 GDML LCDD LCIO HEPPDT )
 
-IF ( NOT DEPENDENCY_INSTALL_DIR )
+IF( NOT DEPENDENCY_INSTALL_DIR )
     SET( DEPENDENCY_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/extdeps )
 ENDIF()
 
 ADD_CUSTOM_TARGET( extdeps )
 FOREACH( dependency ${DEPENDENCIES} )
-    #MESSAGE( "processing dep: ${dependency}" )
+    MESSAGE( "Finding external dependency: ${dependency}" )
     FIND_PACKAGE( ${dependency} )
     IF ( ${dependency}_FOUND )
         MESSAGE( STATUS "${dependency} was found at: ${${dependency}_DIR}" )
         IF( NOT TARGET ${dependency} )
             ADD_CUSTOM_TARGET( ${dependency} )
+        ENDIF()
+        IF ( ${dependency} STREQUAL "Geant4" AND WITH_GEANT4_UIVIS )
+            MESSAGE( "Finding Geant4 with vis and ui components enabled" )
+            FIND_PACKAGE( Geant4 REQUIRED vis_all ui_all )
+            MESSAGE( STATUS "The vis and UI components are enabled in Geant4." )
         ENDIF()
     ELSE()
         IF ( NOT INSTALL_DEPENDENCIES )
@@ -81,6 +90,7 @@ ELSE()
     # build user plugin library
     FILE( GLOB_RECURSE plugin_sources ${PROJECT_SOURCE_DIR}/plugins/*.cc )
     ADD_LIBRARY( slicPlugins SHARED ${plugin_sources} )
+    TARGET_LINK_LIBRARIES(slicPlugins ${Geant4_LIBRARIES} )
     INSTALL( TARGETS slicPlugins DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )
 
     # set executable target
