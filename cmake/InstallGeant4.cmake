@@ -1,5 +1,5 @@
 IF( NOT Geant4_TAG )
-    SET( Geant4_TAG "v10.3.1" )
+    SET( Geant4_TAG "v10.4.3" )
 ENDIF()
 
 IF ( NOT GEANT4_INSTALL_DATA )
