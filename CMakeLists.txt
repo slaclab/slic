@@ -35,7 +35,7 @@ OPTION( PRINT_CMAKE_VARIABLES "Print CMake environment" OFF )
 OPTION( INSTALL_DEPENDENCIES "Install external dependencies automatically" ON )
 
 # enable Geant4 visualization and UI components
-option( WITH_GEANT4_UIVIS "Build example with Geant4 UI and Vis drivers" ON )
+option( WITH_GEANT4_UIVIS "Build with Geant4 UI and visualization drivers" OFF )
 
 # add path containing CMake macros for this project
 LIST( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
