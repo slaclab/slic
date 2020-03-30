@@ -22,11 +22,7 @@
 // Geant4
 #include "G4ApplicationState.hh"
 #include "G4StateManager.hh"
-
-#ifdef G4VIS_USE
 #include "G4VisExecutive.hh"
-#endif
-
 #include "G4UIExecutive.hh"
 
 namespace slic {
@@ -74,9 +70,7 @@ void SlicApplication::initialize(int argc, char** argv) {
     CommandLineProcessor* cmd = CommandLineProcessor::instance();
     cmd->process(argc, argv);
 
-#ifdef G4UI_USE
     m_ui = new G4UIExecutive(argc, argv);
-#endif
 }
 
 void SlicApplication::initialize() {
@@ -108,9 +102,8 @@ void SlicApplication::initialize() {
         MCParticleManager::instance();
 
         // Initialize visualization.
-#ifdef G4VIS_USE
         initializeVis();
-#endif
+
         // Set state variable.
         m_isInitialized = true;
     } else {
@@ -118,7 +111,6 @@ void SlicApplication::initialize() {
     }
 }
 
-#ifdef G4VIS_USE
 void SlicApplication::initializeVis()
 {
     G4VisExecutive* vis = new G4VisExecutive();
@@ -127,7 +119,6 @@ void SlicApplication::initializeVis()
     // VRML writer within SLIC.
     new VRML2WriterMessenger();
 }
-#endif
 
 void SlicApplication::initializeLCDD() {
     // LCDD geometry subsystem.
@@ -193,13 +184,11 @@ void SlicApplication::run() {
     q->clear();
 
     // Start the UI session if in interactive mode.
-#ifndef G4UI_NONE
     if (getMode() == eInteractive) {
         log().verbose("Starting interactive session ...");
         m_ui->SessionStart();
         delete m_ui;
     }
-#endif    
 }
 
 void SlicApplication::printVersion() {
