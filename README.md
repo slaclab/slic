@@ -103,14 +103,25 @@ This section covers in detail the manual installation of SLIC's dependencies.
 
 These procedures are entirely optional, as running `cmake` without providing paths to pre-installed dependencies will cause them to be installed automatically as long as the CMake variable `INSTALL_DEPENDENCIES` is set to `ON`.
 
-#### Geant4
+### Setup a Build Directory
 
-Download the 10.3.p01 tarball from the Geant4 website and untar it or you may clone a tag from the Geant4 github.
+Start by creating a directory to contain the build.
 
 ```
-cd geant4.10.03.p01
-mkdir build; cd build
-cmake -DGEANT4_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX=$install_dir/geant4 ..
+mkdir /scratch
+cd /scratch
+```
+
+You will start from this directory when building each package by doing `cd /scratch`.
+
+#### Geant4
+
+```
+git clone https://github.com/Geant4/geant4
+cd geant4
+git checkout v10.6.1
+cd .. && mkdir build && cd build
+cmake -DGEANT4_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX=../install ../geant4
 make -j4
 make install
 ```
