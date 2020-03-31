@@ -118,9 +118,8 @@ You will start from this directory when building each package by doing `cd /scra
 
 ```
 git clone https://github.com/Geant4/geant4
-cd geant4
 git checkout v10.6.1
-cd .. && mkdir build && cd build
+mkdir build && cd build
 cmake -DGEANT4_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX=../install ../geant4
 make -j4
 make install
@@ -159,7 +158,7 @@ make install
 
 ```
 git clone https://github.com/slaclab/gdml
-cd gdml; mkdir build; cd build
+mkdir build && cd build
 cmake -DGeant4_DIR=/u/ey/jeremym/hps-dev/slic/install/geant4/lib64/Geant4-10.3.1/ -DXERCES_DIR=/u/ey/jeremym/hps-dev/slic/install/xerces/ -DCMAKE_INSTALL_PREFIX=/u/ey/jeremym/hps-dev/slic/install/gdml ..
 make -j4 install
 ```
