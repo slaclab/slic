@@ -73,7 +73,7 @@ Instructions for manually installing these dependencies are given below.
 The build system generates a shell script that will setup the necessary environment for running the application:
 
 ```
-source /scratch/slic/install/slic/bin/slic-env.sh
+source /scratch/slic/install/bin/slic-env.sh
 ```
 
 Now you can run the executable from the command line:
