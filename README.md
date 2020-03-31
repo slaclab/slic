@@ -8,7 +8,7 @@ SLIC is a C++ application that is built using the standard GCC compiler toolchai
 
 ### Required Tools
 
-* Recent gcc compiler toolahin (tested with GCC 7 on CentOS7)
+* Recent gcc compiler toolchain (tested with GCC 7 on CentOS7)
     * You cannot use the default gcc on RHE6 or similarly old distros, so you would need to install one yourself or use a dev toolset.
     * The build is not compatible with gcc 4.8.5 now due to Geant4 updates.
 * CMake 3.8 or greater due to Geant4 build system (tested with 3.17)
