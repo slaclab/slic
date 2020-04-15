@@ -161,7 +161,7 @@ make install
 ```
 git clone https://github.com/slaclab/gdml
 mkdir build && cd build
-cmake -DGeant4_DIR=/u/ey/jeremym/hps-dev/slic/install/geant4/lib64/Geant4-10.3.1/ -DXERCES_DIR=/u/ey/jeremym/hps-dev/slic/install/xerces/ -DCMAKE_INSTALL_PREFIX=/u/ey/jeremym/hps-dev/slic/install/gdml ..
+cmake -DGeant4_DIR=/u/ey/jeremym/hps-dev/slic/install/geant4/lib64/Geant4-10.3.1/ -DXercesC_INCLUDE_DIR=/u/ey/jeremym/hps-dev/slic/install/xerces/include -DXercesC_LIBRARY=/u/ey/jeremym/hps-dev/slic/install/xerces/lib64/libxerces-c.so -DCMAKE_INSTALL_PREFIX=/u/ey/jeremym/hps-dev/slic/install/gdml ..
 make -j4 install
 ```
 
