@@ -150,6 +150,7 @@ make install
 #### Xerces
 
 ```
+wget https://mirrors.ocf.berkeley.edu/apache//xerces/c/3/sources/xerces-c-3.2.3.tar.gz
 ./configure --prefix=/u/ey/jeremym/hps-dev/slic/install/xerces
 make
 make install
