@@ -16,7 +16,7 @@ fi
 export PATH=@CMAKE_INSTALL_PREFIX@/bin:$PATH
 
 # Set GDML schema dir to an LCDD install dir
-export GDML_SCHEMA_DIR=@LCDD_DIR@/share/schemas
+export GDML_SCHEMA_DIR=@LCDD_DIR@/share
 
 #echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
 #echo "GDML_SCHEMA_DIR=$GDML_SCHEMA_DIR"
