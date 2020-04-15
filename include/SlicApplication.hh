@@ -207,9 +207,7 @@ class SlicApplication: public Singleton<SlicApplication>, public Module {
         /**
          * Initialize the Geant4 visualization subsystem.
          */
-#ifdef G4VIS_USE
         void initializeVis();
-#endif
 
     protected:
 
