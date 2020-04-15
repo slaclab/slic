@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Set load library path
-export LD_LIBRARY_PATH=@HEPPDT_DIR@/lib/:@GDML_DIR@/lib:@LCDD_DIR@/lib:@LCIO_DIR@/lib:@XERCES_DIR@/lib:@CMAKE_INSTALL_PREFIX@/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=@HEPPDT_DIR@/lib/:@GDML_DIR@/lib:@LCDD_DIR@/lib:@LCIO_DIR@/lib:$(dirname @XercesC_LIBRARY@):@CMAKE_INSTALL_PREFIX@/lib:$LD_LIBRARY_PATH
 
 # Hack to add compiler libs if using non-standard gcc (may not always work)
 if [ "@CMAKE_CXX_COMPILER@" != "/usr/bin/g++" ]
