@@ -5,7 +5,7 @@ ENDIF()
 EXTERNALPROJECT_ADD(
     LCDD
 
-    DEPENDS XERCES Geant4 GDML
+    DEPENDS XercesC Geant4 GDML
 
     GIT_REPOSITORY "https://github.com/slaclab/lcdd"
     GIT_TAG ${LCDD_TAG}

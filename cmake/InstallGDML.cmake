@@ -6,7 +6,7 @@ EXTERNALPROJECT_ADD(
 
     GDML
 
-    DEPENDS XERCES Geant4 
+    DEPENDS XercesC Geant4 
 
     GIT_REPOSITORY "https://github.com/slaclab/gdml"
     GIT_TAG ${GDML_TAG}
