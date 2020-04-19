@@ -1,10 +1,7 @@
-SET(XERCES_LIBRARY_NAMES xerces-c)
+FIND_PATH(XercesC_INCLUDE_DIR xercesc/sax/InputSource.hpp xercesc/dom/DOMDocument.hpp xercesc/dom/DOMErrorHandler.hpp ${XercesC_DIR}/include)
 
-FIND_PATH(XERCES_INCLUDE_DIR xercesc/sax/InputSource.hpp xercesc/dom/DOMDocument.hpp xercesc/dom/DOMErrorHandler.hpp ${XERCES_DIR}/include)
+FIND_LIBRARY(XercesC_LIBRARY xerces-c ${XercesC_DIR}/lib /usr/lib64 /usr/lib /usr/local/lib64 /usr/local/lib)
 
-FIND_LIBRARY(XERCES_LIBRARY ${XERCES_LIBRARY_NAMES} ${XERCES_DIR}/lib /usr/lib64 /usr/lib /usr/local/lib64 /usr/local/lib)
-
-# Report the found libraries, quit with fatal error if any required library has not been found.
+# Find the package
 INCLUDE(FindPackageHandleStandardArgs)
-
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(XERCES DEFAULT_MSG XERCES_LIBRARY XERCES_INCLUDE_DIR)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(XERCES DEFAULT_MSG XercesC_LIBRARY XercesC_INCLUDE_DIR)
