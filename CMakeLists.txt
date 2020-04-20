@@ -18,6 +18,7 @@ SET( SLIC_VERSION_MINOR 0 )
 SET( SLIC_VERSION_PATCH 1 )
 
 INCLUDE( ExternalProject )
+INCLUDE( FindPackageHandleStandardArgs )
 
 MESSAGE( STATUS "SLIC install dir set to: ${CMAKE_INSTALL_PREFIX}" )
 
