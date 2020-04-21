@@ -30,13 +30,5 @@ EXTERNALPROJECT_ADD(
     BUILD_COMMAND make -j4
 )
 
-STRING( REPLACE "v" "" Geant4_VERSION_NUMBER ${Geant4_TAG} )
-IF(EXISTS ${DEPENDENCY_INSTALL_DIR}/geant4/lib64)
-    SET( Geant4_DIR ${DEPENDENCY_INSTALL_DIR}/geant4/lib64/Geant4-${Geant4_VERSION_NUMBER} CACHE PATH "Geant4 install dir" FORCE )
-ELSEIF(EXISTS ${DEPENDENCY_INSTALL_DIR}/geant4/lib)
-    SET( Geant4_DIR ${DEPENDENCY_INSTALL_DIR}/geant4/lib/Geant4-${Geant4_VERSION_NUMBER} CACHE PATH "Geant4 install dir" FORCE )
-ELSE()
-    MESSAGE(FATAL_ERROR "Could not figure out where Geant4 is installed!")
-ENDIF()
-
-MESSAGE(STATUS ">>>> installed Geant4 with Geant4_DIR=${Geant4_DIR}")
+# FIXME: Install dir could be under lib or lib64 depending on Geant4 version.
+SET( Geant4_DIR ${DEPENDENCY_INSTALL_DIR}/geant4/lib/Geant4-${Geant4_VERSION_NUMBER} CACHE PATH "Geant4 install dir" FORCE )
