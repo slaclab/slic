@@ -130,7 +130,7 @@ make install
 
 ```
 git clone https://github.com/iLCSoft/LCIO.git lcio
-cd lcio; git checkout v02-06
+cd lcio; git checkout v02-07-05
 mkdir build; cd build
 cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=$install_dir/lcio ..
 make -j4
