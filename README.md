@@ -61,7 +61,7 @@ This table shows the full list of dependency variables accepted by SLIC:
 | Dependency | Variable    |
 | ---------- | ----------- |
 | Geant4     | Geant4_DIR  |
-| Xerces C++ | XERCES_DIR  |
+| Xerces C++ | XercesC_DIR |
 | LCIO       | LCIO_DIR    |
 | HepPDT     | HEPPDT_DIR  |
 | GDML       | GDML_DIR    |
@@ -121,7 +121,7 @@ You will start from this directory when building each package by doing `cd /scra
 git clone https://github.com/Geant4/geant4
 git checkout v10.6.1
 mkdir build && cd build
-cmake -DGEANT4_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX=../install ../geant4
+cmake -DGEANT4_INSTALL_DATA=ON -DGEANT4_INSTALL_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install ../geant4
 make -j4
 make install
 ```
@@ -132,7 +132,7 @@ make install
 git clone https://github.com/iLCSoft/LCIO.git lcio
 cd lcio; git checkout v02-07-05
 mkdir build; cd build
-cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=$install_dir/lcio ..
+cmake -DINSTALL_DOC=OFF -DBUILD_LCIO_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install ..
 make -j4
 make install
 ```
