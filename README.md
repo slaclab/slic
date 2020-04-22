@@ -121,7 +121,7 @@ You will start from this directory when building each package by doing `cd /scra
 git clone https://github.com/Geant4/geant4
 git checkout v10.6.1
 mkdir build && cd build
-cmake -DGEANT4_INSTALL_DATA=ON -DGEANT4_INSTALL_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install ../geant4
+cmake -DGEANT4_INSTALL_DATA=ON -DGEANT4_INSTALL_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 make -j4
 make install
 ```
