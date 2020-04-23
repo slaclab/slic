@@ -119,10 +119,12 @@ You will start from this directory when building each package by doing `cd /scra
 
 ```
 git clone https://github.com/Geant4/geant4
-git checkout v10.6.1
+cd geant4
+git checkout v10.5.1 # choose Geant4 tag to build
 mkdir build && cd build
-cmake -DGEANT4_INSTALL_DATA=ON -DGEANT4_INSTALL_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
-make -j4
+# Geant4 cmake options may vary depending on your setup
+cmake -DGEANT4_INSTALL_DATA=ON -DGEANT4_INSTALL_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install -DGEANT4_USE_SYSTEM_EXPAT=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+make -j8
 make install
 ```
 
@@ -130,10 +132,11 @@ make install
 
 ```
 git clone https://github.com/iLCSoft/LCIO.git lcio
-cd lcio; git checkout v02-07-05
+cd lcio
+git checkout v02-07-05
 mkdir build; cd build
 cmake -DINSTALL_DOC=OFF -DBUILD_LCIO_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install ..
-make -j4
+make -j8
 make install
 ```
 
@@ -143,15 +146,15 @@ make install
 wget http://lcgapp.cern.ch/project/simu/HepPDT/download/HepPDT-3.04.01.tar.gz
 tar -zxvf HepPDT-3.04.01.tar.gz
 cd HepPDT-3.04.01
-./configure --prefix=/u/ey/jeremym/hps-dev/slic/install/heppdt .. --disable-static
-make install
+./configure --prefix=$PWD/install --disable-static
+make -j8 install
 ```
 
 #### Xerces
 
 ```
 wget https://mirrors.ocf.berkeley.edu/apache//xerces/c/3/sources/xerces-c-3.2.3.tar.gz
-./configure --prefix=/u/ey/jeremym/hps-dev/slic/install/xerces
+./configure --prefix=$PWD/install
 make
 make install
 ```
@@ -160,22 +163,26 @@ make install
 
 ```
 git clone https://github.com/slaclab/gdml
-mkdir build && cd build
-cmake -DGeant4_DIR=/u/ey/jeremym/hps-dev/slic/install/geant4/lib64/Geant4-10.3.1/ -DXercesC_INCLUDE_DIR=/u/ey/jeremym/hps-dev/slic/install/xerces/include -DXercesC_LIBRARY=/u/ey/jeremym/hps-dev/slic/install/xerces/lib64/libxerces-c.so -DCMAKE_INSTALL_PREFIX=/u/ey/jeremym/hps-dev/slic/install/gdml ..
-make -j4 install
+cd gdml && mkdir build && cd build
+cmake -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.5.1/ -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so -DCMAKE_INSTALL_PREFIX=../install ..
+make -j8 install
 ```
 
 ### LCDD
 
 ```
 git clone https://github.com/slaclab/lcdd
-cd lcdd; mkdir build; cd build
-cmake -DINSTALL_DOC=OFF -DGeant4_DIR=$install_dir/geant4/lib64/Geant4-10.3.1/ -DGDML_DIR=$install_dir/gdml -DXERCES_DIR=$install_dir/xerces -DCMAKE_INSTALL_PREFIX=$install_dir/gdml ..
+cd lcdd && mkdir build && cd build
+cmake -DINSTALL_DOC=OFF -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.3.1/ -DGDML_DIR=/scratch/gdml/install -DXercesCS_DIR=/scratch/xerces -DCMAKE_INSTALL_PREFIX=../install ..
 make -j4 install
 ```
 
 ### SLIC
 
 ```
-cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=$install_dir/slic -DXERCES_DIR=$install_dir/xerces -DLCIO_DIR=$install_dir/lcio/ -DGeant4_DIR=$install_dir/geant4/lib64/Geant4-10.3.1/ -DGDML_DIR=$install_dir/gdml/ -DHEPPDT_DIR=$install_dir/heppdt -DLCDD_DIR=$install_dir/lcdd ..
+git clone https://github.com/slaclab/slic
+cd slic && mkdir build && cd build
+cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=../install -DXercesC_DIR=/scratch/xerces/install \
+-DLCIO_DIR=/scratch/lcio/install -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.3.1/ \
+-DGDML_DIR=/scratch/gdml/install -DHEPPDT_DIR=$install_dir/heppdt -DLCDD_DIR=/scratch/lcdd/install ..
 ```
