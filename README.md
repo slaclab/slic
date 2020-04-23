@@ -123,8 +123,7 @@ cd geant4
 git checkout v10.5.1 # choose Geant4 tag to build
 mkdir build && cd build
 # Geant4 cmake options may vary depending on your setup
-cmake -DGEANT4_INSTALL_DATA=ON -DGEANT4_INSTALL_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install \
-    -DGEANT4_USE_SYSTEM_EXPAT=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+cmake -DGEANT4_INSTALL_DATA=ON -DGEANT4_INSTALL_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install -DGEANT4_USE_SYSTEM_EXPAT=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 make -j8
 make -j8 install
 ```
@@ -165,10 +164,7 @@ make -j8 install
 ```
 git clone https://github.com/slaclab/gdml
 cd gdml && mkdir build && cd build
-cmake -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.5.1/ \
-    -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include \ 
-    -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so \
-    -DCMAKE_INSTALL_PREFIX=../install ..
+cmake -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.5.1/ -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so -DCMAKE_INSTALL_PREFIX=../install ..
 make -j8 install
 ```
 
@@ -177,11 +173,7 @@ make -j8 install
 ```
 git clone https://github.com/slaclab/lcdd
 cd lcdd && mkdir build && cd build
-cmake -DINSTALL_DOC=OFF -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.3.1/ \
-    -DGDML_DIR=/scratch/gdml/install \
-    -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include \ 
-    -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so \
-    -DCMAKE_INSTALL_PREFIX=../install ..
+cmake -DINSTALL_DOC=OFF -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.3.1/ -DGDML_DIR=/scratch/gdml/install -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so -DCMAKE_INSTALL_PREFIX=../install ..
 make -j4 install
 ```
 
@@ -190,12 +182,5 @@ make -j4 install
 ```
 git clone https://github.com/slaclab/slic
 cd slic && mkdir build && cd build
-cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=../install \
-    -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include \ 
-    -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so \
-    -DLCIO_DIR=/scratch/lcio/install \
-    -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.3.1/ \
-    -DGDML_DIR=/scratch/gdml/install \
-    -DHEPPDT_DIR=/scratch/HepPDT-3.04.01/install \
-    -DLCDD_DIR=/scratch/lcdd/install ..
+cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=../install -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so -DLCIO_DIR=/scratch/lcio/install -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.3.1/ -DGDML_DIR=/scratch/gdml/install -DHEPPDT_DIR=/scratch/HepPDT-3.04.01/install -DLCDD_DIR=/scratch/lcdd/install ..
 ```
