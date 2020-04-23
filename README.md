@@ -155,6 +155,8 @@ make -j8 install
 
 ```
 wget https://mirrors.ocf.berkeley.edu/apache//xerces/c/3/sources/xerces-c-3.2.3.tar.gz
+tar -zxf xerces-c-3.2.3.tar.gz
+cd xerces-c-3.2.3
 ./configure --prefix=$PWD/install
 make
 make install
