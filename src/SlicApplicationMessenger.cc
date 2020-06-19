@@ -21,6 +21,12 @@ void SlicApplicationMessenger::SetNewValue(G4UIcommand* cmd, G4String) {
         m_app->printVersion();
     } else if (cmd == m_slicUsage) {
         m_app->printUsage();
+    } else if (cmd == m_quietMode) {
+        std::cout << "Quiet mode is enabled!" << std::endl;
+        std::cout.setstate(std::ios_base::failbit);
+        //ofstream file("/dev/null");
+        //std::cout.rdbuf(file.rdbuf());
+        // No more messages will be printed to cout for the remainder of the job!
     } else {
         m_app->log() << LOG::error << "Unknown command to SlicApplicationMessenger." << LOG::done;
     }
@@ -42,5 +48,9 @@ void SlicApplicationMessenger::defineCommands() {
     // print SLIC version
     m_slicVersion = new G4UIcommand("/slic/version", this);
     m_slicVersion->SetGuidance("Print SLIC version information.");
+
+    // quiet mode
+    m_quietMode = new G4UIcommand("/slic/quiet", this);
+    m_quietMode->SetGuidance("Run in quiet mode, suppressing all stdout console output.");
 }
 }

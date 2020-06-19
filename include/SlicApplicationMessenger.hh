@@ -53,6 +53,7 @@ class SlicApplicationMessenger: public G4UImessenger {
         G4UIcommand* m_interactive;
         G4UIcommand* m_slicUsage;
         G4UIcommand* m_slicVersion;
+        G4UIcommand* m_quietMode;
 };
 }
 
