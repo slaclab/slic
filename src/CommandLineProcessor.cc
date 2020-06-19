@@ -28,6 +28,7 @@ CommandLineProcessor::~CommandLineProcessor() {
 }
 
 void CommandLineProcessor::process(int argc, char** argv) {
+
 	// Description of SLIC's options in getopt's format.
 	static struct option long_options[] = {
 	        { "help", no_argument, 0, 'h' },
@@ -51,6 +52,7 @@ void CommandLineProcessor::process(int argc, char** argv) {
 			{ "pdg-file", required_argument, 0, 'P' },
 			{ "lcdd-version", required_argument, 0, 'V' },
 			{ "lcdd-setup", required_argument, 0, 'S' },
+			{ "quiet", no_argument, 0, 'q' },
 			{ 0, 0, 0, 0 }
 	};
 
@@ -96,7 +98,6 @@ void CommandLineProcessor::process(int argc, char** argv) {
 			char cc = (char) c;
 			ostr << cc;
 			string theopt = ostr.str();
-
 			if (optarg) {
 				m_commandline.push_back(OptionsPair(theopt, optarg));
 			} else {
@@ -151,7 +152,7 @@ void CommandLineProcessor::process(int argc, char** argv) {
 	}
 	// Default is process all the options and build the CommandQueue.
 	else {
-		processOptions();
+	    processOptions();
 	}
 }
 
@@ -187,6 +188,7 @@ void CommandLineProcessor::abort() {
 }
 
 void CommandLineProcessor::registerOptions() {
+
 	// Print application usage. 
 	addOption(new CommandLineOption("h", "help", "Print SLIC usage.", 0, 0, "/slic/usage"));
 
@@ -226,7 +228,7 @@ void CommandLineProcessor::registerOptions() {
 	addOption(new CommandLineOption("r", "run-events", "Run # of events.", 1, 1, "/run/beamOn"));
 
 	// Set number of events to skip from a file-based event source (e.g. StdHep).
-	addOption( new CommandLineOption("s", "skip-events", "Set number of events to skip.", 1, 1, "/generator/skipEvents"));
+	addOption(new CommandLineOption("s", "skip-events", "Set number of events to skip.", 1, 1, "/generator/skipEvents"));
 
 	// Set the physics list. 
 	addOption(new CommandLineOption("l", "physics-list", "Set Geant4 physics list.", 1, 1, "/physics/select"));
@@ -251,11 +253,17 @@ void CommandLineProcessor::registerOptions() {
 
 	// Set the name of the GMDL setup.
 	addOption(new CommandLineOption("S", "lcdd-setup", "Set the name of the GDML setup tag.", 1, 1, "/lcdd/setupName"));
+
+	// Activate quiet mode which suppresses stdout in the job.
+    addOption(new CommandLineOption("q", "quiet", "Quiet mode.", 0, 0, "/slic/quiet"));
+
 }
 
 void CommandLineProcessor::processOption(const string& opt) {
+
 	// Loop over all input arguments to look for this option.
 	for (CommandLineArguments::iterator it = m_commandline.begin(); it != m_commandline.end(); it++) {
+
 
 		// Look for a matching switch in the arguments.
 		if (it->first == opt) {
@@ -286,6 +294,10 @@ void CommandLineProcessor::addOption(CommandLineOption* opt) {
 }
 
 void CommandLineProcessor::processOptions() {
+
+    // Quiet mode
+    processOption("q");
+
 	// Logger.
 	processOption("L");
 
