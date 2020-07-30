@@ -1,7 +1,8 @@
 EXTERNALPROJECT_ADD(
     HEPPDT
 
-    URL "http://lcgapp.cern.ch/project/simu/HepPDT/download/HepPDT-3.04.01.tar.gz"
+    GIT_REPOSITORY "https://github.com/slaclab/heppdt"
+    GIT_TAG "master"
 
     SOURCE_DIR "${CMAKE_BINARY_DIR}/heppdt"
     
