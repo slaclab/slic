@@ -2,6 +2,8 @@ IF( NOT Geant4_TAG )
     SET( Geant4_TAG "v10.6.1" )
 ENDIF()
 
+STRING( REPLACE "v" "" Geant4_VERSION ${Geant4_TAG} )
+
 IF ( NOT GEANT4_INSTALL_DATA )
     SET( GEANT4_INSTALL_DATA "ON" )
 ENDIF()
@@ -31,4 +33,4 @@ EXTERNALPROJECT_ADD(
 )
 
 # FIXME: Install dir could be under lib or lib64 depending on Geant4 version.
-SET( Geant4_DIR ${DEPENDENCY_INSTALL_DIR}/geant4/lib/Geant4-${Geant4_VERSION_NUMBER} CACHE PATH "Geant4 install dir" FORCE )
+SET( Geant4_DIR ${DEPENDENCY_INSTALL_DIR}/geant4/lib/Geant4-${Geant4_VERSION} CACHE PATH "Geant4 install dir" FORCE )
