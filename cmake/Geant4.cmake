@@ -3,7 +3,7 @@ find_package(Geant4 QUIET COMPONENTS vis_all ui_all)
 if(NOT Geant4_FOUND)
     message(STATUS "Geant4 was not found and will be installed")
     set(Geant4_VERSION 10.6.1 CACHE STRING "Geant4 version" FORCE)
-    set(Geant4_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/Geant4})
+    set(Geant4_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/Geant4)
     add_dependencies(dependencies Geant4)
     externalproject_add(
         Geant4
@@ -14,10 +14,10 @@ if(NOT Geant4_FOUND)
         CMAKE_ARGS       -DCMAKE_INSTALL_PREFIX=${Geant4_INSTALL_DIR} -DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_SYSTEM_EXPAT=OFF -DGEANT4_INSTALL_EXAMPLES=OFF
         BUILD_COMMAND    ${CMAKE_MAKE_PROGRAM} -j4
         UPDATE_COMMAND   ""
-        BUILD_IN_SOURCE  ON
         BUILD_ALWAYS     ON
         EXCLUDE_FROM_ALL ON
     )
+    # vis options left out for now
     # -DGEANT4_USE_OPENGL_X11=${GEANT4_USE_OPENGL_X11} -DGEANT4_USE_QT=${GEANT4_USE_QT}
     set(Geant4_DIR ${Geant4_INSTALL_DIR}/lib/Geant4-${Geant4_VERSION} CACHE PATH "Geant4 install dir" FORCE)
     set(Geant4_INCLUDE_DIRS ${Geant4_INSTALL_DIR}/include/Geant4 CACHE PATH "Geant4 include dirs" FORCE)

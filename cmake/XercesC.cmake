@@ -7,12 +7,13 @@ if(NOT XercesC_FOUND)
     set(XercesC_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/XercesC)
     externalproject_add(
         XercesC
-        URL                 "https://downloads.apache.org/xerces/c/3/sources/xerces-c-${XercesC_VERSION}.tar.gz"
-        SOURCE_DIR          ${CMAKE_BINARY_DIR}/XercesC
-        CONFIGURE_COMMAND   ./configure --enable-shared --disable-static --prefix=${XercesC_INSTALL_DIR}
-        BUILD_IN_SOURCE     ON
-        BUILD_ALWAYS        ON
-        EXCLUDE_FROM_ALL    ON
+        URL                  "https://downloads.apache.org/xerces/c/3/sources/xerces-c-${XercesC_VERSION}.tar.gz"
+        SOURCE_DIR           ${CMAKE_BINARY_DIR}/XercesC
+        CONFIGURE_COMMAND    ./configure --enable-shared --disable-static --prefix=${XercesC_INSTALL_DIR}
+        BUILD_IN_SOURCE      ON
+        BUILD_ALWAYS         ON
+        EXCLUDE_FROM_ALL     ON
+        DOWNLOAD_NO_PROGRESS ON
     )
     set(XercesC_LIBRARY ${XercesC_INSTALL_DIR}/lib/libxerces-c.so CACHE FILEPATH "XercesC libraries" FORCE)
     set(XercesC_INCLUDE_DIR ${XercesC_INSTALL_DIR}/include CACHE PATH "XercesC include dir" FORCE)

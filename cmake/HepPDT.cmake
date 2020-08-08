@@ -1,6 +1,7 @@
 message(STATUS "Checking for HepPDT")
 find_package(HepPDT QUIET)
 if(NOT HepPDT_FOUND)
+    message(STATUS "HepPDT was not found and will be installed")
     add_dependencies(dependencies HepPDT)
     set(HepPDT_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/HepPDT)
     externalproject_add(
