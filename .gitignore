@@ -1,14 +1,13 @@
 # Eclipse config
 .project
 .cproject
+.settings
 
 # ignore configured files
 /include/PackageInfo.hh
 
-# build dir
+# build dirs
 /*build/
 
 # install dirs
-/*install
-
-.settings
+/*install/
