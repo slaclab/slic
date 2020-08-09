@@ -17,11 +17,11 @@ namespace slic {
 
 StdHepGenerator::StdHepGenerator(G4String eventFile) :
         _particles(0) {
-#if HAVE_LCSTDHEPRDRNEW_H
+//#if HAVE_LCSTDHEPRDRNEW_H
     _reader = new LCStdHepRdrNew(eventFile.data());
-#else
-    _reader = new LCStdHepRdr(eventFile.data());
-#endif
+//#else
+//    _reader = new LCStdHepRdr(eventFile.data());
+//#endif
 }
 
 StdHepGenerator::~StdHepGenerator() {
