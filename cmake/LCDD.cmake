@@ -9,6 +9,7 @@ if(NOT LCDD_FOUND)
         DEPENDS        XercesC Geant4 GDML
         GIT_REPOSITORY "https://github.com/slaclab/lcdd"
         GIT_TAG        "master"
+        GIT_SHALLOW    ON
         UPDATE_COMMAND ""
         PATCH_COMMAND  ""
         SOURCE_DIR     "${CMAKE_BINARY_DIR}/lcdd"

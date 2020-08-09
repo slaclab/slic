@@ -9,6 +9,7 @@ if(NOT GDML_FOUND)
         DEPENDS XercesC Geant4
         GIT_REPOSITORY  "https://github.com/slaclab/gdml"
         GIT_TAG         "master"
+        GIT_SHALLOW     ON
         UPDATE_COMMAND  ""
         PATCH_COMMAND   ""
         SOURCE_DIR      "${CMAKE_BINARY_DIR}/gdml"

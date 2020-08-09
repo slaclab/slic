@@ -24,7 +24,7 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 include(ExternalProject)
 include(FindPackageHandleStandardArgs)
 
-# external dependencies installed by CMake will be added as dependencies of this target
+# external dependencies that are installed are added as dependencies of this target
 add_custom_target(dependencies)
 
 # find or build external dependencies
@@ -38,32 +38,29 @@ include(LCDD)
 # get list of sources
 file(GLOB_RECURSE library_sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 
+# add Geant4 library dir
+link_directories(${Geant4_DIR}/..)
+
 # set executable target
 add_executable(slic ${library_sources} slic.cc)
 
-# add Geant4 lib dir
-link_directories(${Geant4_DIR}/..)
+# set local include dir
+set(SLIC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+include_directories(${SLIC_INCLUDE_DIR})
 
 # build user plugin library
 file(GLOB_RECURSE plugin_sources ${PROJECT_SOURCE_DIR}/plugins/*.cc)
 add_library(slicPlugins SHARED ${plugin_sources})
 target_link_libraries(slicPlugins ${Geant4_LIBRARIES})
-add_dependencies(slicPlugins Geant4)
+add_dependencies(slicPlugins dependencies) # make sure deps are built first
 install(TARGETS slicPlugins DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
 # make slic depend on any external projects that were installed
 # (could be an empty target if all packages were found)
 add_dependencies(slic dependencies)
 
-# make slic depend on plugin lib
-add_dependencies(slic slicPlugins)
-
-# set local include dir
-set(SLIC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
-include_directories(${SLIC_INCLUDE_DIR})
-
 # set library dependencies
-target_link_libraries(slic ${LIBS} dl slicPlugins)
+target_link_libraries(slic ${LIBS} dl)
 
 # option for SLIC log messages
 option(WITH_SLIC_LOGGING "Enable SLIC logging system" ON)
@@ -71,28 +68,6 @@ if(WITH_SLIC_LOGGING STREQUAL "ON")
     add_definitions(-DSLIC_LOG)
 endif()
 message(STATUS "SLIC logging: ${WITH_SLIC_LOGGING}")
-
-# check for LCStdHepRdrNew class in LCIO
-if(EXISTS "${LCIO_INCLUDE_DIRS}/UTIL/LCStdHepRdrNew.h")
-    add_definitions(-DHAVE_STDHEPRDRNEW_H)
-endif()
-
-# check if MCParticle implementation has endpoint momentum
-set(CMAKE_REQUIRED_INCLUDES ${LCIO_INCLUDE_DIRS})
-include(CheckCXXSourceCompiles)
-check_cxx_source_compiles(
-    "
-    #include \"EVENT/MCParticle.h\"
-    int main() {
-        EVENT::MCParticle* p;
-        p->getMomentumAtEndpoint();
-        return 0;
-    }
-    " MCPARTICLE_HAS_MOMENTUMATENDPOINT
-)
-if (MCPARTICLE_HAS_MOMENTUMATENDPOINT)
-    add_definitions(-DMCPARTICLE_HAS_MOMENTUMATENDPOINT)
-endif()
 
 # install the binary
 install(TARGETS slic slic DESTINATION bin)

@@ -8,13 +8,12 @@ if(NOT HepPDT_FOUND)
         HepPDT
         GIT_REPOSITORY    "https://github.com/slaclab/heppdt"
         GIT_TAG           "master"
+        GIT_SHALLOW       ON
         SOURCE_DIR        "${CMAKE_BINARY_DIR}/HepPDT"
         UPDATE_COMMAND    ""
         PATCH_COMMAND     ""
         CONFIGURE_COMMAND ./configure --prefix=${HepPDT_INSTALL_DIR}
-        BUILD_ALWAYS      ON
         BUILD_IN_SOURCE   ON
-        EXCLUDE_FROM_ALL  ON
     )
     set(HepPDT_DIR ${HepPDT_INSTALL_DIR})
     set(HepPDT_LIBRARIES ${HepPDT_INSTALL_DIR}/lib/libHepPDT.so ${HepPDT_INSTALL_DIR}/lib/libHepPID.so)
