@@ -27,7 +27,7 @@ include(FindPackageHandleStandardArgs)
 # external dependencies installed by CMake will be added as dependencies of this target
 add_custom_target(dependencies)
 
-# include macros for external dependencies, which will be found or built
+# find or build external dependencies
 include(XercesC)
 include(Geant4)
 include(HepPDT)
@@ -50,18 +50,19 @@ add_library(slicPlugins SHARED ${plugin_sources})
 target_link_libraries(slicPlugins ${Geant4_LIBRARIES})
 install(TARGETS slicPlugins DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
-# make slic depend on any external projects that were installed
-add_dependencies(slic dependencies)
-
 # make slic depend on plugin lib
 add_dependencies(slic slicPlugins)
+
+# make slic depend on any external projects that were installed
+# (could be an empty target if all packages were found)
+add_dependencies(slic dependencies)
 
 # set local include dir
 set(SLIC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 include_directories(${SLIC_INCLUDE_DIR})
 
 # set library dependencies
-target_link_libraries(slic ${LIBS})
+target_link_libraries(slic ${LIBS} dl slicPlugins)
 
 # option for SLIC log messages
 option(WITH_SLIC_LOGGING "Enable SLIC logging system" ON)

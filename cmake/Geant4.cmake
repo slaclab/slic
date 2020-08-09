@@ -21,6 +21,7 @@ if(NOT Geant4_FOUND)
     # -DGEANT4_USE_OPENGL_X11=${GEANT4_USE_OPENGL_X11} -DGEANT4_USE_QT=${GEANT4_USE_QT}
     set(Geant4_DIR ${Geant4_INSTALL_DIR}/lib/Geant4-${Geant4_VERSION} CACHE PATH "Geant4 install dir" FORCE)
     set(Geant4_INCLUDE_DIRS ${Geant4_INSTALL_DIR}/include/Geant4 CACHE PATH "Geant4 include dirs" FORCE)
+    # list of Geant4 libraries (don't know another way to do this since we need to know this info before G4 is built & installed)
     set(Geant4_LIBRARIES G4analysis
                          G4clhep
                          G4digits_hits
