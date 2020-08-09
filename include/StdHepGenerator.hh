@@ -5,11 +5,7 @@
 #include "MCParticleManager.hh"
 
 // LCIO
-//#if HAVE_LCSTDHEPRDRNEW_H
 #include "UTIL/LCStdHepRdrNew.h"
-//#else
-//#include "UTIL/LCStdHepRdr.h"
-//#endif
 #include "EVENT/MCParticle.h"
 #include "IMPL/LCCollectionVec.h"
 
@@ -20,12 +16,7 @@
 // STL
 #include <set>
 
-//#if HAVE_LCSTDHEPRDRNEW_H
 using UTIL::LCStdHepRdrNew;
-//#else
-//using UTIL::LCStdHepRdr;
-//#endif
-
 using EVENT::MCParticle;
 using EVENT::LCCollection;
 using IMPL::LCCollectionVec;
@@ -69,11 +60,7 @@ class StdHepGenerator {
         LCCollectionVec* getCurrentParticleCollection();
 
     private:
-//#if HAVE_LCSTDHEPRDRNEW_H
         LCStdHepRdrNew* _reader;
-//#else
-//        LCStdHepRdr* _reader;
-//#endif
         LCCollectionVec* _particles;
 };
 
