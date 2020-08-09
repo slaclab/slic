@@ -52,7 +52,7 @@ if(NOT Geant4_FOUND)
                          G4visXXX
                          G4vis_management
                          G4VRML
-                         G4z)
+                         G4zlib)
 else()
     message(STATUS "Geant4 was found at: ${Geant4_DIR}")
     #message(STATUS "Geant4 libraries: ${Geant4_LIBRARIES}")
