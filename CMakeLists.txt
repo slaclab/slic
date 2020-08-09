@@ -50,12 +50,12 @@ add_library(slicPlugins SHARED ${plugin_sources})
 target_link_libraries(slicPlugins ${Geant4_LIBRARIES})
 install(TARGETS slicPlugins DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
-# make slic depend on plugin lib
-add_dependencies(slic slicPlugins)
-
 # make slic depend on any external projects that were installed
 # (could be an empty target if all packages were found)
 add_dependencies(slic dependencies)
+
+# make slic depend on plugin lib
+add_dependencies(slic slicPlugins)
 
 # set local include dir
 set(SLIC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
@@ -124,7 +124,7 @@ endforeach()
 
 # barf out CMake variables at trace level
 get_cmake_property(varnames VARIABLES)
-message("variables")
+message(TRACE "variables")
 foreach(varname ${varnames})
     message(TRACE "${varname}=${${varname}}")
 endforeach()
