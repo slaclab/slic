@@ -48,6 +48,7 @@ link_directories(${Geant4_DIR}/..)
 file(GLOB_RECURSE plugin_sources ${PROJECT_SOURCE_DIR}/plugins/*.cc)
 add_library(slicPlugins SHARED ${plugin_sources})
 target_link_libraries(slicPlugins ${Geant4_LIBRARIES})
+add_dependencies(slicPlugins Geant4)
 install(TARGETS slicPlugins DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
 # make slic depend on any external projects that were installed
