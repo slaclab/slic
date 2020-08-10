@@ -52,6 +52,7 @@ if(NOT Geant4_FOUND)
                          G4VRML
                          G4zlib)
 else()
+    add_custom_target(Geant4) # dummy target
     message(STATUS "Geant4 was found at: ${Geant4_DIR}")
     #message(STATUS "Geant4 libraries: ${Geant4_LIBRARIES}")
     #message(STATUS "Geant4 include dirs: ${Geant4_INCLUDE_DIRS}")

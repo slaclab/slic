@@ -2,7 +2,6 @@ message(STATUS "Checking for LCDD")
 find_package(LCDD QUIET)
 if(NOT LCDD_FOUND)
     message(STATUS "LCDD was not found and will be installed")
-    add_dependencies(dependencies LCDD)
     set(LCDD_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/LCDD)
     externalproject_add(
         LCDD
@@ -20,8 +19,10 @@ if(NOT LCDD_FOUND)
     set(LCDD_LIBRARY ${LCDD_INSTALL_DIR}/lib/liblcdd.so CACHE FILEPATH "LCDD library path" FORCE)
     set(LCDD_INCLUDE_DIR ${LCDD_INSTALL_DIR}/include CACHE PATH "LCDD include dir" FORCE)
 else()
+    add_custom_target(LCDD) # dummy target
     message(STATUS "LCDD library found at: ${LCDD_LIBRARY}")
 endif()
 
+add_dependencies(dependencies LCDD)
 include_directories(${LCDD_INCLUDE_DIR})
 set(LIBS ${LIBS} ${LCDD_LIBRARY})

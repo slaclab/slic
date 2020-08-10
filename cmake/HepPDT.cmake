@@ -19,6 +19,7 @@ if(NOT HepPDT_FOUND)
     set(HepPDT_LIBRARIES ${HepPDT_INSTALL_DIR}/lib/libHepPDT.so ${HepPDT_INSTALL_DIR}/lib/libHepPID.so)
     set(HepPDT_INCLUDE_DIR ${HepPDT_INSTALL_DIR}/include)
 else()
+    add_custom_target(HepPDT) # dummy target
     message(STATUS "HepPDT libraries found at: ${HepPDT_LIBRARIES}")
 endif()
 

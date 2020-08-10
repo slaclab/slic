@@ -2,7 +2,6 @@ message(STATUS "Checking for XercesC")
 find_package(XercesC QUIET)
 if(NOT XercesC_FOUND)
     message(STATUS "XercesC was not found and will be installed")
-    add_dependencies(dependencies XercesC)
     set(XercesC_VERSION 3.2.3 CACHE STRING "XercesC version" FORCE) # Is this necessary?
     set(XercesC_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/XercesC)
     externalproject_add(
@@ -16,8 +15,10 @@ if(NOT XercesC_FOUND)
     set(XercesC_LIBRARY ${XercesC_INSTALL_DIR}/lib/libxerces-c.so CACHE FILEPATH "XercesC libraries" FORCE)
     set(XercesC_INCLUDE_DIR ${XercesC_INSTALL_DIR}/include CACHE PATH "XercesC include dir" FORCE)
 else()
+    add_custom_target(XercesC) # dummy target
     message(STATUS "XercesC library was found at: ${XercesC_LIBRARY}")
 endif()
 
+add_dependencies(dependencies XercesC)
 include_directories(${XercesC_INCLUDE_DIR})
 set(LIBS ${LIBS} ${XercesC_LIBRARY})

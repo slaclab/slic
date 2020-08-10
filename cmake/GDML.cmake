@@ -20,6 +20,7 @@ if(NOT GDML_FOUND)
     set(GDML_LIBRARY ${GDML_INSTALL_DIR}/lib/libgdml.so CACHE FILEPATH "GDML library path" FORCE)
     set(GDML_INCLUDE_DIR ${GDML_INSTALL_DIR}/include CACHE PATH "GDML inclued dir" FORCE)
 else()
+    add_custom_target(GDML) # dummy target
     message(STATUS "Found GDML lib: ${GDML_LIBRARY}")
 endif()
 

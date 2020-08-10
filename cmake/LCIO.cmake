@@ -2,7 +2,6 @@ message(STATUS "Checking for LCIO")
 find_package(LCIO QUIET)
 if(NOT LCIO_FOUND)
     message(STATUS "LCIO was not found and will be installed")
-    add_dependencies(dependencies LCIO)
     set(LCIO_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/LCIO)
     externalproject_add(
         LCIO
@@ -20,8 +19,10 @@ if(NOT LCIO_FOUND)
     set(LCIO_LIBRARIES ${LCIO_INSTALL_DIR}/lib/liblcio.so ${LCIO_INSTALL_DIR}/lib/libsio.so CACHE FILEPATH "LCIO libraries" FORCE)
     set(LCIO_INCLUDE_DIRS ${LCIO_INSTALL_DIR}/include CACHE PATH "LCIO include dirs" FORCE)
 else()
+    add_custom_target(LCIO) # dummy target
     message(STATUS "LCIO libraries found at: ${LCIO_LIBRARIES}")
 endif()
 
+add_dependencies(dependencies LCIO)
 include_directories(${LCIO_INCLUDE_DIRS})
 set(LIBS ${LIBS} ${LCIO_LIBRARIES})
