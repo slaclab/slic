@@ -5,17 +5,15 @@
 #                                                        #
 ##########################################################
 
-cmake_minimum_required(VERSION 3.0)
+# minimum version of CMake, which is determined by Geant4's requirements
+cmake_minimum_required(VERSION 3.8)
 
 project(SLIC VERSION 6.0.1)
 
-#message(STATUS "Configuring SLIC version: ${SLIC_VERSION}")
-
+# minimum gcc version
 if(CMAKE_CXX_COMPILER_VERSION LESS 4.8)
     message(FATAL_ERROR "The GCC version is too old (at least 4.8 is required).")
 ENDIF()
-
-#set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
 # add path containing CMake macros for this project
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
@@ -24,10 +22,10 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 include(ExternalProject)
 include(FindPackageHandleStandardArgs)
 
-# external dependencies that are installed are added as dependencies of this target
+# external dependencies are added as dependencies of this target
 add_custom_target(dependencies)
 
-# find or build external dependencies
+# include macros to find or build external dependencies
 include(XercesC)
 include(Geant4)
 include(HepPDT)
