@@ -16,7 +16,7 @@ if(NOT HepPDT_FOUND)
         BUILD_IN_SOURCE   ON
     )
     set(HepPDT_DIR ${HepPDT_INSTALL_DIR})
-    set(HepPDT_LIBRARIES ${HepPDT_INSTALL_DIR}/lib/libHepPDT.so ${HepPDT_INSTALL_DIR}/lib/libHepPID.so)
+    set(HepPDT_LIBRARIES ${HepPDT_INSTALL_DIR}/lib/libHepPDT${CMAKE_SHARED_LIBRARY_SUFFIX} ${HepPDT_INSTALL_DIR}/lib/libHepPID${CMAKE_SHARED_LIBRARY_SUFFIX})
     set(HepPDT_INCLUDE_DIR ${HepPDT_INSTALL_DIR}/include)
 else()
     add_custom_target(HepPDT) # dummy target

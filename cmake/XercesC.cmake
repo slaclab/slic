@@ -12,7 +12,7 @@ if(NOT XercesC_FOUND)
         DOWNLOAD_NO_PROGRESS ON
         BUILD_IN_SOURCE      ON
     )
-    set(XercesC_LIBRARY ${XercesC_INSTALL_DIR}/lib/libxerces-c.so CACHE FILEPATH "XercesC libraries" FORCE)
+    set(XercesC_LIBRARY ${XercesC_INSTALL_DIR}/lib/libxerces-c${CMAKE_SHARED_LIBRARY_SUFFIX} CACHE FILEPATH "XercesC libraries" FORCE)
     set(XercesC_INCLUDE_DIR ${XercesC_INSTALL_DIR}/include CACHE PATH "XercesC include dir" FORCE)
 else()
     add_custom_target(XercesC) # dummy target

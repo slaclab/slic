@@ -17,7 +17,7 @@ if(NOT GDML_FOUND)
         BUILD_COMMAND   ${CMAKE_MAKE_PROGRAM} -j4
     )
     set(GDML_DIR ${GDML_INSTALL_DIR} CACHE PATH "GDML root dir" FORCE)
-    set(GDML_LIBRARY ${GDML_INSTALL_DIR}/lib/libgdml.so CACHE FILEPATH "GDML library path" FORCE)
+    set(GDML_LIBRARY ${GDML_INSTALL_DIR}/lib/libgdml${CMAKE_SHARED_LIBRARY_SUFFIX} CACHE FILEPATH "GDML library path" FORCE)
     set(GDML_INCLUDE_DIR ${GDML_INSTALL_DIR}/include CACHE PATH "GDML inclued dir" FORCE)
 else()
     add_custom_target(GDML) # dummy target

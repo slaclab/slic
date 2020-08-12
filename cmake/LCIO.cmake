@@ -16,7 +16,7 @@ if(NOT LCIO_FOUND)
         BUILD_IN_SOURCE  ON
     )
     set(LCIO_DIR ${LCIO_INSTALL_DIR} CACHE PATH "LCIO root dir" FORCE)
-    set(LCIO_LIBRARIES ${LCIO_INSTALL_DIR}/lib/liblcio.so ${LCIO_INSTALL_DIR}/lib/libsio.so CACHE FILEPATH "LCIO libraries" FORCE)
+    set(LCIO_LIBRARIES ${LCIO_INSTALL_DIR}/lib/liblcio${CMAKE_SHARED_LIBRARY_SUFFIX} ${LCIO_INSTALL_DIR}/lib/libsio${CMAKE_SHARED_LIBRARY_SUFFIX} CACHE FILEPATH "LCIO libraries" FORCE)
     set(LCIO_INCLUDE_DIRS ${LCIO_INSTALL_DIR}/include CACHE PATH "LCIO include dirs" FORCE)
 else()
     add_custom_target(LCIO) # dummy target

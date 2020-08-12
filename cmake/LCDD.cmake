@@ -16,7 +16,7 @@ if(NOT LCDD_FOUND)
         BUILD_COMMAND  ${CMAKE_MAKE_PROGRAM} -j4
     )
     set(LCDD_DIR ${LCDD_INSTALL_DIR} CACHE PATH "LCDD root dir" FORCE)
-    set(LCDD_LIBRARY ${LCDD_INSTALL_DIR}/lib/liblcdd.so CACHE FILEPATH "LCDD library path" FORCE)
+    set(LCDD_LIBRARY ${LCDD_INSTALL_DIR}/lib/liblcdd${CMAKE_SHARED_LIBRARY_SUFFIX} CACHE FILEPATH "LCDD library path" FORCE)
     set(LCDD_INCLUDE_DIR ${LCDD_INSTALL_DIR}/include CACHE PATH "LCDD include dir" FORCE)
 else()
     add_custom_target(LCDD) # dummy target
