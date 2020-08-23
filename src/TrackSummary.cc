@@ -226,13 +226,11 @@ void TrackSummary::buildMCParticle() {
     _mcparticle->setTime(_globalTime);
 
     /* Set momentum at endpoint. */
-#ifdef MCPARTICLE_HAS_MOMENTUMATENDPOINT
     float momentumAtEndpoint[3];
     momentumAtEndpoint[0] = _momentumAtEndpoint(0) / GeV;
     momentumAtEndpoint[1] = _momentumAtEndpoint(1) / GeV;
     momentumAtEndpoint[2] = _momentumAtEndpoint(2) / GeV;
     _mcparticle->setMomentumAtEndpoint(momentumAtEndpoint);
-#endif
 
     /* Set up to date. */
     _mcParticleIsUpToDate = true;

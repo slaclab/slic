@@ -39,14 +39,19 @@ SlicApplication::~SlicApplication() {
         delete m_appMessenger;
     }
 
-    // Delete all the modules.  Only seems to work without seg fault on Linux.
-    // https://jira.slac.stanford.edu/browse/SLIC-185
-#ifdef linux 
+    // Deletion of all modules is commented out as iterating the
+    // map causes a seg fault in more recent gcc versions like 9,
+    // for unknown reasons. Should not have any effect since the
+    // application is exiting anyways and there are no modules
+    // which perform any meaningful cleanup in their destructors. --JM
+/*
+#ifdef linux
 #ifdef SLIC_LOG
     log().debug("Deleting registered modules ...");
 #endif
     ModuleRegistry::instance()->deleteModules();
 #endif
+*/
 
     // Delete the G4RunManager, which also deletes all the Geant4-related modules.
 //#ifdef SLIC_LOG
