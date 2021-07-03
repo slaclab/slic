@@ -38,32 +38,6 @@ cmake ..
 
 You should see a number of messages printed that indicate dependencies were not found and will be built.
 
-Now to build these dependencies, execute the following:
-
-```
-make &> build.log
-```
-
-We save the build to a log file for debugging in case errors occur.
-
-Now, rerun the cmake command so that dependencies are resolved:
-
-```
-cmake ..
-```
-
-You should see that all dependencies were resolved. If this is not the case, check back in your build log to see what error messages it shows.
-
-You can execute these commands to build SLIC:
-
-```
-make
-```
-
-Finally, execute this command to install SLIC to your chosen directory prefix.
-
-## Build Options
-
 There are a few cmake options that can be used for configuring SLIC:
 
 | Variable             | Default Value              | Description                           | Notes                   |
@@ -80,28 +54,21 @@ cmake -DWITH_GEANT4_UIVIS=ON -DWITH_GEANT4_VERSION=10.6.1 -DCMAKE_INSTALL_PREFIX
 
 These options should be passed the first time you execute the `cmake` command when building the application.
 
-### Specifying Dependencies
-
-You may also have one or more of SLIC's dependencies installed locally, which you can use in your build by providing CMake with their root directories.
-
-For instance, to use your own Geant4 installation, the command would be something like the following:
+Now to the dependencies and SLIC, execute the following:
 
 ```
-cmake -DGeant4_DIR=/path/to/geant4/lib64/Geant4-10.3.1/ ..
+make &> build.log
 ```
 
-This table shows the full list of dependency variables accepted by SLIC:
+We save the build to a log file for debugging in case errors occur.
 
-| Dependency | Variable    |
-| ---------- | ----------- |
-| Geant4     | Geant4_DIR  |
-| Xerces C++ | XercesC_DIR |
-| LCIO       | LCIO_DIR    |
-| HepPDT     | HEPPDT_DIR  |
-| GDML       | GDML_DIR    |
-| LCDD       | LCDD_DIR    |
+Now, you should be ready to install slic if the above completed without errors:
 
-Instructions for manually installing these dependencies are provided below.
+```
+make install
+```
+
+To test your build, follow the instructions in the next section.
 
 ## Running SLIC
 
@@ -131,6 +98,29 @@ slic -g mygeom.lcdd -i events.stdhep -m commands.mac -r 10
 
 Read the help to get an idea of the actual commands that are available.
 
+
+### Specifying Dependencies
+
+You may also have one or more of SLIC's dependencies installed locally, which you can use in your build by providing CMake with their root directories.
+
+For instance, to use your own Geant4 installation, the command would be something like the following:
+
+```
+cmake -DGeant4_DIR=/path/to/geant4/lib64/Geant4-10.3.1/ ..
+```
+
+This table shows the full list of dependency variables accepted by SLIC:
+
+| Dependency | Variable    |
+| ---------- | ----------- |
+| Geant4     | Geant4_DIR  |
+| Xerces C++ | XercesC_DIR |
+| LCIO       | LCIO_DIR    |
+| HepPDT     | HEPPDT_DIR  |
+| GDML       | GDML_DIR    |
+| LCDD       | LCDD_DIR    |
+
+Instructions for manually installing these dependencies are provided below.
 
 ## Installing Dependencies Manually
 
