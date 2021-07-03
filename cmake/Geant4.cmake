@@ -1,17 +1,37 @@
+# Enable vis and UI libraries (off by default since batch mode is most typical)
+option(WITH_GEANT4_UIVIS "Build with Geant4 UI and Vis drivers" OFF)
+
+# Set the Geant4 release version if not passed as an option
+if(NOT DEFINED WITH_GEANT4_VERSION)
+    set(WITH_GEANT4_VERSION "10.6.1")
+endif()
+
 message(STATUS "Checking for Geant4")
-find_package(Geant4 QUIET COMPONENTS vis_all ui_all)
+if(WITH_GEANT4_UIVIS)
+    find_package(Geant4 QUIET ui_all vis_all)
+else()
+    find_package(Geant4 QUIET)
+endif()
+
 if(NOT Geant4_FOUND)
-    message(STATUS "Geant4 was not found and will be installed")
-    set(Geant4_VERSION 10.6.1 CACHE STRING "Geant4 version" FORCE)
+    message(STATUS "Geant4 was not found and will be installed with version: ${WITH_GEANT4_VERSION}")
+    message(STATUS "Geant4 UI and vis components enabled: ${WITH_GEANT4_UIVIS}")
+
+    set(Geant4_VERSION ${WITH_GEANT4_VERSION} CACHE STRING "Geant4 version" FORCE)
     set(Geant4_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/Geant4)
     add_dependencies(dependencies Geant4)
     externalproject_add(
         Geant4
+        DEPENDS          XercesC
         GIT_REPOSITORY   "https://github.com/Geant4/geant4"
         GIT_TAG          v${Geant4_VERSION}
         GIT_SHALLOW      ON
         SOURCE_DIR       ${CMAKE_BINARY_DIR}/Geant4
-        CMAKE_ARGS       -DCMAKE_INSTALL_PREFIX=${Geant4_INSTALL_DIR} -DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_SYSTEM_EXPAT=OFF -DGEANT4_INSTALL_EXAMPLES=OFF
+        CMAKE_ARGS       -DCMAKE_INSTALL_PREFIX=${Geant4_INSTALL_DIR} -DGEANT4_INSTALL_DATA=ON 
+                         -DGEANT4_USE_GDML=ON -DGEANT4_USE_SYSTEM_EXPAT=OFF -DGEANT4_INSTALL_EXAMPLES=OFF 
+                         -DGEANT4_USE_OPENGL_X11=${WITH_GEANT4_UIVIS} -DGEANT4_USE_QT=${WITH_GEANT4_UIVIS}
+                         -DXERCESC_ROOT_DIR=${XercesC_INSTALL_DIR} 
+
         BUILD_COMMAND    ${CMAKE_MAKE_PROGRAM} -j4
         UPDATE_COMMAND   ""
     )
@@ -54,8 +74,8 @@ if(NOT Geant4_FOUND)
 else()
     add_custom_target(Geant4) # dummy target
     message(STATUS "Geant4 was found at: ${Geant4_DIR}")
-    #message(STATUS "Geant4 libraries: ${Geant4_LIBRARIES}")
-    #message(STATUS "Geant4 include dirs: ${Geant4_INCLUDE_DIRS}")
+    message(STATUS "Geant4 libraries: ${Geant4_LIBRARIES}")
+    message(STATUS "Geant4 include dirs: ${Geant4_INCLUDE_DIRS}")
 endif()
 
 include_directories(${Geant4_INCLUDE_DIRS})
