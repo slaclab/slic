@@ -10,6 +10,13 @@ cmake_minimum_required(VERSION 3.8)
 
 project(SLIC VERSION 6.0.1)
 
+# enable in source build since default is not writable from a non-root account
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+    set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/install" CACHE PATH "..." FORCE)
+endif()
+
+message(STATUS "SLIC will be installed to: ${CMAKE_INSTALL_PREFIX}")
+
 # minimum gcc version
 if(CMAKE_CXX_COMPILER_VERSION LESS 4.8)
     message(FATAL_ERROR "The GCC version is too old (at least 4.8 is required).")
@@ -103,8 +110,6 @@ install(FILES data/particle.tbl DESTINATION share PERMISSIONS OWNER_READ OWNER_W
 
 # configure the header which has package info
 configure_file(${PROJECT_SOURCE_DIR}/include/PackageInfo.hh.in ${PROJECT_SOURCE_DIR}/include/PackageInfo.hh)
-
-message(STATUS "SLIC will be installed to: ${CMAKE_INSTALL_PREFIX}")
 
 # debug print link libraries
 message(DEBUG "libraries")
