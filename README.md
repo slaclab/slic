@@ -9,42 +9,76 @@ SLIC is a C++ application that is built using the standard GCC compiler toolchai
 ### Required Tools
 
 * Recent gcc compiler toolchain (tested with GCC 7 on CentOS7)
-    * You cannot use the default gcc on RHE6 or similarly old distros, so you would need to install one yourself or use a dev toolset.
+    * You cannot use the default gcc on RHE6 or a similarly old distribution, so you would need to install one yourself or use a dev toolset.
     * The build is not compatible with gcc 4.8.5 now due to Geant4 updates.
-* CMake 3.8 or greater due to Geant4 build system (tested with 3.17)
+* CMake 3.8 or greater due to requirements of the Geant4 build system (tested with 3.17)
 
-### Initial Setup
+### Build Instructions
 
-You will create a build directory where all the required packages are configured and compiled.
+Start by cloning the project to a local directory.
+
+```
+mkdir /scratch && cd /scratch
+git clone https://github.com/slaclab/slic
+```
 
 Create the build directory within your slic project directory:
 
 ```
-mkdir build
+mkdir build && build
 ```
 
-All build commands will be executed from within this build directory (*not* from the slic project directory).
+The SLIC build system is able to download and install all dependencies for the project if they are not found on your system. This requires a multi-step build for the dependencies to first be downloaded and installed before SLIC itself is built.
 
-### Basic Build Instructions
-
-The SLIC build system is able to download and install all dependencies for the project if they are not found on your system.
-
-Start by executing CMake from the build dir:
+From the build dir created above execute the following:
 
 ```
-cd slic/build
-cmake -DCMAKE_INSTALL_PREFIX=/my/slic/install/dir -DGEANT4_INSTALL_DATA=ON -DINSTALL_DEPENDENCIES=ON ..
+cmake ..
 ```
 
-If no directory arguments are provided that point to locally installed packages, you will see a message stating "Some dependencies were not found."  This is not an error, but to complete the build you will need to build these dependencies and then rerun CMake so they are resolved by the build system.
+You should see a number of messages printed that indicate dependencies were not found and will be built.
 
-Now to build the dependencies, execute the following:
+Now to build these dependencies, execute the following:
+
+```
+make &> build.log
+```
+
+We save the build to a log file for debugging in case errors occur.
+
+Now, rerun the cmake command so that dependencies are resolved:
+
+```
+cmake ..
+```
+
+You should see that all dependencies were resolved. If this is not the case, check back in your build log to see what error messages it shows.
+
+You can execute these commands to build SLIC:
 
 ```
 make
 ```
 
-Once this is done, then you need to rerun `cmake ..` from the build directory.  If the dependencies all installed successfully, then the message "All dependencies were found." should print.  Now you can just type `make; make install` to complete the build using these installed dependencies.
+Finally, execute this command to install SLIC to your chosen directory prefix.
+
+## Build Options
+
+There are a few cmake options that can be used for configuring SLIC:
+
+| Variable             | Default Value              | Description                           | Notes                   |
+| -------------------- | ---------------------------| ------------------------------------- | ----------------------- |
+| WITH_GEANT4_UIVIS    | NO                         | Enable Geant4 visualization and UI    | Requires X11 and Qt     |
+| WITH_GEANT4_VERSION  | 10.6.1                     | Geant4 release tag to use             | `master` is not allowed |
+| CMAKE_INSTALL_PREFIX | ${CMAKE_BUILD_DIR}/install | Installation prefix for slic and deps | |
+
+Here is an example of all these options being used together:
+
+```
+cmake -DWITH_GEANT4_UIVIS=ON -DWITH_GEANT4_VERSION=10.6.1 -DCMAKE_INSTALL_PREFIX=/work
+```
+
+These options should be passed the first time you execute the `cmake` command when building the application.
 
 ### Specifying Dependencies
 
@@ -67,7 +101,7 @@ This table shows the full list of dependency variables accepted by SLIC:
 | GDML       | GDML_DIR    |
 | LCDD       | LCDD_DIR    |
 
-Instructions for manually installing these dependencies are given below.
+Instructions for manually installing these dependencies are provided below.
 
 ## Running SLIC
 
