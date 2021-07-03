@@ -8,7 +8,7 @@ endif()
 
 message(STATUS "Checking for Geant4")
 if(WITH_GEANT4_UIVIS)
-    find_package(Geant4 QUIET ui_all vis_all)
+    find_package(Geant4 QUIET COMPONENTS ui_all vis_all)
 else()
     find_package(Geant4 QUIET)
 endif()
