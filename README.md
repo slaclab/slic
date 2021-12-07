@@ -206,5 +206,5 @@ make -j4 install
 ```
 git clone https://github.com/slaclab/slic
 cd slic && mkdir build && cd build
-cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=../install -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so -DLCIO_DIR=/scratch/lcio/install -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.3.1/ -DGDML_DIR=/scratch/gdml/install -DHEPPDT_DIR=/scratch/HepPDT-3.04.01/install -DLCDD_DIR=/scratch/lcdd/install ..
+cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=../install -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so -DLCIO_DIR=/scratch/lcio/install -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.3.1/ -DGDML_DIR=/scratch/gdml/install -DHepPDT_DIR=/scratch/HepPDT-3.04.01/install -DLCDD_DIR=/scratch/lcdd/install ..
 ```
