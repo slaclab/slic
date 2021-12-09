@@ -77,11 +77,7 @@ set(SLIC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 include_directories(${SLIC_INCLUDE_DIR})
 
 # build user plugin library
-file(GLOB_RECURSE plugin_sources ${PROJECT_SOURCE_DIR}/plugins/*.cc)
-add_library(slicPlugins SHARED ${plugin_sources})
-target_link_libraries(slicPlugins ${Geant4_LIBRARIES})
-add_dependencies(slicPlugins dependencies) # make sure deps are built first
-install(TARGETS slicPlugins DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+add_subdirectory(plugins)
 
 # make slic depend on any external projects that were installed
 # (could be an empty target if all packages were found)
