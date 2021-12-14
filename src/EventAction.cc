@@ -36,8 +36,9 @@ void EventAction::BeginOfEventAction(const G4Event *anEvent) {
 
 void EventAction::EndOfEventAction(const G4Event *anEvent) {
 
-  /* Only execute these hooks if run was not aborted. */
-  if (!RunManager::instance()->isRunAborted()) {
+  // If either the run or event have been aborted, don't write an LCEvent.
+  if (!RunManager::instance()->isRunAborted() &&
+      !G4RunManager::GetRunManager()->GetCurrentEvent()->IsAborted()) {
 
     /* Create an empty LCEvent. */
     LcioManager::instance()->createLCEvent();
