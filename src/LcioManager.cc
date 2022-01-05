@@ -2,26 +2,26 @@
 
 // SLIC
 #include "EventSourceManager.hh"
-#include "StdHepEventSource.hh"
 #include "FileUtil.hh"
-#include "TimeUtil.hh"
-#include "PackageInfo.hh"
-#include "LcioMessenger.hh"
 #include "LcioFileNamer.hh"
-#include "SlicApplication.hh"
+#include "LcioMessenger.hh"
+#include "PackageInfo.hh"
 #include "RunManager.hh"
+#include "SlicApplication.hh"
+#include "StdHepEventSource.hh"
+#include "TimeUtil.hh"
 
 // LCDD
+#include "lcdd/core/LCDDProcessor.hh"
 #include "lcdd/hits/CalorimeterHit.hh"
 #include "lcdd/hits/TrackerHit.hh"
-#include "lcdd/core/LCDDProcessor.hh"
 #include "lcdd/util/StringUtil.hh"
 
 // LCIO
 #include "EVENT/LCIO.h"
 #include "IMPL/LCCollectionVec.h"
-#include "IOIMPL/LCFactory.h"
 #include "IO/LCWriter.h"
+#include "IOIMPL/LCFactory.h"
 #include "UTIL/LCTOOLS.h"
 #include "UTIL/lStdHep.hh"
 
@@ -29,18 +29,18 @@
 #include "G4EventManager.hh"
 #include "G4Run.hh"
 #include "G4RunManager.hh"
+#include "G4SDManager.hh"
 #include "G4TrajectoryContainer.hh"
 #include "G4VHitsCollection.hh"
-#include "G4SDManager.hh"
 
 // STL
 #include <ctime>
 
-using IMPL::LCRunHeaderImpl;
-using IMPL::LCEventImpl;
-using IMPL::LCCollectionVec;
-using EVENT::MCParticle;
 using EVENT::LCIO;
+using EVENT::MCParticle;
+using IMPL::LCCollectionVec;
+using IMPL::LCEventImpl;
+using IMPL::LCRunHeaderImpl;
 using UTIL::LCTOOLS;
 using UTIL::lStdHep;
 
@@ -50,24 +50,26 @@ namespace slic {
 
 string LcioManager::m_defaultFileName = "slicEvents";
 
-LcioManager::LcioManager() :
-        Module("LcioManager"), m_writer(NULL), m_runHdr(NULL), m_fileExistsAction(LcioManager::eFail), m_runNumber(0), m_enableDumpEvent(false), m_writerIsOpen(false), m_usingAutoname(false) {
+LcioManager::LcioManager()
+    : Module("LcioManager"), m_writer(NULL), m_runHdr(NULL),
+    m_fileExistsAction(LcioManager::eFail), m_runNumber(0),
+    m_enableDumpEvent(false), m_writerIsOpen(false), m_usingAutoname(false) {
 
-    // Initialize the Geant4 UI messenger for the LCIO.
-    m_messenger = new LcioMessenger(this);
+        // Initialize the Geant4 UI messenger for the LCIO.
+        m_messenger = new LcioMessenger(this);
 
-    // Initialize the LCIO HitsCollectionBuilder.
-    m_HCBuilder = new LcioHitsCollectionBuilder();
+        // Initialize the LCIO HitsCollectionBuilder.
+        m_HCBuilder = new LcioHitsCollectionBuilder();
 
-    // Create the LCIO writer.
-    createWriter();
+        // Create the LCIO writer.
+        createWriter();
 
-    // Create the LCIO file namer.
-    m_namer = new LcioFileNamer();
+        // Create the LCIO file namer.
+        m_namer = new LcioFileNamer();
 
-    // Set the default output file name.
-    m_filename = m_defaultFileName;
-}
+        // Set the default output file name.
+        m_filename = m_defaultFileName;
+    }
 
 LcioManager::~LcioManager() {
 
@@ -91,14 +93,18 @@ void LcioManager::openLcioFile() {
 
         // Failure mode is on, so kill the current run.
         if (m_fileExistsAction == eFail) {
-            log() << LOG::fatal << LOG::name << LOG::sep << "LCIO file already exists: " << fullFilename << LOG::done;
+            log() << LOG::fatal << LOG::name << LOG::sep
+                << "LCIO file already exists: " << fullFilename << LOG::done;
             RunManager::instance()->abortRun(SlicApplication::OUTPUT_FILE_EXISTS);
             // Deletion mode is on, so try to remove the current file.
         } else if (m_fileExistsAction == eDelete) {
             if (FileUtil::removeFile(fullFilename) != 0) {
                 // Fatal error.  File could not be removed.
-                log() << LOG::fatal << LOG::head << "Unable to delete old LCIO file: " << fullFilename << LOG::done;
-                RunManager::instance()->abortRun(SlicApplication::FAILED_DELETE_LCIO_FILE);
+                log() << LOG::fatal << LOG::head
+                    << "Unable to delete old LCIO file: " << fullFilename
+                    << LOG::done;
+                RunManager::instance()->abortRun(
+                        SlicApplication::FAILED_DELETE_LCIO_FILE);
             } else {
                 log().okay("Deleted old LCIO file: " + fullFilename);
             }
@@ -121,13 +127,14 @@ void LcioManager::openLcioFile() {
             m_writerIsOpen = true;
         }
     } else {
-        //G4Exception("", "", FatalException, "LCWriter is null.");
+        // G4Exception("", "", FatalException, "LCWriter is null.");
         log() << LOG::fatal << LOG::head << "LCWriter is null." << LOG::done;
         RunManager::instance()->abortRun();
     }
 }
 
-LcioManager::EFileExistsAction LcioManager::getFileExistsActionFromString(const string& feaStr) {
+LcioManager::EFileExistsAction
+LcioManager::getFileExistsActionFromString(const string &feaStr) {
     string s = StringUtil::toLower(feaStr);
     EFileExistsAction fea = eInvalid;
     if (s == "fail") {
@@ -143,7 +150,8 @@ LcioManager::EFileExistsAction LcioManager::getFileExistsActionFromString(const 
 
 void LcioManager::setRunNumber(int runNumber) {
     m_runNumber = runNumber;
-    log().verbose("Set starting run number <" + StringUtil::toString((int) runNumber) + ">");
+    log().verbose("Set starting run number <" +
+            StringUtil::toString((int)runNumber) + ">");
 }
 
 void LcioManager::createWriter() {
@@ -186,14 +194,15 @@ string LcioManager::getFullOutputPath(bool withExtension) {
     return fullPath;
 }
 
-void LcioManager::beginRun(const G4Run* aRun) {
+void LcioManager::beginRun(const G4Run *aRun) {
 
     // Set the G4Run counter.
-#if ( G4VERSION_NUMBER >= 1000 )
+#if (G4VERSION_NUMBER >= 1000)
     G4RunManager::GetRunManager()->GetNonConstCurrentRun()->SetRunID(m_runNumber);
 #else
     // Alternate code for backward compatibility.
-    const_cast<G4Run*>(G4RunManager::GetRunManager()->GetCurrentRun())->SetRunID(m_runNumber);
+    const_cast<G4Run *>(G4RunManager::GetRunManager()->GetCurrentRun())
+        ->SetRunID(m_runNumber);
 #endif
 
     // Automatically create LCIO output file name if option was selected.
@@ -218,12 +227,13 @@ void LcioManager::beginRun(const G4Run* aRun) {
     }
 }
 
-void LcioManager::endRun(const G4Run*) {
+void LcioManager::endRun(const G4Run *) {
 
     // Delete the LCIO run header object.
     deleteRunHeader();
 
-    // Set append mode for subsequent writes if interactive mode and the run was not aborted.
+    // Set append mode for subsequent writes if interactive mode and the run was
+    // not aborted.
     if (!RunManager::instance()->isRunAborted()) {
         // If run was aborted, writer was never opened.
         if (m_writer != 0) {
@@ -231,13 +241,14 @@ void LcioManager::endRun(const G4Run*) {
             m_writerIsOpen = false;
         }
         // Close the writer to flush it (could be reopened).
-        if (SlicApplication::instance()->getMode() == SlicApplication::eInteractive) {
+        if (SlicApplication::instance()->getMode() ==
+                SlicApplication::eInteractive) {
             m_fileExistsAction = eAppend;
         }
     }
 }
 
-void LcioManager::createRunHeader(const G4Run*) {
+void LcioManager::createRunHeader(const G4Run *) {
     // create new run header
     m_runHdr = new LCRunHeaderImpl();
 
@@ -269,24 +280,25 @@ void LcioManager::deleteRunHeader() {
 
 void LcioManager::addActiveSubdetectors() {
     LCDDProcessor::SensitiveDetectors::const_iterator iter;
-    LCDDProcessor* lcddProc = LCDDProcessor::instance();
+    LCDDProcessor *lcddProc = LCDDProcessor::instance();
 
-    for (iter = lcddProc->getSensitiveDetectorsBegin(); iter != lcddProc->getSensitiveDetectorsEnd(); iter++) {
+    for (iter = lcddProc->getSensitiveDetectorsBegin();
+            iter != lcddProc->getSensitiveDetectorsEnd(); iter++) {
         m_runHdr->addActiveSubdetector((iter->second)->GetName());
     }
 }
 
-void LcioManager::setPath(const string& path) {
+void LcioManager::setPath(const string &path) {
     log().okay("Set output directory to <" + path + ">.");
 
     m_path = path;
 }
 
-void LcioManager::setFilename(const string& filename) {
+void LcioManager::setFilename(const string &filename) {
     m_filename = filename;
 
     /* If the given filename has an extension, then remove it.
-     The LCIO library will add it automatically. */
+       The LCIO library will add it automatically. */
     size_t hasExt = filename.find(".slcio");
     if (hasExt != string::npos) {
         m_filename.replace(filename.size() - 6, 6, "");
@@ -295,10 +307,11 @@ void LcioManager::setFilename(const string& filename) {
     log().okay("Set output file name to <" + m_filename + ">.");
 }
 
-void LcioManager::setAutonameFields(const std::vector<std::string>& fields) {
+void LcioManager::setAutonameFields(const std::vector<std::string> &fields) {
     m_usingAutoname = true;
     m_currentAutonameFields.clear();
-    for (std::vector<std::string>::const_iterator it = fields.begin(); it != fields.end(); it++) {
+    for (std::vector<std::string>::const_iterator it = fields.begin();
+            it != fields.end(); it++) {
         m_currentAutonameFields.push_back(*it);
     }
 }
@@ -306,7 +319,9 @@ void LcioManager::setAutonameFields(const std::vector<std::string>& fields) {
 void LcioManager::makeAutoname() {
     std::string autoname = m_namer->makeFileName(m_currentAutonameFields);
     if (autoname.size() == 0 || autoname == "") {
-        log().warning("Autonaming returned an empty string.  Using default file name <" + m_defaultFileName + ">");
+        log().warning(
+                "Autonaming returned an empty string.  Using default file name <" +
+                m_defaultFileName + ">");
         setFilename(m_defaultFileName);
     } else {
         setFilename(autoname);
@@ -314,16 +329,17 @@ void LcioManager::makeAutoname() {
     }
 }
 
-LCEventImpl* LcioManager::createLCEvent(const G4Event* anEvent) {
+LCEventImpl *LcioManager::createLCEvent(const G4Event *anEvent) {
 
     /* Create the LCEvent and set basic parameters. */
-    LCEventImpl* lcevt = new LCEventImpl();
+    LCEventImpl *lcevt = new LCEventImpl();
     lcevt->setEventNumber(anEvent->GetEventID());
     lcevt->setRunNumber(m_runHdr->getRunNumber());
     lcevt->setDetectorName(m_runHdr->getDetectorName());
 
     /* Get the current MCParticle collection. */
-    LCCollection* mcpColl = MCParticleManager::instance()->getMCParticleCollection();
+    LCCollection *mcpColl =
+        MCParticleManager::instance()->getMCParticleCollection();
 
     if (mcpColl != 0) {
 
@@ -335,7 +351,7 @@ LCEventImpl* LcioManager::createLCEvent(const G4Event* anEvent) {
 
         /* Set the idrup. */
         int idrup = mcpColl->getParameters().getIntVal("_idrup");
-        //G4cout << "idrup = " << idrup << G4endl;
+        // G4cout << "idrup = " << idrup << G4endl;
         if (idrup != 0) {
             lcevt->parameters().setValue("_idrup", idrup);
         }
@@ -350,11 +366,12 @@ LCEventImpl* LcioManager::createLCEvent(const G4Event* anEvent) {
     return lcevt;
 }
 
-LCEventImpl* LcioManager::createLCEvent() {
-    return createLCEvent(G4EventManager::GetEventManager()->GetNonconstCurrentEvent());
+LCEventImpl *LcioManager::createLCEvent() {
+    return createLCEvent(
+            G4EventManager::GetEventManager()->GetNonconstCurrentEvent());
 }
 
-void LcioManager::endEvent(const G4Event*) {
+void LcioManager::endEvent(const G4Event *) {
 
     // create HC in current LCEvent from current G4Event using builder
     createHitsCollections();
@@ -383,15 +400,20 @@ void LcioManager::setEventTimeStamp() {
 }
 
 void LcioManager::createHitsCollections() {
-    m_HCBuilder->createHitCollectionsFromEvent(G4EventManager::GetEventManager()->GetNonconstCurrentEvent(), m_currentLCEvent);
+    m_HCBuilder->createHitCollectionsFromEvent(
+            G4EventManager::GetEventManager()->GetNonconstCurrentEvent(),
+            m_currentLCEvent);
 }
 
-void LcioManager::addCollection(EVENT::LCEvent* event, EVENT::LCCollection* collection, const std::string& collectionName) {
+void LcioManager::addCollection(EVENT::LCEvent *event,
+        EVENT::LCCollection *collection,
+        const std::string &collectionName) {
     event->addCollection(collection, collectionName);
 }
 
-void LcioManager::addCollection(EVENT::LCCollection* collection, const std::string& collectionName) {
+void LcioManager::addCollection(EVENT::LCCollection *collection,
+        const std::string &collectionName) {
     getCurrentLCEvent()->addCollection(collection, collectionName);
 }
 
-}
+} // namespace slic

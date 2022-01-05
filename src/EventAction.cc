@@ -1,21 +1,21 @@
 #include "EventAction.hh"
 
 // LCDD
-#include "lcdd/util/StringUtil.hh"
 #include "lcdd/detectors/CurrentTrackState.hh"
+#include "lcdd/util/StringUtil.hh"
 
 // SLIC
-#include "EventSourceManager.hh"
 #include "EventMessenger.hh"
+#include "EventSourceManager.hh"
 #include "LcioManager.hh"
 #include "MCParticleManager.hh"
 #include "RunManager.hh"
 #include "TrackManager.hh"
 
 // Geant4
+#include "G4Event.hh"
 #include "G4RunManager.hh"
 #include "G4SDManager.hh"
-#include "G4Event.hh"
 
 namespace slic {
 
@@ -36,8 +36,9 @@ void EventAction::BeginOfEventAction(const G4Event* anEvent) {
 
 void EventAction::EndOfEventAction(const G4Event *anEvent) {
 
-    /* Only execute these hooks if run was not aborted. */
-    if (!RunManager::instance()->isRunAborted()) {
+    // If either the run or event have been aborted, don't write an LCEvent.
+    if (!RunManager::instance()->isRunAborted() &&
+            !G4RunManager::GetRunManager()->GetCurrentEvent()->IsAborted()) {
 
         /* Create an empty LCEvent. */
         LcioManager::instance()->createLCEvent();
@@ -66,8 +67,8 @@ void EventAction::printEndEventMessage(const G4Event *anEvent) {
 }
 
 EventAction* EventAction::getEventAction() {
-    const EventAction* ea = static_cast<const EventAction*>(G4RunManager::GetRunManager()->GetUserEventAction());
-    return const_cast<EventAction*>(ea);
+    const EventAction* ea = static_cast<const EventAction *>(G4RunManager::GetRunManager()->GetUserEventAction());
+    return const_cast<EventAction *>(ea);
 }
 
 void EventAction::stopEventTimer() {
@@ -88,7 +89,5 @@ void EventAction::startEventTimer() {
     }
 }
 
-void EventAction::enableEventTimer(bool et) {
-    m_enableEventTimer = et;
-}
-}
+void EventAction::enableEventTimer(bool et) { m_enableEventTimer = et; }
+} // namespace slic
