@@ -19,7 +19,7 @@
 
 namespace slic {
 
-EventAction::EventAction() : 
+EventAction::EventAction() :
         G4UserEventAction(), Module("EventAction", false), m_enableEventTimer(false) {
     m_messenger = new EventMessenger();
 }
@@ -66,8 +66,8 @@ void EventAction::printEndEventMessage(const G4Event *anEvent) {
     log() << LOG::okay << ">>>> EndEvent <" + StringUtil::toString(anEvent->GetEventID()) + ">" << LOG::endl << LOG::done;
 }
 
-EventAction *EventAction::getEventAction() {
-    const EventAction *ea = static_cast<const EventAction *>(G4RunManager::GetRunManager()->GetUserEventAction());
+EventAction* EventAction::getEventAction() {
+    const EventAction* ea = static_cast<const EventAction *>(G4RunManager::GetRunManager()->GetUserEventAction());
     return const_cast<EventAction *>(ea);
 }
 
