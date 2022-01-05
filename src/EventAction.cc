@@ -67,8 +67,8 @@ void EventAction::printEndEventMessage(const G4Event *anEvent) {
 }
 
 EventAction* EventAction::getEventAction() {
-    const EventAction* ea = static_cast<const EventAction *>(G4RunManager::GetRunManager()->GetUserEventAction());
-    return const_cast<EventAction *>(ea);
+    const EventAction* ea = static_cast<const EventAction*>(G4RunManager::GetRunManager()->GetUserEventAction());
+    return const_cast<EventAction*>(ea);
 }
 
 void EventAction::stopEventTimer() {
