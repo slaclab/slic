@@ -19,16 +19,15 @@
 
 namespace slic {
 
-EventAction::EventAction()
-    : G4UserEventAction(), Module("EventAction", false),
-    m_enableEventTimer(false) {
-        m_messenger = new EventMessenger();
-    }
+EventAction::EventAction() : 
+        G4UserEventAction(), Module("EventAction", false), m_enableEventTimer(false) {
+    m_messenger = new EventMessenger();
+}
 
 EventAction::~EventAction() {
 }
 
-void EventAction::BeginOfEventAction(const G4Event *anEvent) {
+void EventAction::BeginOfEventAction(const G4Event* anEvent) {
     // Reset current track state.
     CurrentTrackState::setCurrentTrackID(-1);
 
@@ -45,8 +44,7 @@ void EventAction::EndOfEventAction(const G4Event *anEvent) {
         LcioManager::instance()->createLCEvent();
 
         /* Save track information to MCParticle collection in LCIO output event. */
-        TrackManager::instance()->saveTrackSummaries(
-                anEvent, LcioManager::instance()->getCurrentLCEvent());
+        TrackManager::instance()->saveTrackSummaries(anEvent, LcioManager::instance()->getCurrentLCEvent());
 
         /* End of event processing for the current event generator. */
         EventSourceManager::instance()->endEvent(anEvent);
@@ -65,15 +63,11 @@ void EventAction::EndOfEventAction(const G4Event *anEvent) {
 }
 
 void EventAction::printEndEventMessage(const G4Event *anEvent) {
-    log() << LOG::okay
-        << ">>>> EndEvent <" + StringUtil::toString(anEvent->GetEventID()) + ">"
-        << LOG::endl
-        << LOG::done;
+    log() << LOG::okay << ">>>> EndEvent <" + StringUtil::toString(anEvent->GetEventID()) + ">" << LOG::endl << LOG::done;
 }
 
 EventAction *EventAction::getEventAction() {
-    const EventAction *ea = static_cast<const EventAction *>(
-            G4RunManager::GetRunManager()->GetUserEventAction());
+    const EventAction *ea = static_cast<const EventAction *>(G4RunManager::GetRunManager()->GetUserEventAction());
     return const_cast<EventAction *>(ea);
 }
 
