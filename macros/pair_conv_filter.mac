@@ -1,0 +1,17 @@
+# Set the LCDD geometry file URL
+/lcdd/url <detector_name>.lcdd
+
+/run/initialize
+
+# Set the parth to the file containing the events to filter
+/generator/filename <input_file>.stdhep 
+
+# Load the pair conv plugin
+/slic/plugins/load PairConvFilter
+
+# Set the output file name
+/lcio/filename <output_file>.slcio
+/lcio/fileExists delete
+
+# Specify the number of events to process.
+/run/beamOn 1000
