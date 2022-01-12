@@ -13,7 +13,10 @@ if(NOT GDML_FOUND)
         UPDATE_COMMAND  ""
         PATCH_COMMAND   ""
         SOURCE_DIR      "${CMAKE_BINARY_DIR}/gdml"
-        CMAKE_ARGS      -DCMAKE_INSTALL_PREFIX=${GDML_INSTALL_DIR} -DXercesC_LIBRARY=${XercesC_LIBRARY} -DXercesC_INCLUDE_DIR=${XercesC_INCLUDE_DIR} -DGeant4_DIR=${Geant4_DIR}
+        CMAKE_ARGS      -DCMAKE_INSTALL_PREFIX=${GDML_INSTALL_DIR} 
+                        -DXercesC_LIBRARY=${XercesC_LIBRARY} -DXercesC_INCLUDE_DIR=${XercesC_INCLUDE_DIR} 
+                        -DGeant4_DIR=${Geant4_DIR}
+                        -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} -DCMAKE_CC_COMPILER=${CMAKE_CC_COMPILER}
         BUILD_COMMAND   ${CMAKE_MAKE_PROGRAM} -j4
     )
     set(GDML_DIR ${GDML_INSTALL_DIR} CACHE PATH "GDML root dir" FORCE)

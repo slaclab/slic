@@ -31,12 +31,12 @@ if(NOT Geant4_FOUND)
                          -DGEANT4_USE_GDML=ON -DGEANT4_USE_SYSTEM_EXPAT=OFF -DGEANT4_INSTALL_EXAMPLES=OFF 
                          -DGEANT4_USE_OPENGL_X11=${WITH_GEANT4_UIVIS} -DGEANT4_USE_QT=${WITH_GEANT4_UIVIS}
                          -DXERCESC_ROOT_DIR=${XercesC_INSTALL_DIR} 
+                         -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} -DCMAKE_CC_COMPILER=${CMAKE_CC_COMPILER}
 
         BUILD_COMMAND    ${CMAKE_MAKE_PROGRAM} -j4
         UPDATE_COMMAND   ""
     )
     # vis options left out for now
-    # -DGEANT4_USE_OPENGL_X11=${GEANT4_USE_OPENGL_X11} -DGEANT4_USE_QT=${GEANT4_USE_QT}
     set(Geant4_DIR ${Geant4_INSTALL_DIR}/lib/Geant4-${Geant4_VERSION} CACHE PATH "Geant4 install dir" FORCE)
     set(Geant4_INCLUDE_DIRS ${Geant4_INSTALL_DIR}/include/Geant4 CACHE PATH "Geant4 include dirs" FORCE)
     # list of Geant4 libraries (don't know another way to do this since we need this info before G4 is actually built & installed)
