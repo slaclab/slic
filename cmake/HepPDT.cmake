@@ -12,7 +12,7 @@ if(NOT HepPDT_FOUND)
         SOURCE_DIR        "${CMAKE_BINARY_DIR}/HepPDT"
         UPDATE_COMMAND    ""
         PATCH_COMMAND     ""
-        CONFIGURE_COMMAND ./configure --prefix=${HepPDT_INSTALL_DIR}
+        CONFIGURE_COMMAND CC=${CMAKE_CC_COMPILER} && CXX=${CMAKE_CXX_COMPILER} && ./configure --prefix=${HepPDT_INSTALL_DIR}
         BUILD_IN_SOURCE   ON
     )
     set(HepPDT_DIR ${HepPDT_INSTALL_DIR})
