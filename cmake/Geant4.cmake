@@ -32,6 +32,7 @@ if(NOT Geant4_FOUND)
                          -DGEANT4_USE_OPENGL_X11=${WITH_GEANT4_UIVIS} -DGEANT4_USE_QT=${WITH_GEANT4_UIVIS}
                          -DXERCESC_ROOT_DIR=${XercesC_INSTALL_DIR} 
                          -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} -DCMAKE_CC_COMPILER=${CMAKE_CC_COMPILER}
+                         -DCMAKE_INSTALL_LIBDIR=${Geant4_INSTALL_DIR}/lib
 
         BUILD_COMMAND    ${CMAKE_MAKE_PROGRAM} -j4
         UPDATE_COMMAND   ""
