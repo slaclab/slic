@@ -8,7 +8,7 @@
 # minimum version of CMake, which is determined by Geant4's requirements
 cmake_minimum_required(VERSION 3.8)
 
-project(SLIC VERSION 6.0.1)
+project(SLIC VERSION 6.1.0)
 
 # enable in source build since default is not writable from a non-root account
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
