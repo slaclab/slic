@@ -78,7 +78,7 @@ class EventAction: public G4UserEventAction, public Module, public PluginManager
          * Print the end of event message.
          * @param[in] anEvent The Geant4 event.
          */
-        void printEndEventMessage(const G4Event *anEvent);
+        //void printEndEventMessage(const G4Event *anEvent);
 
     private:
 
