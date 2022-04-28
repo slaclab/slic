@@ -27,7 +27,7 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction() {
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent) {
 
     /* Print begin of event message. */
-    printBeginEventMessage(anEvent);
+    //printBeginEventMessage(anEvent);
 
     /* Reset the TrackManager's state from previous event. */
     TrackManager::instance()->reset();
@@ -55,7 +55,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent) {
     m_pluginManager->generatePrimary(anEvent);
 }
 
-void PrimaryGeneratorAction::printBeginEventMessage(G4Event* anEvent) {
+/*void PrimaryGeneratorAction::printBeginEventMessage(G4Event* anEvent) {
     log() << LOG::okay << ">>>> BeginEvent <" << StringUtil::toString(anEvent->GetEventID()) << ">" << LOG::done;
-}
+}*/
 }

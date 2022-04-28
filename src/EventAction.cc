@@ -59,12 +59,13 @@ void EventAction::EndOfEventAction(const G4Event *anEvent) {
     stopEventTimer();
 
     /* Print the end event message. */
-    printEndEventMessage(anEvent);
+    //printEndEventMessage(anEvent);
 }
 
+/*
 void EventAction::printEndEventMessage(const G4Event *anEvent) {
-    log() << LOG::okay << ">>>> EndEvent <" + StringUtil::toString(anEvent->GetEventID()) + ">" << LOG::endl << LOG::done;
-}
+    //log() << LOG::okay << ">>>> EndEvent <" + StringUtil::toString(anEvent->GetEventID()) + ">" << LOG::endl << LOG::done;
+}*/
 
 EventAction* EventAction::getEventAction() {
     const EventAction* ea = static_cast<const EventAction*>(G4RunManager::GetRunManager()->GetUserEventAction());
