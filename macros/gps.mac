@@ -1,6 +1,0 @@
-/generator/select gps
-/gps/verbose 2
-/gps/particle mu-
-/gps/energy 10 GeV
-/gps/position 0 0 0
-/gps/direction 0 1 0

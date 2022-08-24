@@ -1,5 +1,0 @@
-find_path(HepPDT_INCLUDE_DIR HepPDT/Version.hh ${HepPDT_DIR}/include)
-find_library(HepPDT_LIBRARY HepPDT ${HepPDT_DIR}/lib)
-find_library(HepPID_LIBRARY HepPID ${HepPDT_DIR}/lib)
-set(HepPDT_LIBRARIES ${HepPDT_LIBRARY} ${HepPID_LIBRARY})
-find_package_handle_standard_args(HepPDT DEFAULT_MSG HepPDT_LIBRARIES HepPDT_INCLUDE_DIR)

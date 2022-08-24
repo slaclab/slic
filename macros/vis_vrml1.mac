@@ -1,5 +1,0 @@
-/vis/scene/create
-/vis/scene/add/volume
-/vis/open VRML1FILE
-/vis/viewer/set/culling invisible
-/vis/viewer/flush
