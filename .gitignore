@@ -11,3 +11,7 @@
 
 # install dirs
 /*install/
+
+# doxygen output
+doc/
+
