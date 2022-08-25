@@ -102,12 +102,11 @@ class PluginManager {
         void generatePrimary(G4Event* anEvent);
 
         /**
-         *
-         * Activate the track classification hook of registered plugins.
-         * @param aTrack The Geant4 track.
-         *
          * @brief Return a track classification from the user plugins that have stacking actions.
+         * Activate the track classification hook of registered plugins.
          *
+         * @param aTrack The Geant4 track.
+         * 
          * @note
          * The current classification will only be updated if a plugin actually provides a different classification
          * than the current one.

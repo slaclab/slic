@@ -27,7 +27,7 @@ class TimeUtil {
             return s;
         }
 
-        // FIXME: This has only millisecond accuracy.
+        //! \todo FIXME: This has only millisecond accuracy.
         static long64 getTimeNS() {
             long64 t_sec = (long64) time(NULL);
             long64 t_ns = t_sec * ((long64) 1e9);
