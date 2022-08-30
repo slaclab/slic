@@ -286,18 +286,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8hh_source.html#l00054">54</a> of file <a class="el" href="SlicApplication_8hh_source.html">SlicApplication.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                       {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa8d5cc65fc46eeb64a7660dfee4215b35">OKAY</a> = 0, <a class="code" href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa8216aa4b3a817cdf8c15ed32aa946e83">UNKNOWN_ERROR</a>,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa1918b005c3a338a2b213077aeb2ffa03">UNKNOWN_EXCEPTION</a>,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa9dd0da15b9e2f37e8394fdf2d5e67466">STD_EXCEPTION</a>,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa2bc735e33f43b6c65999da48e541dcb1">OUTPUT_FILE_EXISTS</a>,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa8cb4e564cf38ac7675d5d2296f0c5d34">FAILED_DELETE_LCIO_FILE</a>,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <a class="code" href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa1077ae8fdd5b3f65de38c2a66b931d98">EVENT_UNDERFLOW</a>,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa392e2a35e8b50e671ad079d0296b5da4">INVALID_GEOMETRY_SETUP</a>,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa5b7224f763c220331c2276f19b07f31c">GENERATOR_NOT_SETUP</a>,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05faebe297b5800b619a7aaaf5a55b154ef1">ERROR_CODE_SIZE</a></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        };</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a0db98dd9b3abe8bd12543de8027adeae"></a>
@@ -318,10 +307,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8hh_source.html#l00047">47</a> of file <a class="el" href="SlicApplication_8hh_source.html">SlicApplication.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                      {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <a class="code" href="classslic_1_1SlicApplication.html#a0db98dd9b3abe8bd12543de8027adeaeaec652f03c6da6e6973ed9272c24f05ee">eBatch</a> = 1, <a class="code" href="classslic_1_1SlicApplication.html#a0db98dd9b3abe8bd12543de8027adeaeaecbee4432e8814d2f70f614f4dc3c547">eInteractive</a> = 2</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        };</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -342,13 +328,7 @@ Additional Inherited Members</h2></td></tr>
 <p>The constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00030">30</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                 :</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">Module</a>(<span class="stringliteral">&quot;SlicApplication&quot;</span>, <span class="keyword">false</span>), <a class="code" href="classslic_1_1SlicApplication.html#a26b07abe623759bf4419f8b7169241af">m_appMessenger</a>(0), <a class="code" href="classslic_1_1SlicApplication.html#a0cca55a8dc88387aed0c1f63bfe251d6">m_runManager</a>(0), <a class="code" href="classslic_1_1SlicApplication.html#a5b8b5c9cd6abaf3bacbc55a356952e3f">m_mode</a>(<a class="code" href="classslic_1_1SlicApplication.html#a0db98dd9b3abe8bd12543de8027adeaeaec652f03c6da6e6973ed9272c24f05ee">SlicApplication::eBatch</a>), <a class="code" href="classslic_1_1SlicApplication.html#a0d0f7c3fc41c33807b5b69aac9f57894">m_returnCode</a>(0), <a class="code" href="classslic_1_1SlicApplication.html#a217245eec26f69d0c5b6e991937de95a">m_isInitialized</a>(<span class="keyword">false</span>), <a class="code" href="classslic_1_1SlicApplication.html#ad9f94e2ad42aa664df4516eef35472e7">m_geant4VersionString</a>(0) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a04f1b071f494983129aefb83ff7e90bd">LOG::head</a> &lt;&lt; <span class="stringliteral">&quot;SLIC is starting.&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::head</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, and <a class="el" href="LogStream_8hh_source.html#l00033">LOG::okay</a>.</p>
 
 </div>
@@ -378,38 +358,7 @@ Additional Inherited Members</h2></td></tr>
 <p>The destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00037">37</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                  {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classslic_1_1SlicApplication.html#a26b07abe623759bf4419f8b7169241af">m_appMessenger</a> != 0) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">delete</span> <a class="code" href="classslic_1_1SlicApplication.html#a26b07abe623759bf4419f8b7169241af">m_appMessenger</a>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Deletion of all modules is commented out as iterating the</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// map causes a seg fault in more recent gcc versions like 9,</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// for unknown reasons. Should not have any effect since the</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// application is exiting anyways and there are no modules</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// which perform any meaningful cleanup in their destructors. --JM</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">#ifdef linux</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">    log().debug(&quot;Deleting registered modules ...&quot;);</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">#endif</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">    ModuleRegistry::instance()-&gt;deleteModules();</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">#endif</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// Delete the G4RunManager, which also deletes all the Geant4-related modules.</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">//#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">//    log().debug(&quot;Deleting G4RunManager ...&quot;);</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">//#endif</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">//    delete G4RunManager::GetRunManager();</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a04f1b071f494983129aefb83ff7e90bd">LOG::head</a> &lt;&lt; <span class="stringliteral">&quot;SLIC is exiting.&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <span class="stringliteral">&quot;return code: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1SlicApplication.html#a080a94c60b6a6f3ec372e166d1b3fe97">getReturnCode</a>() &lt;&lt; <span class="stringliteral">&quot; =&gt; &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1SlicApplication.html#aac1391e2bdf64dd706aca72bc38343e9">getErrorCodeString</a>(<a class="code" href="classslic_1_1SlicApplication.html#a080a94c60b6a6f3ec372e166d1b3fe97">getReturnCode</a>()) &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, <a class="el" href="SlicApplication_8hh_source.html#l00182">SlicApplication::getErrorCodeString()</a>, <a class="el" href="SlicApplication_8cc_source.html#l00145">SlicApplication::getReturnCode()</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::head</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="SlicApplication_8hh_source.html#l00218">SlicApplication::m_appMessenger</a>, and <a class="el" href="LogStream_8hh_source.html#l00033">LOG::okay</a>.</p>
 
 </div>
@@ -432,10 +381,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Get the base name of the binary (file name only). </p><dl class="section return"><dt>Returns</dt><dd>The base name of the binary. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00141">141</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                                                          {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classslic_1_1SlicApplication.html#a90faea8c67a6b1697747b5dff0347696">m_binarybasename</a>;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="SlicApplication_8hh_source.html#l00236">SlicApplication::m_binarybasename</a>.</p>
 
 </div>
@@ -457,10 +403,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Get the name of the binary, as it was invoked from the command line. </p><dl class="section return"><dt>Returns</dt><dd>The name of the binary. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00137">137</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                                      {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classslic_1_1SlicApplication.html#a47cfc48659e63ea4d4b418fb24fe5e8a">m_binaryname</a>;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="SlicApplication_8hh_source.html#l00235">SlicApplication::m_binaryname</a>.</p>
 
 </div>
@@ -497,14 +440,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The string representation of the error code. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8hh_source.html#l00182">182</a> of file <a class="el" href="SlicApplication_8hh_source.html">SlicApplication.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                                               {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">if</span> (errorCode &gt; (<a class="code" href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05faebe297b5800b619a7aaaf5a55b154ef1">ERROR_CODE_SIZE</a> - 1)) {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed">LOG::error</a> &lt;&lt; <span class="stringliteral">&quot;invalid error code requested: &quot;</span> &lt;&lt; errorCode &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> std::exception();</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            }</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="namespaceslic.html#aa2cbb1bf166ea8e2b61d497ac3840094">ErrorCodeStrings</a>[errorCode];</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, <a class="el" href="LogStream_8hh_source.html#l00033">LOG::error</a>, <a class="el" href="SlicApplication_8hh_source.html#l00063">SlicApplication::ERROR_CODE_SIZE</a>, <a class="el" href="SlicApplication_8hh_source.html#l00022">slic::ErrorCodeStrings</a>, and <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicApplication_8cc_source.html#l00037">SlicApplication::~SlicApplication()</a>.</p>
@@ -528,10 +464,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Get the run mode, interactive or batch. </p><dl class="section return"><dt>Returns</dt><dd>The run mode. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00160">160</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                                                       {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classslic_1_1SlicApplication.html#a5b8b5c9cd6abaf3bacbc55a356952e3f">m_mode</a>;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="SlicApplication_8hh_source.html#l00226">SlicApplication::m_mode</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicApplication_8cc_source.html#l00174">SlicApplication::run()</a>.</p>
@@ -555,10 +488,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Get the return code. </p><dl class="section return"><dt>Returns</dt><dd>The return code. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00145">145</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                         {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classslic_1_1SlicApplication.html#a0d0f7c3fc41c33807b5b69aac9f57894">m_returnCode</a>;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="SlicApplication_8hh_source.html#l00229">SlicApplication::m_returnCode</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicMain_8cc_source.html#l00020">SlicMain::main()</a>, and <a class="el" href="SlicApplication_8cc_source.html#l00037">SlicApplication::~SlicApplication()</a>.</p>
@@ -582,10 +512,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Return SLIC's <a class="el" href="classslic_1_1RunManager.html" title="Extension of G4RunManager.">RunManager</a> instance. </p><dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classslic_1_1RunManager.html" title="Extension of G4RunManager.">RunManager</a> instance. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00170">170</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                           {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classslic_1_1SlicApplication.html#a0cca55a8dc88387aed0c1f63bfe251d6">m_runManager</a>;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="SlicApplication_8hh_source.html#l00223">SlicApplication::m_runManager</a>.</p>
 
 </div>
@@ -617,44 +544,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classslic_1_1Module.html#a6365dca5a7d8ddb694726a53b55a4c27">Module</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00081">81</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                 {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classslic_1_1SlicApplication.html#a217245eec26f69d0c5b6e991937de95a">m_isInitialized</a>) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="comment">// Print the SLIC splash screen.</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="classslic_1_1SlicApplication.html#ab1e0f1f61d5db248cee628ec811e94f4">printSplashScreen</a>();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">// Initialize the application messenger.</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="classslic_1_1SlicApplication.html#a26b07abe623759bf4419f8b7169241af">m_appMessenger</a> = <span class="keyword">new</span> SlicApplicationMessenger(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="comment">// Create a new RunManager.</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <a class="code" href="classslic_1_1SlicApplication.html#a0cca55a8dc88387aed0c1f63bfe251d6">m_runManager</a> = <span class="keyword">new</span> RunManager();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">PhysicsListManager::instance</a>();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">// Initialize the LcioManager.</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">LcioManager::instance</a>();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="comment">// Initialize the magnetic field messenger.</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">FieldManager::instance</a>();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment">// Setup the LCDD subsystem.</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="classslic_1_1SlicApplication.html#aeb944929dab61c895c82453b15d914d0">initializeLCDD</a>();</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">// Initialize the tracker manager.</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">TrackManager::instance</a>();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">// Initialize the MCParticle manager.</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">MCParticleManager::instance</a>();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="comment">// Initialize visualization.</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="classslic_1_1SlicApplication.html#a340dc2a6ff55d51e5603528087b39752">initializeVis</a>();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="comment">// Set state variable.</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="classslic_1_1SlicApplication.html#a217245eec26f69d0c5b6e991937de95a">m_isInitialized</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>().<a class="code" href="classslic_1_1LogStream.html#ae11936436b759dd1967dad44753a1910">warning</a>(<span class="stringliteral">&quot;Call to SlicApplication::initialize() was ignored.  SLIC is already initialized!&quot;</span>);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="SlicApplication_8cc_source.html#l00128">SlicApplication::initializeLCDD()</a>, <a class="el" href="SlicApplication_8cc_source.html#l00119">SlicApplication::initializeVis()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; TrackManager &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; PhysicsListManager &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; MCParticleManager &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; LcioManager &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; FieldManager &gt;::instance()</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="SlicApplication_8hh_source.html#l00218">SlicApplication::m_appMessenger</a>, <a class="el" href="SlicApplication_8hh_source.html#l00232">SlicApplication::m_isInitialized</a>, <a class="el" href="SlicApplication_8hh_source.html#l00223">SlicApplication::m_runManager</a>, <a class="el" href="SlicApplication_8cc_source.html#l00203">SlicApplication::printSplashScreen()</a>, and <a class="el" href="LogStream_8hh_source.html#l00254">LogStream::warning()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicMain_8cc_source.html#l00020">SlicMain::main()</a>, and <a class="el" href="SlicApplication_8cc_source.html#l00174">SlicApplication::run()</a>.</p>
@@ -695,18 +585,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00069">69</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                                      {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// Set the name and basename of slic&#39;s binary from the command line arguments.</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classslic_1_1SlicApplication.html#a47cfc48659e63ea4d4b418fb24fe5e8a">m_binaryname</a> = std::string(argv[0]);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classslic_1_1SlicApplication.html#a98484ece9d81cec3c4eff71d58194a5f">setBinaryBasename</a>();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Process arguments using the CommandLineProcessor.</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    CommandLineProcessor* cmd = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">CommandLineProcessor::instance</a>();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    cmd-&gt;process(argc, argv);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="classslic_1_1SlicApplication.html#a64f52a473a9e46c05c823af9d4118de9">m_ui</a> = <span class="keyword">new</span> G4UIExecutive(argc, argv);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; CommandLineProcessor &gt;::instance()</a>, <a class="el" href="SlicApplication_8hh_source.html#l00235">SlicApplication::m_binaryname</a>, <a class="el" href="SlicApplication_8hh_source.html#l00215">SlicApplication::m_ui</a>, <a class="el" href="CommandLineProcessor_8cc_source.html#l00030">CommandLineProcessor::process()</a>, and <a class="el" href="SlicApplication_8cc_source.html#l00153">SlicApplication::setBinaryBasename()</a>.</p>
 
 </div>
@@ -736,11 +615,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Register the LCDDDetectorConstruction. </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00128">128</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                     {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">// LCDD geometry subsystem.</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <a class="code" href="classslic_1_1SlicApplication.html#a0cca55a8dc88387aed0c1f63bfe251d6">m_runManager</a>-&gt;SetUserInitialization(<span class="keyword">new</span> LCDDDetectorConstruction());</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="SlicApplication_8hh_source.html#l00223">SlicApplication::m_runManager</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicApplication_8cc_source.html#l00081">SlicApplication::initialize()</a>.</p>
@@ -798,14 +673,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Initialize the Geant4 visualization subsystem. </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00119">119</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;{</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    G4VisExecutive* vis = <span class="keyword">new</span> G4VisExecutive();</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    vis-&gt;Initialize();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="comment">// VRML writer within SLIC.</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">new</span> VRML2WriterMessenger();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">Referenced by <a class="el" href="SlicApplication_8cc_source.html#l00081">SlicApplication::initialize()</a>.</p>
 
 </div>
@@ -863,14 +731,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Print SLIC's splash screen. </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00203">203</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                        {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <span class="stringliteral">&quot;*************************************************************&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <span class="stringliteral">&quot; Application : &quot;</span> &lt;&lt; PackageInfo::getFullName() &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; PackageInfo::getShortName() &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <span class="stringliteral">&quot; Version : &quot;</span> &lt;&lt; PackageInfo::getVersion() &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <span class="stringliteral">&quot;*************************************************************&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00033">LOG::always</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, and <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicApplication_8cc_source.html#l00081">SlicApplication::initialize()</a>.</p>
@@ -912,10 +773,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Print the usage by calling the <a class="el" href="classslic_1_1CommandLineProcessor.html" title="Command line processor for SLIC that uses getopt.">CommandLineProcessor</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00211">211</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                                 {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">CommandLineProcessor::instance</a>()-&gt;printUsage();</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; CommandLineProcessor &gt;::instance()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicApplicationMessenger_8cc_source.html#l00017">SlicApplicationMessenger::SetNewValue()</a>.</p>
@@ -939,10 +797,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Print the version string. </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00199">199</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                                   {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">CommandLineProcessor::instance</a>()-&gt;printVersion();</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; CommandLineProcessor &gt;::instance()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicApplicationMessenger_8cc_source.html#l00017">SlicApplicationMessenger::SetNewValue()</a>.</p>
@@ -966,31 +821,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Run the application. </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00174">174</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                          {</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="comment">// Initialize if not already.</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classslic_1_1SlicApplication.html#a217245eec26f69d0c5b6e991937de95a">m_isInitialized</a>) {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <a class="code" href="classslic_1_1SlicApplication.html#a25a40b6614565f755233080a384c35f1">initialize</a>();</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="comment">// Retrieve the list of Geant4 commands created by CommandLineProcessor.</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    CommandQueue* q = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">CommandLineProcessor::instance</a>()-&gt;getCommandQueue();</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="comment">// Print, execute, and clear the CommandQueue.</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>().<a class="code" href="classslic_1_1LogStream.html#a06735f200dee746c010c3190dbe501a9">verbose</a>(<span class="stringliteral">&quot;Printing the Geant4 command queue ...&quot;</span>);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    q-&gt;printOut();</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    q-&gt;execute();</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    q-&gt;<a class="code" href="classslic_1_1LogStream.html#a1e206067519c08855c28e96fe599dee6">clear</a>();</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="comment">// Start the UI session if in interactive mode.</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classslic_1_1SlicApplication.html#a65e30bd59370bb6a2cbf86a5d104406f">getMode</a>() == <a class="code" href="classslic_1_1SlicApplication.html#a0db98dd9b3abe8bd12543de8027adeaeaecbee4432e8814d2f70f614f4dc3c547">eInteractive</a>) {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>().<a class="code" href="classslic_1_1LogStream.html#a06735f200dee746c010c3190dbe501a9">verbose</a>(<span class="stringliteral">&quot;Starting interactive session ...&quot;</span>);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <a class="code" href="classslic_1_1SlicApplication.html#a64f52a473a9e46c05c823af9d4118de9">m_ui</a>-&gt;SessionStart();</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keyword">delete</span> <a class="code" href="classslic_1_1SlicApplication.html#a64f52a473a9e46c05c823af9d4118de9">m_ui</a>;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandQueue_8hh_source.html#l00086">CommandQueue::clear()</a>, <a class="el" href="SlicApplication_8hh_source.html#l00048">SlicApplication::eInteractive</a>, <a class="el" href="CommandQueue_8cc_source.html#l00017">CommandQueue::execute()</a>, <a class="el" href="SlicApplication_8cc_source.html#l00160">SlicApplication::getMode()</a>, <a class="el" href="SlicApplication_8cc_source.html#l00081">SlicApplication::initialize()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; CommandLineProcessor &gt;::instance()</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="SlicApplication_8hh_source.html#l00232">SlicApplication::m_isInitialized</a>, <a class="el" href="SlicApplication_8hh_source.html#l00215">SlicApplication::m_ui</a>, <a class="el" href="CommandQueue_8cc_source.html#l00007">CommandQueue::printOut()</a>, and <a class="el" href="LogStream_8hh_source.html#l00238">LogStream::verbose()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicMain_8cc_source.html#l00020">SlicMain::main()</a>.</p>
@@ -1020,12 +851,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00164">164</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                            {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">if</span> (abort) {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        G4RunManager::GetRunManager()-&gt;AbortRun(abort);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a98484ece9d81cec3c4eff71d58194a5f"></a>
@@ -1053,13 +879,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Set the binary base name from the full name. </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00153">153</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                                        {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    std::string::size_type sidx = <a class="code" href="classslic_1_1SlicApplication.html#a47cfc48659e63ea4d4b418fb24fe5e8a">m_binaryname</a>.find_last_of(<span class="charliteral">&#39;/&#39;</span>);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">if</span> (sidx != std::string::npos) {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <a class="code" href="classslic_1_1SlicApplication.html#a90faea8c67a6b1697747b5dff0347696">m_binarybasename</a> = std::string(<a class="code" href="classslic_1_1SlicApplication.html#a47cfc48659e63ea4d4b418fb24fe5e8a">m_binaryname</a>, sidx + 1);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="SlicApplication_8hh_source.html#l00236">SlicApplication::m_binarybasename</a>, and <a class="el" href="SlicApplication_8hh_source.html#l00235">SlicApplication::m_binaryname</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicApplication_8cc_source.html#l00069">SlicApplication::initialize()</a>.</p>
@@ -1089,10 +909,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00133">133</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                                           {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="classslic_1_1SlicApplication.html#a5b8b5c9cd6abaf3bacbc55a356952e3f">m_mode</a> = rmode;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="SlicApplication_8hh_source.html#l00226">SlicApplication::m_mode</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicApplicationMessenger_8cc_source.html#l00017">SlicApplicationMessenger::SetNewValue()</a>.</p>
@@ -1122,10 +939,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8cc_source.html#l00149">149</a> of file <a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                          {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="classslic_1_1SlicApplication.html#a0d0f7c3fc41c33807b5b69aac9f57894">m_returnCode</a> = rc;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="SlicApplication_8hh_source.html#l00229">SlicApplication::m_returnCode</a>.</p>
 
 </div>
@@ -1150,6 +964,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>app messenger </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8hh_source.html#l00218">218</a> of file <a class="el" href="SlicApplication_8hh_source.html">SlicApplication.hh</a>.</p>
 
@@ -1202,6 +1017,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>What was the name of the SLIC binary from CL? (used by <a class="el" href="classslic_1_1LcioFileNamer.html" title="Automatically name LCIO output files according to input settings.">LcioFileNamer</a>) </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8hh_source.html#l00235">235</a> of file <a class="el" href="SlicApplication_8hh_source.html">SlicApplication.hh</a>.</p>
 
@@ -1228,6 +1044,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>field messenger </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8hh_source.html#l00221">221</a> of file <a class="el" href="SlicApplication_8hh_source.html">SlicApplication.hh</a>.</p>
 
@@ -1252,6 +1069,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Version string of Geant4. </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8hh_source.html#l00239">239</a> of file <a class="el" href="SlicApplication_8hh_source.html">SlicApplication.hh</a>.</p>
 
@@ -1276,6 +1094,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Has the <a class="el" href="classslic_1_1SlicApplication.html#a25a40b6614565f755233080a384c35f1">initialize()</a> function been called? </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8hh_source.html#l00232">232</a> of file <a class="el" href="SlicApplication_8hh_source.html">SlicApplication.hh</a>.</p>
 
@@ -1302,6 +1121,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>application run mode: batch or interactive </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8hh_source.html#l00226">226</a> of file <a class="el" href="SlicApplication_8hh_source.html">SlicApplication.hh</a>.</p>
 
@@ -1328,6 +1148,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>return code </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8hh_source.html#l00229">229</a> of file <a class="el" href="SlicApplication_8hh_source.html">SlicApplication.hh</a>.</p>
 
@@ -1380,6 +1201,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>G4 UI manager. </p>
 
 <p class="definition">Definition at line <a class="el" href="SlicApplication_8hh_source.html#l00215">215</a> of file <a class="el" href="SlicApplication_8hh_source.html">SlicApplication.hh</a>.</p>
 
@@ -1392,47 +1214,6 @@ Additional Inherited Members</h2></td></tr>
 <li><a class="el" href="SlicApplication_8cc_source.html">SlicApplication.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a59e56af19e754a6aa26a612ebf91d05fa9dd0da15b9e2f37e8394fdf2d5e67466"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa9dd0da15b9e2f37e8394fdf2d5e67466">slic::SlicApplication::STD_EXCEPTION</a></div><div class="ttdeci">@ STD_EXCEPTION</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00057">SlicApplication.hh:57</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a0d0f7c3fc41c33807b5b69aac9f57894"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a0d0f7c3fc41c33807b5b69aac9f57894">slic::SlicApplication::m_returnCode</a></div><div class="ttdeci">int m_returnCode</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00229">SlicApplication.hh:229</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed">LOG::error</a></div><div class="ttdeci">@ error</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a98484ece9d81cec3c4eff71d58194a5f"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a98484ece9d81cec3c4eff71d58194a5f">slic::SlicApplication::setBinaryBasename</a></div><div class="ttdeci">void setBinaryBasename()</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8cc_source.html#l00153">SlicApplication.cc:153</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a59e56af19e754a6aa26a612ebf91d05fa8cb4e564cf38ac7675d5d2296f0c5d34"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa8cb4e564cf38ac7675d5d2296f0c5d34">slic::SlicApplication::FAILED_DELETE_LCIO_FILE</a></div><div class="ttdeci">@ FAILED_DELETE_LCIO_FILE</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00059">SlicApplication.hh:59</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_ad9f94e2ad42aa664df4516eef35472e7"><div class="ttname"><a href="classslic_1_1SlicApplication.html#ad9f94e2ad42aa664df4516eef35472e7">slic::SlicApplication::m_geant4VersionString</a></div><div class="ttdeci">std::string * m_geant4VersionString</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00239">SlicApplication.hh:239</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a04f1b071f494983129aefb83ff7e90bd"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a04f1b071f494983129aefb83ff7e90bd">LOG::head</a></div><div class="ttdeci">@ head</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a0db98dd9b3abe8bd12543de8027adeaeaec652f03c6da6e6973ed9272c24f05ee"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a0db98dd9b3abe8bd12543de8027adeaeaec652f03c6da6e6973ed9272c24f05ee">slic::SlicApplication::eBatch</a></div><div class="ttdeci">@ eBatch</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00048">SlicApplication.hh:48</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a340dc2a6ff55d51e5603528087b39752"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a340dc2a6ff55d51e5603528087b39752">slic::SlicApplication::initializeVis</a></div><div class="ttdeci">void initializeVis()</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8cc_source.html#l00119">SlicApplication.cc:119</a></div></div>
-<div class="ttc" id="aclassSingleton_html_ade6193af70013295b23e0318cbb276bd"><div class="ttname"><a href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; PhysicsListManager &gt;::instance</a></div><div class="ttdeci">static PhysicsListManager * instance()</div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a59e56af19e754a6aa26a612ebf91d05fa8216aa4b3a817cdf8c15ed32aa946e83"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa8216aa4b3a817cdf8c15ed32aa946e83">slic::SlicApplication::UNKNOWN_ERROR</a></div><div class="ttdeci">@ UNKNOWN_ERROR</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00055">SlicApplication.hh:55</a></div></div>
-<div class="ttc" id="aclassslic_1_1LogStream_html_ae11936436b759dd1967dad44753a1910"><div class="ttname"><a href="classslic_1_1LogStream.html#ae11936436b759dd1967dad44753a1910">slic::LogStream::warning</a></div><div class="ttdeci">LogStream &amp; warning()</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00254">LogStream.hh:254</a></div></div>
-<div class="ttc" id="anamespaceslic_html_aa2cbb1bf166ea8e2b61d497ac3840094"><div class="ttname"><a href="namespaceslic.html#aa2cbb1bf166ea8e2b61d497ac3840094">slic::ErrorCodeStrings</a></div><div class="ttdeci">static const char * ErrorCodeStrings[]</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00022">SlicApplication.hh:22</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a217245eec26f69d0c5b6e991937de95a"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a217245eec26f69d0c5b6e991937de95a">slic::SlicApplication::m_isInitialized</a></div><div class="ttdeci">bool m_isInitialized</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00232">SlicApplication.hh:232</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a64f52a473a9e46c05c823af9d4118de9"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a64f52a473a9e46c05c823af9d4118de9">slic::SlicApplication::m_ui</a></div><div class="ttdeci">G4UIExecutive * m_ui</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00215">SlicApplication.hh:215</a></div></div>
-<div class="ttc" id="aclassslic_1_1LogStream_html_a1e206067519c08855c28e96fe599dee6"><div class="ttname"><a href="classslic_1_1LogStream.html#a1e206067519c08855c28e96fe599dee6">slic::LogStream::clear</a></div><div class="ttdeci">void clear(std::ios_base::iostate _i=std::ios_base::failbit)</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00596">LogStream.hh:596</a></div></div>
-<div class="ttc" id="aclassslic_1_1LogStream_html_a06735f200dee746c010c3190dbe501a9"><div class="ttname"><a href="classslic_1_1LogStream.html#a06735f200dee746c010c3190dbe501a9">slic::LogStream::verbose</a></div><div class="ttdeci">LogStream &amp; verbose()</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00238">LogStream.hh:238</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a59e56af19e754a6aa26a612ebf91d05faebe297b5800b619a7aaaf5a55b154ef1"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05faebe297b5800b619a7aaaf5a55b154ef1">slic::SlicApplication::ERROR_CODE_SIZE</a></div><div class="ttdeci">@ ERROR_CODE_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00063">SlicApplication.hh:63</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_aac1391e2bdf64dd706aca72bc38343e9"><div class="ttname"><a href="classslic_1_1SlicApplication.html#aac1391e2bdf64dd706aca72bc38343e9">slic::SlicApplication::getErrorCodeString</a></div><div class="ttdeci">const char * getErrorCodeString(unsigned int errorCode)</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00182">SlicApplication.hh:182</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a65e30bd59370bb6a2cbf86a5d104406f"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a65e30bd59370bb6a2cbf86a5d104406f">slic::SlicApplication::getMode</a></div><div class="ttdeci">ERunMode getMode() const</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8cc_source.html#l00160">SlicApplication.cc:160</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a></div><div class="ttdeci">@ always</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a90faea8c67a6b1697747b5dff0347696"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a90faea8c67a6b1697747b5dff0347696">slic::SlicApplication::m_binarybasename</a></div><div class="ttdeci">std::string m_binarybasename</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00236">SlicApplication.hh:236</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a26b07abe623759bf4419f8b7169241af"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a26b07abe623759bf4419f8b7169241af">slic::SlicApplication::m_appMessenger</a></div><div class="ttdeci">SlicApplicationMessenger * m_appMessenger</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00218">SlicApplication.hh:218</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a5b8b5c9cd6abaf3bacbc55a356952e3f"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a5b8b5c9cd6abaf3bacbc55a356952e3f">slic::SlicApplication::m_mode</a></div><div class="ttdeci">ERunMode m_mode</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00226">SlicApplication.hh:226</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a></div><div class="ttdeci">@ done</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a0db98dd9b3abe8bd12543de8027adeaeaecbee4432e8814d2f70f614f4dc3c547"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a0db98dd9b3abe8bd12543de8027adeaeaecbee4432e8814d2f70f614f4dc3c547">slic::SlicApplication::eInteractive</a></div><div class="ttdeci">@ eInteractive</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00048">SlicApplication.hh:48</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ab7b488a14251c880422a324540415854"><div class="ttname"><a href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">slic::Module::Module</a></div><div class="ttdeci">Module(const std::string &amp;name, bool deleteOnExit=true, bool autoRegister=true)</div><div class="ttdef"><b>Definition:</b> <a href="Module_8cc_source.html#l00007">Module.cc:7</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a59e56af19e754a6aa26a612ebf91d05fa392e2a35e8b50e671ad079d0296b5da4"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa392e2a35e8b50e671ad079d0296b5da4">slic::SlicApplication::INVALID_GEOMETRY_SETUP</a></div><div class="ttdeci">@ INVALID_GEOMETRY_SETUP</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00061">SlicApplication.hh:61</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a25a40b6614565f755233080a384c35f1"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a25a40b6614565f755233080a384c35f1">slic::SlicApplication::initialize</a></div><div class="ttdeci">void initialize()</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8cc_source.html#l00081">SlicApplication.cc:81</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a></div><div class="ttdeci">@ okay</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a080a94c60b6a6f3ec372e166d1b3fe97"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a080a94c60b6a6f3ec372e166d1b3fe97">slic::SlicApplication::getReturnCode</a></div><div class="ttdeci">int getReturnCode() const</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8cc_source.html#l00145">SlicApplication.cc:145</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a59e56af19e754a6aa26a612ebf91d05fa1918b005c3a338a2b213077aeb2ffa03"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa1918b005c3a338a2b213077aeb2ffa03">slic::SlicApplication::UNKNOWN_EXCEPTION</a></div><div class="ttdeci">@ UNKNOWN_EXCEPTION</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00056">SlicApplication.hh:56</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a59e56af19e754a6aa26a612ebf91d05fa8d5cc65fc46eeb64a7660dfee4215b35"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa8d5cc65fc46eeb64a7660dfee4215b35">slic::SlicApplication::OKAY</a></div><div class="ttdeci">@ OKAY</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00055">SlicApplication.hh:55</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a59e56af19e754a6aa26a612ebf91d05fa5b7224f763c220331c2276f19b07f31c"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa5b7224f763c220331c2276f19b07f31c">slic::SlicApplication::GENERATOR_NOT_SETUP</a></div><div class="ttdeci">@ GENERATOR_NOT_SETUP</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00062">SlicApplication.hh:62</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a59e56af19e754a6aa26a612ebf91d05fa1077ae8fdd5b3f65de38c2a66b931d98"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa1077ae8fdd5b3f65de38c2a66b931d98">slic::SlicApplication::EVENT_UNDERFLOW</a></div><div class="ttdeci">@ EVENT_UNDERFLOW</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00060">SlicApplication.hh:60</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a47cfc48659e63ea4d4b418fb24fe5e8a"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a47cfc48659e63ea4d4b418fb24fe5e8a">slic::SlicApplication::m_binaryname</a></div><div class="ttdeci">std::string m_binaryname</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00235">SlicApplication.hh:235</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a59e56af19e754a6aa26a612ebf91d05fa2bc735e33f43b6c65999da48e541dcb1"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a59e56af19e754a6aa26a612ebf91d05fa2bc735e33f43b6c65999da48e541dcb1">slic::SlicApplication::OUTPUT_FILE_EXISTS</a></div><div class="ttdeci">@ OUTPUT_FILE_EXISTS</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00058">SlicApplication.hh:58</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_a0cca55a8dc88387aed0c1f63bfe251d6"><div class="ttname"><a href="classslic_1_1SlicApplication.html#a0cca55a8dc88387aed0c1f63bfe251d6">slic::SlicApplication::m_runManager</a></div><div class="ttdeci">RunManager * m_runManager</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8hh_source.html#l00223">SlicApplication.hh:223</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_aeb944929dab61c895c82453b15d914d0"><div class="ttname"><a href="classslic_1_1SlicApplication.html#aeb944929dab61c895c82453b15d914d0">slic::SlicApplication::initializeLCDD</a></div><div class="ttdeci">void initializeLCDD()</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8cc_source.html#l00128">SlicApplication.cc:128</a></div></div>
-<div class="ttc" id="aclassslic_1_1SlicApplication_html_ab1e0f1f61d5db248cee628ec811e94f4"><div class="ttname"><a href="classslic_1_1SlicApplication.html#ab1e0f1f61d5db248cee628ec811e94f4">slic::SlicApplication::printSplashScreen</a></div><div class="ttdeci">void printSplashScreen()</div><div class="ttdef"><b>Definition:</b> <a href="SlicApplication_8cc_source.html#l00203">SlicApplication.cc:203</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -190,15 +190,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandLineOption_8hh_source.html#l00029">29</a> of file <a class="el" href="CommandLineOption_8hh_source.html">CommandLineOption.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                    :</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    <a class="code" href="classslic_1_1CommandLineOption.html#ac518b8c369b26b93c3f0d125d699e706">m_shortname</a>(shortname),</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    <a class="code" href="classslic_1_1CommandLineOption.html#a67d0faec3feead8cc2cfbf58c3894fcb">m_longname</a>(longname),</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    <a class="code" href="classslic_1_1CommandLineOption.html#ad50eef5f7fcfa30f62e14f0fac2a4f6e">m_description</a>(description),</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    <a class="code" href="classslic_1_1CommandLineOption.html#a53334e2562f33f405b5abe296e7e2a06">m_g4cmdstr</a>(macroCommand),</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    <a class="code" href="classslic_1_1CommandLineOption.html#a6a4bf0721cb5a5d7cfeef2da8b1217c8">m_minArgs</a>(minArgs),</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    <a class="code" href="classslic_1_1CommandLineOption.html#abf366081838df1c01970796946fc6e49">m_maxArgs</a>(maxArgs) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ae503fb99ad68a133669f9c0ffe50fd12"></a>
@@ -226,9 +218,7 @@ Private Attributes</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="CommandLineOption_8hh_source.html#l00046">46</a> of file <a class="el" href="CommandLineOption_8hh_source.html">CommandLineOption.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                     {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -257,10 +247,7 @@ Private Attributes</h2></td></tr>
 <p>Get a brief description of this option. </p><dl class="section return"><dt>Returns</dt><dd>A description of the option. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandLineOption_8hh_source.html#l00074">74</a> of file <a class="el" href="CommandLineOption_8hh_source.html">CommandLineOption.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                                {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1CommandLineOption.html#ad50eef5f7fcfa30f62e14f0fac2a4f6e">m_description</a>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandLineOption_8hh_source.html#l00109">CommandLineOption::m_description</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="CommandLineProcessor_8cc_source.html#l00366">CommandLineProcessor::printOptions()</a>.</p>
@@ -292,10 +279,7 @@ Private Attributes</h2></td></tr>
 <p>Get the Geant4 command associated with this option. This may be a null string if there is no associated Geant4 command, though currently all of SLIC's options have a corresponding macro. </p><dl class="section return"><dt>Returns</dt><dd>The Geant4 command string for the option. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandLineOption_8hh_source.html#l00085">85</a> of file <a class="el" href="CommandLineOption_8hh_source.html">CommandLineOption.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                                    {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1CommandLineOption.html#a53334e2562f33f405b5abe296e7e2a06">m_g4cmdstr</a>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandLineOption_8hh_source.html#l00110">CommandLineOption::m_g4cmdstr</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="CommandLineProcessor_8cc_source.html#l00366">CommandLineProcessor::printOptions()</a>, and <a class="el" href="CommandLineProcessor_8cc_source.html#l00262">CommandLineProcessor::processOption()</a>.</p>
@@ -327,10 +311,7 @@ Private Attributes</h2></td></tr>
 <p>Get the long name associated with this option. This must be one or more words separated by dashes, such as "lcio-path". </p><dl class="section return"><dt>Returns</dt><dd>The long name of the command. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandLineOption_8hh_source.html#l00066">66</a> of file <a class="el" href="CommandLineOption_8hh_source.html">CommandLineOption.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                             {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1CommandLineOption.html#a67d0faec3feead8cc2cfbf58c3894fcb">m_longname</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandLineOption_8hh_source.html#l00108">CommandLineOption::m_longname</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="CommandLineProcessor_8cc_source.html#l00366">CommandLineProcessor::printOptions()</a>.</p>
@@ -362,10 +343,7 @@ Private Attributes</h2></td></tr>
 <p>Get the maximum number of arguments to this option. </p><dl class="section return"><dt>Returns</dt><dd>The maximum number of arguments. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandLineOption_8hh_source.html#l00101">101</a> of file <a class="el" href="CommandLineOption_8hh_source.html">CommandLineOption.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                        {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1CommandLineOption.html#abf366081838df1c01970796946fc6e49">m_maxArgs</a>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandLineOption_8hh_source.html#l00112">CommandLineOption::m_maxArgs</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="CommandLineProcessor_8cc_source.html#l00451">CommandLineProcessor::createOptionsString()</a>.</p>
@@ -397,10 +375,7 @@ Private Attributes</h2></td></tr>
 <p>Get the minimum number of arguments to this option. </p><dl class="section return"><dt>Returns</dt><dd>The minimum number of arguments. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandLineOption_8hh_source.html#l00093">93</a> of file <a class="el" href="CommandLineOption_8hh_source.html">CommandLineOption.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                        {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1CommandLineOption.html#a6a4bf0721cb5a5d7cfeef2da8b1217c8">m_minArgs</a>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandLineOption_8hh_source.html#l00111">CommandLineOption::m_minArgs</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="CommandLineProcessor_8cc_source.html#l00451">CommandLineProcessor::createOptionsString()</a>.</p>
@@ -432,10 +407,7 @@ Private Attributes</h2></td></tr>
 <p>Get the short name associated with this option. This must be a single letter, such as 'm'. </p><dl class="section return"><dt>Returns</dt><dd>The single letter command switch. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandLineOption_8hh_source.html#l00056">56</a> of file <a class="el" href="CommandLineOption_8hh_source.html">CommandLineOption.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                              {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1CommandLineOption.html#ac518b8c369b26b93c3f0d125d699e706">m_shortname</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandLineOption_8hh_source.html#l00107">CommandLineOption::m_shortname</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="CommandLineProcessor_8cc_source.html#l00451">CommandLineProcessor::createOptionsString()</a>, and <a class="el" href="CommandLineProcessor_8cc_source.html#l00366">CommandLineProcessor::printOptions()</a>.</p>
@@ -603,12 +575,6 @@ Private Attributes</h2></td></tr>
 <li><a class="el" href="CommandLineOption_8hh_source.html">CommandLineOption.hh</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1CommandLineOption_html_a53334e2562f33f405b5abe296e7e2a06"><div class="ttname"><a href="classslic_1_1CommandLineOption.html#a53334e2562f33f405b5abe296e7e2a06">slic::CommandLineOption::m_g4cmdstr</a></div><div class="ttdeci">std::string m_g4cmdstr</div><div class="ttdef"><b>Definition:</b> <a href="CommandLineOption_8hh_source.html#l00110">CommandLineOption.hh:110</a></div></div>
-<div class="ttc" id="aclassslic_1_1CommandLineOption_html_a67d0faec3feead8cc2cfbf58c3894fcb"><div class="ttname"><a href="classslic_1_1CommandLineOption.html#a67d0faec3feead8cc2cfbf58c3894fcb">slic::CommandLineOption::m_longname</a></div><div class="ttdeci">std::string m_longname</div><div class="ttdef"><b>Definition:</b> <a href="CommandLineOption_8hh_source.html#l00108">CommandLineOption.hh:108</a></div></div>
-<div class="ttc" id="aclassslic_1_1CommandLineOption_html_abf366081838df1c01970796946fc6e49"><div class="ttname"><a href="classslic_1_1CommandLineOption.html#abf366081838df1c01970796946fc6e49">slic::CommandLineOption::m_maxArgs</a></div><div class="ttdeci">int m_maxArgs</div><div class="ttdef"><b>Definition:</b> <a href="CommandLineOption_8hh_source.html#l00112">CommandLineOption.hh:112</a></div></div>
-<div class="ttc" id="aclassslic_1_1CommandLineOption_html_ac518b8c369b26b93c3f0d125d699e706"><div class="ttname"><a href="classslic_1_1CommandLineOption.html#ac518b8c369b26b93c3f0d125d699e706">slic::CommandLineOption::m_shortname</a></div><div class="ttdeci">std::string m_shortname</div><div class="ttdef"><b>Definition:</b> <a href="CommandLineOption_8hh_source.html#l00107">CommandLineOption.hh:107</a></div></div>
-<div class="ttc" id="aclassslic_1_1CommandLineOption_html_ad50eef5f7fcfa30f62e14f0fac2a4f6e"><div class="ttname"><a href="classslic_1_1CommandLineOption.html#ad50eef5f7fcfa30f62e14f0fac2a4f6e">slic::CommandLineOption::m_description</a></div><div class="ttdeci">std::string m_description</div><div class="ttdef"><b>Definition:</b> <a href="CommandLineOption_8hh_source.html#l00109">CommandLineOption.hh:109</a></div></div>
-<div class="ttc" id="aclassslic_1_1CommandLineOption_html_a6a4bf0721cb5a5d7cfeef2da8b1217c8"><div class="ttname"><a href="classslic_1_1CommandLineOption.html#a6a4bf0721cb5a5d7cfeef2da8b1217c8">slic::CommandLineOption::m_minArgs</a></div><div class="ttdeci">int m_minArgs</div><div class="ttdef"><b>Definition:</b> <a href="CommandLineOption_8hh_source.html#l00111">CommandLineOption.hh:111</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

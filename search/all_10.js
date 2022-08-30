@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['simulator_20for_20the_20linear_20collider_20_28slic_29_20documentation_701',['Simulator for the Linear Collider (SLIC) Documentation',['../index.html',1,'']]],
+  ['simulator_20for_20the_20linear_20collider_20_28slic_29_701',['Simulator for the Linear Collider (SLIC)',['../index.html',1,'']]],
   ['savehits_702',['saveHits',['../classslic_1_1LcioHitsCollectionBuilder.html#abe7fc379677db0bcca1ac34b1848f766',1,'slic::LcioHitsCollectionBuilder::saveHits(CalorimeterHitsCollection *calorimeterHits, IMPL::LCCollectionVec *collection)'],['../classslic_1_1LcioHitsCollectionBuilder.html#a90eff28780378fde0c84b7d63956fa64',1,'slic::LcioHitsCollectionBuilder::saveHits(TrackerHitsCollection *trackerHits, IMPL::LCCollectionVec *collection)']]],
   ['savetracksummaries_703',['saveTrackSummaries',['../classslic_1_1TrackManager.html#ae64b54d665b330f567cf07a2a36cf696',1,'slic::TrackManager']]],
   ['scalup_5f_704',['scalup_',['../classslic_1_1LHEEvent.html#affaa73946f1b16c58ffb065ad191e826',1,'slic::LHEEvent']]],

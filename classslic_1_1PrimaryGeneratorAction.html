@@ -194,11 +194,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="PrimaryGeneratorAction_8cc_source.html#l00019">19</a> of file <a class="el" href="PrimaryGeneratorAction_8cc_source.html">PrimaryGeneratorAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                               :</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">Module</a>(<span class="stringliteral">&quot;PrimaryGeneratorAction&quot;</span>, <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classslic_1_1PrimaryGeneratorAction.html#a26129aace29358308fd69e0689971a55">_manager</a> = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">EventSourceManager::instance</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="PrimaryGeneratorAction_8hh_source.html#l00052">PrimaryGeneratorAction::_manager</a>, and <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; EventSourceManager &gt;::instance()</a>.</p>
 
 </div>
@@ -228,9 +224,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="PrimaryGeneratorAction_8cc_source.html#l00024">24</a> of file <a class="el" href="PrimaryGeneratorAction_8cc_source.html">PrimaryGeneratorAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                                {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -265,37 +259,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="PrimaryGeneratorAction_8cc_source.html#l00027">27</a> of file <a class="el" href="PrimaryGeneratorAction_8cc_source.html">PrimaryGeneratorAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                                                               {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">/* Print begin of event message. */</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">//printBeginEventMessage(anEvent);</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">/* Reset the TrackManager&#39;s state from previous event. */</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">TrackManager::instance</a>()-&gt;reset();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">/* Reset the MCParticleManager&#39;s state from previous event. */</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">MCParticleManager::instance</a>()-&gt;reset();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">/* Check if run needs to be aborted before generating events. */</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classslic_1_1RunManager.html#aec7d6e4daaa6aaf22ade0264f08183e8">RunManager::instance</a>()-&gt;isRunAborted()) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        G4RunManager::GetRunManager()-&gt;AbortRun();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a8de9aef05fc85e519a0cfce33573f492">LOG::warning</a> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1">LOG::name</a> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5af2ec1ae6432a5a5134f8fd95ea4f5927">LOG::sep</a> &lt;&lt; <span class="stringliteral">&quot;Run was aborted.  Events will not be generated.&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">/* Begin event hook of EventSourceManager which will read the next input event if applicable. */</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classslic_1_1PrimaryGeneratorAction.html#a26129aace29358308fd69e0689971a55">_manager</a>-&gt;<a class="code" href="classslic_1_1EventSourceManager.html#acfd859b023b359604cbaaee4e4066c11">beginEvent</a>(anEvent);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">/* Generate primary vertices using the event generator&#39;s (previously read) current event. */</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classslic_1_1PrimaryGeneratorAction.html#a26129aace29358308fd69e0689971a55">_manager</a>-&gt;<a class="code" href="classslic_1_1EventSourceManager.html#a6669d5d659aaf50226921d3622158992">generateNextEvent</a>(anEvent);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">/* If the event source hit the end of file, then abort the run. */</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classslic_1_1PrimaryGeneratorAction.html#a26129aace29358308fd69e0689971a55">_manager</a>-&gt;<a class="code" href="classslic_1_1EventSourceManager.html#a3884c449ed57d44137e95dd639122220">isEOF</a>()) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">SlicApplication::instance</a>()-&gt;setAborting(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classslic_1_1PluginManagerAccessor.html#a784e38547069d5d7642388f89ee42a31">m_pluginManager</a>-&gt;<a class="code" href="classslic_1_1PluginManager.html#a7c5b4d2a2dd1e7283a80c165dc46c912">generatePrimary</a>(anEvent);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="PrimaryGeneratorAction_8hh_source.html#l00052">PrimaryGeneratorAction::_manager</a>, <a class="el" href="EventSourceManager_8cc_source.html#l00243">EventSourceManager::beginEvent()</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, <a class="el" href="EventSourceManager_8cc_source.html#l00351">EventSourceManager::generateNextEvent()</a>, <a class="el" href="PluginManager_8cc_source.html#l00065">PluginManager::generatePrimary()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; TrackManager &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; MCParticleManager &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; SlicApplication &gt;::instance()</a>, <a class="el" href="RunManager_8hh_source.html#l00038">RunManager::instance()</a>, <a class="el" href="EventSourceManager_8cc_source.html#l00298">EventSourceManager::isEOF()</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="PluginManagerAccessor_8hh_source.html#l00045">PluginManagerAccessor::m_pluginManager</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::name</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::sep</a>, and <a class="el" href="LogStream_8hh_source.html#l00033">LOG::warning</a>.</p>
 
 </div>
@@ -359,20 +323,6 @@ Additional Inherited Members</h2></td></tr>
 <li><a class="el" href="PrimaryGeneratorAction_8cc_source.html">PrimaryGeneratorAction.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5af2ec1ae6432a5a5134f8fd95ea4f5927"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5af2ec1ae6432a5a5134f8fd95ea4f5927">LOG::sep</a></div><div class="ttdeci">@ sep</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassSingleton_html_ade6193af70013295b23e0318cbb276bd"><div class="ttname"><a href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; EventSourceManager &gt;::instance</a></div><div class="ttdeci">static EventSourceManager * instance()</div></div>
-<div class="ttc" id="aclassslic_1_1EventSourceManager_html_acfd859b023b359604cbaaee4e4066c11"><div class="ttname"><a href="classslic_1_1EventSourceManager.html#acfd859b023b359604cbaaee4e4066c11">slic::EventSourceManager::beginEvent</a></div><div class="ttdeci">void beginEvent(const G4Event *event)</div><div class="ttdef"><b>Definition:</b> <a href="EventSourceManager_8cc_source.html#l00243">EventSourceManager.cc:243</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginManager_html_a7c5b4d2a2dd1e7283a80c165dc46c912"><div class="ttname"><a href="classslic_1_1PluginManager.html#a7c5b4d2a2dd1e7283a80c165dc46c912">slic::PluginManager::generatePrimary</a></div><div class="ttdeci">void generatePrimary(G4Event *anEvent)</div><div class="ttdef"><b>Definition:</b> <a href="PluginManager_8cc_source.html#l00065">PluginManager.cc:65</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a8de9aef05fc85e519a0cfce33573f492"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a8de9aef05fc85e519a0cfce33573f492">LOG::warning</a></div><div class="ttdeci">@ warning</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1PrimaryGeneratorAction_html_a26129aace29358308fd69e0689971a55"><div class="ttname"><a href="classslic_1_1PrimaryGeneratorAction.html#a26129aace29358308fd69e0689971a55">slic::PrimaryGeneratorAction::_manager</a></div><div class="ttdeci">EventSourceManager * _manager</div><div class="ttdef"><b>Definition:</b> <a href="PrimaryGeneratorAction_8hh_source.html#l00052">PrimaryGeneratorAction.hh:52</a></div></div>
-<div class="ttc" id="aclassslic_1_1RunManager_html_aec7d6e4daaa6aaf22ade0264f08183e8"><div class="ttname"><a href="classslic_1_1RunManager.html#aec7d6e4daaa6aaf22ade0264f08183e8">slic::RunManager::instance</a></div><div class="ttdeci">static RunManager * instance()</div><div class="ttdef"><b>Definition:</b> <a href="RunManager_8hh_source.html#l00038">RunManager.hh:38</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginManagerAccessor_html_a784e38547069d5d7642388f89ee42a31"><div class="ttname"><a href="classslic_1_1PluginManagerAccessor.html#a784e38547069d5d7642388f89ee42a31">slic::PluginManagerAccessor::m_pluginManager</a></div><div class="ttdeci">PluginManager * m_pluginManager</div><div class="ttdef"><b>Definition:</b> <a href="PluginManagerAccessor_8hh_source.html#l00045">PluginManagerAccessor.hh:45</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a></div><div class="ttdeci">@ done</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ab7b488a14251c880422a324540415854"><div class="ttname"><a href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">slic::Module::Module</a></div><div class="ttdeci">Module(const std::string &amp;name, bool deleteOnExit=true, bool autoRegister=true)</div><div class="ttdef"><b>Definition:</b> <a href="Module_8cc_source.html#l00007">Module.cc:7</a></div></div>
-<div class="ttc" id="aclassslic_1_1EventSourceManager_html_a3884c449ed57d44137e95dd639122220"><div class="ttname"><a href="classslic_1_1EventSourceManager.html#a3884c449ed57d44137e95dd639122220">slic::EventSourceManager::isEOF</a></div><div class="ttdeci">bool isEOF()</div><div class="ttdef"><b>Definition:</b> <a href="EventSourceManager_8cc_source.html#l00298">EventSourceManager.cc:298</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1">LOG::name</a></div><div class="ttdeci">@ name</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1EventSourceManager_html_a6669d5d659aaf50226921d3622158992"><div class="ttname"><a href="classslic_1_1EventSourceManager.html#a6669d5d659aaf50226921d3622158992">slic::EventSourceManager::generateNextEvent</a></div><div class="ttdeci">void generateNextEvent(G4Event *evt)</div><div class="ttdef"><b>Definition:</b> <a href="EventSourceManager_8cc_source.html#l00351">EventSourceManager.cc:351</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

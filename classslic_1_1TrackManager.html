@@ -214,12 +214,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="TrackManager_8hh_source.html#l00030">30</a> of file <a class="el" href="TrackManager_8hh_source.html">TrackManager.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                       :</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <a class="code" href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">Module</a>(<span class="stringliteral">&quot;TrackManager&quot;</span>) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a> = <span class="keyword">new</span> <a class="code" href="namespaceslic.html#a85c864b7ca3ab0c0fbb04c0acf72c9bf">TrackSummaryVector</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <a class="code" href="classslic_1_1TrackManager.html#a83b2a65d381e22691529f1e8f551de49">_trackSummaryMap</a> = <span class="keyword">new</span> <a class="code" href="namespaceslic.html#aada0185ad49f0cb8fc51bdaf0c565959">TrackSummaryMap</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="TrackManager_8hh_source.html#l00112">TrackManager::_trackSummaries</a>, and <a class="el" href="TrackManager_8hh_source.html#l00113">TrackManager::_trackSummaryMap</a>.</p>
 
 </div>
@@ -249,11 +244,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="TrackManager_8hh_source.html#l00039">39</a> of file <a class="el" href="TrackManager_8hh_source.html">TrackManager.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keyword">delete</span> <a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">delete</span> <a class="code" href="classslic_1_1TrackManager.html#a83b2a65d381e22691529f1e8f551de49">_trackSummaryMap</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="TrackManager_8hh_source.html#l00112">TrackManager::_trackSummaries</a>, and <a class="el" href="TrackManager_8hh_source.html#l00113">TrackManager::_trackSummaryMap</a>.</p>
 
 </div>
@@ -291,19 +282,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The first saved ancestor <a class="el" href="classslic_1_1TrackSummary.html" title="Container for all information from G4Track that may be persisted to MCParticle output collection.">TrackSummary</a>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="TrackManager_8cc_source.html#l00124">124</a> of file <a class="el" href="TrackManager_8cc_source.html">TrackManager.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                                                             {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    TrackSummary* parent = trackSummary-&gt;findParent();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">while</span> (parent != 0) {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">if</span> (parent-&gt;getToBeSaved() == <span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="comment">/* Associate the track ID to the first MCParticle up the tree that will be saved. */</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">MCParticleManager::instance</a>()-&gt;addMCParticleTrackID(trackSummary-&gt;getTrackID(), parent-&gt;getMCParticle());</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        parent = parent-&gt;findParent();</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">return</span> parent;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="TrackSummary_8cc_source.html#l00174">TrackSummary::findParent()</a>, <a class="el" href="TrackSummary_8hh_source.html#l00208">TrackSummary::getMCParticle()</a>, <a class="el" href="TrackSummary_8hh_source.html#l00173">TrackSummary::getToBeSaved()</a>, <a class="el" href="TrackSummary_8hh_source.html#l00149">TrackSummary::getTrackID()</a>, and <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; MCParticleManager &gt;::instance()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="TrackManager_8cc_source.html#l00023">TrackManager::saveTrackSummaries()</a>.</p>
@@ -342,10 +321,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The matching <a class="el" href="classslic_1_1TrackSummary.html" title="Container for all information from G4Track that may be persisted to MCParticle output collection.">TrackSummary</a> or NULL if not found. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="TrackManager_8hh_source.html#l00096">96</a> of file <a class="el" href="TrackManager_8hh_source.html">TrackManager.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                                      {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">return</span> (*<a class="code" href="classslic_1_1TrackManager.html#a83b2a65d381e22691529f1e8f551de49">_trackSummaryMap</a>)[trackID];</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="TrackManager_8hh_source.html#l00113">TrackManager::_trackSummaryMap</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="TrackSummary_8cc_source.html#l00174">TrackSummary::findParent()</a>.</p>
@@ -377,10 +353,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Get the current collection of <a class="el" href="classslic_1_1TrackSummary.html" title="Container for all information from G4Track that may be persisted to MCParticle output collection.">TrackSummary</a> objects. </p><dl class="section return"><dt>Returns</dt><dd>The current collection of TrackSummaries. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="TrackManager_8hh_source.html#l00050">50</a> of file <a class="el" href="TrackManager_8hh_source.html">TrackManager.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                                {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="TrackManager_8hh_source.html#l00112">TrackManager::_trackSummaries</a>.</p>
 
 </div>
@@ -410,10 +383,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Get the map of <a class="el" href="classslic_1_1TrackSummary.html" title="Container for all information from G4Track that may be persisted to MCParticle output collection.">TrackSummary</a> objects to track IDs. </p><dl class="section return"><dt>Returns</dt><dd>The TrackSummaryMap. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="TrackManager_8hh_source.html#l00079">79</a> of file <a class="el" href="TrackManager_8hh_source.html">TrackManager.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                              {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1TrackManager.html#a83b2a65d381e22691529f1e8f551de49">_trackSummaryMap</a>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="TrackManager_8hh_source.html#l00113">TrackManager::_trackSummaryMap</a>.</p>
 
 </div>
@@ -449,10 +419,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="TrackManager_8hh_source.html#l00087">87</a> of file <a class="el" href="TrackManager_8hh_source.html">TrackManager.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                                              {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            (*_trackSummaryMap)[trackSummary-&gt;getTrackID()] = trackSummary;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="TrackSummary_8hh_source.html#l00149">TrackSummary::getTrackID()</a>.</p>
 
 </div>
@@ -484,17 +451,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classslic_1_1Module.html#a7b0e029102ad38f4b814c6523aedb53d">Module</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="TrackManager_8hh_source.html#l00064">64</a> of file <a class="el" href="TrackManager_8hh_source.html">TrackManager.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                     {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="comment">/* Clear the vector. */</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">for</span> (TrackSummaryVector::iterator it = <a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>-&gt;begin(); it != <a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>-&gt;end(); it++) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keyword">delete</span> *it;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>-&gt;clear();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="comment">/* Clear the map. */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <a class="code" href="classslic_1_1TrackManager.html#a83b2a65d381e22691529f1e8f551de49">_trackSummaryMap</a>-&gt;clear();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="TrackManager_8hh_source.html#l00112">TrackManager::_trackSummaries</a>, and <a class="el" href="TrackManager_8hh_source.html#l00113">TrackManager::_trackSummaryMap</a>.</p>
 
 </div>
@@ -533,107 +490,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="TrackManager_8cc_source.html#l00023">23</a> of file <a class="el" href="TrackManager_8cc_source.html">TrackManager.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                                                              {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">/* If Geant4 event generation was used, then an empty MCParticle collection needs to be created. */</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    G4bool geant4Generator = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">MCParticleManager::instance</a>()-&gt;getMCParticleCollection() == NULL) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="comment">//std::cout &lt;&lt; &quot;creating empty MCParticle collection&quot; &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">MCParticleManager::instance</a>()-&gt;createMCParticleCollection();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        geant4Generator = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">/* Copy MCParticle pointers into the corresponding TrackSummary objects for primary particles. */</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="namespaceslic.html#a7329adb19282b74b446ce0054dab0788">PrimaryParticleMap</a>* particleMap = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">MCParticleManager::instance</a>()-&gt;getPrimaryParticleMap();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespaceslic.html#aabfa8667a2f8de6a082e264984d617d0">PrimaryParticleMapIterator</a> it = particleMap-&gt;begin(); it != particleMap-&gt;end(); it++) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">if</span> (it-&gt;second == 0) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            G4Exception(<span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, FatalException, <span class="stringliteral">&quot;MCParticle was mapped to null G4PrimaryParticle.&quot;</span>);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">if</span> (it-&gt;second-&gt;GetTrackID() &lt; 0)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = <a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>-&gt;size() - 1; j &gt;= 0; j--) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>-&gt;operator[](j)-&gt;getTrackID() == it-&gt;second-&gt;GetTrackID()) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <span class="comment">//std::cout &lt;&lt; &quot;setting MCParticle &quot; &lt;&lt; it-&gt;first &lt;&lt; &quot; on TrackSummary from primary&quot; &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>-&gt;operator[](j)-&gt;setMCParticle(<span class="keyword">dynamic_cast&lt;</span>MCParticleImpl*<span class="keyword">&gt;</span>(it-&gt;first));</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a5be0fd270d9cbf6a0b7445db855089da">LOG:: debug</a> &lt;&lt; <span class="stringliteral">&quot;primary &quot;</span> &lt;&lt; <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">MCParticleManager::instance</a>()-&gt;indexOf(it-&gt;second)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                &lt;&lt; <span class="stringliteral">&quot; had track ID &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>-&gt;operator[](j)-&gt;getTrackID() &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    G4bool writeCompleteEvent = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">LcioManager::instance</a>()-&gt;getWriteCompleteEvent();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Set parents to be saved on particles that will be persisted.</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">for</span> (G4int k = <a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>-&gt;size() - 1; k &gt;= 0; k--) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">// Save all TrackSummary objects if full event is being written.</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">//if (writeCompleteEvent)</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">//    (*_trackSummaries)[k]-&gt;setToBeSaved();</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">// Force parents to be saved if TrackSummary will be saved.</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">if</span> (((*<a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>)[k])-&gt;getToBeSaved())</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            ((*_trackSummaries)[k])-&gt;setParentToBeSaved();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">/* Get the MCParticle collection created by event generation. */</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    LCCollectionVec* mcpVec = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">MCParticleManager::instance</a>()-&gt;getMCParticleCollection();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">/* Save TrackSummary objects to LCIO collection. */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">/*log() &lt;&lt; LOG::okay &lt;&lt; &quot;TrackManager processing &quot; &lt;&lt; _trackSummaries-&gt;size() &lt;&lt; &quot; TrackSummary objects.&quot; &lt;&lt; LOG::done;*/</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">size_t</span> l;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    TrackSummary* trackSummary;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">for</span> (l = 0; l &lt; <a class="code" href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">_trackSummaries</a>-&gt;size(); l++) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        trackSummary = (*_trackSummaries)[l];</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="comment">//| writeCompleteEvent</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> (trackSummary-&gt;getToBeSaved()) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="comment">/* Build the MCParticle in case it hasn&#39;t been created yet. */</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">if</span> (trackSummary-&gt;getMCParticle() == 0) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                trackSummary-&gt;buildMCParticle();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="comment">/* Associate the track ID to the MCParticle for the hit maker. */</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">MCParticleManager::instance</a>()-&gt;addMCParticleTrackID(trackSummary-&gt;getTrackID(), trackSummary-&gt;getMCParticle());</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="comment">/*</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">             * Only particles created in the simulation need to be added, as the generator MCParticles</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">             * associated with primaries were already.  But if a Geant4 internal generator was used</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">             * such as the GPS or ParticleGun, then all particles with the save flag on should be added</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">             * here, as they will all be flagged as sim particles and would not have been added yet.</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">             */</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">if</span> (trackSummary-&gt;getMCParticle()-&gt;getGeneratorStatus() == 0 || geant4Generator) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">if</span> (trackSummary-&gt;getMCParticle() != NULL) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    mcpVec-&gt;push_back(trackSummary-&gt;getMCParticle());</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    <span class="comment">// DEBUG</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                    <span class="comment">//if (trackSummary-&gt;getParentID() &lt;= 0)</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    <span class="comment">//    G4cout &lt;&lt; &quot;WARNING: sim particle with track ID &quot; &lt;&lt; trackSummary-&gt;getTrackID() &lt;&lt; &quot; has no parent!&quot; &lt;&lt; G4endl;</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="comment">// If the track will not be saved then associate the information to its first persisted ancestor.</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="comment">// This will allow association between track IDs from sensitive detector&#39;s in LCDD to their appropriate</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="comment">// MCParticle objects in the output collection.</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <a class="code" href="classslic_1_1TrackManager.html#a15f0e29629c31b53ef23f73f9d191037">findFirstSavedAncestor</a>(trackSummary);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">/* Set flag so it is saved. */</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    mcpVec-&gt;setFlag(0xe0000000);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">/* Save the MCParticle collection into the event. */</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    lcEvent-&gt;addCollection((LCCollection*) mcpVec, <span class="stringliteral">&quot;MCParticle&quot;</span>);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">//log() &lt;&lt; LOG::always &lt;&lt; &quot;Saved &quot; &lt;&lt; mcpVec-&gt;getNumberOfElements() &lt;&lt; &quot; MCParticles.&quot; &lt;&lt; LOG::done;</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="TrackManager_8hh_source.html#l00112">TrackManager::_trackSummaries</a>, <a class="el" href="TrackSummary_8cc_source.html#l00184">TrackSummary::buildMCParticle()</a>, <a class="el" href="LogStream_8hh_source.html#l00033">LOG::debug</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, <a class="el" href="TrackManager_8cc_source.html#l00124">TrackManager::findFirstSavedAncestor()</a>, <a class="el" href="TrackSummary_8hh_source.html#l00208">TrackSummary::getMCParticle()</a>, <a class="el" href="TrackSummary_8hh_source.html#l00173">TrackSummary::getToBeSaved()</a>, <a class="el" href="TrackSummary_8hh_source.html#l00149">TrackSummary::getTrackID()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; MCParticleManager &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; LcioManager &gt;::instance()</a>, and <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>.</p>
 
 </div>
@@ -696,18 +553,6 @@ Additional Inherited Members</h2></td></tr>
 <li><a class="el" href="TrackManager_8cc_source.html">TrackManager.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="anamespaceslic_html_a85c864b7ca3ab0c0fbb04c0acf72c9bf"><div class="ttname"><a href="namespaceslic.html#a85c864b7ca3ab0c0fbb04c0acf72c9bf">slic::TrackSummaryVector</a></div><div class="ttdeci">std::vector&lt; TrackSummary * &gt; TrackSummaryVector</div><div class="ttdef"><b>Definition:</b> <a href="TrackSummary_8hh_source.html#l00024">TrackSummary.hh:24</a></div></div>
-<div class="ttc" id="aclassslic_1_1TrackManager_html_ad17eb203361b5e0eab9bd8226ef54f89"><div class="ttname"><a href="classslic_1_1TrackManager.html#ad17eb203361b5e0eab9bd8226ef54f89">slic::TrackManager::_trackSummaries</a></div><div class="ttdeci">TrackSummaryVector * _trackSummaries</div><div class="ttdef"><b>Definition:</b> <a href="TrackManager_8hh_source.html#l00112">TrackManager.hh:112</a></div></div>
-<div class="ttc" id="aclassslic_1_1TrackManager_html_a15f0e29629c31b53ef23f73f9d191037"><div class="ttname"><a href="classslic_1_1TrackManager.html#a15f0e29629c31b53ef23f73f9d191037">slic::TrackManager::findFirstSavedAncestor</a></div><div class="ttdeci">TrackSummary * findFirstSavedAncestor(TrackSummary *trackSummary)</div><div class="ttdef"><b>Definition:</b> <a href="TrackManager_8cc_source.html#l00124">TrackManager.cc:124</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a5be0fd270d9cbf6a0b7445db855089da"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a5be0fd270d9cbf6a0b7445db855089da">LOG::debug</a></div><div class="ttdeci">@ debug</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="anamespaceslic_html_aabfa8667a2f8de6a082e264984d617d0"><div class="ttname"><a href="namespaceslic.html#aabfa8667a2f8de6a082e264984d617d0">slic::PrimaryParticleMapIterator</a></div><div class="ttdeci">PrimaryParticleMap::iterator PrimaryParticleMapIterator</div><div class="ttdef"><b>Definition:</b> <a href="MCParticleManager_8hh_source.html#l00036">MCParticleManager.hh:36</a></div></div>
-<div class="ttc" id="anamespaceslic_html_a7329adb19282b74b446ce0054dab0788"><div class="ttname"><a href="namespaceslic.html#a7329adb19282b74b446ce0054dab0788">slic::PrimaryParticleMap</a></div><div class="ttdeci">map&lt; MCParticle *, G4PrimaryParticle * &gt; PrimaryParticleMap</div><div class="ttdef"><b>Definition:</b> <a href="MCParticleManager_8hh_source.html#l00034">MCParticleManager.hh:34</a></div></div>
-<div class="ttc" id="aclassSingleton_html_ade6193af70013295b23e0318cbb276bd"><div class="ttname"><a href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; MCParticleManager &gt;::instance</a></div><div class="ttdeci">static MCParticleManager * instance()</div></div>
-<div class="ttc" id="anamespaceslic_html_aada0185ad49f0cb8fc51bdaf0c565959"><div class="ttname"><a href="namespaceslic.html#aada0185ad49f0cb8fc51bdaf0c565959">slic::TrackSummaryMap</a></div><div class="ttdeci">std::map&lt; G4int, TrackSummary * &gt; TrackSummaryMap</div><div class="ttdef"><b>Definition:</b> <a href="TrackSummary_8hh_source.html#l00027">TrackSummary.hh:27</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a></div><div class="ttdeci">@ done</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ab7b488a14251c880422a324540415854"><div class="ttname"><a href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">slic::Module::Module</a></div><div class="ttdeci">Module(const std::string &amp;name, bool deleteOnExit=true, bool autoRegister=true)</div><div class="ttdef"><b>Definition:</b> <a href="Module_8cc_source.html#l00007">Module.cc:7</a></div></div>
-<div class="ttc" id="aclassslic_1_1TrackManager_html_a83b2a65d381e22691529f1e8f551de49"><div class="ttname"><a href="classslic_1_1TrackManager.html#a83b2a65d381e22691529f1e8f551de49">slic::TrackManager::_trackSummaryMap</a></div><div class="ttdeci">TrackSummaryMap * _trackSummaryMap</div><div class="ttdef"><b>Definition:</b> <a href="TrackManager_8hh_source.html#l00113">TrackManager.hh:113</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

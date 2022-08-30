@@ -159,42 +159,7 @@ Friends</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00015">15</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                            {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        std::istringstream iss(line);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        std::vector&lt;std::string&gt; tokens;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            std::string elem;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            iss &gt;&gt; elem;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordflow">if</span> (elem.size() != 0) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                tokens.push_back(elem);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        } <span class="keywordflow">while</span> (iss);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">if</span> (tokens.size() != 13) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            std::cerr &lt;&lt; <span class="stringliteral">&quot;ERROR: Bad particle record in LHE file ...&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">std::endl</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            std::cerr &lt;&lt; <span class="stringliteral">&quot;  &quot;</span> &lt;&lt; line &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">std::endl</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            G4Exception(<span class="stringliteral">&quot;LHEParticle::LHEParticle&quot;</span>, <span class="stringliteral">&quot;LHEParticleError&quot;</span>, FatalException, <span class="stringliteral">&quot;Wrong number of tokens in LHE particle record.&quot;</span>);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#af9b8071b4c5a58c7d2640a417213efea">idup_</a> = atof(tokens[0].c_str());</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#acc6b1cc084cd0a1f10221697c50ea143">istup_</a> = atoi(tokens[1].c_str());</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#a8097e9ba286443bcafb7b3a50e950475">mothup_</a>[0] = atoi(tokens[2].c_str());</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#a8097e9ba286443bcafb7b3a50e950475">mothup_</a>[1] = atoi(tokens[3].c_str());</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#a1561e63fea0b85ec2ea15429b8caa51c">icolup_</a>[0] = atoi(tokens[4].c_str());</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#a1561e63fea0b85ec2ea15429b8caa51c">icolup_</a>[1] = atoi(tokens[5].c_str());</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#aa6102ba88a2510dd3a0dc58fc5968df0">pup_</a>[0] = atof(tokens[6].c_str());</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#aa6102ba88a2510dd3a0dc58fc5968df0">pup_</a>[1] = atof(tokens[7].c_str());</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#aa6102ba88a2510dd3a0dc58fc5968df0">pup_</a>[2] = atof(tokens[8].c_str());</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#aa6102ba88a2510dd3a0dc58fc5968df0">pup_</a>[3] = atof(tokens[9].c_str());</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#aa6102ba88a2510dd3a0dc58fc5968df0">pup_</a>[4] = atof(tokens[10].c_str());</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#a59e8fd71b7a2374e2049e4838f030eaf">vtimup_</a> = atof(tokens[11].c_str());</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#ab37cca106b6279b9dfff8b3c0beae7e6">spinup_</a> = atof(tokens[12].c_str());</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#a659ea41bf74c1d4b421571c0b0f7d130">mothers_</a>[0] = NULL;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#a659ea41bf74c1d4b421571c0b0f7d130">mothers_</a>[1] = NULL;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::endl</a>, <a class="el" href="LHEParticle_8hh_source.html#l00124">LHEParticle::icolup_</a>, <a class="el" href="LHEParticle_8hh_source.html#l00109">LHEParticle::idup_</a>, <a class="el" href="LHEParticle_8hh_source.html#l00114">LHEParticle::istup_</a>, <a class="el" href="LHEParticle_8hh_source.html#l00104">LHEParticle::mothers_</a>, <a class="el" href="LHEParticle_8hh_source.html#l00119">LHEParticle::mothup_</a>, <a class="el" href="LHEParticle_8hh_source.html#l00129">LHEParticle::pup_</a>, <a class="el" href="LHEParticle_8hh_source.html#l00139">LHEParticle::spinup_</a>, and <a class="el" href="LHEParticle_8hh_source.html#l00134">LHEParticle::vtimup_</a>.</p>
 
 </div>
@@ -218,10 +183,7 @@ Friends</h2></td></tr>
 <p>Get the particle color (ICOLUP) by index. </p><dl class="section return"><dt>Returns</dt><dd>The particle color by index. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00063">63</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                          {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classslic_1_1LHEParticle.html#a1561e63fea0b85ec2ea15429b8caa51c">icolup_</a>[i];</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LHEParticle_8hh_source.html#l00124">LHEParticle::icolup_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LHEParticle_8cc_source.html#l00087">LHEParticle::print()</a>.</p>
@@ -245,10 +207,7 @@ Friends</h2></td></tr>
 <p>Get the PDG code (IDUP). </p><dl class="section return"><dt>Returns</dt><dd>The PDG code. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00051">51</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                   {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classslic_1_1LHEParticle.html#af9b8071b4c5a58c7d2640a417213efea">idup_</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LHEParticle_8hh_source.html#l00109">LHEParticle::idup_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LHEPrimaryGenerator_8cc_source.html#l00025">LHEPrimaryGenerator::GeneratePrimaryVertex()</a>, and <a class="el" href="LHEParticle_8cc_source.html#l00087">LHEParticle::print()</a>.</p>
@@ -272,10 +231,7 @@ Friends</h2></td></tr>
 <p>Get the status code (ISTUP). </p><dl class="section return"><dt>Returns</dt><dd>The status code. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00055">55</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                    {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classslic_1_1LHEParticle.html#acc6b1cc084cd0a1f10221697c50ea143">istup_</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LHEParticle_8hh_source.html#l00114">LHEParticle::istup_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LHEPrimaryGenerator_8cc_source.html#l00025">LHEPrimaryGenerator::GeneratePrimaryVertex()</a>, and <a class="el" href="LHEParticle_8cc_source.html#l00087">LHEParticle::print()</a>.</p>
@@ -300,10 +256,7 @@ Friends</h2></td></tr>
 <p>Get a mother particle by index. </p><dl class="section return"><dt>Returns</dt><dd>The mother particle at the index. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00083">83</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                                   {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classslic_1_1LHEParticle.html#a659ea41bf74c1d4b421571c0b0f7d130">mothers_</a>[i];</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LHEParticle_8hh_source.html#l00104">LHEParticle::mothers_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LHEPrimaryGenerator_8cc_source.html#l00025">LHEPrimaryGenerator::GeneratePrimaryVertex()</a>.</p>
@@ -328,10 +281,7 @@ Friends</h2></td></tr>
 <p>Get a mother particle index (MOTHUP) by index. </p><dl class="section return"><dt>Returns</dt><dd>The mother particle by index. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00059">59</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                          {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classslic_1_1LHEParticle.html#a8097e9ba286443bcafb7b3a50e950475">mothup_</a>[i];</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LHEParticle_8hh_source.html#l00119">LHEParticle::mothup_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LHEParticle_8cc_source.html#l00087">LHEParticle::print()</a>, and <a class="el" href="LHEReader_8cc_source.html#l00018">LHEReader::readNextEvent()</a>.</p>
@@ -356,10 +306,7 @@ Friends</h2></td></tr>
 <p>Get a momentum component (PUP) by index. Defined in order: E/C, Px, Py, Pz, mass </p><dl class="section return"><dt>Returns</dt><dd>The momentum component by index. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00067">67</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                          {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classslic_1_1LHEParticle.html#aa6102ba88a2510dd3a0dc58fc5968df0">pup_</a>[i];</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LHEParticle_8hh_source.html#l00129">LHEParticle::pup_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LHEPrimaryGenerator_8cc_source.html#l00025">LHEPrimaryGenerator::GeneratePrimaryVertex()</a>, and <a class="el" href="LHEParticle_8cc_source.html#l00087">LHEParticle::print()</a>.</p>
@@ -383,10 +330,7 @@ Friends</h2></td></tr>
 <p>Get the particle's spin (SPINUP). </p><dl class="section return"><dt>Returns</dt><dd>The particle's spin. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00075">75</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                        {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classslic_1_1LHEParticle.html#ab37cca106b6279b9dfff8b3c0beae7e6">spinup_</a>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LHEParticle_8hh_source.html#l00139">LHEParticle::spinup_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LHEParticle_8cc_source.html#l00087">LHEParticle::print()</a>.</p>
@@ -410,10 +354,7 @@ Friends</h2></td></tr>
 <p>Get the proper lifetime (VTIMUP). </p><dl class="section return"><dt>Returns</dt><dd>The particle's proper lifetime. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00071">71</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                        {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classslic_1_1LHEParticle.html#a59e8fd71b7a2374e2049e4838f030eaf">vtimup_</a>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LHEParticle_8hh_source.html#l00134">LHEParticle::vtimup_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LHEPrimaryGenerator_8cc_source.html#l00025">LHEPrimaryGenerator::GeneratePrimaryVertex()</a>, and <a class="el" href="LHEParticle_8cc_source.html#l00087">LHEParticle::print()</a>.</p>
@@ -443,10 +384,7 @@ Friends</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00087">87</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                                    {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        stream &lt;&lt; <span class="stringliteral">&quot;LHEParticle { &quot;</span> &lt;&lt; <span class="stringliteral">&quot;IDUP: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#a79336ae814c5b2a211edde93f15a7446">getIDUP</a>() &lt;&lt; <span class="stringliteral">&quot;, ISTUP: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#abf92bf6c004e37583c80c3d6c5880007">getISTUP</a>() &lt;&lt; <span class="stringliteral">&quot;, MOTHUP[0]: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#a5e53598883a2d4b01cb69c025328cb90">getMOTHUP</a>(0) &lt;&lt; <span class="stringliteral">&quot;, MOTHUP[1]: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#a5e53598883a2d4b01cb69c025328cb90">getMOTHUP</a>(1) &lt;&lt; <span class="stringliteral">&quot;, ICOLUP[0]: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#a33a4a7a76bcc962eb0ebc67ef45b5590">getICOLUP</a>(0) &lt;&lt; <span class="stringliteral">&quot;, ICOLUP[1]: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#a33a4a7a76bcc962eb0ebc67ef45b5590">getICOLUP</a>(1) &lt;&lt; <span class="stringliteral">&quot;, PUP[0]: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#ab5f49b32a32a1764e8c7bd913f80c9f3">getPUP</a>(0) &lt;&lt; <span class="stringliteral">&quot;, PUP[1]: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#ab5f49b32a32a1764e8c7bd913f80c9f3">getPUP</a>(1) &lt;&lt; <span class="stringliteral">&quot;, PUP[2]: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#ab5f49b32a32a1764e8c7bd913f80c9f3">getPUP</a>(2) &lt;&lt; <span class="stringliteral">&quot;, PUP[3]: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#ab5f49b32a32a1764e8c7bd913f80c9f3">getPUP</a>(3) &lt;&lt; <span class="stringliteral">&quot;, PUP[4]: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#ab5f49b32a32a1764e8c7bd913f80c9f3">getPUP</a>(4) &lt;&lt; <span class="stringliteral">&quot;, VTIMUP: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#aa3971a0a623057245d3b10a84fb977b1">getVTIMUP</a>() &lt;&lt; <span class="stringliteral">&quot;, SPINUP: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1LHEParticle.html#a0bfb64d55aad06766f1385e90b8bcbc9">getSPINUP</a>() &lt;&lt; <span class="stringliteral">&quot; }&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">std::endl</a>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::endl</a>, <a class="el" href="LHEParticle_8cc_source.html#l00063">LHEParticle::getICOLUP()</a>, <a class="el" href="LHEParticle_8cc_source.html#l00051">LHEParticle::getIDUP()</a>, <a class="el" href="LHEParticle_8cc_source.html#l00055">LHEParticle::getISTUP()</a>, <a class="el" href="LHEParticle_8cc_source.html#l00059">LHEParticle::getMOTHUP()</a>, <a class="el" href="LHEParticle_8cc_source.html#l00067">LHEParticle::getPUP()</a>, <a class="el" href="LHEParticle_8cc_source.html#l00075">LHEParticle::getSPINUP()</a>, and <a class="el" href="LHEParticle_8cc_source.html#l00071">LHEParticle::getVTIMUP()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LHEParticle_8cc_source.html#l00091">slic::operator&lt;&lt;()</a>.</p>
@@ -487,10 +425,7 @@ Friends</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00079">79</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                                          {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="classslic_1_1LHEParticle.html#a659ea41bf74c1d4b421571c0b0f7d130">mothers_</a>[i] = mother;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LHEParticle_8hh_source.html#l00104">LHEParticle::mothers_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LHEReader_8cc_source.html#l00018">LHEReader::readNextEvent()</a>.</p>
@@ -540,11 +475,7 @@ Friends</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LHEParticle_8cc_source.html#l00091">91</a> of file <a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                                             {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        particle.print(stream);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">return</span> stream;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -769,22 +700,6 @@ Friends</h2></td></tr>
 <li><a class="el" href="LHEParticle_8cc_source.html">LHEParticle.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">LOG::endl</a></div><div class="ttdeci">@ endl</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_acc6b1cc084cd0a1f10221697c50ea143"><div class="ttname"><a href="classslic_1_1LHEParticle.html#acc6b1cc084cd0a1f10221697c50ea143">slic::LHEParticle::istup_</a></div><div class="ttdeci">int istup_</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8hh_source.html#l00114">LHEParticle.hh:114</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_a8097e9ba286443bcafb7b3a50e950475"><div class="ttname"><a href="classslic_1_1LHEParticle.html#a8097e9ba286443bcafb7b3a50e950475">slic::LHEParticle::mothup_</a></div><div class="ttdeci">int mothup_[2]</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8hh_source.html#l00119">LHEParticle.hh:119</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_a59e8fd71b7a2374e2049e4838f030eaf"><div class="ttname"><a href="classslic_1_1LHEParticle.html#a59e8fd71b7a2374e2049e4838f030eaf">slic::LHEParticle::vtimup_</a></div><div class="ttdeci">double vtimup_</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8hh_source.html#l00134">LHEParticle.hh:134</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_af9b8071b4c5a58c7d2640a417213efea"><div class="ttname"><a href="classslic_1_1LHEParticle.html#af9b8071b4c5a58c7d2640a417213efea">slic::LHEParticle::idup_</a></div><div class="ttdeci">int idup_</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8hh_source.html#l00109">LHEParticle.hh:109</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_a0bfb64d55aad06766f1385e90b8bcbc9"><div class="ttname"><a href="classslic_1_1LHEParticle.html#a0bfb64d55aad06766f1385e90b8bcbc9">slic::LHEParticle::getSPINUP</a></div><div class="ttdeci">double getSPINUP() const</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8cc_source.html#l00075">LHEParticle.cc:75</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_aa6102ba88a2510dd3a0dc58fc5968df0"><div class="ttname"><a href="classslic_1_1LHEParticle.html#aa6102ba88a2510dd3a0dc58fc5968df0">slic::LHEParticle::pup_</a></div><div class="ttdeci">double pup_[5]</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8hh_source.html#l00129">LHEParticle.hh:129</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_abf92bf6c004e37583c80c3d6c5880007"><div class="ttname"><a href="classslic_1_1LHEParticle.html#abf92bf6c004e37583c80c3d6c5880007">slic::LHEParticle::getISTUP</a></div><div class="ttdeci">int getISTUP() const</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8cc_source.html#l00055">LHEParticle.cc:55</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_a33a4a7a76bcc962eb0ebc67ef45b5590"><div class="ttname"><a href="classslic_1_1LHEParticle.html#a33a4a7a76bcc962eb0ebc67ef45b5590">slic::LHEParticle::getICOLUP</a></div><div class="ttdeci">int getICOLUP(int) const</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8cc_source.html#l00063">LHEParticle.cc:63</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_ab37cca106b6279b9dfff8b3c0beae7e6"><div class="ttname"><a href="classslic_1_1LHEParticle.html#ab37cca106b6279b9dfff8b3c0beae7e6">slic::LHEParticle::spinup_</a></div><div class="ttdeci">int spinup_</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8hh_source.html#l00139">LHEParticle.hh:139</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_a5e53598883a2d4b01cb69c025328cb90"><div class="ttname"><a href="classslic_1_1LHEParticle.html#a5e53598883a2d4b01cb69c025328cb90">slic::LHEParticle::getMOTHUP</a></div><div class="ttdeci">int getMOTHUP(int) const</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8cc_source.html#l00059">LHEParticle.cc:59</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_aa3971a0a623057245d3b10a84fb977b1"><div class="ttname"><a href="classslic_1_1LHEParticle.html#aa3971a0a623057245d3b10a84fb977b1">slic::LHEParticle::getVTIMUP</a></div><div class="ttdeci">double getVTIMUP() const</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8cc_source.html#l00071">LHEParticle.cc:71</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_a1561e63fea0b85ec2ea15429b8caa51c"><div class="ttname"><a href="classslic_1_1LHEParticle.html#a1561e63fea0b85ec2ea15429b8caa51c">slic::LHEParticle::icolup_</a></div><div class="ttdeci">int icolup_[2]</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8hh_source.html#l00124">LHEParticle.hh:124</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_ab5f49b32a32a1764e8c7bd913f80c9f3"><div class="ttname"><a href="classslic_1_1LHEParticle.html#ab5f49b32a32a1764e8c7bd913f80c9f3">slic::LHEParticle::getPUP</a></div><div class="ttdeci">double getPUP(int) const</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8cc_source.html#l00067">LHEParticle.cc:67</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_a79336ae814c5b2a211edde93f15a7446"><div class="ttname"><a href="classslic_1_1LHEParticle.html#a79336ae814c5b2a211edde93f15a7446">slic::LHEParticle::getIDUP</a></div><div class="ttdeci">int getIDUP() const</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8cc_source.html#l00051">LHEParticle.cc:51</a></div></div>
-<div class="ttc" id="aclassslic_1_1LHEParticle_html_a659ea41bf74c1d4b421571c0b0f7d130"><div class="ttname"><a href="classslic_1_1LHEParticle.html#a659ea41bf74c1d4b421571c0b0f7d130">slic::LHEParticle::mothers_</a></div><div class="ttdeci">LHEParticle * mothers_[2]</div><div class="ttdef"><b>Definition:</b> <a href="LHEParticle_8hh_source.html#l00104">LHEParticle.hh:104</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

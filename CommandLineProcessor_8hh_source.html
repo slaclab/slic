@@ -140,13 +140,10 @@ $(function() {
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="comment">// A vector of options with their arguments.</span></div>
 <div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="classslic_1_1CommandLineProcessor.html#a8792494155b2f1a6836462494add22be">  167</a></span>&#160;        <a class="code" href="classslic_1_1CommandLineProcessor.html#a11791aa948fed25852dde9289ca196a0">CommandLineArguments</a> <a class="code" href="classslic_1_1CommandLineProcessor.html#a8792494155b2f1a6836462494add22be">m_commandline</a>;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="comment">// A list of Geant4 macro commands filled by processing the command line arguments.</span></div>
 <div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="classslic_1_1CommandLineProcessor.html#aaf02d01741ab8549d3bbe0fbb5e99c92">  170</a></span>&#160;        <a class="code" href="classslic_1_1CommandQueue.html">CommandQueue</a> <a class="code" href="classslic_1_1CommandLineProcessor.html#aaf02d01741ab8549d3bbe0fbb5e99c92">m_g4q</a>;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="comment">// The list of valid options and their associated meta-data.</span></div>
 <div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="classslic_1_1CommandLineProcessor.html#a880c1c03123576a75ca0caa276217819">  173</a></span>&#160;        <a class="code" href="classslic_1_1CommandLineProcessor.html#a517cbee69bb9b5cb1f305e801fa701a1">OptionsList</a> <a class="code" href="classslic_1_1CommandLineProcessor.html#a880c1c03123576a75ca0caa276217819">m_cmds</a>;</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="comment">// Flags to be set by the process function.</span></div>
@@ -154,7 +151,6 @@ $(function() {
 <div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="classslic_1_1CommandLineProcessor.html#a68e609d509b2636404df28e73b704bc2">  177</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classslic_1_1CommandLineProcessor.html#a68e609d509b2636404df28e73b704bc2">m_interactive_flag</a>;</div>
 <div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="classslic_1_1CommandLineProcessor.html#a53f3852c0ad58a16e8dd19da02967baf">  178</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classslic_1_1CommandLineProcessor.html#a53f3852c0ad58a16e8dd19da02967baf">m_version_flag</a>;</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="comment">// The getopt options string, which is created automatically.</span></div>
 <div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="classslic_1_1CommandLineProcessor.html#a41194d45dce9b661474a6cc209bee2ea">  181</a></span>&#160;        std::string <a class="code" href="classslic_1_1CommandLineProcessor.html#a41194d45dce9b661474a6cc209bee2ea">m_getoptOptions</a>;</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;};</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>

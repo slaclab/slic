@@ -135,10 +135,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LCExtendedParticles_8cc_source.html#l00015">15</a> of file <a class="el" href="LCExtendedParticles_8cc_source.html">LCExtendedParticles.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                                             :</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        G4VPhysicsConstructor(<a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1">name</a>) {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a26970ccefe81c5e4db9b840c1beef6c9"></a>
@@ -166,9 +163,7 @@ Private Attributes</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="LCExtendedParticles_8cc_source.html#l00019">19</a> of file <a class="el" href="LCExtendedParticles_8cc_source.html">LCExtendedParticles.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                          {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -189,56 +184,7 @@ Private Attributes</h2></td></tr>
 <p>Construct the particles. </p>
 
 <p class="definition">Definition at line <a class="el" href="LCExtendedParticles_8cc_source.html#l00026">26</a> of file <a class="el" href="LCExtendedParticles_8cc_source.html">LCExtendedParticles.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                            {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">//std::cout &lt;&lt; &quot;LCExtendedParticles::ConstructParticle&quot; &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// Get the particle data table to be imported.</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    HepPDT::ParticleDataTable* pdtbl = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">HepPDTManager::instance</a>()-&gt;getParticleDataTable();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// Loop over all particles.</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">for</span> (HepPDT::ParticleDataTable::const_iterator it = pdtbl-&gt;begin(); it != pdtbl-&gt;end(); it++) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        HepPDT::ParticleID <span class="keywordtype">id</span> = it-&gt;first;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        HepPDT::ParticleData pdata = it-&gt;second;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">// Check for a built-in definition of this particle.</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        G4ParticleDefinition* pdef = G4ParticleTable::GetParticleTable()-&gt;FindParticle(pdata.pid());</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">// Add particles that Geant4 does not already know about.</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">if</span> (pdef == 0) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="comment">//std::cout &lt;&lt; &quot;constructing new particle: &quot; &lt;&lt; pdata.PDTname() &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            G4String particleType = <span class="stringliteral">&quot;extended&quot;</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">id</span>.isSUSY())</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                particleType = <span class="stringliteral">&quot;susy&quot;</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="comment">//std::cout &lt;&lt; &quot;  type: &quot; &lt;&lt; particleType &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="comment">// Create a G4ParticleDefinition for this SUSY particle.</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keyword">new</span> G4ParticleDefinition(pdata.PDTname(), <span class="comment">// name</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    pdata.mass().value() * GeV, <span class="comment">// mass</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    pdata.totalWidth().value(), <span class="comment">// width</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    pdata.charge(), <span class="comment">// charge</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    0, <span class="comment">// 2*spin</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                    0, <span class="comment">// parity</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    0, <span class="comment">// C-conjugation</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    0, <span class="comment">// 2*isospin</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    0, <span class="comment">// 2*isospin3</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    0, <span class="comment">// G-parity</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    particleType, <span class="comment">// type</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    0, <span class="comment">// lepton number</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    0, <span class="comment">// baryon number</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    pdata.pid(), <span class="comment">// PDG encoding</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    <span class="keyword">false</span>, <span class="comment">// stable </span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                    DBL_MIN, <span class="comment">// lifetime (can be overridden by predefined decay time)</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            0,<span class="comment">// decay table</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keyword">false</span><span class="comment">// short lived</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            );</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; HepPDTManager &gt;::instance()</a>.</p>
 
 </div>
@@ -260,28 +206,7 @@ Private Attributes</h2></td></tr>
 <p>Construct the processes. </p>
 
 <p class="definition">Definition at line <a class="el" href="LCExtendedParticles_8cc_source.html#l00076">76</a> of file <a class="el" href="LCExtendedParticles_8cc_source.html">LCExtendedParticles.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                           {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="LCExtendedParticles_8cc.html#afbc8c18893a64a11db1d95ec55777e2d">aParticleIterator</a>-&gt;reset();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">while</span> ((*<a class="code" href="LCExtendedParticles_8cc.html#afbc8c18893a64a11db1d95ec55777e2d">aParticleIterator</a>)()) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        G4ParticleDefinition* pdef = <a class="code" href="LCExtendedParticles_8cc.html#afbc8c18893a64a11db1d95ec55777e2d">aParticleIterator</a>-&gt;value();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        G4ProcessManager* pmgr = pdef-&gt;GetProcessManager();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span> (pdef-&gt;GetParticleType() == <span class="stringliteral">&quot;extended&quot;</span> || pdef-&gt;GetParticleType() == <span class="stringliteral">&quot;susy&quot;</span>) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="comment">//std::cout &lt;&lt; &quot;assigning processes to particle: &quot; &lt;&lt; pdef-&gt;GetParticleName() &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">if</span> (pdef-&gt;GetPDGCharge() != 0) {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                pmgr-&gt;AddProcess(&amp;<a class="code" href="classslic_1_1LCExtendedParticles.html#a8819e01904aff3437e15e853e99d53c6">m_scatter</a>, -1, 1, 1); <span class="comment">// multiple scattering</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                pmgr-&gt;AddProcess(&amp;<a class="code" href="classslic_1_1LCExtendedParticles.html#a836a9f4a33fc154528342d3324c5c9d3">m_ionise</a>, -1, 2, 2); <span class="comment">// ionisation</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                pmgr-&gt;AddProcess(&amp;<a class="code" href="classslic_1_1LCExtendedParticles.html#a3e34758a3bc977f3cc070d094228cbe8">m_decay</a>, -1, -1, 2); <span class="comment">// decay </span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                pmgr-&gt;AddProcess(&amp;<a class="code" href="classslic_1_1LCExtendedParticles.html#a8819e01904aff3437e15e853e99d53c6">m_scatter</a>, -1, 1, 1); <span class="comment">// multiple scattering</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                pmgr-&gt;AddProcess(&amp;<a class="code" href="classslic_1_1LCExtendedParticles.html#a3e34758a3bc977f3cc070d094228cbe8">m_decay</a>, -1, -1, 2); <span class="comment">// decay </span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LCExtendedParticles_8cc_source.html#l00023">aParticleIterator</a>, <a class="el" href="LCExtendedParticles_8hh_source.html#l00045">LCExtendedParticles::m_decay</a>, <a class="el" href="LCExtendedParticles_8hh_source.html#l00046">LCExtendedParticles::m_ionise</a>, and <a class="el" href="LCExtendedParticles_8hh_source.html#l00047">LCExtendedParticles::m_scatter</a>.</p>
 
 </div>
@@ -370,12 +295,6 @@ Private Attributes</h2></td></tr>
 <li><a class="el" href="LCExtendedParticles_8cc_source.html">LCExtendedParticles.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1LCExtendedParticles_html_a3e34758a3bc977f3cc070d094228cbe8"><div class="ttname"><a href="classslic_1_1LCExtendedParticles.html#a3e34758a3bc977f3cc070d094228cbe8">slic::LCExtendedParticles::m_decay</a></div><div class="ttdeci">G4Decay m_decay</div><div class="ttdef"><b>Definition:</b> <a href="LCExtendedParticles_8hh_source.html#l00045">LCExtendedParticles.hh:45</a></div></div>
-<div class="ttc" id="aclassSingleton_html_ade6193af70013295b23e0318cbb276bd"><div class="ttname"><a href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; HepPDTManager &gt;::instance</a></div><div class="ttdeci">static HepPDTManager * instance()</div></div>
-<div class="ttc" id="aLCExtendedParticles_8cc_html_afbc8c18893a64a11db1d95ec55777e2d"><div class="ttname"><a href="LCExtendedParticles_8cc.html#afbc8c18893a64a11db1d95ec55777e2d">aParticleIterator</a></div><div class="ttdeci">#define aParticleIterator</div><div class="ttdef"><b>Definition:</b> <a href="LCExtendedParticles_8cc_source.html#l00023">LCExtendedParticles.cc:23</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1">LOG::name</a></div><div class="ttdeci">@ name</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1LCExtendedParticles_html_a8819e01904aff3437e15e853e99d53c6"><div class="ttname"><a href="classslic_1_1LCExtendedParticles.html#a8819e01904aff3437e15e853e99d53c6">slic::LCExtendedParticles::m_scatter</a></div><div class="ttdeci">G4hMultipleScattering m_scatter</div><div class="ttdef"><b>Definition:</b> <a href="LCExtendedParticles_8hh_source.html#l00047">LCExtendedParticles.hh:47</a></div></div>
-<div class="ttc" id="aclassslic_1_1LCExtendedParticles_html_a836a9f4a33fc154528342d3324c5c9d3"><div class="ttname"><a href="classslic_1_1LCExtendedParticles.html#a836a9f4a33fc154528342d3324c5c9d3">slic::LCExtendedParticles::m_ionise</a></div><div class="ttdeci">G4hIonisation m_ionise</div><div class="ttdef"><b>Definition:</b> <a href="LCExtendedParticles_8hh_source.html#l00046">LCExtendedParticles.hh:46</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

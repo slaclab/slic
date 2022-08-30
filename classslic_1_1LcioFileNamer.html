@@ -211,14 +211,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="LcioFileNamer_8cc_source.html#l00029">29</a> of file <a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                             :</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">Module</a>(<span class="stringliteral">&quot;LcioFileNamer&quot;</span>) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classslic_1_1LcioFileNamer.html#a9f1dc43079f2a7077cd014a3ad218576">m_defaultFields</a>.push_back(<span class="stringliteral">&quot;event&quot;</span>);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classslic_1_1LcioFileNamer.html#a9f1dc43079f2a7077cd014a3ad218576">m_defaultFields</a>.push_back(<span class="stringliteral">&quot;application&quot;</span>);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classslic_1_1LcioFileNamer.html#a9f1dc43079f2a7077cd014a3ad218576">m_defaultFields</a>.push_back(<span class="stringliteral">&quot;physics&quot;</span>);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classslic_1_1LcioFileNamer.html#a9f1dc43079f2a7077cd014a3ad218576">m_defaultFields</a>.push_back(<span class="stringliteral">&quot;geometry&quot;</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioFileNamer_8hh_source.html#l00099">LcioFileNamer::m_defaultFields</a>.</p>
 
 </div>
@@ -247,9 +240,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="LcioFileNamer_8cc_source.html#l00037">37</a> of file <a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                              {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -284,36 +275,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioFileNamer_8cc_source.html#l00040">40</a> of file <a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                      {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::string value;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">static</span> std::string <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5af2ec1ae6432a5a5134f8fd95ea4f5927">sep</a>(<span class="stringliteral">&quot;-&quot;</span>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (field == <span class="stringliteral">&quot;application&quot;</span>) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        value = PackageInfo::getShortName() + <span class="stringliteral">&quot;-v&quot;</span> + PackageInfo::getVersion(<a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5af2ec1ae6432a5a5134f8fd95ea4f5927">sep</a>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (field == <span class="stringliteral">&quot;geometry&quot;</span>) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        value = LCDDProcessor::instance()-&gt;getDetectorName();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (field == <span class="stringliteral">&quot;date&quot;</span>) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        value = <a class="code" href="classslic_1_1TimeUtil.html#a8af6b6527ac436bcabe584b2718caddd">TimeUtil::getDate</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (field == <span class="stringliteral">&quot;event&quot;</span> || field == <span class="stringliteral">&quot;evt&quot;</span>) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        value = <a class="code" href="classslic_1_1LcioFileNamer.html#aa6f0a03996ef77375f7083468843f537">LcioFileNamer::makeEventName</a>();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (field == <span class="stringliteral">&quot;eventNumber&quot;</span>) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        value = <a class="code" href="classslic_1_1LcioFileNamer.html#ad0555012a9525e2eb4b069f6b756901f">LcioFileNamer::makeEventNumberString</a>();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (field == <span class="stringliteral">&quot;run&quot;</span>) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        value = <a class="code" href="classslic_1_1LcioFileNamer.html#af9d42bba920a8d0c812e4b2f48ac9fdd">LcioFileNamer::makeRunNumberString</a>();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (field == <span class="stringliteral">&quot;binary&quot;</span>) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        value = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">SlicApplication::instance</a>()-&gt;getBinaryBasename();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (field == <span class="stringliteral">&quot;physics&quot;</span>) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        value = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">PhysicsListManager::instance</a>()-&gt;getCurrentListName();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG      </span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed">LOG::error</a> &lt;&lt; <span class="stringliteral">&quot;Ignoring unknown autoname field &lt;&quot;</span> &lt;&lt; field &lt;&lt; <span class="stringliteral">&quot;&gt;.&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        value = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, <a class="el" href="LogStream_8hh_source.html#l00033">LOG::error</a>, <a class="el" href="TimeUtil_8hh_source.html#l00037">TimeUtil::getDate()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; SlicApplication &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; PhysicsListManager &gt;::instance()</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="LcioFileNamer_8cc_source.html#l00092">LcioFileNamer::makeEventName()</a>, <a class="el" href="LcioFileNamer_8cc_source.html#l00153">LcioFileNamer::makeEventNumberString()</a>, <a class="el" href="LcioFileNamer_8cc_source.html#l00149">LcioFileNamer::makeRunNumberString()</a>, and <a class="el" href="LogStream_8hh_source.html#l00026">LOG::sep</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioFileNamer_8cc_source.html#l00070">LcioFileNamer::makeFileName()</a>.</p>
@@ -371,10 +333,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Create the file name using the default set of fields. </p><dl class="section return"><dt>Returns</dt><dd>The file name. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioFileNamer_8cc_source.html#l00088">88</a> of file <a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                             {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classslic_1_1LcioFileNamer.html#aebac91ca3d7b4c6e986bf6cd8fda9639">makeFileName</a>(<a class="code" href="classslic_1_1LcioFileNamer.html#a9f1dc43079f2a7077cd014a3ad218576">m_defaultFields</a>);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioFileNamer_8hh_source.html#l00099">LcioFileNamer::m_defaultFields</a>, and <a class="el" href="LcioFileNamer_8cc_source.html#l00070">LcioFileNamer::makeFileName()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioFileNamer_8cc_source.html#l00070">LcioFileNamer::makeFileName()</a>.</p>
@@ -406,23 +365,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Create the file name based on the current event generator. </p><dl class="section return"><dt>Returns</dt><dd>The file name. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioFileNamer_8cc_source.html#l00092">92</a> of file <a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                       {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    std::string evt;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="classslic_1_1EventSourceManager.html#a4dd06f27669d581d23f38510579c2def">EventSourceManager::ESourceType</a> est = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">EventSourceManager::instance</a>()-&gt;getCurrentSourceType();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">EventSourceManager::instance</a>()-&gt;isFileSource()) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        evt = <a class="code" href="classslic_1_1LcioFileNamer.html#a5f73307d4481eef68f597ad3a653a60d">makeFileBasedName</a>();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (est == <a class="code" href="classslic_1_1EventSourceManager.html#a4dd06f27669d581d23f38510579c2defab6bb8909f02b260d0e9e5a6c4732cda7">EventSourceManager::eGPS</a>) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        evt = <a class="code" href="classslic_1_1LcioFileNamer.html#a5da4b454baf080f6087cace6f5bcbbed">makeGPSName</a>();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (est == <a class="code" href="classslic_1_1EventSourceManager.html#a4dd06f27669d581d23f38510579c2defa2318f242dd784f539aba112232df7371">EventSourceManager::eParticleGun</a>) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        evt = <a class="code" href="classslic_1_1LcioFileNamer.html#a5176dd8f54e343568fa7ebac09c5636e">makeGunName</a>();</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        evt = <span class="stringliteral">&quot;events&quot;</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> evt;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="EventSourceManager_8hh_source.html#l00033">EventSourceManager::eGPS</a>, <a class="el" href="EventSourceManager_8hh_source.html#l00033">EventSourceManager::eParticleGun</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; EventSourceManager &gt;::instance()</a>, <a class="el" href="LcioFileNamer_8cc_source.html#l00109">LcioFileNamer::makeFileBasedName()</a>, <a class="el" href="LcioFileNamer_8cc_source.html#l00118">LcioFileNamer::makeGPSName()</a>, and <a class="el" href="LcioFileNamer_8cc_source.html#l00134">LcioFileNamer::makeGunName()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioFileNamer_8cc_source.html#l00040">LcioFileNamer::getFieldValue()</a>.</p>
@@ -454,10 +397,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Create a string from the number of events that were run using 'beamon'. </p><dl class="section return"><dt>Returns</dt><dd>The number of events that were run. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioFileNamer_8cc_source.html#l00153">153</a> of file <a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                                               {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">return</span> StringUtil::toString(<a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">SlicApplication::instance</a>()-&gt;getRunManager()-&gt;getNumberOfEventsToRun());</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; SlicApplication &gt;::instance()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioFileNamer_8cc_source.html#l00040">LcioFileNamer::getFieldValue()</a>.</p>
@@ -489,15 +429,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Create the file name based on a generator with an input file. </p><dl class="section return"><dt>Returns</dt><dd>The file name. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioFileNamer_8cc_source.html#l00109">109</a> of file <a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                           {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::string fname = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">EventSourceManager::instance</a>()-&gt;getFilename();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// basename and remove file extension</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    fname = <a class="code" href="classslic_1_1FileUtil.html#a5a068425c4009545068de023d5382227">FileUtil::removeExtension</a>(<a class="code" href="classslic_1_1FileUtil.html#af908e04ad6c887ed69aca506f1c82fff">FileUtil::basename</a>(fname));</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> fname;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="FileUtil_8cc_source.html#l00040">FileUtil::basename()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; EventSourceManager &gt;::instance()</a>, and <a class="el" href="FileUtil_8cc_source.html#l00076">FileUtil::removeExtension()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioFileNamer_8cc_source.html#l00092">LcioFileNamer::makeEventName()</a>.</p>
@@ -528,24 +460,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The file name. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioFileNamer_8cc_source.html#l00070">70</a> of file <a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                                                    {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::string filename = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">if</span> (fieldList.size() != 0) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator it = fieldList.begin(); it != fieldList.end(); it++) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            std::string value = <a class="code" href="classslic_1_1LcioFileNamer.html#a5ce2673552755af08e5fd501198dfa1a">getFieldValue</a>(*it);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">if</span> (value != <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                filename = filename + value + <a class="code" href="classslic_1_1LcioFileNamer.html#a2c7f2cbd609c4afea9acfc50ed22c60a">m_sep</a>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">if</span> (filename != <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            filename.erase(filename.end() - 1, filename.end());</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        filename = <a class="code" href="classslic_1_1LcioFileNamer.html#af8db27c9b1496c77608412cea8e4b594">makeDefaultFileName</a>();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> filename;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioFileNamer_8cc_source.html#l00040">LcioFileNamer::getFieldValue()</a>, <a class="el" href="LcioFileNamer_8hh_source.html#l00098">LcioFileNamer::m_sep</a>, and <a class="el" href="LcioFileNamer_8cc_source.html#l00088">LcioFileNamer::makeDefaultFileName()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioManager_8cc_source.html#l00306">LcioManager::makeAutoname()</a>, and <a class="el" href="LcioFileNamer_8cc_source.html#l00088">LcioFileNamer::makeDefaultFileName()</a>.</p>
@@ -577,22 +492,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Create the file name based on settings of the Geant4 GPS. </p><dl class="section return"><dt>Returns</dt><dd>The file name. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioFileNamer_8cc_source.html#l00118">118</a> of file <a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                     {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    G4GeneralParticleSource* gps = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">EventSourceManager::instance</a>()-&gt;getGPS();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">// particle name</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::string pname = gps-&gt;GetParticleDefinition()-&gt;GetParticleName();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="comment">// energy</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">double</span> ene = gps-&gt;GetCurrentSource()-&gt;GetEneDist()-&gt;GenerateOne(gps-&gt;GetParticleDefinition());</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    std::string eneStr = StringUtil::toString(ene / GeV) + <span class="stringliteral">&quot;GeV&quot;</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="comment">// full string</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    std::string evtname = pname + <a class="code" href="classslic_1_1LcioFileNamer.html#a2c7f2cbd609c4afea9acfc50ed22c60a">m_sep</a> + eneStr;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">return</span> evtname;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; EventSourceManager &gt;::instance()</a>, and <a class="el" href="LcioFileNamer_8hh_source.html#l00098">LcioFileNamer::m_sep</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioFileNamer_8cc_source.html#l00092">LcioFileNamer::makeEventName()</a>.</p>
@@ -624,21 +524,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Create the file name based on settings of the Geant4 particle gun. </p><dl class="section return"><dt>Returns</dt><dd>The file name. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioFileNamer_8cc_source.html#l00134">134</a> of file <a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                     {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    G4ParticleGun* gun = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">EventSourceManager::instance</a>()-&gt;getParticleGun();</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">// particle name</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    std::string pname = gun-&gt;GetParticleDefinition()-&gt;GetParticleName();</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">// energy</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    std::string pE = StringUtil::toString(gun-&gt;GetParticleEnergy() / GeV) + <span class="stringliteral">&quot;GeV&quot;</span>;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">// full string</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    std::string evtname = pname + <a class="code" href="classslic_1_1LcioFileNamer.html#a2c7f2cbd609c4afea9acfc50ed22c60a">m_sep</a> + pE;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">return</span> evtname;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; EventSourceManager &gt;::instance()</a>, and <a class="el" href="LcioFileNamer_8hh_source.html#l00098">LcioFileNamer::m_sep</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioFileNamer_8cc_source.html#l00092">LcioFileNamer::makeEventName()</a>.</p>
@@ -670,10 +556,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Create a string from the current run number information in the <a class="el" href="classslic_1_1RunManager.html" title="Extension of G4RunManager.">RunManager</a>. </p><dl class="section return"><dt>Returns</dt><dd>The run number string. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioFileNamer_8cc_source.html#l00149">149</a> of file <a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                             {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">return</span> StringUtil::toString(G4RunManager::GetRunManager()-&gt;GetCurrentRun()-&gt;GetRunID());</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">Referenced by <a class="el" href="LcioFileNamer_8cc_source.html#l00040">LcioFileNamer::getFieldValue()</a>.</p>
 
 </div>
@@ -736,29 +619,6 @@ Additional Inherited Members</h2></td></tr>
 <li><a class="el" href="LcioFileNamer_8cc_source.html">LcioFileNamer.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1LcioFileNamer_html_af9d42bba920a8d0c812e4b2f48ac9fdd"><div class="ttname"><a href="classslic_1_1LcioFileNamer.html#af9d42bba920a8d0c812e4b2f48ac9fdd">slic::LcioFileNamer::makeRunNumberString</a></div><div class="ttdeci">static std::string makeRunNumberString()</div><div class="ttdef"><b>Definition:</b> <a href="LcioFileNamer_8cc_source.html#l00149">LcioFileNamer.cc:149</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioFileNamer_html_ad0555012a9525e2eb4b069f6b756901f"><div class="ttname"><a href="classslic_1_1LcioFileNamer.html#ad0555012a9525e2eb4b069f6b756901f">slic::LcioFileNamer::makeEventNumberString</a></div><div class="ttdeci">static std::string makeEventNumberString()</div><div class="ttdef"><b>Definition:</b> <a href="LcioFileNamer_8cc_source.html#l00153">LcioFileNamer.cc:153</a></div></div>
-<div class="ttc" id="aclassslic_1_1EventSourceManager_html_a4dd06f27669d581d23f38510579c2defa2318f242dd784f539aba112232df7371"><div class="ttname"><a href="classslic_1_1EventSourceManager.html#a4dd06f27669d581d23f38510579c2defa2318f242dd784f539aba112232df7371">slic::EventSourceManager::eParticleGun</a></div><div class="ttdeci">@ eParticleGun</div><div class="ttdef"><b>Definition:</b> <a href="EventSourceManager_8hh_source.html#l00033">EventSourceManager.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioFileNamer_html_a5da4b454baf080f6087cace6f5bcbbed"><div class="ttname"><a href="classslic_1_1LcioFileNamer.html#a5da4b454baf080f6087cace6f5bcbbed">slic::LcioFileNamer::makeGPSName</a></div><div class="ttdeci">static std::string makeGPSName()</div><div class="ttdef"><b>Definition:</b> <a href="LcioFileNamer_8cc_source.html#l00118">LcioFileNamer.cc:118</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed">LOG::error</a></div><div class="ttdeci">@ error</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5af2ec1ae6432a5a5134f8fd95ea4f5927"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5af2ec1ae6432a5a5134f8fd95ea4f5927">LOG::sep</a></div><div class="ttdeci">@ sep</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioFileNamer_html_a5ce2673552755af08e5fd501198dfa1a"><div class="ttname"><a href="classslic_1_1LcioFileNamer.html#a5ce2673552755af08e5fd501198dfa1a">slic::LcioFileNamer::getFieldValue</a></div><div class="ttdeci">std::string getFieldValue(std::string field)</div><div class="ttdef"><b>Definition:</b> <a href="LcioFileNamer_8cc_source.html#l00040">LcioFileNamer.cc:40</a></div></div>
-<div class="ttc" id="aclassslic_1_1FileUtil_html_a5a068425c4009545068de023d5382227"><div class="ttname"><a href="classslic_1_1FileUtil.html#a5a068425c4009545068de023d5382227">slic::FileUtil::removeExtension</a></div><div class="ttdeci">static std::string removeExtension(std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="FileUtil_8cc_source.html#l00076">FileUtil.cc:76</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioFileNamer_html_af8db27c9b1496c77608412cea8e4b594"><div class="ttname"><a href="classslic_1_1LcioFileNamer.html#af8db27c9b1496c77608412cea8e4b594">slic::LcioFileNamer::makeDefaultFileName</a></div><div class="ttdeci">std::string makeDefaultFileName()</div><div class="ttdef"><b>Definition:</b> <a href="LcioFileNamer_8cc_source.html#l00088">LcioFileNamer.cc:88</a></div></div>
-<div class="ttc" id="aclassslic_1_1FileUtil_html_af908e04ad6c887ed69aca506f1c82fff"><div class="ttname"><a href="classslic_1_1FileUtil.html#af908e04ad6c887ed69aca506f1c82fff">slic::FileUtil::basename</a></div><div class="ttdeci">static std::string basename(std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="FileUtil_8cc_source.html#l00040">FileUtil.cc:40</a></div></div>
-<div class="ttc" id="aclassSingleton_html_ade6193af70013295b23e0318cbb276bd"><div class="ttname"><a href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; SlicApplication &gt;::instance</a></div><div class="ttdeci">static SlicApplication * instance()</div></div>
-<div class="ttc" id="aclassslic_1_1LcioFileNamer_html_aa6f0a03996ef77375f7083468843f537"><div class="ttname"><a href="classslic_1_1LcioFileNamer.html#aa6f0a03996ef77375f7083468843f537">slic::LcioFileNamer::makeEventName</a></div><div class="ttdeci">static std::string makeEventName()</div><div class="ttdef"><b>Definition:</b> <a href="LcioFileNamer_8cc_source.html#l00092">LcioFileNamer.cc:92</a></div></div>
-<div class="ttc" id="aclassslic_1_1EventSourceManager_html_a4dd06f27669d581d23f38510579c2defab6bb8909f02b260d0e9e5a6c4732cda7"><div class="ttname"><a href="classslic_1_1EventSourceManager.html#a4dd06f27669d581d23f38510579c2defab6bb8909f02b260d0e9e5a6c4732cda7">slic::EventSourceManager::eGPS</a></div><div class="ttdeci">@ eGPS</div><div class="ttdef"><b>Definition:</b> <a href="EventSourceManager_8hh_source.html#l00033">EventSourceManager.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioFileNamer_html_aebac91ca3d7b4c6e986bf6cd8fda9639"><div class="ttname"><a href="classslic_1_1LcioFileNamer.html#aebac91ca3d7b4c6e986bf6cd8fda9639">slic::LcioFileNamer::makeFileName</a></div><div class="ttdeci">std::string makeFileName(std::vector&lt; std::string &gt; fields)</div><div class="ttdef"><b>Definition:</b> <a href="LcioFileNamer_8cc_source.html#l00070">LcioFileNamer.cc:70</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioFileNamer_html_a9f1dc43079f2a7077cd014a3ad218576"><div class="ttname"><a href="classslic_1_1LcioFileNamer.html#a9f1dc43079f2a7077cd014a3ad218576">slic::LcioFileNamer::m_defaultFields</a></div><div class="ttdeci">std::vector&lt; std::string &gt; m_defaultFields</div><div class="ttdef"><b>Definition:</b> <a href="LcioFileNamer_8hh_source.html#l00099">LcioFileNamer.hh:99</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a></div><div class="ttdeci">@ done</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ab7b488a14251c880422a324540415854"><div class="ttname"><a href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">slic::Module::Module</a></div><div class="ttdeci">Module(const std::string &amp;name, bool deleteOnExit=true, bool autoRegister=true)</div><div class="ttdef"><b>Definition:</b> <a href="Module_8cc_source.html#l00007">Module.cc:7</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioFileNamer_html_a5176dd8f54e343568fa7ebac09c5636e"><div class="ttname"><a href="classslic_1_1LcioFileNamer.html#a5176dd8f54e343568fa7ebac09c5636e">slic::LcioFileNamer::makeGunName</a></div><div class="ttdeci">static std::string makeGunName()</div><div class="ttdef"><b>Definition:</b> <a href="LcioFileNamer_8cc_source.html#l00134">LcioFileNamer.cc:134</a></div></div>
-<div class="ttc" id="aclassslic_1_1EventSourceManager_html_a4dd06f27669d581d23f38510579c2def"><div class="ttname"><a href="classslic_1_1EventSourceManager.html#a4dd06f27669d581d23f38510579c2def">slic::EventSourceManager::ESourceType</a></div><div class="ttdeci">ESourceType</div><div class="ttdef"><b>Definition:</b> <a href="EventSourceManager_8hh_source.html#l00032">EventSourceManager.hh:32</a></div></div>
-<div class="ttc" id="aclassslic_1_1TimeUtil_html_a8af6b6527ac436bcabe584b2718caddd"><div class="ttname"><a href="classslic_1_1TimeUtil.html#a8af6b6527ac436bcabe584b2718caddd">slic::TimeUtil::getDate</a></div><div class="ttdeci">static std::string getDate()</div><div class="ttdef"><b>Definition:</b> <a href="TimeUtil_8hh_source.html#l00037">TimeUtil.hh:37</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioFileNamer_html_a2c7f2cbd609c4afea9acfc50ed22c60a"><div class="ttname"><a href="classslic_1_1LcioFileNamer.html#a2c7f2cbd609c4afea9acfc50ed22c60a">slic::LcioFileNamer::m_sep</a></div><div class="ttdeci">static std::string m_sep</div><div class="ttdef"><b>Definition:</b> <a href="LcioFileNamer_8hh_source.html#l00098">LcioFileNamer.hh:98</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioFileNamer_html_a5f73307d4481eef68f597ad3a653a60d"><div class="ttname"><a href="classslic_1_1LcioFileNamer.html#a5f73307d4481eef68f597ad3a653a60d">slic::LcioFileNamer::makeFileBasedName</a></div><div class="ttdeci">static std::string makeFileBasedName()</div><div class="ttdef"><b>Definition:</b> <a href="LcioFileNamer_8cc_source.html#l00109">LcioFileNamer.cc:109</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

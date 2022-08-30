@@ -261,10 +261,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="CommandQueue_8hh_source.html#l00030">30</a> of file <a class="el" href="CommandQueue_8hh_source.html">CommandQueue.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                       :</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <a class="code" href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">Module</a>(<span class="stringliteral">&quot;CommandQueue&quot;</span>) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ad2eb565bf623274139ea60420b343081"></a>
@@ -292,9 +289,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="CommandQueue_8hh_source.html#l00037">37</a> of file <a class="el" href="CommandQueue_8hh_source.html">CommandQueue.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -329,11 +324,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandQueue_8hh_source.html#l00052">52</a> of file <a class="el" href="CommandQueue_8hh_source.html">CommandQueue.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                      {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            std::string cmdStr = command;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <a class="code" href="classslic_1_1CommandQueue.html#a5bb6f2ef702494b6c383d5452823d8f6">add</a>(std::string(cmdStr));</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandQueue_8hh_source.html#l00044">CommandQueue::add()</a>.</p>
 
 </div>
@@ -369,10 +360,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandQueue_8hh_source.html#l00044">44</a> of file <a class="el" href="CommandQueue_8hh_source.html">CommandQueue.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                             {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <a class="code" href="classslic_1_1CommandQueue.html#af1e132ad43e1d0c2d05e48dc797b2379">m_commands</a>.push_back(command);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandQueue_8hh_source.html#l00098">CommandQueue::m_commands</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="CommandQueue_8hh_source.html#l00052">CommandQueue::add()</a>, <a class="el" href="CommandLineProcessor_8cc_source.html#l00030">CommandLineProcessor::process()</a>, <a class="el" href="CommandLineProcessor_8cc_source.html#l00262">CommandLineProcessor::processOption()</a>, and <a class="el" href="CommandLineProcessor_8cc_source.html#l00296">CommandLineProcessor::processOptions()</a>.</p>
@@ -404,10 +392,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Clear all the commands in the queue. </p>
 
 <p class="definition">Definition at line <a class="el" href="CommandQueue_8hh_source.html#l00086">86</a> of file <a class="el" href="CommandQueue_8hh_source.html">CommandQueue.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                     {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <a class="code" href="classslic_1_1CommandQueue.html#af1e132ad43e1d0c2d05e48dc797b2379">m_commands</a>.clear();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandQueue_8hh_source.html#l00098">CommandQueue::m_commands</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicApplication_8cc_source.html#l00174">SlicApplication::run()</a>.</p>
@@ -439,10 +424,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Get the begin iterator of the queue. </p><dl class="section return"><dt>Returns</dt><dd>An iterator pointing to the beginning of the command queue. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandQueue_8hh_source.html#l00061">61</a> of file <a class="el" href="CommandQueue_8hh_source.html">CommandQueue.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                              {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1CommandQueue.html#af1e132ad43e1d0c2d05e48dc797b2379">m_commands</a>.begin();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandQueue_8hh_source.html#l00098">CommandQueue::m_commands</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="CommandQueue_8cc_source.html#l00017">CommandQueue::execute()</a>, and <a class="el" href="CommandQueue_8cc_source.html#l00007">CommandQueue::printOut()</a>.</p>
@@ -474,10 +456,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Get the end iterator of the queue. </p><dl class="section return"><dt>Returns</dt><dd>An iterator pointing to the end of the command queue. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandQueue_8hh_source.html#l00069">69</a> of file <a class="el" href="CommandQueue_8hh_source.html">CommandQueue.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                            {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1CommandQueue.html#af1e132ad43e1d0c2d05e48dc797b2379">m_commands</a>.end();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandQueue_8hh_source.html#l00098">CommandQueue::m_commands</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="CommandQueue_8cc_source.html#l00017">CommandQueue::execute()</a>, and <a class="el" href="CommandQueue_8cc_source.html#l00007">CommandQueue::printOut()</a>.</p>
@@ -501,13 +480,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Execute the commands in the queue sequentially. </p>
 
 <p class="definition">Definition at line <a class="el" href="CommandQueue_8cc_source.html#l00017">17</a> of file <a class="el" href="CommandQueue_8cc_source.html">CommandQueue.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                           {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">for</span> (CommandVectorType::iterator iter = <a class="code" href="classslic_1_1CommandQueue.html#a2ae2f736109ae39d1b039aaca83bc27a">cmdsBegin</a>(); iter != <a class="code" href="classslic_1_1CommandQueue.html#a696bc600871cd720395d9635470f701a">cmdsEnd</a>(); iter++) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        std::string cmd = *iter;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        G4UImanager::GetUIpointer()-&gt;ApplyCommand(cmd);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandQueue_8hh_source.html#l00061">CommandQueue::cmdsBegin()</a>, and <a class="el" href="CommandQueue_8hh_source.html#l00069">CommandQueue::cmdsEnd()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicApplication_8cc_source.html#l00174">SlicApplication::run()</a>.</p>
@@ -538,16 +511,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>An iterator pointing to the command or end iterator if not found. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="CommandQueue_8cc_source.html#l00024">24</a> of file <a class="el" href="CommandQueue_8cc_source.html">CommandQueue.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                                                             {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    CommandVectorType::iterator iter = <a class="code" href="classslic_1_1CommandQueue.html#af1e132ad43e1d0c2d05e48dc797b2379">m_commands</a>.begin();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">for</span> (; iter != <a class="code" href="classslic_1_1CommandQueue.html#af1e132ad43e1d0c2d05e48dc797b2379">m_commands</a>.end(); iter++) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">if</span> ((*iter).find(str) != std::string::npos) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> iter;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="CommandQueue_8hh_source.html#l00098">CommandQueue::m_commands</a>.</p>
 
 </div>
@@ -569,16 +533,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Print the queue to the log. </p>
 
 <p class="definition">Definition at line <a class="el" href="CommandQueue_8cc_source.html#l00007">7</a> of file <a class="el" href="CommandQueue_8cc_source.html">CommandQueue.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;                            {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <span class="stringliteral">&quot;************************&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <span class="stringliteral">&quot;* Geant4 Command Queue *&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <span class="stringliteral">&quot;************************&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">for</span> (CommandVectorType::iterator iter = <a class="code" href="classslic_1_1CommandQueue.html#a2ae2f736109ae39d1b039aaca83bc27a">cmdsBegin</a>(); iter != <a class="code" href="classslic_1_1CommandQueue.html#a696bc600871cd720395d9635470f701a">cmdsEnd</a>(); iter++) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; *iter &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    }</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00033">LOG::always</a>, <a class="el" href="CommandQueue_8hh_source.html#l00061">CommandQueue::cmdsBegin()</a>, <a class="el" href="CommandQueue_8hh_source.html#l00069">CommandQueue::cmdsEnd()</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, and <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SlicApplication_8cc_source.html#l00174">SlicApplication::run()</a>.</p>
@@ -617,14 +572,6 @@ Additional Inherited Members</h2></td></tr>
 <li><a class="el" href="CommandQueue_8cc_source.html">CommandQueue.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1CommandQueue_html_a696bc600871cd720395d9635470f701a"><div class="ttname"><a href="classslic_1_1CommandQueue.html#a696bc600871cd720395d9635470f701a">slic::CommandQueue::cmdsEnd</a></div><div class="ttdeci">CommandVectorType::iterator cmdsEnd()</div><div class="ttdef"><b>Definition:</b> <a href="CommandQueue_8hh_source.html#l00069">CommandQueue.hh:69</a></div></div>
-<div class="ttc" id="aclassslic_1_1CommandQueue_html_a5bb6f2ef702494b6c383d5452823d8f6"><div class="ttname"><a href="classslic_1_1CommandQueue.html#a5bb6f2ef702494b6c383d5452823d8f6">slic::CommandQueue::add</a></div><div class="ttdeci">void add(const CommandType &amp;command)</div><div class="ttdef"><b>Definition:</b> <a href="CommandQueue_8hh_source.html#l00044">CommandQueue.hh:44</a></div></div>
-<div class="ttc" id="aclassslic_1_1CommandQueue_html_a2ae2f736109ae39d1b039aaca83bc27a"><div class="ttname"><a href="classslic_1_1CommandQueue.html#a2ae2f736109ae39d1b039aaca83bc27a">slic::CommandQueue::cmdsBegin</a></div><div class="ttdeci">CommandVectorType::iterator cmdsBegin()</div><div class="ttdef"><b>Definition:</b> <a href="CommandQueue_8hh_source.html#l00061">CommandQueue.hh:61</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a></div><div class="ttdeci">@ always</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a></div><div class="ttdeci">@ done</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ab7b488a14251c880422a324540415854"><div class="ttname"><a href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">slic::Module::Module</a></div><div class="ttdeci">Module(const std::string &amp;name, bool deleteOnExit=true, bool autoRegister=true)</div><div class="ttdef"><b>Definition:</b> <a href="Module_8cc_source.html#l00007">Module.cc:7</a></div></div>
-<div class="ttc" id="aclassslic_1_1CommandQueue_html_af1e132ad43e1d0c2d05e48dc797b2379"><div class="ttname"><a href="classslic_1_1CommandQueue.html#af1e132ad43e1d0c2d05e48dc797b2379">slic::CommandQueue::m_commands</a></div><div class="ttdeci">CommandVectorType m_commands</div><div class="ttdef"><b>Definition:</b> <a href="CommandQueue_8hh_source.html#l00098">CommandQueue.hh:98</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -125,15 +125,7 @@ Private Attributes</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="VRML2WriterMessenger_8cc_source.html#l00013">13</a> of file <a class="el" href="VRML2WriterMessenger_8cc_source.html">VRML2WriterMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                           {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classslic_1_1VRML2WriterMessenger.html#a356959e8674cbec04bdf09aeb4b530af">m_vrmlDir</a> = <span class="keyword">new</span> G4UIdirectory(<span class="stringliteral">&quot;/vrml/&quot;</span>);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classslic_1_1VRML2WriterMessenger.html#a356959e8674cbec04bdf09aeb4b530af">m_vrmlDir</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Test VRML2Writer. [SLIC]&quot;</span>);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classslic_1_1VRML2WriterMessenger.html#a28a96fd38481cb4fb9f4fb6f6ed1c775">m_writeVrmlCmd</a> = <span class="keyword">new</span> G4UIcmdWithAString(<span class="stringliteral">&quot;/vrml/writeVRML&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classslic_1_1VRML2WriterMessenger.html#a28a96fd38481cb4fb9f4fb6f6ed1c775">m_writeVrmlCmd</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Write VRML of current geometry to a file.&quot;</span>);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="VRML2WriterMessenger_8hh_source.html#l00040">VRML2WriterMessenger::m_vrmlDir</a>, and <a class="el" href="VRML2WriterMessenger_8hh_source.html#l00041">VRML2WriterMessenger::m_writeVrmlCmd</a>.</p>
 
 </div>
@@ -163,10 +155,7 @@ Private Attributes</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="VRML2WriterMessenger_8cc_source.html#l00022">22</a> of file <a class="el" href="VRML2WriterMessenger_8cc_source.html">VRML2WriterMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                            {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    ;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -204,18 +193,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="VRML2WriterMessenger_8cc_source.html#l00026">26</a> of file <a class="el" href="VRML2WriterMessenger_8cc_source.html">VRML2WriterMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                                                         {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    G4String fname;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">if</span> (newVals == <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        fname = <span class="stringliteral">&quot;geometry.wrl&quot;</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        fname = newVals;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    VRML2Writer* writer = <span class="keyword">new</span> VRML2Writer(fname);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    writer-&gt;write();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">delete</span> writer;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    writer = 0;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="VRML2Writer_8cc_source.html#l00034">VRML2Writer::write()</a>.</p>
 
 </div>
@@ -278,8 +256,6 @@ Private Attributes</h2></td></tr>
 <li><a class="el" href="VRML2WriterMessenger_8cc_source.html">VRML2WriterMessenger.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1VRML2WriterMessenger_html_a356959e8674cbec04bdf09aeb4b530af"><div class="ttname"><a href="classslic_1_1VRML2WriterMessenger.html#a356959e8674cbec04bdf09aeb4b530af">slic::VRML2WriterMessenger::m_vrmlDir</a></div><div class="ttdeci">G4UIdirectory * m_vrmlDir</div><div class="ttdef"><b>Definition:</b> <a href="VRML2WriterMessenger_8hh_source.html#l00040">VRML2WriterMessenger.hh:40</a></div></div>
-<div class="ttc" id="aclassslic_1_1VRML2WriterMessenger_html_a28a96fd38481cb4fb9f4fb6f6ed1c775"><div class="ttname"><a href="classslic_1_1VRML2WriterMessenger.html#a28a96fd38481cb4fb9f4fb6f6ed1c775">slic::VRML2WriterMessenger::m_writeVrmlCmd</a></div><div class="ttdeci">G4UIcmdWithAString * m_writeVrmlCmd</div><div class="ttdef"><b>Definition:</b> <a href="VRML2WriterMessenger_8hh_source.html#l00041">VRML2WriterMessenger.hh:41</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

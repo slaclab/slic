@@ -224,10 +224,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="ModuleRegistry_8cc_source.html#l00010">10</a> of file <a class="el" href="ModuleRegistry_8cc_source.html">ModuleRegistry.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                               :</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">Module</a>(<span class="stringliteral">&quot;ModuleRegistry&quot;</span>, <span class="keyword">false</span>, <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a1976ab2d07bd8bdaf5efe34972321727"></a>
@@ -255,9 +252,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="ModuleRegistry_8cc_source.html#l00014">14</a> of file <a class="el" href="ModuleRegistry_8cc_source.html">ModuleRegistry.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                                {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -278,16 +273,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Delete all modules. </p>
 
 <p class="definition">Definition at line <a class="el" href="ModuleRegistry_8cc_source.html#l00056">56</a> of file <a class="el" href="ModuleRegistry_8cc_source.html">ModuleRegistry.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                   {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">for</span> (ModuleMap::iterator it = <a class="code" href="classslic_1_1ModuleRegistry.html#ad3b4100da1ef3010da729a15a438ac1e">m_modules</a>.begin(); it != <a class="code" href="classslic_1_1ModuleRegistry.html#ad3b4100da1ef3010da729a15a438ac1e">m_modules</a>.end(); it++) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// Delete it as long as Module has not</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// been flagged to not delete on exit.</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> (it-&gt;second-&gt;deleteOnExit()) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keyword">delete</span> it-&gt;second;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="ModuleRegistry_8hh_source.html#l00077">ModuleRegistry::m_modules</a>.</p>
 
 </div>
@@ -315,14 +301,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="ModuleRegistry_8cc_source.html#l00038">38</a> of file <a class="el" href="ModuleRegistry_8cc_source.html">ModuleRegistry.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                                           {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ModuleMap::iterator it = <a class="code" href="classslic_1_1ModuleRegistry.html#ad3b4100da1ef3010da729a15a438ac1e">m_modules</a>.find(<a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1">name</a>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (it != <a class="code" href="classslic_1_1ModuleRegistry.html#ad3b4100da1ef3010da729a15a438ac1e">m_modules</a>.end()) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classslic_1_1ModuleRegistry.html#ad3b4100da1ef3010da729a15a438ac1e">m_modules</a>.erase(it);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="ModuleRegistry_8hh_source.html#l00077">ModuleRegistry::m_modules</a>, and <a class="el" href="LogStream_8hh_source.html#l00026">LOG::name</a>.</p>
 
 </div>
@@ -350,10 +329,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="ModuleRegistry_8cc_source.html#l00034">34</a> of file <a class="el" href="ModuleRegistry_8cc_source.html">ModuleRegistry.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                    {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classslic_1_1ModuleRegistry.html#adef1d97cb97714d840eab584b5978a2f">deregisterModule</a>(module-&gt;getName());</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="Module_8hh_source.html#l00054">Module::getName()</a>.</p>
 
 </div>
@@ -382,10 +358,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classslic_1_1Module.html" title="Base class for slic code modules that provides common functionality, such as logging to an output str...">Module</a> with matching name or null if not found. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="ModuleRegistry_8cc_source.html#l00017">17</a> of file <a class="el" href="ModuleRegistry_8cc_source.html">ModuleRegistry.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                                        {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classslic_1_1ModuleRegistry.html#ad3b4100da1ef3010da729a15a438ac1e">m_modules</a>[<a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1">name</a>];</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="ModuleRegistry_8hh_source.html#l00077">ModuleRegistry::m_modules</a>, and <a class="el" href="LogStream_8hh_source.html#l00026">LOG::name</a>.</p>
 
 </div>
@@ -407,16 +380,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Print the list of registered modules to the log. </p>
 
 <p class="definition">Definition at line <a class="el" href="ModuleRegistry_8cc_source.html#l00046">46</a> of file <a class="el" href="ModuleRegistry_8cc_source.html">ModuleRegistry.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                           {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">LOG::endl</a>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <span class="stringliteral">&quot;********************&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">LOG::endl</a>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <span class="stringliteral">&quot;* Module Registry  *&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">LOG::endl</a>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <span class="stringliteral">&quot;********************&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">LOG::endl</a>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">for</span> (ModuleMap::const_iterator it = <a class="code" href="classslic_1_1ModuleRegistry.html#ad3b4100da1ef3010da729a15a438ac1e">m_modules</a>.begin(); it != <a class="code" href="classslic_1_1ModuleRegistry.html#ad3b4100da1ef3010da729a15a438ac1e">m_modules</a>.end(); it++) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; it-&gt;first &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">LOG::endl</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00033">LOG::always</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::endl</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, and <a class="el" href="ModuleRegistry_8hh_source.html#l00077">ModuleRegistry::m_modules</a>.</p>
 
 </div>
@@ -444,19 +408,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="ModuleRegistry_8cc_source.html#l00021">21</a> of file <a class="el" href="ModuleRegistry_8cc_source.html">ModuleRegistry.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                                  {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span> (module == 0) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>().<a class="code" href="classslic_1_1LogStream.html#ae11936436b759dd1967dad44753a1910">warning</a>(<span class="stringliteral">&quot;ModuleRegistry::registerModule - module points to null!&quot;</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classslic_1_1ModuleRegistry.html#ad3b4100da1ef3010da729a15a438ac1e">m_modules</a>[module-&gt;getName()] == 0) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="classslic_1_1ModuleRegistry.html#ad3b4100da1ef3010da729a15a438ac1e">m_modules</a>[module-&gt;getName()] = module;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>().<a class="code" href="classslic_1_1LogStream.html#ae11936436b759dd1967dad44753a1910">warning</a>(module-&gt;getName() + <span class="stringliteral">&quot; is already registered!&quot;</span>);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="Module_8hh_source.html#l00054">Module::getName()</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="ModuleRegistry_8hh_source.html#l00077">ModuleRegistry::m_modules</a>, and <a class="el" href="LogStream_8hh_source.html#l00254">LogStream::warning()</a>.</p>
 
 </div>
@@ -493,14 +445,6 @@ Additional Inherited Members</h2></td></tr>
 <li><a class="el" href="ModuleRegistry_8cc_source.html">ModuleRegistry.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1ModuleRegistry_html_ad3b4100da1ef3010da729a15a438ac1e"><div class="ttname"><a href="classslic_1_1ModuleRegistry.html#ad3b4100da1ef3010da729a15a438ac1e">slic::ModuleRegistry::m_modules</a></div><div class="ttdeci">ModuleMap m_modules</div><div class="ttdef"><b>Definition:</b> <a href="ModuleRegistry_8hh_source.html#l00077">ModuleRegistry.hh:77</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">LOG::endl</a></div><div class="ttdeci">@ endl</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1LogStream_html_ae11936436b759dd1967dad44753a1910"><div class="ttname"><a href="classslic_1_1LogStream.html#ae11936436b759dd1967dad44753a1910">slic::LogStream::warning</a></div><div class="ttdeci">LogStream &amp; warning()</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00254">LogStream.hh:254</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a></div><div class="ttdeci">@ always</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ab7b488a14251c880422a324540415854"><div class="ttname"><a href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">slic::Module::Module</a></div><div class="ttdeci">Module(const std::string &amp;name, bool deleteOnExit=true, bool autoRegister=true)</div><div class="ttdef"><b>Definition:</b> <a href="Module_8cc_source.html#l00007">Module.cc:7</a></div></div>
-<div class="ttc" id="aclassslic_1_1ModuleRegistry_html_adef1d97cb97714d840eab584b5978a2f"><div class="ttname"><a href="classslic_1_1ModuleRegistry.html#adef1d97cb97714d840eab584b5978a2f">slic::ModuleRegistry::deregisterModule</a></div><div class="ttdeci">void deregisterModule(Module *module)</div><div class="ttdef"><b>Definition:</b> <a href="ModuleRegistry_8cc_source.html#l00034">ModuleRegistry.cc:34</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1">LOG::name</a></div><div class="ttdeci">@ name</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

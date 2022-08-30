@@ -232,16 +232,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00036">36</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                     :</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">Module</a>(<span class="stringliteral">&quot;LcioHitsCollectionBuilder&quot;</span>), <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a13ca79425162972f1352c1629bb6f2c3">m_storeMomentum</a>(0) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// setup default coll flag for cal hits</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a1e9250a16e51044efbf20ca096140a88">setFlagDefaults</a>();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Set store momentum bit for TrackerHits</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#ab5da524344bf2a9264ddf15f8dd72607">m_trkCollFlag</a>.setBit(LCIO::THBIT_MOMENTUM);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00189">LcioHitsCollectionBuilder::m_trkCollFlag</a>, and <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00173">LcioHitsCollectionBuilder::setFlagDefaults()</a>.</p>
 
 </div>
@@ -271,9 +262,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00046">46</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                                      {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -319,50 +308,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00299">299</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                                                                                                       {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="comment">// Create empty hit contrib list.</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    HitContributionList contribs;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="comment">// Use aggregation of contribs by track ID if CHBIT_PDG is not set.</span></div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a267ecc1a5d5d50b8dc8a5eb68f6dfa2f">m_calCollFlag</a>.bitSet(LCIO::CHBIT_PDG)) {</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="comment">// Pass a ref to contrib list, which will get filled.</span></div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a1cd93304ead7dab19b19428581ca1df2">combineMcpHitContribs</a>(g4CalHit-&gt;getHitContributions(), contribs);</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="comment">// Otherwise, use the complete list from the CalHit.</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        contribs = g4CalHit-&gt;getHitContributions();</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    }</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="comment">// Add contribs to the LCIO MCParticle.</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordtype">size_t</span> ncontrib = 0;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">for</span> (HitContributionList::const_iterator iter = contribs.begin(); iter != contribs.end(); iter++) {</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="comment">// This contrib.</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keyword">const</span> HitContribution&amp; contrib = (*iter);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="comment">// Get the MCParticle pointer from the track ID.</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        MCParticle* contribMcp = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">MCParticleManager::instance</a>()-&gt;findMCParticle(contrib.getTrackID());</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <span class="keywordflow">if</span> (contribMcp != 0) {</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="comment">// Add the MCParticle contribution to the hit.</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            simCalHit-&gt;addMCParticleContribution(contribMcp, (<span class="keywordtype">float</span>) (contrib.getEdep() / GeV), (<span class="keywordtype">float</span>) (contrib.getGlobalTime()), contrib.getPDGID(), <span class="keyword">const_cast&lt;</span><span class="keywordtype">float</span>*<span class="keyword">&gt;</span>(contrib.getPosition()));</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            ++ncontrib;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        }</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="comment">// Problem!  Contributing particle is missing from MCParticle list.</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        {</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed">LOG::error</a> &lt;&lt; <span class="stringliteral">&quot;No MCParticle from track ID &lt;&quot;</span> &lt;&lt; contrib.getTrackID() &lt;&lt; <span class="stringliteral">&quot;&gt; when processing SimCalorimeterHit&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">LOG::endl</a>;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        }</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    }</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">if</span> ( ncontrib == 0 ) {</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>().<a class="code" href="classslic_1_1LogStream.html#a631a662800ba408d0280717c1dc26b4f">error</a>(<span class="stringliteral">&quot;No hit contributions for CalorimeterHit.&quot;</span>);</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00343">LcioHitsCollectionBuilder::combineMcpHitContribs()</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::endl</a>, <a class="el" href="LogStream_8hh_source.html#l00033">LOG::error</a>, <a class="el" href="LogStream_8hh_source.html#l00262">LogStream::error()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; MCParticleManager &gt;::instance()</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, and <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00190">LcioHitsCollectionBuilder::m_calCollFlag</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00218">LcioHitsCollectionBuilder::createHit()</a>.</p>
@@ -411,32 +357,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00343">343</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                                                                                                                                  {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    combinedContrib.clear();</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="comment">// iterate over long list (one entry for every hit)</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordflow">for</span> (HitContributionList::const_iterator iter = longContrib.begin(); iter != longContrib.end(); iter++) {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keywordtype">int</span> trkId = (*iter).getTrackID();</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        <span class="comment">//log().debug(&quot;Combining hits on trk_id: &quot; + StringUtil::toString( trk_id ) );</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        <span class="comment">// old track id in new combined list?</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        HitContribution* trk_contrib = 0;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keywordflow">if</span> ((trk_contrib = <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a4aff132ac6b0a401ee776a76252d6b3e">findHitContribution</a>((*iter).getTrackID(), combinedContrib))) {</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            <span class="comment">// Add to the energy deposition.</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            trk_contrib-&gt;incrEdep((*iter).getEdep());</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            <span class="comment">// Set the minimum time.</span></div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            trk_contrib-&gt;setMinTime((*iter).getGlobalTime());</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        }</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <span class="comment">// no existing contrib</span></div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            <span class="comment">// Create a new contribution.</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            combinedContrib.push_back(HitContribution(trkId, (*iter).getEdep(), (*iter).getPDGID(), (*iter).getGlobalTime()));</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        }</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    }</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00369">LcioHitsCollectionBuilder::findHitContribution()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00299">LcioHitsCollectionBuilder::addParticleContributions()</a>.</p>
@@ -486,16 +407,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>True if the LCEvent contains a collection with given name; false if not. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00417">417</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                                                                                                    {</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="keywordflow">for</span> (std::vector&lt;string&gt;::const_iterator iter = event-&gt;getCollectionNames()-&gt;begin(); iter != event-&gt;getCollectionNames()-&gt;end(); iter++) {</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">string</span> thisName = *iter;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        <span class="keywordflow">if</span> (thisName.compare(collectionName) == 0) {</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        }</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    }</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00050">LcioHitsCollectionBuilder::createHitCollections()</a>.</p>
 
 </div>
@@ -531,22 +443,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00157">157</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                                                                                  {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">// create Lcio cal coll</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    LCCollectionVec* collVec = <span class="keyword">new</span> LCCollectionVec(LCIO::SIMCALORIMETERHIT);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="comment">// cast to G4 cal HC</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    CalorimeterHitsCollection* calHits = <span class="keyword">dynamic_cast&lt;</span>CalorimeterHitsCollection*<span class="keyword">&gt;</span>(g4HC);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="comment">// call overloaded save function for cal hits</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#abe7fc379677db0bcca1ac34b1848f766">saveHits</a>(calHits, collVec);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="comment">// set cal flags</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    collVec-&gt;setFlag(<a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a267ecc1a5d5d50b8dc8a5eb68f6dfa2f">m_calCollFlag</a>.getFlag());</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">return</span> collVec;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00190">LcioHitsCollectionBuilder::m_calCollFlag</a>, and <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00200">LcioHitsCollectionBuilder::saveHits()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00120">LcioHitsCollectionBuilder::createCollectionVec()</a>.</p>
@@ -595,27 +492,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00120">120</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                                                                                                          {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="comment">// vec to create</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    LCCollectionVec* collVec = 0;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">// cal hits</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span> (SDtype == SensitiveDetector::eCalorimeter) {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        collVec = <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a9f03e35e82cacab00deb8b6889c66a86">createCalorimeterCollectionVec</a>(g4HC);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">// tracker hits</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (SDtype == SensitiveDetector::eTracker) {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        collVec = <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a58fe2484b70a0e73dba26380689c215a">createTrackerCollectionVec</a>(g4HC);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="comment">// unknown type of hit</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        G4Exception(<span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, FatalException, <span class="stringliteral">&quot;Unknown HC type.&quot;</span>);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">return</span> collVec;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00157">LcioHitsCollectionBuilder::createCalorimeterCollectionVec()</a>, and <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00141">LcioHitsCollectionBuilder::createTrackerCollectionVec()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00050">LcioHitsCollectionBuilder::createHitCollections()</a>.</p>
@@ -654,46 +531,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The output SimCalorimeterHit. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00218">218</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                                                                                      {</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    SimCalorimeterHitImpl* simCalHit = <span class="keyword">new</span> SimCalorimeterHitImpl();</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="comment">// set cellid from cal hit&#39;s id64</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keyword">const</span> Id64bit&amp; id64 = calHit-&gt;getId64bit();</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    simCalHit-&gt;setCellID0(id64.getId0());</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    simCalHit-&gt;setCellID1(id64.getId1());</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="comment">// position</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keyword">const</span> G4ThreeVector hitPos = calHit-&gt;getPosition();</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordtype">float</span> pos[3] = { (float)hitPos.x(), (float)hitPos.y(), (float)hitPos.z() };</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    simCalHit-&gt;setPosition(pos);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="comment">//  copy Mcp contrib info; energy is also incremented by contrib addition</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a7c052f9c94c02544e03735e9b03fa1c1">addParticleContributions</a>(calHit, simCalHit);</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="comment">// compare edep of calHit with simHit when debugging</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment">//#ifdef SLIC_DEBUG</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keyword">const</span> HitContributionList&amp; contribs = calHit-&gt;getHitContributions();</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordtype">double</span> totE = 0;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">for</span> (HitContributionList::const_iterator iter = contribs.begin(); iter != contribs.end(); iter++) {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        totE += (*iter).getEdep();</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="comment">// Set energy from total of individual contributions.    </span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="comment">//simCalHit-&gt;setEnergy(totE/GeV);</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="comment">//std::cout &lt;&lt; &quot;set totE = &quot; &lt;&lt; totE/GeV &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="comment">// sanity check so that new and old edeps must match</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="comment">//if (abs( totE/GeV - simCalHit-&gt;getEnergy() ) &gt; ( 0.001 * totE ) )</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="comment">//{</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="comment">//    log() &lt;&lt; LOG::debug &lt;&lt; &quot;g4 hit E: &quot; &lt;&lt; totE &lt;&lt; LOG::done;</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="comment">//    log() &lt;&lt; LOG::debug &lt;&lt; &quot;sim hit E: &quot; &lt;&lt; simCalHit-&gt;getEnergy() &lt;&lt; LOG::done;</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="comment">//    G4Exception(&quot;&quot;, &quot;&quot;, JustWarning, &quot;LCIO simCalHit E != G4 CalHit E, within tolerance&quot;);</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="comment">//}</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment">//#endif</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">return</span> simCalHit;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00299">LcioHitsCollectionBuilder::addParticleContributions()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00200">LcioHitsCollectionBuilder::saveHits()</a>.</p>
@@ -732,45 +570,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The output SimTrackerHit. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00259">259</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                                                                                  {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    SimTrackerHitImpl* simTrackerHit = <span class="keyword">new</span> SimTrackerHitImpl();</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="comment">// position in mm</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keyword">const</span> G4ThreeVector hitPos = trackerHit-&gt;getPosition();</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordtype">double</span> pos[3] = { hitPos.x(), hitPos.y(), hitPos.z() };</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    simTrackerHit-&gt;setPosition(pos);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="comment">// momentum in GeV</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keyword">const</span> G4ThreeVector&amp; momentum = trackerHit-&gt;getMomentum();</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    simTrackerHit-&gt;setMomentum(momentum.x() / GeV, momentum.y() / GeV, momentum.z() / GeV);</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="comment">// pathLength = distance between exit and entry points in mm</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    simTrackerHit-&gt;setPathLength(trackerHit-&gt;getLength());</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="comment">// dEdx in GeV (LCIO units)</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordtype">float</span> edep = trackerHit-&gt;getEdep();</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    simTrackerHit-&gt;setEDep(edep / GeV);</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="comment">// time in NS</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordtype">float</span> tEdep = trackerHit-&gt;getTdep();</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    simTrackerHit-&gt;setTime(tEdep);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="comment">// Cell ID.</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    simTrackerHit-&gt;setCellID0(trackerHit-&gt;getId());</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="comment">// MCP using McpManager</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    MCParticle* mcp = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">MCParticleManager::instance</a>()-&gt;findMCParticle(trackerHit-&gt;getTrackID());</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordflow">if</span> (!mcp) {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>().<a class="code" href="classslic_1_1LogStream.html#a631a662800ba408d0280717c1dc26b4f">error</a>(<span class="stringliteral">&quot;No MCParticle found for trackID &lt;&quot;</span> + StringUtil::toString(trackerHit-&gt;getTrackID()) + <span class="stringliteral">&quot;&gt; when processing SimTrackerHit&quot;</span>);</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        simTrackerHit-&gt;setMCParticle(mcp);</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    }</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">return</span> simTrackerHit;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00262">LogStream::error()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; MCParticleManager &gt;::instance()</a>, and <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>.</p>
 
 </div>
@@ -799,75 +599,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00050">50</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                                     {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// fetch HCIDs</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::vector&lt;int&gt; hcids = <a class="code" href="classslic_1_1HitsCollectionUtil.html#a29cb7fbfab816b5116b98bde17f62de4">HitsCollectionUtil::getHCIDs</a>();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// fetch hit collection of event</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    G4HCofThisEvent* HCE = <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a4ab963b341c9bf5eb9bd656fe964e61d">m_currentG4Event</a>-&gt;GetHCofThisEvent();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// HC table</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    G4HCtable* HCtbl = G4SDManager::GetSDMpointer()-&gt;GetHCtable();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">// HCID</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    G4int hcid;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    LCCollectionVec* collVec = 0;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// Loop over HC IDs.</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">for</span> (std::vector&lt;int&gt;::const_iterator iter = hcids.begin(); iter != hcids.end(); iter++) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        hcid = *iter;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">// retrieve Sensitive Detector ptr</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        SensitiveDetector *SD = <span class="keyword">static_cast&lt;</span>SensitiveDetector*<span class="keyword">&gt;</span>(G4SDManager::GetSDMpointer()-&gt;FindSensitiveDetector(HCtbl-&gt;GetSDname(hcid)));</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="comment">// Get hits collections from SD.</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; SD-&gt;getNumberOfHitsCollections(); i++) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">if</span> (SD-&gt;getHCID(i) == hcid) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                G4VHitsCollection* HC = HCE-&gt;GetHC(hcid);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="comment">// add a LCCollectionVec if got a HC</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">if</span> (HC) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    <span class="comment">// set LCIO endcap bit in the flag (i.e. CHBIT_BARREL ) according to SDs setting</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a517e9ffd8a7d9ac027ff1b5a846a8936">setEndcapFlag</a>(SD);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <span class="comment">// create collection vector based on type of SD</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    collVec = <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a28485950c636b63c5e31de27677a4ee0">createCollectionVec</a>(HC, SD-&gt;getType());</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    <span class="comment">// Store the cellID description into the LCIO::cellIDEncoding parameter in the collection.</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    <span class="keywordflow">if</span> (SD-&gt;getIdSpec()) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        std::string <span class="keywordtype">id</span> = SD-&gt;getIdSpec()-&gt;getFieldDescription();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        collVec-&gt;parameters().setValue(LCIO::CellIDEncoding, <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    <span class="comment">// Check for existing collection.</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a5768f160f0edc877fed6ef4fb93bd2de">containsCollection</a>(<a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a4158877a72ecf12f02b79289f5286514">m_currentLCEvent</a>, HC-&gt;GetName())) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        <span class="comment">// Update existing collection.</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        <span class="comment">// TODO: Check for matching id scheme and flags!</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        LCCollectionVec * collection = (LCCollectionVec*) <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a4158877a72ecf12f02b79289f5286514">m_currentLCEvent</a>-&gt;getCollection(HC-&gt;GetName());</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        collection-&gt;insert(collection-&gt;begin(), collVec-&gt;begin(), collVec-&gt;end());</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                    <span class="comment">// No collection found.</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                        <span class="comment">// Add new collection vector to LCEvent.</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                        <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a4158877a72ecf12f02b79289f5286514">m_currentLCEvent</a>-&gt;addCollection(collVec, HC-&gt;GetName());</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                        <span class="comment">//log() &lt;&lt; LOG::always &lt;&lt; HC-&gt;GetName() &lt;&lt; &quot; has &quot; &lt;&lt; collVec-&gt;size() &lt;&lt; &quot; hits&quot; &lt;&lt; LOG::done;</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                    }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    G4Exception(<span class="stringliteral">&quot;LcioHitsCollectionBuilder::createHitCollections()&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, FatalException, <span class="stringliteral">&quot;No collection found for Hits Collection ID&quot;</span>);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00417">LcioHitsCollectionBuilder::containsCollection()</a>, <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00120">LcioHitsCollectionBuilder::createCollectionVec()</a>, <a class="el" href="HitsCollectionUtil_8cc_source.html#l00037">HitsCollectionUtil::getHCIDs()</a>, <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00186">LcioHitsCollectionBuilder::m_currentG4Event</a>, <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00183">LcioHitsCollectionBuilder::m_currentLCEvent</a>, and <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00178">LcioHitsCollectionBuilder::setEndcapFlag()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00381">LcioHitsCollectionBuilder::createHitCollectionsFromEvent()</a>.</p>
@@ -909,18 +641,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The LCIO event with the hits collections. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00381">381</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                                                                                                                {</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="comment">// set instance vars</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a4ab963b341c9bf5eb9bd656fe964e61d">m_currentG4Event</a> = g4evt;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a4158877a72ecf12f02b79289f5286514">m_currentLCEvent</a> = lcevt;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="comment">// call real HC creation function</span></div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a43e29e783336e08968668d9c556cd8c3">createHitCollections</a>();</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="comment">// return evt pntr, which is same as input</span></div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a4158877a72ecf12f02b79289f5286514">m_currentLCEvent</a>;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00050">LcioHitsCollectionBuilder::createHitCollections()</a>, <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00186">LcioHitsCollectionBuilder::m_currentG4Event</a>, and <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00183">LcioHitsCollectionBuilder::m_currentLCEvent</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioManager_8cc_source.html#l00385">LcioManager::createHitsCollections()</a>.</p>
@@ -958,22 +679,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00141">141</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                                                                                              {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">// create Lcio tracker coll</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    LCCollectionVec* collVec = <span class="keyword">new</span> LCCollectionVec(LCIO::SIMTRACKERHIT);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="comment">// cast to G4 trk HC</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    TrackerHitsCollection* trkHits = <span class="keyword">dynamic_cast&lt;</span>TrackerHitsCollection*<span class="keyword">&gt;</span>(g4HC);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="comment">// call overloaded save function for trk hits</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#abe7fc379677db0bcca1ac34b1848f766">saveHits</a>(trkHits, collVec);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="comment">// set trk flags</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    collVec-&gt;setFlag(<a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#ab5da524344bf2a9264ddf15f8dd72607">m_trkCollFlag</a>.getFlag());</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">return</span> collVec;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00189">LcioHitsCollectionBuilder::m_trkCollFlag</a>, and <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00200">LcioHitsCollectionBuilder::saveHits()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00120">LcioHitsCollectionBuilder::createCollectionVec()</a>.</p>
@@ -1023,18 +729,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The matching HitContribution or null if there are none. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00369">369</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                                                                                                         {</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    HitContribution* c = 0;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="keywordflow">for</span> (HitContributionList::iterator iter = contribs.begin(); iter != contribs.end(); iter++) {</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        <span class="keywordflow">if</span> ((*iter).getTrackID() == trk_id) {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            c = &amp;(*iter);</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        }</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    }</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordflow">return</span> c;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00343">LcioHitsCollectionBuilder::combineMcpHitContribs()</a>.</p>
 
 </div>
@@ -1064,10 +759,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Get whether to store momentum in output step contributions. </p><dl class="section return"><dt>Returns</dt><dd>True if momentum should be stored; false if not. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00080">80</a> of file <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html">LcioHitsCollectionBuilder.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a13ca79425162972f1352c1629bb6f2c3">m_storeMomentum</a>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00193">LcioHitsCollectionBuilder::m_storeMomentum</a>.</p>
 
 </div>
@@ -1113,14 +805,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00200">200</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                                                                                                          {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordtype">size_t</span> s = calHits-&gt;GetSize();</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; s; i++) {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        CalorimeterHit* calHit = <span class="keyword">static_cast&lt;</span>CalorimeterHit*<span class="keyword">&gt;</span>(calHits-&gt;GetHit(i));</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        lcioColl-&gt;push_back(<a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#ac540dfacd15df72fb8384ba9ab449275">createHit</a>(calHit));</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    }</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00218">LcioHitsCollectionBuilder::createHit()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00157">LcioHitsCollectionBuilder::createCalorimeterCollectionVec()</a>, and <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00141">LcioHitsCollectionBuilder::createTrackerCollectionVec()</a>.</p>
@@ -1169,14 +854,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00209">209</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                                                                                                      {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordtype">size_t</span> s = trkHits-&gt;GetSize();</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; s; i++) {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        TrackerHit* trkHit = <span class="keyword">static_cast&lt;</span>TrackerHit*<span class="keyword">&gt;</span>(trkHits-&gt;GetHit(i));</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        lcioColl-&gt;push_back(<a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#ac540dfacd15df72fb8384ba9ab449275">createHit</a>(trkHit));</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00218">LcioHitsCollectionBuilder::createHit()</a>.</p>
 
 </div>
@@ -1212,27 +890,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00178">178</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                                                     {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordtype">bool</span> ec_flag = g4sd-&gt;getEndcapFlag();</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="comment">// set for cal</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">if</span> (g4sd-&gt;getType() == SensitiveDetector::eCalorimeter) {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keywordflow">if</span> (ec_flag) {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a267ecc1a5d5d50b8dc8a5eb68f6dfa2f">m_calCollFlag</a>.unsetBit(LCIO::CHBIT_BARREL);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a267ecc1a5d5d50b8dc8a5eb68f6dfa2f">m_calCollFlag</a>.setBit(LCIO::CHBIT_BARREL);</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="comment">// set for trk</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (g4sd-&gt;getType() == SensitiveDetector::eTracker) {</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">if</span> (ec_flag) {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#ab5da524344bf2a9264ddf15f8dd72607">m_trkCollFlag</a>.unsetBit(LCIO::THBIT_BARREL);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#ab5da524344bf2a9264ddf15f8dd72607">m_trkCollFlag</a>.setBit(LCIO::THBIT_BARREL);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        }</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00190">LcioHitsCollectionBuilder::m_calCollFlag</a>, and <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00189">LcioHitsCollectionBuilder::m_trkCollFlag</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00050">LcioHitsCollectionBuilder::createHitCollections()</a>.</p>
@@ -1264,11 +922,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Set default CalorimeterHit flag settings. This is called from this classe's constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00173">173</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                                {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a267ecc1a5d5d50b8dc8a5eb68f6dfa2f">m_calCollFlag</a>.setBit(LCIO::CHBIT_LONG);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a267ecc1a5d5d50b8dc8a5eb68f6dfa2f">m_calCollFlag</a>.setBit(LCIO::CHBIT_ID1);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00190">LcioHitsCollectionBuilder::m_calCollFlag</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00036">LcioHitsCollectionBuilder::LcioHitsCollectionBuilder()</a>.</p>
@@ -1298,18 +952,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00393">393</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                                                        {</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordflow">if</span> (setting) {</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a267ecc1a5d5d50b8dc8a5eb68f6dfa2f">m_calCollFlag</a>.setBit(LCIO::CHBIT_LONG);</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a267ecc1a5d5d50b8dc8a5eb68f6dfa2f">m_calCollFlag</a>.unsetBit(LCIO::CHBIT_LONG);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>().<a class="code" href="classslic_1_1LogStream.html#a06735f200dee746c010c3190dbe501a9">verbose</a>(<span class="stringliteral">&quot;Set CHBIT_LONG: &quot;</span> + StringUtil::toString( setting ) );</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00190">LcioHitsCollectionBuilder::m_calCollFlag</a>, and <a class="el" href="LogStream_8hh_source.html#l00238">LogStream::verbose()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioMessenger_8cc_source.html#l00032">LcioMessenger::SetNewValue()</a>.</p>
@@ -1339,18 +982,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00405">405</a> of file <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                                                       {</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordflow">if</span> (setting) {</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a267ecc1a5d5d50b8dc8a5eb68f6dfa2f">m_calCollFlag</a>.setBit(LCIO::CHBIT_PDG);</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a267ecc1a5d5d50b8dc8a5eb68f6dfa2f">m_calCollFlag</a>.setBit(LCIO::CHBIT_PDG);</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    }</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>().<a class="code" href="classslic_1_1LogStream.html#a06735f200dee746c010c3190dbe501a9">verbose</a>(<span class="stringliteral">&quot;Set CHBIT_PDG: &quot;</span> + StringUtil::toString( setting ) );</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00190">LcioHitsCollectionBuilder::m_calCollFlag</a>, and <a class="el" href="LogStream_8hh_source.html#l00238">LogStream::verbose()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioMessenger_8cc_source.html#l00032">LcioMessenger::SetNewValue()</a>.</p>
@@ -1388,10 +1020,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00072">72</a> of file <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html">LcioHitsCollectionBuilder.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                         {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="classslic_1_1LcioHitsCollectionBuilder.html#a13ca79425162972f1352c1629bb6f2c3">m_storeMomentum</a> = storeMomentum;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00193">LcioHitsCollectionBuilder::m_storeMomentum</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LcioManager_8hh_source.html#l00175">LcioManager::setStoreMomentum()</a>.</p>
@@ -1444,6 +1073,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>current G4 event </p>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00186">186</a> of file <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html">LcioHitsCollectionBuilder.hh</a>.</p>
 
@@ -1470,6 +1100,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>current Lcio event </p>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00183">183</a> of file <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html">LcioHitsCollectionBuilder.hh</a>.</p>
 
@@ -1496,6 +1127,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>store momentum </p>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00193">193</a> of file <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html">LcioHitsCollectionBuilder.hh</a>.</p>
 
@@ -1522,6 +1154,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>default flags </p>
 
 <p class="definition">Definition at line <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html#l00189">189</a> of file <a class="el" href="LcioHitsCollectionBuilder_8hh_source.html">LcioHitsCollectionBuilder.hh</a>.</p>
 
@@ -1534,31 +1167,6 @@ Additional Inherited Members</h2></td></tr>
 <li><a class="el" href="LcioHitsCollectionBuilder_8cc_source.html">LcioHitsCollectionBuilder.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a13ca79425162972f1352c1629bb6f2c3"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a13ca79425162972f1352c1629bb6f2c3">slic::LcioHitsCollectionBuilder::m_storeMomentum</a></div><div class="ttdeci">bool m_storeMomentum</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8hh_source.html#l00193">LcioHitsCollectionBuilder.hh:193</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a517e9ffd8a7d9ac027ff1b5a846a8936"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a517e9ffd8a7d9ac027ff1b5a846a8936">slic::LcioHitsCollectionBuilder::setEndcapFlag</a></div><div class="ttdeci">void setEndcapFlag(SensitiveDetector *sensitiveDetector)</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00178">LcioHitsCollectionBuilder.cc:178</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a4ab963b341c9bf5eb9bd656fe964e61d"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a4ab963b341c9bf5eb9bd656fe964e61d">slic::LcioHitsCollectionBuilder::m_currentG4Event</a></div><div class="ttdeci">const G4Event * m_currentG4Event</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8hh_source.html#l00186">LcioHitsCollectionBuilder.hh:186</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_ab5da524344bf2a9264ddf15f8dd72607"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#ab5da524344bf2a9264ddf15f8dd72607">slic::LcioHitsCollectionBuilder::m_trkCollFlag</a></div><div class="ttdeci">IMPL::LCFlagImpl m_trkCollFlag</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8hh_source.html#l00189">LcioHitsCollectionBuilder.hh:189</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">LOG::endl</a></div><div class="ttdeci">@ endl</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed">LOG::error</a></div><div class="ttdeci">@ error</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_ac540dfacd15df72fb8384ba9ab449275"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#ac540dfacd15df72fb8384ba9ab449275">slic::LcioHitsCollectionBuilder::createHit</a></div><div class="ttdeci">IMPL::SimCalorimeterHitImpl * createHit(CalorimeterHit *calorimeterHit)</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00218">LcioHitsCollectionBuilder.cc:218</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a58fe2484b70a0e73dba26380689c215a"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a58fe2484b70a0e73dba26380689c215a">slic::LcioHitsCollectionBuilder::createTrackerCollectionVec</a></div><div class="ttdeci">IMPL::LCCollectionVec * createTrackerCollectionVec(G4VHitsCollection *hitCollection)</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00141">LcioHitsCollectionBuilder.cc:141</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a1cd93304ead7dab19b19428581ca1df2"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a1cd93304ead7dab19b19428581ca1df2">slic::LcioHitsCollectionBuilder::combineMcpHitContribs</a></div><div class="ttdeci">void combineMcpHitContribs(const HitContributionList &amp;allContributions, HitContributionList &amp;combinedContributions)</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00343">LcioHitsCollectionBuilder.cc:343</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a1e9250a16e51044efbf20ca096140a88"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a1e9250a16e51044efbf20ca096140a88">slic::LcioHitsCollectionBuilder::setFlagDefaults</a></div><div class="ttdeci">void setFlagDefaults()</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00173">LcioHitsCollectionBuilder.cc:173</a></div></div>
-<div class="ttc" id="aclassSingleton_html_ade6193af70013295b23e0318cbb276bd"><div class="ttname"><a href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; MCParticleManager &gt;::instance</a></div><div class="ttdeci">static MCParticleManager * instance()</div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a28485950c636b63c5e31de27677a4ee0"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a28485950c636b63c5e31de27677a4ee0">slic::LcioHitsCollectionBuilder::createCollectionVec</a></div><div class="ttdeci">IMPL::LCCollectionVec * createCollectionVec(G4VHitsCollection *hitCollection, SensitiveDetector::EType sensitiveDetectorType)</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00120">LcioHitsCollectionBuilder.cc:120</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a267ecc1a5d5d50b8dc8a5eb68f6dfa2f"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a267ecc1a5d5d50b8dc8a5eb68f6dfa2f">slic::LcioHitsCollectionBuilder::m_calCollFlag</a></div><div class="ttdeci">IMPL::LCFlagImpl m_calCollFlag</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8hh_source.html#l00190">LcioHitsCollectionBuilder.hh:190</a></div></div>
-<div class="ttc" id="aclassslic_1_1LogStream_html_a06735f200dee746c010c3190dbe501a9"><div class="ttname"><a href="classslic_1_1LogStream.html#a06735f200dee746c010c3190dbe501a9">slic::LogStream::verbose</a></div><div class="ttdeci">LogStream &amp; verbose()</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00238">LogStream.hh:238</a></div></div>
-<div class="ttc" id="aclassslic_1_1LogStream_html_a631a662800ba408d0280717c1dc26b4f"><div class="ttname"><a href="classslic_1_1LogStream.html#a631a662800ba408d0280717c1dc26b4f">slic::LogStream::error</a></div><div class="ttdeci">LogStream &amp; error()</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00262">LogStream.hh:262</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a43e29e783336e08968668d9c556cd8c3"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a43e29e783336e08968668d9c556cd8c3">slic::LcioHitsCollectionBuilder::createHitCollections</a></div><div class="ttdeci">void createHitCollections()</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00050">LcioHitsCollectionBuilder.cc:50</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a7c052f9c94c02544e03735e9b03fa1c1"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a7c052f9c94c02544e03735e9b03fa1c1">slic::LcioHitsCollectionBuilder::addParticleContributions</a></div><div class="ttdeci">void addParticleContributions(CalorimeterHit *calorimeterHit, IMPL::SimCalorimeterHitImpl *simCalorimeterHit)</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00299">LcioHitsCollectionBuilder.cc:299</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a9f03e35e82cacab00deb8b6889c66a86"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a9f03e35e82cacab00deb8b6889c66a86">slic::LcioHitsCollectionBuilder::createCalorimeterCollectionVec</a></div><div class="ttdeci">IMPL::LCCollectionVec * createCalorimeterCollectionVec(G4VHitsCollection *hitCollection)</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00157">LcioHitsCollectionBuilder.cc:157</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ab7b488a14251c880422a324540415854"><div class="ttname"><a href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">slic::Module::Module</a></div><div class="ttdeci">Module(const std::string &amp;name, bool deleteOnExit=true, bool autoRegister=true)</div><div class="ttdef"><b>Definition:</b> <a href="Module_8cc_source.html#l00007">Module.cc:7</a></div></div>
-<div class="ttc" id="aclassslic_1_1HitsCollectionUtil_html_a29cb7fbfab816b5116b98bde17f62de4"><div class="ttname"><a href="classslic_1_1HitsCollectionUtil.html#a29cb7fbfab816b5116b98bde17f62de4">slic::HitsCollectionUtil::getHCIDs</a></div><div class="ttdeci">static std::vector&lt; int &gt; getHCIDs()</div><div class="ttdef"><b>Definition:</b> <a href="HitsCollectionUtil_8cc_source.html#l00037">HitsCollectionUtil.cc:37</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_abe7fc379677db0bcca1ac34b1848f766"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#abe7fc379677db0bcca1ac34b1848f766">slic::LcioHitsCollectionBuilder::saveHits</a></div><div class="ttdeci">void saveHits(CalorimeterHitsCollection *calorimeterHits, IMPL::LCCollectionVec *collection)</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00200">LcioHitsCollectionBuilder.cc:200</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a4aff132ac6b0a401ee776a76252d6b3e"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a4aff132ac6b0a401ee776a76252d6b3e">slic::LcioHitsCollectionBuilder::findHitContribution</a></div><div class="ttdeci">HitContribution * findHitContribution(int trackID, HitContributionList &amp;contributions)</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00369">LcioHitsCollectionBuilder.cc:369</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a5768f160f0edc877fed6ef4fb93bd2de"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a5768f160f0edc877fed6ef4fb93bd2de">slic::LcioHitsCollectionBuilder::containsCollection</a></div><div class="ttdeci">static bool containsCollection(EVENT::LCEvent *event, const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8cc_source.html#l00417">LcioHitsCollectionBuilder.cc:417</a></div></div>
-<div class="ttc" id="aclassslic_1_1LcioHitsCollectionBuilder_html_a4158877a72ecf12f02b79289f5286514"><div class="ttname"><a href="classslic_1_1LcioHitsCollectionBuilder.html#a4158877a72ecf12f02b79289f5286514">slic::LcioHitsCollectionBuilder::m_currentLCEvent</a></div><div class="ttdeci">EVENT::LCEvent * m_currentLCEvent</div><div class="ttdef"><b>Definition:</b> <a href="LcioHitsCollectionBuilder_8hh_source.html#l00183">LcioHitsCollectionBuilder.hh:183</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

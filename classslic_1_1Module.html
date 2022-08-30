@@ -194,10 +194,7 @@ Protected Member Functions</h2></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00027">27</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                          {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="classslic_1_1Module.html#a50a7721e11e14f338207a83b9ab26ec9a01ff808a6ae13a94eeb34003ee643925">eOkay</a> = 0, <a class="code" href="classslic_1_1Module.html#a50a7721e11e14f338207a83b9ab26ec9a941bc60001f0641b15dee5be7edde89d">eNotInitialized</a> = 1, <a class="code" href="classslic_1_1Module.html#a50a7721e11e14f338207a83b9ab26ec9aded0d6c406ba8f168aa929712b671310">eBadState</a> = 2, <a class="code" href="classslic_1_1Module.html#a50a7721e11e14f338207a83b9ab26ec9a23e5779d5a8b76861346f484b0a458ef">eFatalError</a> = 3</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        };</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -250,24 +247,7 @@ Protected Member Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="Module_8cc_source.html#l00007">7</a> of file <a class="el" href="Module_8cc_source.html">Module.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;                                                                          :</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="classslic_1_1Module.html#ae06e4de9bf23fc0f2a6204fbca09cdb4">m_deleteOnExit</a>(<a class="code" href="classslic_1_1Module.html#a3fff5ef80a6f584038d30819a17d7239">deleteOnExit</a>) {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classslic_1_1Module.html#adb41893ba19e889e56c559f25fc1a68a">m_name</a> = <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1">name</a>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">// If requested, register the module with the ModuleRegistry.</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">if</span> (autoRegister) {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">ModuleRegistry::instance</a>()-&gt;registerModule(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    }</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="comment">// Create a logger for this module.</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classslic_1_1Module.html#ac5b98547f3834347195ede9da1175102">m_log</a> = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">LogManager::instance</a>()-&gt;createLogWithMessenger(<a class="code" href="classslic_1_1Module.html#adb41893ba19e889e56c559f25fc1a68a">m_name</a>, <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">// Init message.</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>().<a class="code" href="classslic_1_1LogStream.html#a06735f200dee746c010c3190dbe501a9">verbose</a>( <span class="stringliteral">&quot;Initialized module &lt;&quot;</span> + <a class="code" href="classslic_1_1Module.html#a8802382fe16a9f1966b9565e38a8495a">getName</a>() + <span class="stringliteral">&quot;&gt;&quot;</span> );</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif    </span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="Module_8hh_source.html#l00054">Module::getName()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; ModuleRegistry &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; LogManager &gt;::instance()</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="Module_8hh_source.html#l00155">Module::m_log</a>, <a class="el" href="Module_8hh_source.html#l00154">Module::m_name</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::name</a>, <a class="el" href="LogStream_8hh_source.html#l00033">LOG::okay</a>, and <a class="el" href="LogStream_8hh_source.html#l00238">LogStream::verbose()</a>.</p>
 
 </div>
@@ -297,14 +277,7 @@ Protected Member Functions</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="Module_8cc_source.html#l00025">25</a> of file <a class="el" href="Module_8cc_source.html">Module.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>().<a class="code" href="classslic_1_1LogStream.html#a06735f200dee746c010c3190dbe501a9">verbose</a>( <a class="code" href="classslic_1_1Module.html#a8802382fe16a9f1966b9565e38a8495a">getName</a>() + <span class="stringliteral">&quot; is being deleted.&quot;</span> );</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">LogManager::instance</a>()-&gt;removeLog(<a class="code" href="classslic_1_1Module.html#ac5b98547f3834347195ede9da1175102">m_log</a>);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">ModuleRegistry::instance</a>()-&gt;deregisterModule(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="Module_8hh_source.html#l00054">Module::getName()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; LogManager &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; ModuleRegistry &gt;::instance()</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="Module_8hh_source.html#l00155">Module::m_log</a>, and <a class="el" href="LogStream_8hh_source.html#l00238">LogStream::verbose()</a>.</p>
 
 </div>
@@ -343,9 +316,7 @@ Protected Member Functions</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classslic_1_1EventSourceManager.html#acfd859b023b359604cbaaee4e4066c11">EventSourceManager</a>, <a class="el" href="classslic_1_1EventSourceWithInputFile.html#acfd859b023b359604cbaaee4e4066c11">EventSourceWithInputFile</a>, <a class="el" href="classslic_1_1EventSource.html#acfd859b023b359604cbaaee4e4066c11">EventSource</a>, <a class="el" href="classslic_1_1LcioEventSource.html#a8c79cef71d98d39547c8026343e6fd40">LcioEventSource</a>, <a class="el" href="classslic_1_1LHEEventSource.html#a8c79cef71d98d39547c8026343e6fd40">LHEEventSource</a>, and <a class="el" href="classslic_1_1StdHepEventSource.html#a8c79cef71d98d39547c8026343e6fd40">StdHepEventSource</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00107">107</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                                {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a33bb5cc9833eb15797fef07038c64b8e"></a>
@@ -381,9 +352,7 @@ Protected Member Functions</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classslic_1_1EventSourceManager.html#ab5ca225db536ccdc633fe29a83d4a51d">EventSourceManager</a>, <a class="el" href="classslic_1_1LcioManager.html#ab5ca225db536ccdc633fe29a83d4a51d">LcioManager</a>, <a class="el" href="classslic_1_1EventSourceWithInputFile.html#ab5ca225db536ccdc633fe29a83d4a51d">EventSourceWithInputFile</a>, <a class="el" href="classslic_1_1EventSource.html#ab5ca225db536ccdc633fe29a83d4a51d">EventSource</a>, <a class="el" href="classslic_1_1LcioEventSource.html#af9ce6ab28f7861d0b6a3534379fee929">LcioEventSource</a>, <a class="el" href="classslic_1_1LHEEventSource.html#af9ce6ab28f7861d0b6a3534379fee929">LHEEventSource</a>, and <a class="el" href="classslic_1_1StdHepEventSource.html#af9ce6ab28f7861d0b6a3534379fee929">StdHepEventSource</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00121">121</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                            {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a09f4fe805fa9a54d4d68c5b29c1502e1"></a>
@@ -411,10 +380,7 @@ Protected Member Functions</h2></td></tr>
 <p>Cleaup the module before deletion. </p>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00083">83</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                               {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            ;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a3fff5ef80a6f584038d30819a17d7239"></a>
@@ -442,10 +408,7 @@ Protected Member Functions</h2></td></tr>
 <p>Get whether to delete the module. </p><dl class="section return"><dt>Returns</dt><dd>Return true if the module should be deleted; false if not. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00091">91</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                            {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1Module.html#ae06e4de9bf23fc0f2a6204fbca09cdb4">m_deleteOnExit</a>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="Module_8hh_source.html#l00156">Module::m_deleteOnExit</a>.</p>
 
 </div>
@@ -483,9 +446,7 @@ Protected Member Functions</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classslic_1_1EventSourceManager.html#adac7423bfcc66cd3cd7afe45a07d437d">EventSourceManager</a>, <a class="el" href="classslic_1_1EventSource.html#adac7423bfcc66cd3cd7afe45a07d437d">EventSource</a>, and <a class="el" href="classslic_1_1LcioManager.html#a9a1acc31ac40e82c25dffcfc91230573">LcioManager</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00114">114</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                              {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a93f4f5cd42992e06f7b4ce526a5c6456"></a>
@@ -521,9 +482,7 @@ Protected Member Functions</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classslic_1_1EventSourceManager.html#a1d2b7b84b1cfda22e8f92afb60e3b2ce">EventSourceManager</a>, <a class="el" href="classslic_1_1LcioManager.html#a1d2b7b84b1cfda22e8f92afb60e3b2ce">LcioManager</a>, and <a class="el" href="classslic_1_1EventSource.html#a1d2b7b84b1cfda22e8f92afb60e3b2ce">EventSource</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00128">128</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                          {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a8802382fe16a9f1966b9565e38a8495a"></a>
@@ -551,10 +510,7 @@ Protected Member Functions</h2></td></tr>
 <p>Get the name of the module. </p><dl class="section return"><dt>Returns</dt><dd>The name of the module. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00054">54</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                         {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1Module.html#adb41893ba19e889e56c559f25fc1a68a">m_name</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="Module_8hh_source.html#l00154">Module::m_name</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="ModuleRegistry_8cc_source.html#l00034">ModuleRegistry::deregisterModule()</a>, <a class="el" href="Module_8cc_source.html#l00007">Module::Module()</a>, <a class="el" href="ModuleRegistry_8cc_source.html#l00021">ModuleRegistry::registerModule()</a>, and <a class="el" href="Module_8cc_source.html#l00025">Module::~Module()</a>.</p>
@@ -586,10 +542,7 @@ Protected Member Functions</h2></td></tr>
 <p>Get the status of the module as a ModuleStatus enum. </p><dl class="section return"><dt>Returns</dt><dd>The module's status. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00062">62</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                       {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1Module.html#ac6b54944f754fa5f89dfe79c10611b99">m_status</a>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="Module_8hh_source.html#l00153">Module::m_status</a>.</p>
 
 </div>
@@ -621,10 +574,7 @@ Protected Member Functions</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classslic_1_1SlicApplication.html#a25a40b6614565f755233080a384c35f1">SlicApplication</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00069">69</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                  {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            ;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="af806f013ae865309882e211160bd8fc8"></a>
@@ -652,10 +602,7 @@ Protected Member Functions</h2></td></tr>
 <p>Get the <a class="el" href="classslic_1_1LogStream.html" title="A class for streaming messages to a log.">LogStream</a> for this <a class="el" href="classslic_1_1Module.html" title="Base class for slic code modules that provides common functionality, such as logging to an output str...">Module</a>. </p><dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classslic_1_1Module.html" title="Base class for slic code modules that provides common functionality, such as logging to an output str...">Module</a>'s <a class="el" href="classslic_1_1LogStream.html" title="A class for streaming messages to a log.">LogStream</a>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00099">99</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                         {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">return</span> *<a class="code" href="classslic_1_1Module.html#ac5b98547f3834347195ede9da1175102">m_log</a>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="Module_8hh_source.html#l00155">Module::m_log</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="RunManager_8hh_source.html#l00045">RunManager::abortRun()</a>, <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00299">LcioHitsCollectionBuilder::addParticleContributions()</a>, <a class="el" href="RunManager_8cc_source.html#l00113">RunManager::BeamOn()</a>, <a class="el" href="EventSourceWithInputFile_8cc_source.html#l00068">EventSourceWithInputFile::beginRun()</a>, <a class="el" href="EventSourceManager_8cc_source.html#l00259">EventSourceManager::beginRun()</a>, <a class="el" href="SteppingAction_8cc_source.html#l00055">SteppingAction::checkKillTrack()</a>, <a class="el" href="EventSourceManager_8cc_source.html#l00184">EventSourceManager::createEventSource()</a>, <a class="el" href="G4MagIntegratorStepperFactory_8cc_source.html#l00056">G4MagIntegratorStepperFactory::createG4MagIntegratorStepper()</a>, <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00259">LcioHitsCollectionBuilder::createHit()</a>, <a class="el" href="PhysicsListManager_8cc_source.html#l00040">PhysicsListManager::createPhysicsList()</a>, <a class="el" href="MCParticleManager_8cc_source.html#l00177">MCParticleManager::createPrimary()</a>, <a class="el" href="MCParticleManager_8cc_source.html#l00285">MCParticleManager::createVertex()</a>, <a class="el" href="EventSourceManager_8cc_source.html#l00026">EventSourceManager::EventSourceManager()</a>, <a class="el" href="G4MagIntegratorStepperFactory_8cc_source.html#l00026">G4MagIntegratorStepperFactory::G4MagIntegratorStepperFactory()</a>, <a class="el" href="EventSourceManager_8cc_source.html#l00163">EventSourceManager::generate()</a>, <a class="el" href="MCParticleManager_8cc_source.html#l00013">MCParticleManager::generateEvent()</a>, <a class="el" href="PrimaryGeneratorAction_8cc_source.html#l00027">PrimaryGeneratorAction::GeneratePrimaries()</a>, <a class="el" href="SlicApplication_8hh_source.html#l00182">SlicApplication::getErrorCodeString()</a>, <a class="el" href="LcioFileNamer_8cc_source.html#l00040">LcioFileNamer::getFieldValue()</a>, <a class="el" href="EventSourceManager_8cc_source.html#l00062">EventSourceManager::getSourceTypeFromFileExtension()</a>, <a class="el" href="HepPDTManager_8cc_source.html#l00005">HepPDTManager::HepPDTManager()</a>, <a class="el" href="SlicApplication_8cc_source.html#l00081">SlicApplication::initialize()</a>, <a class="el" href="HepPDTManager_8cc_source.html#l00026">HepPDTManager::loadParticleData()</a>, <a class="el" href="SlicMain_8cc_source.html#l00020">SlicMain::main()</a>, <a class="el" href="LcioManager_8cc_source.html#l00306">LcioManager::makeAutoname()</a>, <a class="el" href="Module_8cc_source.html#l00007">Module::Module()</a>, <a class="el" href="LcioManager_8cc_source.html#l00081">LcioManager::openLcioFile()</a>, <a class="el" href="ModuleRegistry_8cc_source.html#l00046">ModuleRegistry::print()</a>, <a class="el" href="PhysicsListManager_8cc_source.html#l00086">PhysicsListManager::printAvailablePhysicsLists()</a>, <a class="el" href="ParticleGunEventSource_8cc_source.html#l00021">ParticleGunEventSource::printCurrentEvent()</a>, <a class="el" href="GPSEventSource_8cc_source.html#l00037">GPSEventSource::printCurrentEvent()</a>, <a class="el" href="EventSourceManager_8cc_source.html#l00151">EventSourceManager::printNumEventsGenerated()</a>, <a class="el" href="CommandLineProcessor_8cc_source.html#l00366">CommandLineProcessor::printOptions()</a>, <a class="el" href="CommandQueue_8cc_source.html#l00007">CommandQueue::printOut()</a>, <a class="el" href="HepPDTManager_8cc_source.html#l00062">HepPDTManager::printParticleData()</a>, <a class="el" href="SlicApplication_8cc_source.html#l00203">SlicApplication::printSplashScreen()</a>, <a class="el" href="CommandLineProcessor_8cc_source.html#l00159">CommandLineProcessor::printUsage()</a>, <a class="el" href="CommandLineProcessor_8hh_source.html#l00088">CommandLineProcessor::printVersion()</a>, <a class="el" href="CommandLineProcessor_8cc_source.html#l00030">CommandLineProcessor::process()</a>, <a class="el" href="ModuleRegistry_8cc_source.html#l00021">ModuleRegistry::registerModule()</a>, <a class="el" href="SlicApplication_8cc_source.html#l00174">SlicApplication::run()</a>, <a class="el" href="TrackManager_8cc_source.html#l00023">TrackManager::saveTrackSummaries()</a>, <a class="el" href="LcioManager_8cc_source.html#l00257">LcioManager::setDetectorName()</a>, <a class="el" href="LcioManager_8hh_source.html#l00183">LcioManager::setFileExistsAction()</a>, <a class="el" href="EventSourceWithInputFile_8cc_source.html#l00008">EventSourceWithInputFile::setFilename()</a>, <a class="el" href="LcioManager_8cc_source.html#l00285">LcioManager::setFilename()</a>, <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00393">LcioHitsCollectionBuilder::setLongFlag()</a>, <a class="el" href="EventSourceManager_8cc_source.html#l00355">EventSourceManager::setLorentzTransformationAngle()</a>, <a class="el" href="SlicApplicationMessenger_8cc_source.html#l00017">SlicApplicationMessenger::SetNewValue()</a>, <a class="el" href="PhysicsMessenger_8cc_source.html#l00024">PhysicsMessenger::SetNewValue()</a>, <a class="el" href="GeneratorMessenger_8cc_source.html#l00035">GeneratorMessenger::SetNewValue()</a>, <a class="el" href="FieldMessenger_8cc_source.html#l00029">FieldMessenger::SetNewValue()</a>, <a class="el" href="LcioManager_8cc_source.html#l00279">LcioManager::setPath()</a>, <a class="el" href="LcioHitsCollectionBuilder_8cc_source.html#l00405">LcioHitsCollectionBuilder::setPDGFlag()</a>, <a class="el" href="LcioManager_8cc_source.html#l00144">LcioManager::setRunNumber()</a>, <a class="el" href="EventSourceManager_8cc_source.html#l00205">EventSourceManager::setupEventSource()</a>, <a class="el" href="SlicApplication_8cc_source.html#l00030">SlicApplication::SlicApplication()</a>, <a class="el" href="EventAction_8cc_source.html#l00084">EventAction::startEventTimer()</a>, <a class="el" href="RunAction_8cc_source.html#l00063">RunAction::startRunTimer()</a>, <a class="el" href="EventAction_8cc_source.html#l00075">EventAction::stopEventTimer()</a>, <a class="el" href="RunAction_8cc_source.html#l00071">RunAction::stopRunTimer()</a>, <a class="el" href="Module_8cc_source.html#l00025">Module::~Module()</a>, and <a class="el" href="SlicApplication_8cc_source.html#l00037">SlicApplication::~SlicApplication()</a>.</p>
@@ -693,9 +640,7 @@ Protected Member Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00142">142</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                                  {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ab8aa989d0c9d81aa69d99f64a1128244"></a>
@@ -729,9 +674,7 @@ Protected Member Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00135">135</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                                                 {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a7b0e029102ad38f4b814c6523aedb53d"></a>
@@ -761,10 +704,7 @@ Protected Member Functions</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classslic_1_1MCParticleManager.html#ad20897c5c8bd47f5d4005989bead0e55">MCParticleManager</a>, <a class="el" href="classslic_1_1TrackManager.html#ad20897c5c8bd47f5d4005989bead0e55">TrackManager</a>, <a class="el" href="classslic_1_1EventSourceWithInputFile.html#ad20897c5c8bd47f5d4005989bead0e55">EventSourceWithInputFile</a>, and <a class="el" href="classslic_1_1EventSource.html#ad20897c5c8bd47f5d4005989bead0e55">EventSource</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00076">76</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                             {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            ;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ad84305302da037cfafcf35c19f3d7723"></a>
@@ -798,9 +738,7 @@ Protected Member Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="Module_8hh_source.html#l00149">149</a> of file <a class="el" href="Module_8hh_source.html">Module.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                             {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -881,21 +819,6 @@ Protected Member Functions</h2></td></tr>
 <li><a class="el" href="Module_8cc_source.html">Module.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1Module_html_adb41893ba19e889e56c559f25fc1a68a"><div class="ttname"><a href="classslic_1_1Module.html#adb41893ba19e889e56c559f25fc1a68a">slic::Module::m_name</a></div><div class="ttdeci">std::string m_name</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00154">Module.hh:154</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_a50a7721e11e14f338207a83b9ab26ec9aded0d6c406ba8f168aa929712b671310"><div class="ttname"><a href="classslic_1_1Module.html#a50a7721e11e14f338207a83b9ab26ec9aded0d6c406ba8f168aa929712b671310">slic::Module::eBadState</a></div><div class="ttdeci">@ eBadState</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00028">Module.hh:28</a></div></div>
-<div class="ttc" id="aclassSingleton_html_ade6193af70013295b23e0318cbb276bd"><div class="ttname"><a href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; ModuleRegistry &gt;::instance</a></div><div class="ttdeci">static ModuleRegistry * instance()</div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ac6b54944f754fa5f89dfe79c10611b99"><div class="ttname"><a href="classslic_1_1Module.html#ac6b54944f754fa5f89dfe79c10611b99">slic::Module::m_status</a></div><div class="ttdeci">ModuleStatus m_status</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00153">Module.hh:153</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ae06e4de9bf23fc0f2a6204fbca09cdb4"><div class="ttname"><a href="classslic_1_1Module.html#ae06e4de9bf23fc0f2a6204fbca09cdb4">slic::Module::m_deleteOnExit</a></div><div class="ttdeci">bool m_deleteOnExit</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00156">Module.hh:156</a></div></div>
-<div class="ttc" id="aclassslic_1_1LogStream_html_a06735f200dee746c010c3190dbe501a9"><div class="ttname"><a href="classslic_1_1LogStream.html#a06735f200dee746c010c3190dbe501a9">slic::LogStream::verbose</a></div><div class="ttdeci">LogStream &amp; verbose()</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00238">LogStream.hh:238</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_a50a7721e11e14f338207a83b9ab26ec9a941bc60001f0641b15dee5be7edde89d"><div class="ttname"><a href="classslic_1_1Module.html#a50a7721e11e14f338207a83b9ab26ec9a941bc60001f0641b15dee5be7edde89d">slic::Module::eNotInitialized</a></div><div class="ttdeci">@ eNotInitialized</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00028">Module.hh:28</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_a8802382fe16a9f1966b9565e38a8495a"><div class="ttname"><a href="classslic_1_1Module.html#a8802382fe16a9f1966b9565e38a8495a">slic::Module::getName</a></div><div class="ttdeci">const std::string &amp; getName() const</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00054">Module.hh:54</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_a3fff5ef80a6f584038d30819a17d7239"><div class="ttname"><a href="classslic_1_1Module.html#a3fff5ef80a6f584038d30819a17d7239">slic::Module::deleteOnExit</a></div><div class="ttdeci">bool deleteOnExit()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00091">Module.hh:91</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_a50a7721e11e14f338207a83b9ab26ec9a23e5779d5a8b76861346f484b0a458ef"><div class="ttname"><a href="classslic_1_1Module.html#a50a7721e11e14f338207a83b9ab26ec9a23e5779d5a8b76861346f484b0a458ef">slic::Module::eFatalError</a></div><div class="ttdeci">@ eFatalError</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00028">Module.hh:28</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a></div><div class="ttdeci">@ okay</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ac5b98547f3834347195ede9da1175102"><div class="ttname"><a href="classslic_1_1Module.html#ac5b98547f3834347195ede9da1175102">slic::Module::m_log</a></div><div class="ttdeci">LogStream * m_log</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00155">Module.hh:155</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1">LOG::name</a></div><div class="ttdeci">@ name</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_a50a7721e11e14f338207a83b9ab26ec9a01ff808a6ae13a94eeb34003ee643925"><div class="ttname"><a href="classslic_1_1Module.html#a50a7721e11e14f338207a83b9ab26ec9a01ff808a6ae13a94eeb34003ee643925">slic::Module::eOkay</a></div><div class="ttdeci">@ eOkay</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00028">Module.hh:28</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['pluginvec_1857',['PluginVec',['../classslic_1_1PluginManager.html#a76dae45fdfe0e6f41ca2d734b27cd4b2',1,'slic::PluginManager']]],
-  ['primaryparticlemap_1858',['PrimaryParticleMap',['../namespaceslic.html#a7329adb19282b74b446ce0054dab0788',1,'slic']]],
-  ['primaryparticlemapiterator_1859',['PrimaryParticleMapIterator',['../namespaceslic.html#aabfa8667a2f8de6a082e264984d617d0',1,'slic']]]
+  ['pluginvec_1858',['PluginVec',['../classslic_1_1PluginManager.html#a76dae45fdfe0e6f41ca2d734b27cd4b2',1,'slic::PluginManager']]],
+  ['primaryparticlemap_1859',['PrimaryParticleMap',['../namespaceslic.html#a7329adb19282b74b446ce0054dab0788',1,'slic']]],
+  ['primaryparticlemapiterator_1860',['PrimaryParticleMapIterator',['../namespaceslic.html#aabfa8667a2f8de6a082e264984d617d0',1,'slic']]]
 ];

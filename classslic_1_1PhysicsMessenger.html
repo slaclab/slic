@@ -140,11 +140,7 @@ Private Attributes</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="PhysicsMessenger_8cc_source.html#l00016">16</a> of file <a class="el" href="PhysicsMessenger_8cc_source.html">PhysicsMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                                   :</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classslic_1_1PhysicsMessenger.html#a883a5aad24ba59dbe6e136597d0a3079">m_physicsListDir</a>(0), <a class="code" href="classslic_1_1PhysicsMessenger.html#a5cfc324f2cd4646ad884a2c8fa303ad5">m_selectCmd</a>(0) {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#acf9e4724aa43f23f330a5e9e42b26318">defineCommands</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="PhysicsMessenger_8cc_source.html#l00060">PhysicsMessenger::defineCommands()</a>.</p>
 
 </div>
@@ -174,9 +170,7 @@ Private Attributes</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="PhysicsMessenger_8cc_source.html#l00021">21</a> of file <a class="el" href="PhysicsMessenger_8cc_source.html">PhysicsMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                    {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -205,41 +199,7 @@ Private Attributes</h2></td></tr>
 <p>Define commands handled by this messenger. </p>
 
 <p class="definition">Definition at line <a class="el" href="PhysicsMessenger_8cc_source.html#l00060">60</a> of file <a class="el" href="PhysicsMessenger_8cc_source.html">PhysicsMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                      {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    G4UIparameter* p;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a883a5aad24ba59dbe6e136597d0a3079">m_physicsListDir</a> = <span class="keyword">new</span> G4UIdirectory(<span class="stringliteral">&quot;/physics/&quot;</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a883a5aad24ba59dbe6e136597d0a3079">m_physicsListDir</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Physics list commands. [SLIC]&quot;</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// select physics list</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a5cfc324f2cd4646ad884a2c8fa303ad5">m_selectCmd</a> = <span class="keyword">new</span> G4UIcommand(<span class="stringliteral">&quot;/physics/select&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a5cfc324f2cd4646ad884a2c8fa303ad5">m_selectCmd</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Select the Geant4 physics list.  This command is only available in the PreInit state.&quot;</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    p = <span class="keyword">new</span> G4UIparameter(<span class="stringliteral">&quot;list&quot;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a5cfc324f2cd4646ad884a2c8fa303ad5">m_selectCmd</a>-&gt;SetParameter(p);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a5cfc324f2cd4646ad884a2c8fa303ad5">m_selectCmd</a>-&gt;AvailableForStates(G4State_PreInit);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// print available lists</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a47afc200ba09b1b310aad7e82c426233">m_printListsCmd</a> = <span class="keyword">new</span> G4UIcmdWithoutParameter(<span class="stringliteral">&quot;/physics/printLists&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a47afc200ba09b1b310aad7e82c426233">m_printListsCmd</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Print available physics lists.&quot;</span>);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// print current list</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a4451cdbdc6743e6b407ecdc0a6909053">m_printCurrentCmd</a> = <span class="keyword">new</span> G4UIcmdWithoutParameter(<span class="stringliteral">&quot;/physics/printCurrent&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a4451cdbdc6743e6b407ecdc0a6909053">m_printCurrentCmd</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Print name of currently selected physics list.&quot;</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// Enable optical physics processes for the current list when it is initialized.</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a5197f3408b526839504c7c611e5dde03">m_enableOpticalCmd</a> = <span class="keyword">new</span> G4UIcmdWithABool(<span class="stringliteral">&quot;/physics/enableOptical&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a5197f3408b526839504c7c611e5dde03">m_enableOpticalCmd</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Enable optical physics processes.&quot;</span>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a5197f3408b526839504c7c611e5dde03">m_enableOpticalCmd</a>-&gt;SetParameterName(<span class="stringliteral">&quot;enable&quot;</span>, <span class="charliteral">&#39;b&#39;</span>, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#a5197f3408b526839504c7c611e5dde03">m_enableOpticalCmd</a>-&gt;SetDefaultValue(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// Set location of particle.tbl for supplementary particle data.</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#afe6217cd42911fb9e22fb77560ca1d04">m_pdgCmd</a> = <span class="keyword">new</span> G4UIcommand(<span class="stringliteral">&quot;/physics/setPDGFile&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#afe6217cd42911fb9e22fb77560ca1d04">m_pdgCmd</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Set location of particle data for HepPDT, probably called particle.tbl.&quot;</span>);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    p = <span class="keyword">new</span> G4UIparameter(<span class="stringliteral">&quot;file&quot;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#afe6217cd42911fb9e22fb77560ca1d04">m_pdgCmd</a>-&gt;SetParameter(p);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classslic_1_1PhysicsMessenger.html#afe6217cd42911fb9e22fb77560ca1d04">m_pdgCmd</a>-&gt;AvailableForStates(G4State_PreInit);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="PhysicsMessenger_8hh_source.html#l00055">PhysicsMessenger::m_enableOpticalCmd</a>, <a class="el" href="PhysicsMessenger_8hh_source.html#l00056">PhysicsMessenger::m_pdgCmd</a>, <a class="el" href="PhysicsMessenger_8hh_source.html#l00050">PhysicsMessenger::m_physicsListDir</a>, <a class="el" href="PhysicsMessenger_8hh_source.html#l00054">PhysicsMessenger::m_printCurrentCmd</a>, <a class="el" href="PhysicsMessenger_8hh_source.html#l00053">PhysicsMessenger::m_printListsCmd</a>, and <a class="el" href="PhysicsMessenger_8hh_source.html#l00052">PhysicsMessenger::m_selectCmd</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="PhysicsMessenger_8cc_source.html#l00016">PhysicsMessenger::PhysicsMessenger()</a>.</p>
@@ -288,42 +248,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="PhysicsMessenger_8cc_source.html#l00024">24</a> of file <a class="el" href="PhysicsMessenger_8cc_source.html">PhysicsMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                                                     {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::istringstream is((<span class="keyword">const</span> <span class="keywordtype">char</span>*) newVals);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::string s;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    is &gt;&gt; s;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    PhysicsListManager* mgr = <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">PhysicsListManager::instance</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// set physics list</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (cmd == <a class="code" href="classslic_1_1PhysicsMessenger.html#a5cfc324f2cd4646ad884a2c8fa303ad5">m_selectCmd</a>) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        mgr-&gt;setCurrentListName(s);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// print available lists</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmd == <a class="code" href="classslic_1_1PhysicsMessenger.html#a47afc200ba09b1b310aad7e82c426233">m_printListsCmd</a>) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">PhysicsListManager::instance</a>()-&gt;printAvailablePhysicsLists();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// Print current list and whether initialized.</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmd == <a class="code" href="classslic_1_1PhysicsMessenger.html#a4451cdbdc6743e6b407ecdc0a6909053">m_printCurrentCmd</a>) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        mgr-&gt;log() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;Current physics list &lt;&quot;</span> &lt;&lt; mgr-&gt;getCurrentListName() &lt;&lt; <span class="stringliteral">&quot;&gt;.&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        mgr-&gt;log() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;Physics has been initialized &lt;&quot;</span> &lt;&lt; mgr-&gt;isInitialized() &lt;&lt; <span class="stringliteral">&quot;&gt;.&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// Enable optical physics processes.</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmd == <a class="code" href="classslic_1_1PhysicsMessenger.html#a5197f3408b526839504c7c611e5dde03">m_enableOpticalCmd</a>) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">bool</span> enableOptical = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">if</span> (newVals != G4String(<span class="stringliteral">&quot;&quot;</span>))</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            enableOptical = G4UIcmdWithABool::GetNewBoolValue(newVals);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">PhysicsListManager::instance</a>()-&gt;enableOptical(enableOptical);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// Set location of particle.tbl for HepPDT.</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmd == <a class="code" href="classslic_1_1PhysicsMessenger.html#afe6217cd42911fb9e22fb77560ca1d04">m_pdgCmd</a>) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">HepPDTManager::instance</a>()-&gt;setParticleDataFile(s);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        mgr-&gt;log() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed">LOG::error</a> &lt;&lt; <span class="stringliteral">&quot;Unknown command for PhysicsMessenger.&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, <a class="el" href="LogStream_8hh_source.html#l00033">LOG::error</a>, <a class="el" href="PhysicsListManager_8hh_source.html#l00063">PhysicsListManager::getCurrentListName()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; PhysicsListManager &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; HepPDTManager &gt;::instance()</a>, <a class="el" href="PhysicsListManager_8hh_source.html#l00071">PhysicsListManager::isInitialized()</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="PhysicsMessenger_8hh_source.html#l00055">PhysicsMessenger::m_enableOpticalCmd</a>, <a class="el" href="PhysicsMessenger_8hh_source.html#l00056">PhysicsMessenger::m_pdgCmd</a>, <a class="el" href="PhysicsMessenger_8hh_source.html#l00054">PhysicsMessenger::m_printCurrentCmd</a>, <a class="el" href="PhysicsMessenger_8hh_source.html#l00053">PhysicsMessenger::m_printListsCmd</a>, <a class="el" href="PhysicsMessenger_8hh_source.html#l00052">PhysicsMessenger::m_selectCmd</a>, <a class="el" href="LogStream_8hh_source.html#l00033">LOG::okay</a>, and <a class="el" href="PhysicsListManager_8cc_source.html#l00035">PhysicsListManager::setCurrentListName()</a>.</p>
 
 </div>
@@ -490,17 +415,6 @@ Private Attributes</h2></td></tr>
 <li><a class="el" href="PhysicsMessenger_8cc_source.html">PhysicsMessenger.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786ad606e435413ea0944dd00d49e901e4ed">LOG::error</a></div><div class="ttdeci">@ error</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassSingleton_html_ade6193af70013295b23e0318cbb276bd"><div class="ttname"><a href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; PhysicsListManager &gt;::instance</a></div><div class="ttdeci">static PhysicsListManager * instance()</div></div>
-<div class="ttc" id="aclassslic_1_1PhysicsMessenger_html_afe6217cd42911fb9e22fb77560ca1d04"><div class="ttname"><a href="classslic_1_1PhysicsMessenger.html#afe6217cd42911fb9e22fb77560ca1d04">slic::PhysicsMessenger::m_pdgCmd</a></div><div class="ttdeci">G4UIcommand * m_pdgCmd</div><div class="ttdef"><b>Definition:</b> <a href="PhysicsMessenger_8hh_source.html#l00056">PhysicsMessenger.hh:56</a></div></div>
-<div class="ttc" id="aclassslic_1_1PhysicsMessenger_html_a4451cdbdc6743e6b407ecdc0a6909053"><div class="ttname"><a href="classslic_1_1PhysicsMessenger.html#a4451cdbdc6743e6b407ecdc0a6909053">slic::PhysicsMessenger::m_printCurrentCmd</a></div><div class="ttdeci">G4UIcmdWithoutParameter * m_printCurrentCmd</div><div class="ttdef"><b>Definition:</b> <a href="PhysicsMessenger_8hh_source.html#l00054">PhysicsMessenger.hh:54</a></div></div>
-<div class="ttc" id="aclassslic_1_1PhysicsMessenger_html_a883a5aad24ba59dbe6e136597d0a3079"><div class="ttname"><a href="classslic_1_1PhysicsMessenger.html#a883a5aad24ba59dbe6e136597d0a3079">slic::PhysicsMessenger::m_physicsListDir</a></div><div class="ttdeci">G4UIdirectory * m_physicsListDir</div><div class="ttdef"><b>Definition:</b> <a href="PhysicsMessenger_8hh_source.html#l00050">PhysicsMessenger.hh:50</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a></div><div class="ttdeci">@ done</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1PhysicsMessenger_html_a47afc200ba09b1b310aad7e82c426233"><div class="ttname"><a href="classslic_1_1PhysicsMessenger.html#a47afc200ba09b1b310aad7e82c426233">slic::PhysicsMessenger::m_printListsCmd</a></div><div class="ttdeci">G4UIcmdWithoutParameter * m_printListsCmd</div><div class="ttdef"><b>Definition:</b> <a href="PhysicsMessenger_8hh_source.html#l00053">PhysicsMessenger.hh:53</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a></div><div class="ttdeci">@ okay</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1PhysicsMessenger_html_a5197f3408b526839504c7c611e5dde03"><div class="ttname"><a href="classslic_1_1PhysicsMessenger.html#a5197f3408b526839504c7c611e5dde03">slic::PhysicsMessenger::m_enableOpticalCmd</a></div><div class="ttdeci">G4UIcmdWithABool * m_enableOpticalCmd</div><div class="ttdef"><b>Definition:</b> <a href="PhysicsMessenger_8hh_source.html#l00055">PhysicsMessenger.hh:55</a></div></div>
-<div class="ttc" id="aclassslic_1_1PhysicsMessenger_html_acf9e4724aa43f23f330a5e9e42b26318"><div class="ttname"><a href="classslic_1_1PhysicsMessenger.html#acf9e4724aa43f23f330a5e9e42b26318">slic::PhysicsMessenger::defineCommands</a></div><div class="ttdeci">void defineCommands()</div><div class="ttdef"><b>Definition:</b> <a href="PhysicsMessenger_8cc_source.html#l00060">PhysicsMessenger.cc:60</a></div></div>
-<div class="ttc" id="aclassslic_1_1PhysicsMessenger_html_a5cfc324f2cd4646ad884a2c8fa303ad5"><div class="ttname"><a href="classslic_1_1PhysicsMessenger.html#a5cfc324f2cd4646ad884a2c8fa303ad5">slic::PhysicsMessenger::m_selectCmd</a></div><div class="ttdeci">G4UIcommand * m_selectCmd</div><div class="ttdef"><b>Definition:</b> <a href="PhysicsMessenger_8hh_source.html#l00052">PhysicsMessenger.hh:52</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

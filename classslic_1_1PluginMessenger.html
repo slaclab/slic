@@ -137,34 +137,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="PluginMessenger_8cc_source.html#l00005">5</a> of file <a class="el" href="PluginMessenger_8cc_source.html">PluginMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;                                                                :</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        <a class="code" href="classslic_1_1PluginMessenger.html#aea39d4ec8d160c7c105eb4f627b7ae1a">pluginManager_</a>(thePluginManager) {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#a796ea33d2b6f103216c55e8dd3c5a780">pluginDir_</a> = <span class="keyword">new</span> G4UIdirectory(<span class="stringliteral">&quot;/slic/plugins/&quot;</span>);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#a796ea33d2b6f103216c55e8dd3c5a780">pluginDir_</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Commands for controlling LDMX sim plugins&quot;</span>);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#a855236cc227cac7ead8e40fa98edfcf0">loadCmd_</a> = <span class="keyword">new</span> G4UIcommand(<span class="stringliteral">&quot;/slic/plugins/load&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#a855236cc227cac7ead8e40fa98edfcf0">loadCmd_</a>-&gt;AvailableForStates(G4ApplicationState::G4State_PreInit, G4ApplicationState::G4State_Idle);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#a855236cc227cac7ead8e40fa98edfcf0">loadCmd_</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Load a sim plugin from a shared library.  A plugin of a specific type may only be loaded once.&quot;</span>);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    G4UIparameter* pluginName = <span class="keyword">new</span> G4UIparameter(<span class="stringliteral">&quot;pluginName&quot;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    pluginName-&gt;SetGuidance(<span class="stringliteral">&quot;Name of plugin to load.&quot;</span>);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#a855236cc227cac7ead8e40fa98edfcf0">loadCmd_</a>-&gt;SetParameter(pluginName);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    G4UIparameter* libName = <span class="keyword">new</span> G4UIparameter(<span class="stringliteral">&quot;libName&quot;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    libName-&gt;SetGuidance(<span class="stringliteral">&quot;Name of plugin library; if omitted will use the &#39;libSimPlugins.so&#39; library.&quot;</span>);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#a855236cc227cac7ead8e40fa98edfcf0">loadCmd_</a>-&gt;SetParameter(libName);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#af1d4ac7f139dba07b01b7fcfbc8c27f4">destroyCmd_</a> = <span class="keyword">new</span> G4UIcommand(<span class="stringliteral">&quot;/slic/plugins/destroy&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#af1d4ac7f139dba07b01b7fcfbc8c27f4">destroyCmd_</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Destroy a loaded plugin by name.&quot;</span>);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#af1d4ac7f139dba07b01b7fcfbc8c27f4">destroyCmd_</a>-&gt;AvailableForStates(G4ApplicationState::G4State_Idle);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    pluginName = <span class="keyword">new</span> G4UIparameter(<span class="stringliteral">&quot;pluginName&quot;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    pluginName-&gt;SetGuidance(<span class="stringliteral">&quot;Name of plugin to destroy.&quot;</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#af1d4ac7f139dba07b01b7fcfbc8c27f4">destroyCmd_</a>-&gt;SetParameter(pluginName);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#a761a5c23652a99f3c6ad20909dd6f443">listCmd_</a> = <span class="keyword">new</span> G4UIcommand(<span class="stringliteral">&quot;/slic/plugins/list&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#a761a5c23652a99f3c6ad20909dd6f443">listCmd_</a>-&gt;SetGuidance(<span class="stringliteral">&quot;List currently loaded plugins.&quot;</span>);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classslic_1_1PluginMessenger.html#a761a5c23652a99f3c6ad20909dd6f443">listCmd_</a>-&gt;AvailableForStates(G4ApplicationState::G4State_Idle, G4ApplicationState::G4State_PreInit);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="PluginMessenger_8hh_source.html#l00064">PluginMessenger::destroyCmd_</a>, <a class="el" href="PluginMessenger_8hh_source.html#l00069">PluginMessenger::listCmd_</a>, <a class="el" href="PluginMessenger_8hh_source.html#l00059">PluginMessenger::loadCmd_</a>, and <a class="el" href="PluginMessenger_8hh_source.html#l00054">PluginMessenger::pluginDir_</a>.</p>
 
 </div>
@@ -194,13 +167,7 @@ Private Attributes</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="PluginMessenger_8cc_source.html#l00033">33</a> of file <a class="el" href="PluginMessenger_8cc_source.html">PluginMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                  {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classslic_1_1PluginMessenger.html#a796ea33d2b6f103216c55e8dd3c5a780">pluginDir_</a>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classslic_1_1PluginMessenger.html#a855236cc227cac7ead8e40fa98edfcf0">loadCmd_</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classslic_1_1PluginMessenger.html#af1d4ac7f139dba07b01b7fcfbc8c27f4">destroyCmd_</a>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classslic_1_1PluginMessenger.html#a761a5c23652a99f3c6ad20909dd6f443">listCmd_</a>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="PluginMessenger_8hh_source.html#l00064">PluginMessenger::destroyCmd_</a>, <a class="el" href="PluginMessenger_8hh_source.html#l00069">PluginMessenger::listCmd_</a>, <a class="el" href="PluginMessenger_8hh_source.html#l00059">PluginMessenger::loadCmd_</a>, and <a class="el" href="PluginMessenger_8hh_source.html#l00054">PluginMessenger::pluginDir_</a>.</p>
 
 </div>
@@ -240,26 +207,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="PluginMessenger_8cc_source.html#l00040">40</a> of file <a class="el" href="PluginMessenger_8cc_source.html">PluginMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                                          {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::istringstream is((<span class="keyword">const</span> <span class="keywordtype">char</span>*) newValues);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::string pluginName, libName;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    is &gt;&gt; pluginName &gt;&gt; libName;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span> (libName.size() == 0 || libName == <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        libName = <span class="stringliteral">&quot;libslicPlugins.so&quot;</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">if</span> (command == <a class="code" href="classslic_1_1PluginMessenger.html#a855236cc227cac7ead8e40fa98edfcf0">loadCmd_</a>) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="classslic_1_1PluginMessenger.html#aea39d4ec8d160c7c105eb4f627b7ae1a">pluginManager_</a>-&gt;<a class="code" href="classslic_1_1PluginManager.html#a655272e58db260e29587151e3225fc86">create</a>(pluginName, libName);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (command == <a class="code" href="classslic_1_1PluginMessenger.html#af1d4ac7f139dba07b01b7fcfbc8c27f4">destroyCmd_</a>) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classslic_1_1PluginMessenger.html#aea39d4ec8d160c7c105eb4f627b7ae1a">pluginManager_</a>-&gt;<a class="code" href="classslic_1_1PluginManager.html#a1956245ef146d241bcd05026744952fb">destroy</a>(pluginName);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (command == <a class="code" href="classslic_1_1PluginMessenger.html#a761a5c23652a99f3c6ad20909dd6f443">listCmd_</a>) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="classslic_1_1PluginMessenger.html#aea39d4ec8d160c7c105eb4f627b7ae1a">pluginManager_</a>-&gt;<a class="code" href="classslic_1_1PluginManager.html#a030e0f6e58b3ca65d135cfb67f0c5f91">print</a>(std::cout);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="PluginManager_8cc_source.html#l00124">PluginManager::create()</a>, <a class="el" href="PluginManager_8cc_source.html#l00134">PluginManager::destroy()</a>, <a class="el" href="PluginMessenger_8hh_source.html#l00064">PluginMessenger::destroyCmd_</a>, <a class="el" href="PluginMessenger_8hh_source.html#l00069">PluginMessenger::listCmd_</a>, <a class="el" href="PluginMessenger_8hh_source.html#l00059">PluginMessenger::loadCmd_</a>, <a class="el" href="PluginMessenger_8hh_source.html#l00049">PluginMessenger::pluginManager_</a>, and <a class="el" href="PluginManager_8cc_source.html#l00148">PluginManager::print()</a>.</p>
 
 </div>
@@ -405,14 +353,6 @@ Private Attributes</h2></td></tr>
 <li><a class="el" href="PluginMessenger_8cc_source.html">PluginMessenger.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1PluginMessenger_html_a796ea33d2b6f103216c55e8dd3c5a780"><div class="ttname"><a href="classslic_1_1PluginMessenger.html#a796ea33d2b6f103216c55e8dd3c5a780">slic::PluginMessenger::pluginDir_</a></div><div class="ttdeci">G4UIdirectory * pluginDir_</div><div class="ttdef"><b>Definition:</b> <a href="PluginMessenger_8hh_source.html#l00054">PluginMessenger.hh:54</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginMessenger_html_a761a5c23652a99f3c6ad20909dd6f443"><div class="ttname"><a href="classslic_1_1PluginMessenger.html#a761a5c23652a99f3c6ad20909dd6f443">slic::PluginMessenger::listCmd_</a></div><div class="ttdeci">G4UIcommand * listCmd_</div><div class="ttdef"><b>Definition:</b> <a href="PluginMessenger_8hh_source.html#l00069">PluginMessenger.hh:69</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginMessenger_html_aea39d4ec8d160c7c105eb4f627b7ae1a"><div class="ttname"><a href="classslic_1_1PluginMessenger.html#aea39d4ec8d160c7c105eb4f627b7ae1a">slic::PluginMessenger::pluginManager_</a></div><div class="ttdeci">PluginManager * pluginManager_</div><div class="ttdef"><b>Definition:</b> <a href="PluginMessenger_8hh_source.html#l00049">PluginMessenger.hh:49</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginMessenger_html_a855236cc227cac7ead8e40fa98edfcf0"><div class="ttname"><a href="classslic_1_1PluginMessenger.html#a855236cc227cac7ead8e40fa98edfcf0">slic::PluginMessenger::loadCmd_</a></div><div class="ttdeci">G4UIcommand * loadCmd_</div><div class="ttdef"><b>Definition:</b> <a href="PluginMessenger_8hh_source.html#l00059">PluginMessenger.hh:59</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginManager_html_a030e0f6e58b3ca65d135cfb67f0c5f91"><div class="ttname"><a href="classslic_1_1PluginManager.html#a030e0f6e58b3ca65d135cfb67f0c5f91">slic::PluginManager::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;os)</div><div class="ttdef"><b>Definition:</b> <a href="PluginManager_8cc_source.html#l00148">PluginManager.cc:148</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginMessenger_html_af1d4ac7f139dba07b01b7fcfbc8c27f4"><div class="ttname"><a href="classslic_1_1PluginMessenger.html#af1d4ac7f139dba07b01b7fcfbc8c27f4">slic::PluginMessenger::destroyCmd_</a></div><div class="ttdeci">G4UIcommand * destroyCmd_</div><div class="ttdef"><b>Definition:</b> <a href="PluginMessenger_8hh_source.html#l00064">PluginMessenger.hh:64</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginManager_html_a1956245ef146d241bcd05026744952fb"><div class="ttname"><a href="classslic_1_1PluginManager.html#a1956245ef146d241bcd05026744952fb">slic::PluginManager::destroy</a></div><div class="ttdeci">void destroy(const std::string &amp;pluginName)</div><div class="ttdef"><b>Definition:</b> <a href="PluginManager_8cc_source.html#l00134">PluginManager.cc:134</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginManager_html_a655272e58db260e29587151e3225fc86"><div class="ttname"><a href="classslic_1_1PluginManager.html#a655272e58db260e29587151e3225fc86">slic::PluginManager::create</a></div><div class="ttdeci">void create(const std::string &amp;pluginName, const std::string &amp;libName)</div><div class="ttdef"><b>Definition:</b> <a href="PluginManager_8cc_source.html#l00124">PluginManager.cc:124</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

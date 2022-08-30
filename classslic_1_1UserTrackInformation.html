@@ -145,10 +145,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="UserTrackInformation_8hh_source.html#l00030">30</a> of file <a class="el" href="UserTrackInformation_8hh_source.html">UserTrackInformation.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                                           {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <a class="code" href="classslic_1_1UserTrackInformation.html#a5f89c2d9069e1cbc697a4eb038d18229">_trackSummary</a> = aTrackSummary;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="UserTrackInformation_8hh_source.html#l00072">UserTrackInformation::_trackSummary</a>.</p>
 
 </div>
@@ -178,9 +175,7 @@ Private Attributes</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="UserTrackInformation_8hh_source.html#l00037">37</a> of file <a class="el" href="UserTrackInformation_8hh_source.html">UserTrackInformation.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                        {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -209,10 +204,7 @@ Private Attributes</h2></td></tr>
 <p>Get the <a class="el" href="classslic_1_1TrackSummary.html" title="Container for all information from G4Track that may be persisted to MCParticle output collection.">TrackSummary</a>. </p><dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classslic_1_1TrackSummary.html" title="Container for all information from G4Track that may be persisted to MCParticle output collection.">TrackSummary</a>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="UserTrackInformation_8hh_source.html#l00054">54</a> of file <a class="el" href="UserTrackInformation_8hh_source.html">UserTrackInformation.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                              {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1UserTrackInformation.html#a5f89c2d9069e1cbc697a4eb038d18229">_trackSummary</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="UserTrackInformation_8hh_source.html#l00072">UserTrackInformation::_trackSummary</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="TrackingAction_8cc_source.html#l00071">TrackingAction::PostUserTrackingAction()</a>, <a class="el" href="TrackingAction_8cc_source.html#l00015">TrackingAction::PreUserTrackingAction()</a>, and <a class="el" href="SteppingAction_8cc_source.html#l00024">SteppingAction::UserSteppingAction()</a>.</p>
@@ -245,10 +237,7 @@ Private Attributes</h2></td></tr>
 <p>Delete operator. </p>
 
 <p class="definition">Definition at line <a class="el" href="UserTrackInformation_8hh_source.html#l00083">83</a> of file <a class="el" href="UserTrackInformation_8hh_source.html">UserTrackInformation.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                                                 {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="namespaceslic.html#a6a5bfeb731ee81e97a619582c0a46f64">UserTrackInformationAllocator</a>.FreeSingle((<a class="code" href="classslic_1_1UserTrackInformation.html#a869b10d34e1963bfade98cfb1f883af1">UserTrackInformation</a>*) trackInfo);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="UserTrackInformation_8cc_source.html#l00005">slic::UserTrackInformationAllocator</a>.</p>
 
 </div>
@@ -279,12 +268,7 @@ Private Attributes</h2></td></tr>
 <p>New operator. </p>
 
 <p class="definition">Definition at line <a class="el" href="UserTrackInformation_8hh_source.html#l00077">77</a> of file <a class="el" href="UserTrackInformation_8hh_source.html">UserTrackInformation.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                                      {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span>* trackInfo;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    trackInfo = (<span class="keywordtype">void</span>*) <a class="code" href="namespaceslic.html#a6a5bfeb731ee81e97a619582c0a46f64">UserTrackInformationAllocator</a>.MallocSingle();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> trackInfo;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="UserTrackInformation_8cc_source.html#l00005">slic::UserTrackInformationAllocator</a>.</p>
 
 </div>
@@ -311,13 +295,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Print out the track information. </p>
+<p>Print out the track information. </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Implement this method. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="UserTrackInformation_8hh_source.html#l00067">67</a> of file <a class="el" href="UserTrackInformation_8hh_source.html">UserTrackInformation.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                           {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            G4cout &lt;&lt; <span class="stringliteral">&quot;UserTrackInformation::Print is not implemented!!!&quot;</span> &lt;&lt; G4endl;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a567a0a539bfee6f88a68968d6a61e055"></a>
@@ -344,11 +325,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="UserTrackInformation_8hh_source.html#l00058">58</a> of file <a class="el" href="UserTrackInformation_8hh_source.html">UserTrackInformation.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="classslic_1_1UserTrackInformation.html#a5f89c2d9069e1cbc697a4eb038d18229">_trackSummary</a> != NULL)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <a class="code" href="classslic_1_1UserTrackInformation.html#a5f89c2d9069e1cbc697a4eb038d18229">_trackSummary</a>-&gt;<a class="code" href="classslic_1_1TrackSummary.html#a567a0a539bfee6f88a68968d6a61e055">setHasTrackerHit</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="UserTrackInformation_8hh_source.html#l00072">UserTrackInformation::_trackSummary</a>, and <a class="el" href="TrackSummary_8hh_source.html#l00223">TrackSummary::setHasTrackerHit()</a>.</p>
 
 </div>
@@ -384,10 +361,6 @@ Private Attributes</h2></td></tr>
 <li><a class="el" href="UserTrackInformation_8hh_source.html">UserTrackInformation.hh</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1UserTrackInformation_html_a869b10d34e1963bfade98cfb1f883af1"><div class="ttname"><a href="classslic_1_1UserTrackInformation.html#a869b10d34e1963bfade98cfb1f883af1">slic::UserTrackInformation::UserTrackInformation</a></div><div class="ttdeci">UserTrackInformation(TrackSummary *aTrackSummary)</div><div class="ttdef"><b>Definition:</b> <a href="UserTrackInformation_8hh_source.html#l00030">UserTrackInformation.hh:30</a></div></div>
-<div class="ttc" id="anamespaceslic_html_a6a5bfeb731ee81e97a619582c0a46f64"><div class="ttname"><a href="namespaceslic.html#a6a5bfeb731ee81e97a619582c0a46f64">slic::UserTrackInformationAllocator</a></div><div class="ttdeci">G4Allocator&lt; UserTrackInformation &gt; UserTrackInformationAllocator</div><div class="ttdef"><b>Definition:</b> <a href="UserTrackInformation_8cc_source.html#l00005">UserTrackInformation.cc:5</a></div></div>
-<div class="ttc" id="aclassslic_1_1TrackSummary_html_a567a0a539bfee6f88a68968d6a61e055"><div class="ttname"><a href="classslic_1_1TrackSummary.html#a567a0a539bfee6f88a68968d6a61e055">slic::TrackSummary::setHasTrackerHit</a></div><div class="ttdeci">void setHasTrackerHit()</div><div class="ttdef"><b>Definition:</b> <a href="TrackSummary_8hh_source.html#l00223">TrackSummary.hh:223</a></div></div>
-<div class="ttc" id="aclassslic_1_1UserTrackInformation_html_a5f89c2d9069e1cbc697a4eb038d18229"><div class="ttname"><a href="classslic_1_1UserTrackInformation.html#a5f89c2d9069e1cbc697a4eb038d18229">slic::UserTrackInformation::_trackSummary</a></div><div class="ttdeci">TrackSummary * _trackSummary</div><div class="ttdef"><b>Definition:</b> <a href="UserTrackInformation_8hh_source.html#l00072">UserTrackInformation.hh:72</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

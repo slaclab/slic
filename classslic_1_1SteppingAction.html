@@ -190,10 +190,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="SteppingAction_8cc_source.html#l00017">17</a> of file <a class="el" href="SteppingAction_8cc_source.html">SteppingAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                               :</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">Module</a>(<span class="stringliteral">&quot;SteppingAction&quot;</span>, <span class="keyword">false</span>, <span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="acafcbca63e6c75e21e222c94990c0c51"></a>
@@ -221,9 +218,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="SteppingAction_8cc_source.html#l00021">21</a> of file <a class="el" href="SteppingAction_8cc_source.html">SteppingAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -258,16 +253,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="SteppingAction_8cc_source.html#l00055">55</a> of file <a class="el" href="SteppingAction_8cc_source.html">SteppingAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                                       {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">/* Check if the region of the pre-point has tracking killing enabled. */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    UserRegionInformation* regionInfo = UserRegionInformation::getRegionInformation(aStep-&gt;GetPreStepPoint());</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (regionInfo-&gt;getKillTracks()) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">/* Kill the track if region track kill flag is set to true. */</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a> &lt;&lt; <span class="stringliteral">&quot;Killing track: &quot;</span> &lt;&lt; aStep-&gt;GetTrack()-&gt;GetTrackID() &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        aStep-&gt;GetTrack()-&gt;SetTrackStatus(fStopAndKill);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00033">LOG::always</a>, <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, and <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SteppingAction_8cc_source.html#l00024">SteppingAction::UserSteppingAction()</a>.</p>
@@ -292,25 +278,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Return true if this track appears to be backscattering from a non-tracking region into the tracking region. </p><dl class="section return"><dt>Returns</dt><dd>True if track is backscattering; false if not. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="SteppingAction_8cc_source.html#l00065">65</a> of file <a class="el" href="SteppingAction_8cc_source.html">SteppingAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                                        {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">/* Get pre-point info. */</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">const</span> G4StepPoint* prePoint = step-&gt;GetPreStepPoint();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">const</span> G4StepPoint* postPoint = step-&gt;GetPostStepPoint();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">const</span> UserRegionInformation* prePointRegionInfo = (UserRegionInformation*) prePoint-&gt;GetTouchableHandle()-&gt;GetVolume()-&gt;GetLogicalVolume()-&gt;GetRegion()-&gt;GetUserInformation();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    G4bool prePointInsideTrackerRegion = prePointRegionInfo-&gt;getStoreSecondaries();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">/* Get post-point info. */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    G4bool postPointInsideTrackerRegion = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (postPoint-&gt;GetTouchableHandle()-&gt;GetVolume() != NULL) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">const</span> UserRegionInformation* postPointRegionInfo = (UserRegionInformation*) postPoint-&gt;GetTouchableHandle()-&gt;GetVolume()-&gt;GetLogicalVolume()-&gt;GetRegion()-&gt;GetUserInformation();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        postPointInsideTrackerRegion = postPointRegionInfo-&gt;getStoreSecondaries();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">/* Track is backscattering if it steps from a non-tracking region back into a tracking region. */</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> ((!prePointInsideTrackerRegion) &amp;&amp; postPointInsideTrackerRegion);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">Referenced by <a class="el" href="SteppingAction_8cc_source.html#l00024">SteppingAction::UserSteppingAction()</a>.</p>
 
 </div>
@@ -338,37 +306,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="SteppingAction_8cc_source.html#l00024">24</a> of file <a class="el" href="SteppingAction_8cc_source.html">SteppingAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                                          {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">/* Check for back scattering. */</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classslic_1_1SteppingAction.html#ace17fc2e053dc45fe5d1d0fcac4e7d19">isBackScattering</a>(step) &amp;&amp; step-&gt;GetStepLength() != 0.) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// Get track information.</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        UserTrackInformation* trackInfo = (UserTrackInformation*) fpSteppingManager-&gt;GetTrack()-&gt;GetUserInformation();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">// Need to start making track information if doesn&#39;t exist because these tracks or daughters could leave tracker hits.</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">if</span> (trackInfo == NULL)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="comment">// Add new track information but don&#39;t save.  The tracker hit processor can turn saving on.</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            trackInfo = <a class="code" href="classslic_1_1TrackUtil.html#af5d8d119bb7dab3d4f3c9ed45700357c">TrackUtil::setupUserTrackInformation</a>(fpSteppingManager-&gt;GetTrack(), <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        TrackSummary* trackSummary = trackInfo-&gt;getTrackSummary();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">//G4cout &lt;&lt; &quot;setting backscattering flag&quot; &lt;&lt; G4endl;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        trackSummary-&gt;update(fpSteppingManager-&gt;GetTrack());</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        trackSummary-&gt;setBackScattering();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">// Suspend backscattering tracks to postpone them to the end of shower development.</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        fpSteppingManager-&gt;GetTrack()-&gt;SetTrackStatus(fSuspend);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">//G4cout &lt;&lt; &quot;suspended backscattering track &quot; &lt;&lt; fpSteppingManager-&gt;GetTrack()-&gt;GetTrackID() &lt;&lt; G4endl;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">/* Check if the track should be killed. */</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classslic_1_1SteppingAction.html#aff0101741eae6acbdf084c9c279979ed">checkKillTrack</a>(step);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classslic_1_1PluginManagerAccessor.html#a784e38547069d5d7642388f89ee42a31">m_pluginManager</a>-&gt;<a class="code" href="classslic_1_1PluginManager.html#ad15462813ca6a618fd986c13062e40f9">stepping</a>(step);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="SteppingAction_8cc_source.html#l00055">SteppingAction::checkKillTrack()</a>, <a class="el" href="UserTrackInformation_8hh_source.html#l00054">UserTrackInformation::getTrackSummary()</a>, <a class="el" href="SteppingAction_8cc_source.html#l00065">SteppingAction::isBackScattering()</a>, <a class="el" href="PluginManagerAccessor_8hh_source.html#l00045">PluginManagerAccessor::m_pluginManager</a>, <a class="el" href="TrackSummary_8hh_source.html#l00195">TrackSummary::setBackScattering()</a>, <a class="el" href="TrackUtil_8hh_source.html#l00042">TrackUtil::setupUserTrackInformation()</a>, <a class="el" href="PluginManager_8cc_source.html#l00025">PluginManager::stepping()</a>, and <a class="el" href="TrackSummary_8cc_source.html#l00044">TrackSummary::update()</a>.</p>
 
 </div>
@@ -378,15 +316,6 @@ Additional Inherited Members</h2></td></tr>
 <li><a class="el" href="SteppingAction_8cc_source.html">SteppingAction.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1SteppingAction_html_aff0101741eae6acbdf084c9c279979ed"><div class="ttname"><a href="classslic_1_1SteppingAction.html#aff0101741eae6acbdf084c9c279979ed">slic::SteppingAction::checkKillTrack</a></div><div class="ttdeci">void checkKillTrack(const G4Step *step)</div><div class="ttdef"><b>Definition:</b> <a href="SteppingAction_8cc_source.html#l00055">SteppingAction.cc:55</a></div></div>
-<div class="ttc" id="aclassslic_1_1TrackUtil_html_af5d8d119bb7dab3d4f3c9ed45700357c"><div class="ttname"><a href="classslic_1_1TrackUtil.html#af5d8d119bb7dab3d4f3c9ed45700357c">slic::TrackUtil::setupUserTrackInformation</a></div><div class="ttdeci">static UserTrackInformation * setupUserTrackInformation(const G4Track *track, G4bool save)</div><div class="ttdef"><b>Definition:</b> <a href="TrackUtil_8hh_source.html#l00042">TrackUtil.hh:42</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginManagerAccessor_html_a784e38547069d5d7642388f89ee42a31"><div class="ttname"><a href="classslic_1_1PluginManagerAccessor.html#a784e38547069d5d7642388f89ee42a31">slic::PluginManagerAccessor::m_pluginManager</a></div><div class="ttdeci">PluginManager * m_pluginManager</div><div class="ttdef"><b>Definition:</b> <a href="PluginManagerAccessor_8hh_source.html#l00045">PluginManagerAccessor.hh:45</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a94bec3e41bc9810307020aaae030baa5">LOG::always</a></div><div class="ttdeci">@ always</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a></div><div class="ttdeci">@ done</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ab7b488a14251c880422a324540415854"><div class="ttname"><a href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">slic::Module::Module</a></div><div class="ttdeci">Module(const std::string &amp;name, bool deleteOnExit=true, bool autoRegister=true)</div><div class="ttdef"><b>Definition:</b> <a href="Module_8cc_source.html#l00007">Module.cc:7</a></div></div>
-<div class="ttc" id="aclassslic_1_1SteppingAction_html_ace17fc2e053dc45fe5d1d0fcac4e7d19"><div class="ttname"><a href="classslic_1_1SteppingAction.html#ace17fc2e053dc45fe5d1d0fcac4e7d19">slic::SteppingAction::isBackScattering</a></div><div class="ttdeci">bool isBackScattering(const G4Step *step)</div><div class="ttdef"><b>Definition:</b> <a href="SteppingAction_8cc_source.html#l00065">SteppingAction.cc:65</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginManager_html_ad15462813ca6a618fd986c13062e40f9"><div class="ttname"><a href="classslic_1_1PluginManager.html#ad15462813ca6a618fd986c13062e40f9">slic::PluginManager::stepping</a></div><div class="ttdeci">void stepping(const G4Step *aStep)</div><div class="ttdef"><b>Definition:</b> <a href="PluginManager_8cc_source.html#l00025">PluginManager.cc:25</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

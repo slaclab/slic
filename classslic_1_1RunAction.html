@@ -198,10 +198,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="RunAction_8cc_source.html#l00015">15</a> of file <a class="el" href="RunAction_8cc_source.html">RunAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                     :</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">Module</a>(<span class="stringliteral">&quot;RunAction&quot;</span>, <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a58bb081dca223f5d3c739b3b0a9279c7"></a>
@@ -221,9 +218,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="RunAction_8cc_source.html#l00019">19</a> of file <a class="el" href="RunAction_8cc_source.html">RunAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                      {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -250,28 +245,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="RunAction_8cc_source.html#l00022">22</a> of file <a class="el" href="RunAction_8cc_source.html">RunAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                                  {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// Start the run clock.</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classslic_1_1RunAction.html#a2bc6252c290bffe79ced1e084fa95270">startRunTimer</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// Print the run start message.</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">//printBeginOfRunMessage( aRun );</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// Execute LcioManager&#39;s beginRun action.</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">LcioManager::instance</a>()-&gt;beginRun(aRun);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Execute EventSourceManager&#39;s beginRun action</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">EventSourceManager::instance</a>()-&gt;beginRun(aRun);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// Execute GeometryManager&#39;s beginRun action.</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    GeometryManager::instance()-&gt;beginRun(aRun);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classslic_1_1PluginManagerAccessor.html#a784e38547069d5d7642388f89ee42a31">m_pluginManager</a>-&gt;<a class="code" href="classslic_1_1PluginManager.html#af9ce6ab28f7861d0b6a3534379fee929">beginRun</a>(aRun);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="PluginManager_8cc_source.html#l00009">PluginManager::beginRun()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; LcioManager &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; EventSourceManager &gt;::instance()</a>, <a class="el" href="PluginManagerAccessor_8hh_source.html#l00045">PluginManagerAccessor::m_pluginManager</a>, and <a class="el" href="RunAction_8cc_source.html#l00063">RunAction::startRunTimer()</a>.</p>
 
 </div>
@@ -299,25 +273,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="RunAction_8cc_source.html#l00044">44</a> of file <a class="el" href="RunAction_8cc_source.html">RunAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                               {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// LcioManager&#39;s action</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">LcioManager::instance</a>()-&gt;endRun(run);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// event source mgr</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">EventSourceManager::instance</a>()-&gt;endRun(run);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classslic_1_1PluginManagerAccessor.html#a784e38547069d5d7642388f89ee42a31">m_pluginManager</a>-&gt;<a class="code" href="classslic_1_1PluginManager.html#ab2b5b41cc834835c2ba3ff5c39690c07">endRun</a>(run);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// stop run clock</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classslic_1_1RunAction.html#a27696616e55b4a550b9db5f7a3f86d7a">stopRunTimer</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// end message</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">//printEndOfRunMessage( run );</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="PluginManager_8cc_source.html#l00017">PluginManager::endRun()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; LcioManager &gt;::instance()</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; EventSourceManager &gt;::instance()</a>, <a class="el" href="PluginManagerAccessor_8hh_source.html#l00045">PluginManagerAccessor::m_pluginManager</a>, and <a class="el" href="RunAction_8cc_source.html#l00071">RunAction::stopRunTimer()</a>.</p>
 
 </div>
@@ -347,14 +303,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Start the run timer. </p>
 
 <p class="definition">Definition at line <a class="el" href="RunAction_8cc_source.html#l00063">63</a> of file <a class="el" href="RunAction_8cc_source.html">RunAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                              {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// start run timer</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classslic_1_1RunAction.html#affaa973362a00d556edd27fa511fec57">m_runTimer</a>.Start();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;Started Run Timer.&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="RunAction_8hh_source.html#l00072">RunAction::m_runTimer</a>, and <a class="el" href="LogStream_8hh_source.html#l00033">LOG::okay</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="RunAction_8cc_source.html#l00022">RunAction::BeginOfRunAction()</a>.</p>
@@ -386,15 +335,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Stop the run timer. </p>
 
 <p class="definition">Definition at line <a class="el" href="RunAction_8cc_source.html#l00071">71</a> of file <a class="el" href="RunAction_8cc_source.html">RunAction.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                             {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// stop run timer</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="classslic_1_1RunAction.html#affaa973362a00d556edd27fa511fec57">m_runTimer</a>.Stop();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;Run Timer: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1RunAction.html#affaa973362a00d556edd27fa511fec57">m_runTimer</a> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="RunAction_8hh_source.html#l00072">RunAction::m_runTimer</a>, and <a class="el" href="LogStream_8hh_source.html#l00033">LOG::okay</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="RunAction_8cc_source.html#l00044">RunAction::EndOfRunAction()</a>.</p>
@@ -440,17 +381,6 @@ Additional Inherited Members</h2></td></tr>
 <li><a class="el" href="RunAction_8cc_source.html">RunAction.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1RunAction_html_a27696616e55b4a550b9db5f7a3f86d7a"><div class="ttname"><a href="classslic_1_1RunAction.html#a27696616e55b4a550b9db5f7a3f86d7a">slic::RunAction::stopRunTimer</a></div><div class="ttdeci">void stopRunTimer()</div><div class="ttdef"><b>Definition:</b> <a href="RunAction_8cc_source.html#l00071">RunAction.cc:71</a></div></div>
-<div class="ttc" id="aclassSingleton_html_ade6193af70013295b23e0318cbb276bd"><div class="ttname"><a href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; LcioManager &gt;::instance</a></div><div class="ttdeci">static LcioManager * instance()</div></div>
-<div class="ttc" id="aclassslic_1_1PluginManagerAccessor_html_a784e38547069d5d7642388f89ee42a31"><div class="ttname"><a href="classslic_1_1PluginManagerAccessor.html#a784e38547069d5d7642388f89ee42a31">slic::PluginManagerAccessor::m_pluginManager</a></div><div class="ttdeci">PluginManager * m_pluginManager</div><div class="ttdef"><b>Definition:</b> <a href="PluginManagerAccessor_8hh_source.html#l00045">PluginManagerAccessor.hh:45</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginManager_html_ab2b5b41cc834835c2ba3ff5c39690c07"><div class="ttname"><a href="classslic_1_1PluginManager.html#ab2b5b41cc834835c2ba3ff5c39690c07">slic::PluginManager::endRun</a></div><div class="ttdeci">void endRun(const G4Run *aRun)</div><div class="ttdef"><b>Definition:</b> <a href="PluginManager_8cc_source.html#l00017">PluginManager.cc:17</a></div></div>
-<div class="ttc" id="aclassslic_1_1RunAction_html_affaa973362a00d556edd27fa511fec57"><div class="ttname"><a href="classslic_1_1RunAction.html#affaa973362a00d556edd27fa511fec57">slic::RunAction::m_runTimer</a></div><div class="ttdeci">G4Timer m_runTimer</div><div class="ttdef"><b>Definition:</b> <a href="RunAction_8hh_source.html#l00072">RunAction.hh:72</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a></div><div class="ttdeci">@ done</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1PluginManager_html_af9ce6ab28f7861d0b6a3534379fee929"><div class="ttname"><a href="classslic_1_1PluginManager.html#af9ce6ab28f7861d0b6a3534379fee929">slic::PluginManager::beginRun</a></div><div class="ttdeci">void beginRun(const G4Run *aRun)</div><div class="ttdef"><b>Definition:</b> <a href="PluginManager_8cc_source.html#l00009">PluginManager.cc:9</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_ab7b488a14251c880422a324540415854"><div class="ttname"><a href="classslic_1_1Module.html#ab7b488a14251c880422a324540415854">slic::Module::Module</a></div><div class="ttdeci">Module(const std::string &amp;name, bool deleteOnExit=true, bool autoRegister=true)</div><div class="ttdef"><b>Definition:</b> <a href="Module_8cc_source.html#l00007">Module.cc:7</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a></div><div class="ttdeci">@ okay</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1RunAction_html_a2bc6252c290bffe79ced1e084fa95270"><div class="ttname"><a href="classslic_1_1RunAction.html#a2bc6252c290bffe79ced1e084fa95270">slic::RunAction::startRunTimer</a></div><div class="ttdeci">void startRunTimer()</div><div class="ttdef"><b>Definition:</b> <a href="RunAction_8cc_source.html#l00063">RunAction.cc:63</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

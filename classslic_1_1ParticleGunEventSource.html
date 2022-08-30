@@ -192,11 +192,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="ParticleGunEventSource_8cc_source.html#l00008">8</a> of file <a class="el" href="ParticleGunEventSource_8cc_source.html">ParticleGunEventSource.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                                               :</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classslic_1_1EventSource.html#a4c6a69425ffa3e63af5d96a7f4b8f321">EventSource</a>(<span class="stringliteral">&quot;ParticleGunEventSource&quot;</span>) {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classslic_1_1ParticleGunEventSource.html#a4e5dc07b5059dd5f2334bcc7bd9b422c">m_generator</a> = <span class="keyword">new</span> G4ParticleGun();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="ParticleGunEventSource_8hh_source.html#l00050">ParticleGunEventSource::m_generator</a>.</p>
 
 </div>
@@ -226,10 +222,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="ParticleGunEventSource_8cc_source.html#l00013">13</a> of file <a class="el" href="ParticleGunEventSource_8cc_source.html">ParticleGunEventSource.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                                {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classslic_1_1ParticleGunEventSource.html#a4e5dc07b5059dd5f2334bcc7bd9b422c">m_generator</a>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="ParticleGunEventSource_8hh_source.html#l00050">ParticleGunEventSource::m_generator</a>.</p>
 
 </div>
@@ -268,10 +261,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classslic_1_1EventSource.html#a49ee5c3fa48a845c1fd86447e9afa989">EventSource</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ParticleGunEventSource_8cc_source.html#l00017">17</a> of file <a class="el" href="ParticleGunEventSource_8cc_source.html">ParticleGunEventSource.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                                  {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classslic_1_1ParticleGunEventSource.html#a4e5dc07b5059dd5f2334bcc7bd9b422c">m_generator</a>-&gt;GeneratePrimaryVertex(evt);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="ParticleGunEventSource_8hh_source.html#l00050">ParticleGunEventSource::m_generator</a>.</p>
 
 </div>
@@ -293,10 +283,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Get the associated G4ParticleGun. </p><dl class="section return"><dt>Returns</dt><dd>The G4ParticleGun associated with this source. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="ParticleGunEventSource_8cc_source.html#l00034">34</a> of file <a class="el" href="ParticleGunEventSource_8cc_source.html">ParticleGunEventSource.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                      {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classslic_1_1ParticleGunEventSource.html#a4e5dc07b5059dd5f2334bcc7bd9b422c">m_generator</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="ParticleGunEventSource_8hh_source.html#l00050">ParticleGunEventSource::m_generator</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="EventSourceManager_8cc_source.html#l00340">EventSourceManager::getParticleGun()</a>.</p>
@@ -330,19 +317,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classslic_1_1EventSource.html#acadd79749ef9bcd17fa23667c173cea6">EventSource</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ParticleGunEventSource_8cc_source.html#l00021">21</a> of file <a class="el" href="ParticleGunEventSource_8cc_source.html">ParticleGunEventSource.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                               {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;Dumping ParticleGun Event info...&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    G4ParticleDefinition* pdef = <a class="code" href="classslic_1_1ParticleGunEventSource.html#a4e5dc07b5059dd5f2334bcc7bd9b422c">m_generator</a>-&gt;GetParticleDefinition();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;particle: &quot;</span> &lt;&lt; pdef-&gt;GetParticleName() &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;time: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1ParticleGunEventSource.html#a4e5dc07b5059dd5f2334bcc7bd9b422c">m_generator</a>-&gt;GetParticleTime() &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;pos: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1ParticleGunEventSource.html#a4e5dc07b5059dd5f2334bcc7bd9b422c">m_generator</a>-&gt;GetParticlePosition() &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;mom: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1ParticleGunEventSource.html#a4e5dc07b5059dd5f2334bcc7bd9b422c">m_generator</a>-&gt;GetParticleMomentumDirection() &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;E: &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1ParticleGunEventSource.html#a4e5dc07b5059dd5f2334bcc7bd9b422c">m_generator</a>-&gt;GetParticleEnergy() &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="ParticleGunEventSource_8hh_source.html#l00050">ParticleGunEventSource::m_generator</a>, and <a class="el" href="LogStream_8hh_source.html#l00033">LOG::okay</a>.</p>
 
 </div>
@@ -379,11 +354,6 @@ Additional Inherited Members</h2></td></tr>
 <li><a class="el" href="ParticleGunEventSource_8cc_source.html">ParticleGunEventSource.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1ParticleGunEventSource_html_a4e5dc07b5059dd5f2334bcc7bd9b422c"><div class="ttname"><a href="classslic_1_1ParticleGunEventSource.html#a4e5dc07b5059dd5f2334bcc7bd9b422c">slic::ParticleGunEventSource::m_generator</a></div><div class="ttdeci">G4ParticleGun * m_generator</div><div class="ttdef"><b>Definition:</b> <a href="ParticleGunEventSource_8hh_source.html#l00050">ParticleGunEventSource.hh:50</a></div></div>
-<div class="ttc" id="aclassslic_1_1EventSource_html_a4c6a69425ffa3e63af5d96a7f4b8f321"><div class="ttname"><a href="classslic_1_1EventSource.html#a4c6a69425ffa3e63af5d96a7f4b8f321">slic::EventSource::EventSource</a></div><div class="ttdeci">EventSource(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="EventSource_8cc_source.html#l00012">EventSource.cc:12</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a></div><div class="ttdeci">@ done</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a></div><div class="ttdeci">@ okay</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

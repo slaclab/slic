@@ -129,10 +129,7 @@ Private Attributes</h2></td></tr>
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="EventMessenger_8cc_source.html#l00010">10</a> of file <a class="el" href="EventMessenger_8cc_source.html">EventMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                               {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classslic_1_1EventMessenger.html#acf9e4724aa43f23f330a5e9e42b26318">defineCommands</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="EventMessenger_8cc_source.html#l00031">EventMessenger::defineCommands()</a>.</p>
 
 </div>
@@ -162,9 +159,7 @@ Private Attributes</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="EventMessenger_8cc_source.html#l00014">14</a> of file <a class="el" href="EventMessenger_8cc_source.html">EventMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                                {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -193,13 +188,7 @@ Private Attributes</h2></td></tr>
 <p>Define the commands that this messenger with handle. </p>
 
 <p class="definition">Definition at line <a class="el" href="EventMessenger_8cc_source.html#l00031">31</a> of file <a class="el" href="EventMessenger_8cc_source.html">EventMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                    {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classslic_1_1EventMessenger.html#a49a353142bf80ccd1f5bc2b2ded4044c">m_eventTimerCmd</a> = <span class="keyword">new</span> G4UIcmdWithABool(<span class="stringliteral">&quot;/event/enableEventTimer&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classslic_1_1EventMessenger.html#a49a353142bf80ccd1f5bc2b2ded4044c">m_eventTimerCmd</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Enable timing of individual events.&quot;</span>);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classslic_1_1EventMessenger.html#a49a353142bf80ccd1f5bc2b2ded4044c">m_eventTimerCmd</a>-&gt;SetParameterName(<span class="stringliteral">&quot;enable&quot;</span>, <span class="charliteral">&#39;b&#39;</span>, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classslic_1_1EventMessenger.html#a49a353142bf80ccd1f5bc2b2ded4044c">m_eventTimerCmd</a>-&gt;SetDefaultValue(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="EventMessenger_8hh_source.html#l00045">EventMessenger::m_eventTimerCmd</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="EventMessenger_8cc_source.html#l00010">EventMessenger::EventMessenger()</a>.</p>
@@ -240,20 +229,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="EventMessenger_8cc_source.html#l00017">17</a> of file <a class="el" href="EventMessenger_8cc_source.html">EventMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                                                   {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">if</span> (cmd == <a class="code" href="classslic_1_1EventMessenger.html#a49a353142bf80ccd1f5bc2b2ded4044c">m_eventTimerCmd</a>) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">bool</span> et = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">if</span> (newVals != G4String(<span class="stringliteral">&quot;&quot;</span>)) {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            et = G4UIcmdWithABool::GetNewBoolValue(newVals);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classslic_1_1EventAction.html#a6ca4a2263f5215b69abaf2df1e9fa999">EventAction::getEventAction</a>()-&gt;<a class="code" href="classslic_1_1EventAction.html#a6f21b1eaecc0a01c0020e448199d50c3">enableEventTimer</a>(et);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        G4Exception(<span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, JustWarning, <span class="stringliteral">&quot;Unknown command for this messenger.&quot;</span>);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="EventAction_8cc_source.html#l00093">EventAction::enableEventTimer()</a>, <a class="el" href="EventAction_8cc_source.html#l00070">EventAction::getEventAction()</a>, and <a class="el" href="EventMessenger_8hh_source.html#l00045">EventMessenger::m_eventTimerCmd</a>.</p>
 
 </div>
@@ -290,10 +266,6 @@ Private Attributes</h2></td></tr>
 <li><a class="el" href="EventMessenger_8cc_source.html">EventMessenger.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1EventAction_html_a6f21b1eaecc0a01c0020e448199d50c3"><div class="ttname"><a href="classslic_1_1EventAction.html#a6f21b1eaecc0a01c0020e448199d50c3">slic::EventAction::enableEventTimer</a></div><div class="ttdeci">void enableEventTimer(bool et=true)</div><div class="ttdef"><b>Definition:</b> <a href="EventAction_8cc_source.html#l00093">EventAction.cc:93</a></div></div>
-<div class="ttc" id="aclassslic_1_1EventMessenger_html_acf9e4724aa43f23f330a5e9e42b26318"><div class="ttname"><a href="classslic_1_1EventMessenger.html#acf9e4724aa43f23f330a5e9e42b26318">slic::EventMessenger::defineCommands</a></div><div class="ttdeci">void defineCommands()</div><div class="ttdef"><b>Definition:</b> <a href="EventMessenger_8cc_source.html#l00031">EventMessenger.cc:31</a></div></div>
-<div class="ttc" id="aclassslic_1_1EventAction_html_a6ca4a2263f5215b69abaf2df1e9fa999"><div class="ttname"><a href="classslic_1_1EventAction.html#a6ca4a2263f5215b69abaf2df1e9fa999">slic::EventAction::getEventAction</a></div><div class="ttdeci">static EventAction * getEventAction()</div><div class="ttdef"><b>Definition:</b> <a href="EventAction_8cc_source.html#l00070">EventAction.cc:70</a></div></div>
-<div class="ttc" id="aclassslic_1_1EventMessenger_html_a49a353142bf80ccd1f5bc2b2ded4044c"><div class="ttname"><a href="classslic_1_1EventMessenger.html#a49a353142bf80ccd1f5bc2b2ded4044c">slic::EventMessenger::m_eventTimerCmd</a></div><div class="ttdeci">G4UIcmdWithABool * m_eventTimerCmd</div><div class="ttdef"><b>Definition:</b> <a href="EventMessenger_8hh_source.html#l00045">EventMessenger.hh:45</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

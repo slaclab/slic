@@ -146,11 +146,7 @@ For more information on these settings, see the <a href="http://geant4.web.cern.
 <p>Class constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="FieldMessenger_8cc_source.html#l00017">17</a> of file <a class="el" href="FieldMessenger_8cc_source.html">FieldMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                                :</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classslic_1_1FieldMessenger.html#a81ab64bb4470d4e9cf67816edd55e6dc">m_mgr</a>(mgr) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#acf9e4724aa43f23f330a5e9e42b26318">defineCommands</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="FieldMessenger_8cc_source.html#l00050">FieldMessenger::defineCommands()</a>.</p>
 
 </div>
@@ -180,13 +176,7 @@ For more information on these settings, see the <a href="http://geant4.web.cern.
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="FieldMessenger_8cc_source.html#l00022">22</a> of file <a class="el" href="FieldMessenger_8cc_source.html">FieldMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classslic_1_1FieldMessenger.html#ace72179314ee56342f5a1b7ddb4184f9">m_fieldDir</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classslic_1_1FieldMessenger.html#a42419bf2ed33d0b8d033ea0ae456298b">m_selectStepperCmd</a>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classslic_1_1FieldMessenger.html#a695cfb59be2523d38bc0475c722acd0f">m_setDeltaOneStepCmd</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classslic_1_1FieldMessenger.html#a5e55f0840588dcf3c6efdabd3aab2973">m_setDeltaIntersectionCmd</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="FieldMessenger_8hh_source.html#l00065">FieldMessenger::m_fieldDir</a>, <a class="el" href="FieldMessenger_8hh_source.html#l00066">FieldMessenger::m_selectStepperCmd</a>, <a class="el" href="FieldMessenger_8hh_source.html#l00068">FieldMessenger::m_setDeltaIntersectionCmd</a>, and <a class="el" href="FieldMessenger_8hh_source.html#l00067">FieldMessenger::m_setDeltaOneStepCmd</a>.</p>
 
 </div>
@@ -217,31 +207,7 @@ For more information on these settings, see the <a href="http://geant4.web.cern.
 <p>Define the messenger's commands. </p>
 
 <p class="definition">Definition at line <a class="el" href="FieldMessenger_8cc_source.html#l00050">50</a> of file <a class="el" href="FieldMessenger_8cc_source.html">FieldMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                    {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    G4UIparameter *p;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#ace72179314ee56342f5a1b7ddb4184f9">m_fieldDir</a> = <span class="keyword">new</span> G4UIdirectory(<span class="stringliteral">&quot;/field/&quot;</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#ace72179314ee56342f5a1b7ddb4184f9">m_fieldDir</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Magnetic field customization commands. [SLIC]&quot;</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a42419bf2ed33d0b8d033ea0ae456298b">m_selectStepperCmd</a> = <span class="keyword">new</span> G4UIcommand(<span class="stringliteral">&quot;/field/selectStepper&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a42419bf2ed33d0b8d033ea0ae456298b">m_selectStepperCmd</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Select the G4MagIntegratorStepper:\nG4ClassicalRK4 G4ExplicitEuler G4HelixExplicitEuler G4HelixHeum G4HelixImplicitEuler G4HelixSimpleRunge G4ImplicitEuler G4CashKarpRKF45 G4SimpleHeum G4SimpleRunge&quot;</span>);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    p = <span class="keyword">new</span> G4UIparameter(<span class="stringliteral">&quot;stepper&quot;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a42419bf2ed33d0b8d033ea0ae456298b">m_selectStepperCmd</a>-&gt;SetParameter(p);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a42419bf2ed33d0b8d033ea0ae456298b">m_selectStepperCmd</a>-&gt;AvailableForStates(G4State_Init, G4State_Idle);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a695cfb59be2523d38bc0475c722acd0f">m_setDeltaOneStepCmd</a> = <span class="keyword">new</span> G4UIcmdWithADoubleAndUnit(<span class="stringliteral">&quot;/field/setDeltaOneStep&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a695cfb59be2523d38bc0475c722acd0f">m_setDeltaOneStepCmd</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Set the delta of one step.&quot;</span>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a695cfb59be2523d38bc0475c722acd0f">m_setDeltaOneStepCmd</a>-&gt;SetDefaultUnit(<span class="stringliteral">&quot;mm&quot;</span>);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a695cfb59be2523d38bc0475c722acd0f">m_setDeltaOneStepCmd</a>-&gt;AvailableForStates(G4State_Init, G4State_Idle);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a5e55f0840588dcf3c6efdabd3aab2973">m_setDeltaIntersectionCmd</a> = <span class="keyword">new</span> G4UIcmdWithADoubleAndUnit(<span class="stringliteral">&quot;/field/setDeltaIntersection&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a5e55f0840588dcf3c6efdabd3aab2973">m_setDeltaIntersectionCmd</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Set the delta of intersection.&quot;</span>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a5e55f0840588dcf3c6efdabd3aab2973">m_setDeltaIntersectionCmd</a>-&gt;SetDefaultUnit(<span class="stringliteral">&quot;mm&quot;</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classslic_1_1FieldMessenger.html#a5e55f0840588dcf3c6efdabd3aab2973">m_setDeltaIntersectionCmd</a>-&gt;AvailableForStates(G4State_Init, G4State_Idle);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="FieldMessenger_8hh_source.html#l00065">FieldMessenger::m_fieldDir</a>, <a class="el" href="FieldMessenger_8hh_source.html#l00066">FieldMessenger::m_selectStepperCmd</a>, <a class="el" href="FieldMessenger_8hh_source.html#l00068">FieldMessenger::m_setDeltaIntersectionCmd</a>, and <a class="el" href="FieldMessenger_8hh_source.html#l00067">FieldMessenger::m_setDeltaOneStepCmd</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="FieldMessenger_8cc_source.html#l00017">FieldMessenger::FieldMessenger()</a>.</p>
@@ -290,27 +256,7 @@ For more information on these settings, see the <a href="http://geant4.web.cern.
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="FieldMessenger_8cc_source.html#l00029">29</a> of file <a class="el" href="FieldMessenger_8cc_source.html">FieldMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                                                                   {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    G4FieldManager* fieldMgr = G4TransportationManager::GetTransportationManager()-&gt;GetFieldManager();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span> (cmd == <a class="code" href="classslic_1_1FieldMessenger.html#a42419bf2ed33d0b8d033ea0ae456298b">m_selectStepperCmd</a>) {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">G4MagIntegratorStepperFactory::instance</a>()-&gt;setupG4MagIntegratorStepper(newVals);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#ifdef SLIC_LOG</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classslic_1_1FieldMessenger.html#a81ab64bb4470d4e9cf67816edd55e6dc">m_mgr</a>-&gt;<a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;mag field integrator &lt;&quot;</span> &lt;&lt; newVals &lt;&lt; <span class="stringliteral">&quot;&gt;&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmd == <a class="code" href="classslic_1_1FieldMessenger.html#a695cfb59be2523d38bc0475c722acd0f">m_setDeltaOneStepCmd</a>) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">double</span> deltaOneStep = <a class="code" href="classslic_1_1FieldMessenger.html#a695cfb59be2523d38bc0475c722acd0f">m_setDeltaOneStepCmd</a>-&gt;GetNewDoubleValue(newVals);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        fieldMgr-&gt;SetDeltaOneStep(deltaOneStep);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classslic_1_1FieldMessenger.html#a81ab64bb4470d4e9cf67816edd55e6dc">m_mgr</a>-&gt;<a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;delta one step &lt;&quot;</span> &lt;&lt; deltaOneStep &lt;&lt; <span class="stringliteral">&quot;&gt;&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmd == <a class="code" href="classslic_1_1FieldMessenger.html#a5e55f0840588dcf3c6efdabd3aab2973">m_setDeltaIntersectionCmd</a>) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">double</span> deltaIntersection = <a class="code" href="classslic_1_1FieldMessenger.html#a5e55f0840588dcf3c6efdabd3aab2973">m_setDeltaIntersectionCmd</a>-&gt;GetNewDoubleValue(newVals);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        fieldMgr-&gt;SetDeltaIntersection(deltaIntersection);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classslic_1_1FieldMessenger.html#a81ab64bb4470d4e9cf67816edd55e6dc">m_mgr</a>-&gt;<a class="code" href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">log</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a> &lt;&lt; <span class="stringliteral">&quot;delta intersection &lt;&quot;</span> &lt;&lt; deltaIntersection &lt;&lt; <span class="stringliteral">&quot;&gt;&quot;</span> &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        G4Exception(<span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, JustWarning, <span class="stringliteral">&quot;Unknown command.&quot;</span>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::done</a>, <a class="el" href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; G4MagIntegratorStepperFactory &gt;::instance()</a>, <a class="el" href="Module_8hh_source.html#l00099">Module::log()</a>, <a class="el" href="FieldMessenger_8hh_source.html#l00064">FieldMessenger::m_mgr</a>, <a class="el" href="FieldMessenger_8hh_source.html#l00066">FieldMessenger::m_selectStepperCmd</a>, <a class="el" href="FieldMessenger_8hh_source.html#l00068">FieldMessenger::m_setDeltaIntersectionCmd</a>, <a class="el" href="FieldMessenger_8hh_source.html#l00067">FieldMessenger::m_setDeltaOneStepCmd</a>, and <a class="el" href="LogStream_8hh_source.html#l00033">LOG::okay</a>.</p>
 
 </div>
@@ -451,16 +397,6 @@ For more information on these settings, see the <a href="http://geant4.web.cern.
 <li><a class="el" href="FieldMessenger_8cc_source.html">FieldMessenger.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1FieldMessenger_html_acf9e4724aa43f23f330a5e9e42b26318"><div class="ttname"><a href="classslic_1_1FieldMessenger.html#acf9e4724aa43f23f330a5e9e42b26318">slic::FieldMessenger::defineCommands</a></div><div class="ttdeci">void defineCommands()</div><div class="ttdef"><b>Definition:</b> <a href="FieldMessenger_8cc_source.html#l00050">FieldMessenger.cc:50</a></div></div>
-<div class="ttc" id="aclassSingleton_html_ade6193af70013295b23e0318cbb276bd"><div class="ttname"><a href="classSingleton.html#ade6193af70013295b23e0318cbb276bd">Singleton&lt; G4MagIntegratorStepperFactory &gt;::instance</a></div><div class="ttdeci">static G4MagIntegratorStepperFactory * instance()</div></div>
-<div class="ttc" id="aclassslic_1_1FieldMessenger_html_a695cfb59be2523d38bc0475c722acd0f"><div class="ttname"><a href="classslic_1_1FieldMessenger.html#a695cfb59be2523d38bc0475c722acd0f">slic::FieldMessenger::m_setDeltaOneStepCmd</a></div><div class="ttdeci">G4UIcmdWithADoubleAndUnit * m_setDeltaOneStepCmd</div><div class="ttdef"><b>Definition:</b> <a href="FieldMessenger_8hh_source.html#l00067">FieldMessenger.hh:67</a></div></div>
-<div class="ttc" id="aclassslic_1_1FieldMessenger_html_a5e55f0840588dcf3c6efdabd3aab2973"><div class="ttname"><a href="classslic_1_1FieldMessenger.html#a5e55f0840588dcf3c6efdabd3aab2973">slic::FieldMessenger::m_setDeltaIntersectionCmd</a></div><div class="ttdeci">G4UIcmdWithADoubleAndUnit * m_setDeltaIntersectionCmd</div><div class="ttdef"><b>Definition:</b> <a href="FieldMessenger_8hh_source.html#l00068">FieldMessenger.hh:68</a></div></div>
-<div class="ttc" id="aclassslic_1_1FieldMessenger_html_a81ab64bb4470d4e9cf67816edd55e6dc"><div class="ttname"><a href="classslic_1_1FieldMessenger.html#a81ab64bb4470d4e9cf67816edd55e6dc">slic::FieldMessenger::m_mgr</a></div><div class="ttdeci">FieldManager * m_mgr</div><div class="ttdef"><b>Definition:</b> <a href="FieldMessenger_8hh_source.html#l00064">FieldMessenger.hh:64</a></div></div>
-<div class="ttc" id="aclassslic_1_1Module_html_af806f013ae865309882e211160bd8fc8"><div class="ttname"><a href="classslic_1_1Module.html#af806f013ae865309882e211160bd8fc8">slic::Module::log</a></div><div class="ttdeci">LogStream &amp; log()</div><div class="ttdef"><b>Definition:</b> <a href="Module_8hh_source.html#l00099">Module.hh:99</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a9041c40ebd1ff09fe453b594ad748199">LOG::done</a></div><div class="ttdeci">@ done</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786a00feb703766dcf7d822a0ee5f2079cfb">LOG::okay</a></div><div class="ttdeci">@ okay</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1FieldMessenger_html_ace72179314ee56342f5a1b7ddb4184f9"><div class="ttname"><a href="classslic_1_1FieldMessenger.html#ace72179314ee56342f5a1b7ddb4184f9">slic::FieldMessenger::m_fieldDir</a></div><div class="ttdeci">G4UIdirectory * m_fieldDir</div><div class="ttdef"><b>Definition:</b> <a href="FieldMessenger_8hh_source.html#l00065">FieldMessenger.hh:65</a></div></div>
-<div class="ttc" id="aclassslic_1_1FieldMessenger_html_a42419bf2ed33d0b8d033ea0ae456298b"><div class="ttname"><a href="classslic_1_1FieldMessenger.html#a42419bf2ed33d0b8d033ea0ae456298b">slic::FieldMessenger::m_selectStepperCmd</a></div><div class="ttdeci">G4UIcommand * m_selectStepperCmd</div><div class="ttdef"><b>Definition:</b> <a href="FieldMessenger_8hh_source.html#l00066">FieldMessenger.hh:66</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

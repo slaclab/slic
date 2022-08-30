@@ -137,10 +137,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LCOpticalPhysics_8cc_source.html#l00006">6</a> of file <a class="el" href="LCOpticalPhysics_8cc_source.html">LCOpticalPhysics.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;                                                       :</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        G4VPhysicsConstructor(<a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1">name</a>) {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ad34a441e3925e1d412ac5eb6ed372d79"></a>
@@ -168,9 +165,7 @@ Protected Attributes</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="LCOpticalPhysics_8cc_source.html#l00010">10</a> of file <a class="el" href="LCOpticalPhysics_8cc_source.html">LCOpticalPhysics.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                                    {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -191,44 +186,7 @@ Protected Attributes</h2></td></tr>
 <p>This method constructs physics processes and registers them. </p>
 
 <p class="definition">Definition at line <a class="el" href="LCOpticalPhysics_8cc_source.html#l00026">26</a> of file <a class="el" href="LCOpticalPhysics_8cc_source.html">LCOpticalPhysics.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                   {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classLCOpticalPhysics.html#ad626b1b23198fc442e8e959bb30b3911">theCerenkovProcess</a> = <span class="keyword">new</span> G4Cerenkov(<span class="stringliteral">&quot;Cerenkov&quot;</span>);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classLCOpticalPhysics.html#a9d4f46356cc20c1486030aa2ac1baa4a">theScintillationProcess</a> = <span class="keyword">new</span> G4Scintillation(<span class="stringliteral">&quot;Scintillation&quot;</span>);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classLCOpticalPhysics.html#a1226e4d3248e62ced93853bf22a5cc35">theAbsorptionProcess</a> = <span class="keyword">new</span> G4OpAbsorption();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classLCOpticalPhysics.html#a17e4c6568f16d3749623ddcd1f1cb256">theRayleighScatteringProcess</a> = <span class="keyword">new</span> G4OpRayleigh();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classLCOpticalPhysics.html#a51b2f0c15129e43ca2f99a923c988bd1">theBoundaryProcess</a> = <span class="keyword">new</span> G4OpBoundaryProcess();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classLCOpticalPhysics.html#ad626b1b23198fc442e8e959bb30b3911">theCerenkovProcess</a>-&gt;SetMaxNumPhotonsPerStep(300);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classLCOpticalPhysics.html#a9d4f46356cc20c1486030aa2ac1baa4a">theScintillationProcess</a>-&gt;SetScintillationYieldFactor(1.);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">//if ( G4VERSION_NUMBER &lt; 1000 )</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">//  G4ParticleTable::G4PTblDicIterator* aParticleIterator = G4ParticleTable::GetParticleTable()-&gt;GetIterator();</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">//#endif</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="LCOpticalPhysics_8cc.html#afbc8c18893a64a11db1d95ec55777e2d">aParticleIterator</a>-&gt;reset();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">while</span> ((*<a class="code" href="LCOpticalPhysics_8cc.html#afbc8c18893a64a11db1d95ec55777e2d">aParticleIterator</a>)()) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        G4ParticleDefinition* particle = <a class="code" href="LCOpticalPhysics_8cc.html#afbc8c18893a64a11db1d95ec55777e2d">aParticleIterator</a>-&gt;value();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        G4ProcessManager* pmanager = particle-&gt;GetProcessManager();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        G4String particleName = particle-&gt;GetParticleName();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classLCOpticalPhysics.html#ad626b1b23198fc442e8e959bb30b3911">theCerenkovProcess</a>-&gt;IsApplicable(*particle)) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            pmanager-&gt;AddProcess(<a class="code" href="classLCOpticalPhysics.html#ad626b1b23198fc442e8e959bb30b3911">theCerenkovProcess</a>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            pmanager-&gt;SetProcessOrderingToLast(<a class="code" href="classLCOpticalPhysics.html#ad626b1b23198fc442e8e959bb30b3911">theCerenkovProcess</a>, idxPostStep);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classLCOpticalPhysics.html#a9d4f46356cc20c1486030aa2ac1baa4a">theScintillationProcess</a>-&gt;IsApplicable(*particle)) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            pmanager-&gt;AddProcess(<a class="code" href="classLCOpticalPhysics.html#a9d4f46356cc20c1486030aa2ac1baa4a">theScintillationProcess</a>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            pmanager-&gt;SetProcessOrderingToLast(<a class="code" href="classLCOpticalPhysics.html#a9d4f46356cc20c1486030aa2ac1baa4a">theScintillationProcess</a>, idxAtRest);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            pmanager-&gt;SetProcessOrderingToLast(<a class="code" href="classLCOpticalPhysics.html#a9d4f46356cc20c1486030aa2ac1baa4a">theScintillationProcess</a>, idxPostStep);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">if</span> (particleName == <span class="stringliteral">&quot;opticalphoton&quot;</span>) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            pmanager-&gt;AddDiscreteProcess(<a class="code" href="classLCOpticalPhysics.html#a1226e4d3248e62ced93853bf22a5cc35">theAbsorptionProcess</a>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            pmanager-&gt;AddDiscreteProcess(<a class="code" href="classLCOpticalPhysics.html#a17e4c6568f16d3749623ddcd1f1cb256">theRayleighScatteringProcess</a>);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            pmanager-&gt;AddDiscreteProcess(<a class="code" href="classLCOpticalPhysics.html#a51b2f0c15129e43ca2f99a923c988bd1">theBoundaryProcess</a>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LCOpticalPhysics_8cc_source.html#l00023">aParticleIterator</a>, <a class="el" href="LCOpticalPhysics_8hh_source.html#l00053">theAbsorptionProcess</a>, <a class="el" href="LCOpticalPhysics_8hh_source.html#l00055">theBoundaryProcess</a>, <a class="el" href="LCOpticalPhysics_8hh_source.html#l00051">theCerenkovProcess</a>, <a class="el" href="LCOpticalPhysics_8hh_source.html#l00054">theRayleighScatteringProcess</a>, and <a class="el" href="LCOpticalPhysics_8hh_source.html#l00052">theScintillationProcess</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="LCOpticalPhysics_8cc_source.html#l00018">ConstructProcess()</a>.</p>
@@ -252,11 +210,7 @@ Protected Attributes</h2></td></tr>
 <p>This method will be invoked in the Construct() method where each particle type will be instantiated. </p>
 
 <p class="definition">Definition at line <a class="el" href="LCOpticalPhysics_8cc_source.html#l00013">13</a> of file <a class="el" href="LCOpticalPhysics_8cc_source.html">LCOpticalPhysics.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                         {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">// optical photon</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    G4OpticalPhoton::OpticalPhotonDefinition();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a0bcc220403d68d8670669269b5772356"></a>
@@ -276,10 +230,7 @@ Protected Attributes</h2></td></tr>
 <p>This method will be invoked in the Construct() method. Each physics process will be instantiated and registered to the process manager of each particle type </p>
 
 <p class="definition">Definition at line <a class="el" href="LCOpticalPhysics_8cc_source.html#l00018">18</a> of file <a class="el" href="LCOpticalPhysics_8cc_source.html">LCOpticalPhysics.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                        {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classLCOpticalPhysics.html#a442cd0c39e53f6590aaaf95152705fde">ConstructOp</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LCOpticalPhysics_8cc_source.html#l00026">ConstructOp()</a>.</p>
 
 </div>
@@ -420,14 +371,6 @@ Protected Attributes</h2></td></tr>
 <li><a class="el" href="LCOpticalPhysics_8cc_source.html">LCOpticalPhysics.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassLCOpticalPhysics_html_a9d4f46356cc20c1486030aa2ac1baa4a"><div class="ttname"><a href="classLCOpticalPhysics.html#a9d4f46356cc20c1486030aa2ac1baa4a">LCOpticalPhysics::theScintillationProcess</a></div><div class="ttdeci">G4Scintillation * theScintillationProcess</div><div class="ttdef"><b>Definition:</b> <a href="LCOpticalPhysics_8hh_source.html#l00052">LCOpticalPhysics.hh:52</a></div></div>
-<div class="ttc" id="aclassLCOpticalPhysics_html_a1226e4d3248e62ced93853bf22a5cc35"><div class="ttname"><a href="classLCOpticalPhysics.html#a1226e4d3248e62ced93853bf22a5cc35">LCOpticalPhysics::theAbsorptionProcess</a></div><div class="ttdeci">G4OpAbsorption * theAbsorptionProcess</div><div class="ttdef"><b>Definition:</b> <a href="LCOpticalPhysics_8hh_source.html#l00053">LCOpticalPhysics.hh:53</a></div></div>
-<div class="ttc" id="aLCOpticalPhysics_8cc_html_afbc8c18893a64a11db1d95ec55777e2d"><div class="ttname"><a href="LCOpticalPhysics_8cc.html#afbc8c18893a64a11db1d95ec55777e2d">aParticleIterator</a></div><div class="ttdeci">#define aParticleIterator</div><div class="ttdef"><b>Definition:</b> <a href="LCOpticalPhysics_8cc_source.html#l00023">LCOpticalPhysics.cc:23</a></div></div>
-<div class="ttc" id="aclassLCOpticalPhysics_html_ad626b1b23198fc442e8e959bb30b3911"><div class="ttname"><a href="classLCOpticalPhysics.html#ad626b1b23198fc442e8e959bb30b3911">LCOpticalPhysics::theCerenkovProcess</a></div><div class="ttdeci">G4Cerenkov * theCerenkovProcess</div><div class="ttdef"><b>Definition:</b> <a href="LCOpticalPhysics_8hh_source.html#l00051">LCOpticalPhysics.hh:51</a></div></div>
-<div class="ttc" id="aclassLCOpticalPhysics_html_a17e4c6568f16d3749623ddcd1f1cb256"><div class="ttname"><a href="classLCOpticalPhysics.html#a17e4c6568f16d3749623ddcd1f1cb256">LCOpticalPhysics::theRayleighScatteringProcess</a></div><div class="ttdeci">G4OpRayleigh * theRayleighScatteringProcess</div><div class="ttdef"><b>Definition:</b> <a href="LCOpticalPhysics_8hh_source.html#l00054">LCOpticalPhysics.hh:54</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a30f86b30ff07d8d12d3ae0aab53dc7a1">LOG::name</a></div><div class="ttdeci">@ name</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassLCOpticalPhysics_html_a442cd0c39e53f6590aaaf95152705fde"><div class="ttname"><a href="classLCOpticalPhysics.html#a442cd0c39e53f6590aaaf95152705fde">LCOpticalPhysics::ConstructOp</a></div><div class="ttdeci">void ConstructOp()</div><div class="ttdef"><b>Definition:</b> <a href="LCOpticalPhysics_8cc_source.html#l00026">LCOpticalPhysics.cc:26</a></div></div>
-<div class="ttc" id="aclassLCOpticalPhysics_html_a51b2f0c15129e43ca2f99a923c988bd1"><div class="ttname"><a href="classLCOpticalPhysics.html#a51b2f0c15129e43ca2f99a923c988bd1">LCOpticalPhysics::theBoundaryProcess</a></div><div class="ttdeci">G4OpBoundaryProcess * theBoundaryProcess</div><div class="ttdef"><b>Definition:</b> <a href="LCOpticalPhysics_8hh_source.html#l00055">LCOpticalPhysics.hh:55</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

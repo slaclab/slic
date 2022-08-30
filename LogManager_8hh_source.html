@@ -93,22 +93,16 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="comment">// LogStream vector.</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classslic_1_1LogManager.html#ad9048bc5aa02d39bdd9a8b438feceb51">   36</a></span>&#160;        <span class="keyword">typedef</span> std::vector&lt;LogStream*&gt; <a class="code" href="classslic_1_1LogManager.html#ad9048bc5aa02d39bdd9a8b438feceb51">LogList</a>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">// LogStream vector iterator.</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classslic_1_1LogManager.html#a5312b975ea87c331545d2a9f1ec28e27">   39</a></span>&#160;        <span class="keyword">typedef</span> LogList::iterator <a class="code" href="classslic_1_1LogManager.html#a5312b975ea87c331545d2a9f1ec28e27">LogListIterator</a>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">// LogMessenger vector.</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classslic_1_1LogManager.html#ab648ff64c4cca944477bef59fbe14028">   42</a></span>&#160;        <span class="keyword">typedef</span> std::vector&lt;LogMessenger*&gt; <a class="code" href="classslic_1_1LogManager.html#ab648ff64c4cca944477bef59fbe14028">LogMessengerList</a>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// LogMessenger vector iterator.</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classslic_1_1LogManager.html#ad52b83bf6efa237f85d14cdb61a78670">   45</a></span>&#160;        <span class="keyword">typedef</span> LogMessengerList::iterator <a class="code" href="classslic_1_1LogManager.html#ad52b83bf6efa237f85d14cdb61a78670">LogMessengerListIterator</a>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">// Name to LogStream map.</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classslic_1_1LogManager.html#a7f9c29f0b0897db614edfb59967ac73a">   48</a></span>&#160;        <span class="keyword">typedef</span> std::map&lt;std::string, LogStream*&gt; <a class="code" href="classslic_1_1LogManager.html#a7f9c29f0b0897db614edfb59967ac73a">LogNameMap</a>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// LogMessenger to LogStream map.</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classslic_1_1LogManager.html#a5ef55bbb4b22f61a5bb2d6b52f9d3c03">   51</a></span>&#160;        <span class="keyword">typedef</span> std::map&lt;LogStream*, LogMessenger*&gt; <a class="code" href="classslic_1_1LogManager.html#a5ef55bbb4b22f61a5bb2d6b52f9d3c03">LogMessengerMap</a>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">public</span>:</div>

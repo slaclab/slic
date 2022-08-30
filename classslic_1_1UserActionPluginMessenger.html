@@ -138,19 +138,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="UserActionPluginMessenger_8cc_source.html#l00005">5</a> of file <a class="el" href="UserActionPluginMessenger_8cc_source.html">UserActionPluginMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;                                                                                 :</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        <a class="code" href="classslic_1_1UserActionPluginMessenger.html#a71df4c4299eff8a90ac043466e498602">userPlugin_</a>(userPlugin) {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classslic_1_1UserActionPluginMessenger.html#a796ea33d2b6f103216c55e8dd3c5a780">pluginDir_</a> = <span class="keyword">new</span> G4UIdirectory(std::string(<span class="stringliteral">&quot;/slic/plugins/&quot;</span> + userPlugin-&gt;getName() + <span class="stringliteral">&quot;/&quot;</span>).c_str());</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classslic_1_1UserActionPluginMessenger.html#a796ea33d2b6f103216c55e8dd3c5a780">pluginDir_</a>-&gt;SetGuidance(std::string(<span class="stringliteral">&quot;Commands for the sim plugin &quot;</span> + userPlugin-&gt;getName()).c_str());</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classslic_1_1UserActionPluginMessenger.html#ae511f866954a0a35a4e88e76e05e4294">verboseCmd_</a> = <span class="keyword">new</span> G4UIcommand(std::string(<a class="code" href="classslic_1_1UserActionPluginMessenger.html#aab4662e1129a31f1c29bc6dc0ffd0b4c">getPath</a>() + <span class="stringliteral">&quot;verbose&quot;</span>).c_str(), <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    G4UIparameter* <a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786ae83a049eb564f26389a8acc4dfc8ef5b">verbose</a> = <span class="keyword">new</span> G4UIparameter(<span class="stringliteral">&quot;verboseLevel&quot;</span>, <span class="charliteral">&#39;i&#39;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classslic_1_1UserActionPluginMessenger.html#ae511f866954a0a35a4e88e76e05e4294">verboseCmd_</a>-&gt;SetParameter(<a class="code" href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786ae83a049eb564f26389a8acc4dfc8ef5b">verbose</a>);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classslic_1_1UserActionPluginMessenger.html#ae511f866954a0a35a4e88e76e05e4294">verboseCmd_</a>-&gt;SetGuidance(<span class="stringliteral">&quot;Set the verbosity level of the sim plugin (1-4).&quot;</span>);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classslic_1_1UserActionPluginMessenger.html#ae511f866954a0a35a4e88e76e05e4294">verboseCmd_</a>-&gt;AvailableForStates(G4ApplicationState::G4State_PreInit, G4ApplicationState::G4State_Idle);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="classslic_1_1UserActionPlugin.html#ae2575a99ee9c6372f334f78b2d29adf6">UserActionPlugin::getName()</a>, <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00058">UserActionPluginMessenger::getPath()</a>, <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00080">UserActionPluginMessenger::pluginDir_</a>, <a class="el" href="LogStream_8hh_source.html#l00033">LOG::verbose</a>, and <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00085">UserActionPluginMessenger::verboseCmd_</a>.</p>
 
 </div>
@@ -180,11 +168,7 @@ Private Attributes</h2></td></tr>
 <p>Class destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00042">42</a> of file <a class="el" href="UserActionPluginMessenger_8hh_source.html">UserActionPluginMessenger.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                             {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keyword">delete</span> <a class="code" href="classslic_1_1UserActionPluginMessenger.html#ae511f866954a0a35a4e88e76e05e4294">verboseCmd_</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keyword">delete</span> <a class="code" href="classslic_1_1UserActionPluginMessenger.html#a796ea33d2b6f103216c55e8dd3c5a780">pluginDir_</a>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00080">UserActionPluginMessenger::pluginDir_</a>, and <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00085">UserActionPluginMessenger::verboseCmd_</a>.</p>
 
 </div>
@@ -215,10 +199,7 @@ Private Attributes</h2></td></tr>
 <p>Get the command path (plugin's macro directory). </p><dl class="section return"><dt>Returns</dt><dd>The command path. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00058">58</a> of file <a class="el" href="UserActionPluginMessenger_8hh_source.html">UserActionPluginMessenger.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                   {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1UserActionPluginMessenger.html#a796ea33d2b6f103216c55e8dd3c5a780">pluginDir_</a>-&gt;GetCommandPath();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00080">UserActionPluginMessenger::pluginDir_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="UserActionPluginMessenger_8cc_source.html#l00005">UserActionPluginMessenger::UserActionPluginMessenger()</a>.</p>
@@ -250,10 +231,7 @@ Private Attributes</h2></td></tr>
 <p>Get the associated <a class="el" href="classslic_1_1UserActionPlugin.html" title="User simulation plugin.">UserActionPlugin</a>. </p><dl class="section return"><dt>Returns</dt><dd>The associated <a class="el" href="classslic_1_1UserActionPlugin.html" title="User simulation plugin.">UserActionPlugin</a>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00066">66</a> of file <a class="el" href="UserActionPluginMessenger_8hh_source.html">UserActionPluginMessenger.hh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                      {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classslic_1_1UserActionPluginMessenger.html#a71df4c4299eff8a90ac043466e498602">userPlugin_</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00075">UserActionPluginMessenger::userPlugin_</a>.</p>
 
 </div>
@@ -292,13 +270,7 @@ Private Attributes</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="UserActionPluginMessenger_8cc_source.html#l00018">18</a> of file <a class="el" href="UserActionPluginMessenger_8cc_source.html">UserActionPluginMessenger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                                                                   {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">if</span> (command == <a class="code" href="classslic_1_1UserActionPluginMessenger.html#ae511f866954a0a35a4e88e76e05e4294">verboseCmd_</a>) {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="classslic_1_1UserActionPluginMessenger.html#a71df4c4299eff8a90ac043466e498602">userPlugin_</a>-&gt;<a class="code" href="classslic_1_1UserActionPlugin.html#ad00b665eb2a8c2a335b2e26db70fe0ef">setVerboseLevel</a>(std::atoi(newValue));</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        std::cout &lt;&lt; <a class="code" href="classslic_1_1UserActionPluginMessenger.html#a71df4c4299eff8a90ac043466e498602">userPlugin_</a>-&gt;<a class="code" href="classslic_1_1UserActionPlugin.html#ae2575a99ee9c6372f334f78b2d29adf6">getName</a>() &lt;&lt; <span class="stringliteral">&quot; verbose set to &quot;</span> &lt;&lt; <a class="code" href="classslic_1_1UserActionPluginMessenger.html#a71df4c4299eff8a90ac043466e498602">userPlugin_</a>-&gt;<a class="code" href="classslic_1_1UserActionPlugin.html#ae4fe167cd3b679712f8b6184e3fb238b">getVerboseLevel</a>() &lt;&lt; <a class="code" href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">std::endl</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
-</div><!-- fragment -->
+
 <p class="reference">References <a class="el" href="LogStream_8hh_source.html#l00026">LOG::endl</a>, <a class="el" href="classslic_1_1UserActionPlugin.html#ae2575a99ee9c6372f334f78b2d29adf6">UserActionPlugin::getName()</a>, <a class="el" href="UserActionPlugin_8hh_source.html#l00078">UserActionPlugin::getVerboseLevel()</a>, <a class="el" href="UserActionPlugin_8hh_source.html#l00065">UserActionPlugin::setVerboseLevel()</a>, <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00075">UserActionPluginMessenger::userPlugin_</a>, and <a class="el" href="UserActionPluginMessenger_8hh_source.html#l00085">UserActionPluginMessenger::verboseCmd_</a>.</p>
 
 </div>
@@ -390,15 +362,6 @@ Private Attributes</h2></td></tr>
 <li><a class="el" href="UserActionPluginMessenger_8cc_source.html">UserActionPluginMessenger.cc</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassslic_1_1UserActionPluginMessenger_html_a796ea33d2b6f103216c55e8dd3c5a780"><div class="ttname"><a href="classslic_1_1UserActionPluginMessenger.html#a796ea33d2b6f103216c55e8dd3c5a780">slic::UserActionPluginMessenger::pluginDir_</a></div><div class="ttdeci">G4UIdirectory * pluginDir_</div><div class="ttdef"><b>Definition:</b> <a href="UserActionPluginMessenger_8hh_source.html#l00080">UserActionPluginMessenger.hh:80</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18"><div class="ttname"><a href="namespaceLOG.html#aa04401483bcda9621e4a1610347436d5a5cbad4ad24fd9b8c066cdad096cd2f18">LOG::endl</a></div><div class="ttdeci">@ endl</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00026">LogStream.hh:26</a></div></div>
-<div class="ttc" id="aclassslic_1_1UserActionPlugin_html_ae2575a99ee9c6372f334f78b2d29adf6"><div class="ttname"><a href="classslic_1_1UserActionPlugin.html#ae2575a99ee9c6372f334f78b2d29adf6">slic::UserActionPlugin::getName</a></div><div class="ttdeci">virtual std::string getName()=0</div></div>
-<div class="ttc" id="aclassslic_1_1UserActionPlugin_html_ae4fe167cd3b679712f8b6184e3fb238b"><div class="ttname"><a href="classslic_1_1UserActionPlugin.html#ae4fe167cd3b679712f8b6184e3fb238b">slic::UserActionPlugin::getVerboseLevel</a></div><div class="ttdeci">int getVerboseLevel()</div><div class="ttdef"><b>Definition:</b> <a href="UserActionPlugin_8hh_source.html#l00078">UserActionPlugin.hh:78</a></div></div>
-<div class="ttc" id="anamespaceLOG_html_a7cd66fd9f1b78589fbb50b32467ce786ae83a049eb564f26389a8acc4dfc8ef5b"><div class="ttname"><a href="namespaceLOG.html#a7cd66fd9f1b78589fbb50b32467ce786ae83a049eb564f26389a8acc4dfc8ef5b">LOG::verbose</a></div><div class="ttdeci">@ verbose</div><div class="ttdef"><b>Definition:</b> <a href="LogStream_8hh_source.html#l00033">LogStream.hh:33</a></div></div>
-<div class="ttc" id="aclassslic_1_1UserActionPluginMessenger_html_a71df4c4299eff8a90ac043466e498602"><div class="ttname"><a href="classslic_1_1UserActionPluginMessenger.html#a71df4c4299eff8a90ac043466e498602">slic::UserActionPluginMessenger::userPlugin_</a></div><div class="ttdeci">UserActionPlugin * userPlugin_</div><div class="ttdef"><b>Definition:</b> <a href="UserActionPluginMessenger_8hh_source.html#l00075">UserActionPluginMessenger.hh:75</a></div></div>
-<div class="ttc" id="aclassslic_1_1UserActionPlugin_html_ad00b665eb2a8c2a335b2e26db70fe0ef"><div class="ttname"><a href="classslic_1_1UserActionPlugin.html#ad00b665eb2a8c2a335b2e26db70fe0ef">slic::UserActionPlugin::setVerboseLevel</a></div><div class="ttdeci">void setVerboseLevel(int verbose)</div><div class="ttdef"><b>Definition:</b> <a href="UserActionPlugin_8hh_source.html#l00065">UserActionPlugin.hh:65</a></div></div>
-<div class="ttc" id="aclassslic_1_1UserActionPluginMessenger_html_ae511f866954a0a35a4e88e76e05e4294"><div class="ttname"><a href="classslic_1_1UserActionPluginMessenger.html#ae511f866954a0a35a4e88e76e05e4294">slic::UserActionPluginMessenger::verboseCmd_</a></div><div class="ttdeci">G4UIcommand * verboseCmd_</div><div class="ttdef"><b>Definition:</b> <a href="UserActionPluginMessenger_8hh_source.html#l00085">UserActionPluginMessenger.hh:85</a></div></div>
-<div class="ttc" id="aclassslic_1_1UserActionPluginMessenger_html_aab4662e1129a31f1c29bc6dc0ffd0b4c"><div class="ttname"><a href="classslic_1_1UserActionPluginMessenger.html#aab4662e1129a31f1c29bc6dc0ffd0b4c">slic::UserActionPluginMessenger::getPath</a></div><div class="ttdeci">const std::string &amp; getPath()</div><div class="ttdef"><b>Definition:</b> <a href="UserActionPluginMessenger_8hh_source.html#l00058">UserActionPluginMessenger.hh:58</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
