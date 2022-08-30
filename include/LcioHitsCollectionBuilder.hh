@@ -179,17 +179,17 @@ class LcioHitsCollectionBuilder: public Module {
 
     private:
 
-        // current Lcio event
+        /** current Lcio event */
         EVENT::LCEvent* m_currentLCEvent;
 
-        // current G4 event
+        /** current G4 event */
         const G4Event* m_currentG4Event;
 
-        // default flags
+        /** default flags */
         IMPL::LCFlagImpl m_trkCollFlag;
         IMPL::LCFlagImpl m_calCollFlag;
 
-        // store momentum
+        /** store momentum */
         bool m_storeMomentum;
 };
 }

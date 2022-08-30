@@ -163,13 +163,13 @@ class CommandLineProcessor: public Module, public Singleton<CommandLineProcessor
 
     private:
 
-        // A vector of options with their arguments.
+        /** A vector of options with their arguments. */
         CommandLineArguments m_commandline;
 
-        // A list of Geant4 macro commands filled by processing the command line arguments.
+        /** A list of Geant4 macro commands filled by processing the command line arguments. */
         CommandQueue m_g4q;
 
-        // The list of valid options and their associated meta-data.
+        /** The list of valid options and their associated meta-data. */
         OptionsList m_cmds;
 
         // Flags to be set by the process function.
@@ -177,7 +177,7 @@ class CommandLineProcessor: public Module, public Singleton<CommandLineProcessor
         int m_interactive_flag;
         int m_version_flag;
 
-        // The getopt options string, which is created automatically.
+        /** The getopt options string, which is created automatically. */
         std::string m_getoptOptions;
 };
 }

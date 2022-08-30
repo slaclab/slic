@@ -300,13 +300,13 @@ class EventSourceManager: public Module, public Singleton<EventSourceManager> {
 
     private:
 
-        // generator messenger
+        /** generator messenger */
         GeneratorMessenger* m_messenger;
 
-        // current event source
+        /** current event source */
         EventSource* m_currentEventSource;
 
-        // ParticleGun source.  Always enabled.
+        /** ParticleGun source.  Always enabled. */
         EventSource* m_particleGunSource;
 
         // filename
@@ -314,13 +314,13 @@ class EventSourceManager: public Module, public Singleton<EventSourceManager> {
         bool m_fileIsSet;
         bool m_newFilename;
 
-        // num events generated on current generator
+        /** num events generated on current generator */
         int m_ngen;
 
-        // num events to skip
+        /** num events to skip */
         unsigned int m_nskip;
 
-        // need to setup a new source new run?
+        /** need to setup a new source new run? */
         bool m_newSource;
 
         // gen strings
@@ -331,13 +331,13 @@ class EventSourceManager: public Module, public Singleton<EventSourceManager> {
         static std::string LHE;
         static std::string UNKNOWN;
 
-        // source type
+        /** source type */
         ESourceType m_sourceType;
 
-        // Lorentz transformation angle which will be applied to event.
+        /** Lorentz transformation angle which will be applied to event. */
         G4double m_lorentzTransformationAngle;
 
-        // Parameter which will be used to smear vertex Z position.
+        /** Parameter which will be used to smear vertex Z position. */
         G4double m_zSmearingParam;
 
         G4bool m_enablePrintEvent;

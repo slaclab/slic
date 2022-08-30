@@ -285,32 +285,33 @@ class LcioManager: public Module, public Singleton<LcioManager> {
 
     private:
 
-        // writer
+        /** writer */
         IO::LCWriter* m_writer;
 
-        // run header
+        /** run header */
         IMPL::LCRunHeaderImpl* m_runHdr;
 
-        // file info
+        /** file info -- filename */
         std::string m_filename;
+        /** file info -- path */
         std::string m_path;
 
         // event generator from MCP Coll
         //LcioPrimaryGenerator* m_eventGenerator;
 
-        // creation of HCs
+        /** creation of HCs */
         LcioHitsCollectionBuilder* m_HCBuilder;
 
-        // current LCEvent
+        /** current LCEvent */
         IMPL::LCEventImpl* m_currentLCEvent;
 
         // messenger
         LcioMessenger* m_messenger;
 
-        // action when file exists
+        /** action when file exists */
         EFileExistsAction m_fileExistsAction;
 
-        // starting run number
+        /** starting run number */
         int m_runNumber;
 
         LcioFileNamer* m_namer;

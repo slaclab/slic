@@ -97,7 +97,7 @@ class EventSourceWithInputFile: public EventSource {
 
     protected:
 
-        // name of input file
+        /** name of input file */
         std::string m_filename;
 
         // state vars

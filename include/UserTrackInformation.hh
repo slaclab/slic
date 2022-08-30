@@ -62,8 +62,8 @@ class UserTrackInformation: public VUserTrackInformation {
 
         /**
          * Print out the track information.
+         * \todo Implement this method.
          */
-        // TODO: Implement this method.
         void Print() const {
             G4cout << "UserTrackInformation::Print is not implemented!!!" << G4endl;
         }

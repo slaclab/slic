@@ -32,22 +32,22 @@ class LogManager: public Singleton<LogManager> {
 
     private:
 
-        // LogStream vector.
+        /** LogStream vector. */
         typedef std::vector<LogStream*> LogList;
 
-        // LogStream vector iterator.
+        /** LogStream vector iterator. */
         typedef LogList::iterator LogListIterator;
 
-        // LogMessenger vector.
+        /** LogMessenger vector. */
         typedef std::vector<LogMessenger*> LogMessengerList;
 
-        // LogMessenger vector iterator.
+        /** LogMessenger vector iterator. */
         typedef LogMessengerList::iterator LogMessengerListIterator;
 
-        // Name to LogStream map.
+        /** Name to LogStream map. */
         typedef std::map<std::string, LogStream*> LogNameMap;
 
-        // LogMessenger to LogStream map.
+        /** LogMessenger to LogStream map. */
         typedef std::map<LogStream*, LogMessenger*> LogMessengerMap;
 
     public:
