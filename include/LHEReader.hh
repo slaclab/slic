@@ -1,17 +1,9 @@
-/**
- * @file LHEReader.h
- * @brief Class for reading LHE event data
- * @author Jeremy McCormick, SLAC National Accelerator Laboratory
- */
+#pragma once
 
-#ifndef SLIC_LHEREADER_HH_
-#define SLIC_LHEREADER_HH_
-
-// LDMX
-#include "LHEEvent.hh"
-
-// STL
 #include <fstream>
+
+//~~ SLIC ~~//
+#include "LHEEvent.hh"
 
 namespace slic {
 
@@ -20,34 +12,25 @@ namespace slic {
  * @brief Reads LHE event data into an LHEEvent object
  */
 class LHEReader {
+ public:
+  /**
+   * Constructor.
+   *
+   * @param[in] file_name The path to the input file.
+   */
+  LHEReader(const std::string& file_name);
 
-    public:
+  /// Destructor
+  ~LHEReader() = default;
 
-        /**
-         * Class constructor.
-         * @param fileName The input file name.
-         */
-        LHEReader(const std::string& fileName);
+  /**
+   * Read the next event.
+   * @return The next LHE event.
+   */
+  shared_ptr< LHEEvent > nextEvent();
 
-        /**
-         * Class destructor.
-         */
-        virtual ~LHEReader();
-
-        /**
-         * Read the next event.
-         * @return The next LHE event.
-         */
-        LHEEvent* readNextEvent();
-
-    private:
-
-        /**
-         * The input file stream.
-         */
-        std::ifstream ifs_;
-};
-
-}
-
-#endif
+ private:
+  /// The input file stream.
+  std::ifstream ifs_;
+}; // LHEReader
+} // namespace slic

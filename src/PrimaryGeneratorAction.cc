@@ -1,33 +1,19 @@
-// SLIC
-#include "EventSourceManager.hh"
-#include "LcioManager.hh"
-#include "MCParticleManager.hh"
 #include "PrimaryGeneratorAction.hh"
+
+// SLIC
+#include "MCParticleManager.hh"
 #include "TrackManager.hh"
-#include "RunManager.hh"
-#include "SlicApplication.hh"
 
-// LCDD
-#include "lcdd/util/StringUtil.hh"
-
-// LCIO
-#include "IMPL/MCParticleImpl.h"
-#include "EVENT/LCCollection.h"
+#include "G4Event.hh"
+#include "G4RunManager.hh"
 
 namespace slic {
 
 PrimaryGeneratorAction::PrimaryGeneratorAction() :
-        Module("PrimaryGeneratorAction", false) {
-    _manager = EventSourceManager::instance();
-}
-
-PrimaryGeneratorAction::~PrimaryGeneratorAction() {
+  G4VUserPrimaryGeneratorAction() { 
 }
 
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent) {
-
-    /* Print begin of event message. */
-    printBeginEventMessage(anEvent);
 
     /* Reset the TrackManager's state from previous event. */
     TrackManager::instance()->reset();
@@ -38,24 +24,19 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent) {
     /* Check if run needs to be aborted before generating events. */
     if (RunManager::instance()->isRunAborted()) {
         G4RunManager::GetRunManager()->AbortRun();
-        log() << LOG::warning << LOG::name << LOG::sep << "Run was aborted.  Events will not be generated." << LOG::done;
     } else {
         /* Begin event hook of EventSourceManager which will read the next input event if applicable. */
-        _manager->beginEvent(anEvent);
+        //_manager->beginEvent(anEvent);
 
         /* Generate primary vertices using the event generator's (previously read) current event. */
-        _manager->generateNextEvent(anEvent);
+        //_manager->generateNextEvent(anEvent);
     }
 
     /* If the event source hit the end of file, then abort the run. */
-    if (_manager->isEOF()) {
-        SlicApplication::instance()->setAborting(true);
-    }
+    //if (_manager->isEOF()) {
+    //    SlicApplication::instance()->setAborting(true);
+    //}
 
-    m_pluginManager->generatePrimary(anEvent);
-}
-
-void PrimaryGeneratorAction::printBeginEventMessage(G4Event* anEvent) {
-    log() << LOG::okay << ">>>> BeginEvent <" << StringUtil::toString(anEvent->GetEventID()) << ">" << LOG::done;
+    //m_pluginManager->generatePrimary(anEvent);
 }
 }

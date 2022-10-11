@@ -14,87 +14,86 @@
 
 namespace slic {
 
-    LHEPrimaryGenerator::LHEPrimaryGenerator(LHEReader* theReader) :
-            reader_(theReader) {
-    }
+LHEPrimaryGenerator::LHEPrimaryGenerator(const std::string& name) {
+  reader_ = new LHEReader(); 
+}
 
-    LHEPrimaryGenerator::~LHEPrimaryGenerator() {
-        delete reader_;
-    }
+LHEPrimaryGenerator::~LHEPrimaryGenerator() {
+  delete reader_;
+}
 
-    void LHEPrimaryGenerator::GeneratePrimaryVertex(G4Event* anEvent) {
+void LHEPrimaryGenerator::GeneratePrimaryVertex(G4Event* event) {
+  
+  auto lheEvent{reader_->readNextEvent()};
 
-        LHEEvent* lheEvent = reader_->readNextEvent();
+  if (lheEvent != NULL) {
 
-        if (lheEvent != NULL) {
+    auto vertex{new G4PrimaryVertex()};
+    vertex->SetPosition(0, 0, 0);
+    vertex->SetWeight(lheEvent->getXWGTUP());
 
-            G4PrimaryVertex* vertex = new G4PrimaryVertex();
-            vertex->SetPosition(0, 0, 0);
-            vertex->SetWeight(lheEvent->getXWGTUP());
+    std::map<LHEParticle*, G4PrimaryParticle*> particleMap;
 
-            std::map<LHEParticle*, G4PrimaryParticle*> particleMap;
+    int particleIndex = 0;
+    const std::vector<LHEParticle*>& particles = lheEvent->getParticles();
+    for (std::vector<LHEParticle*>::const_iterator it = particles.begin(); it != particles.end(); it++) {
 
-            int particleIndex = 0;
-            const std::vector<LHEParticle*>& particles = lheEvent->getParticles();
-            for (std::vector<LHEParticle*>::const_iterator it = particles.begin(); it != particles.end(); it++) {
+      LHEParticle* particle = (*it);
 
-                LHEParticle* particle = (*it);
+      if (particle->getISTUP() > 0) {
 
-                if (particle->getISTUP() > 0) {
+        G4PrimaryParticle* primary = new G4PrimaryParticle();
+        if (particle->getIDUP() == -623) { /* Tungsten ion */
+          G4ParticleDefinition* tungstenIonDef = G4IonTable::GetIonTable()->GetIon(74, 184, 0.);
+          if (tungstenIonDef != NULL) {
+            primary->SetParticleDefinition(tungstenIonDef);
+          } else {
+            G4Exception("LHEPrimaryGenerator::GeneratePrimaryVertex", "EventGenerationError", FatalException, "Failed to find particle definition for W ion.");
+          }
+        } else {
+          primary->SetPDGcode(particle->getIDUP());
+        }
 
-                    G4PrimaryParticle* primary = new G4PrimaryParticle();
-                    if (particle->getIDUP() == -623) { /* Tungsten ion */
-                        G4ParticleDefinition* tungstenIonDef = G4IonTable::GetIonTable()->GetIon(74, 184, 0.);
-                        if (tungstenIonDef != NULL) {
-                            primary->SetParticleDefinition(tungstenIonDef);
-                        } else {
-                            G4Exception("LHEPrimaryGenerator::GeneratePrimaryVertex", "EventGenerationError", FatalException, "Failed to find particle definition for W ion.");
-                        }
-                    } else {
-                        primary->SetPDGcode(particle->getIDUP());
-                    }
-
-                    primary->Set4Momentum(particle->getPUP(0) * GeV, particle->getPUP(1) * GeV, particle->getPUP(2) * GeV, particle->getPUP(3) * GeV);
-                    primary->SetProperTime(particle->getVTIMUP() * nanosecond);
+        primary->Set4Momentum(particle->getPUP(0) * GeV, particle->getPUP(1) * GeV, particle->getPUP(2) * GeV, particle->getPUP(3) * GeV);
+        primary->SetProperTime(particle->getVTIMUP() * nanosecond);
 
                     //UserPrimaryParticleInformation* primaryInfo = new UserPrimaryParticleInformation();
                     //primaryInfo->setHepEvtStatus(particle->getISTUP());
                     //primary->SetUserInformation(primaryInfo);
 
-                    particleMap[particle] = primary;
+        particleMap[particle] = primary;
 
                     /*
                      * Assign primary as daughter but only if the mother is not a DOC particle.
                      */
-                    if (particle->getMother(0) != NULL && particle->getMother(0)->getISTUP() > 0) {
-                        G4PrimaryParticle* primaryMom = particleMap[particle->getMother(0)];
-                        if (primaryMom != NULL) {
-                            primaryMom->SetDaughter(primary);
-                        }
-                    } else {
-                        vertex->SetPrimary(primary);
-                    }
+       if (particle->getMother(0) != NULL && particle->getMother(0)->getISTUP() > 0) {
+         G4PrimaryParticle* primaryMom = particleMap[particle->getMother(0)];
+         if (primaryMom != NULL) {
+           primaryMom->SetDaughter(primary);
+          }
+       } else {
+         vertex->SetPrimary(primary);
+       }
 
                     // Uncomment to print out the G4 primary particle that was created.
                     //primary->Print();
 
-                } else {
-                }
+    } else {}
 
                 //std::cout << std::endl;
 
                 ++particleIndex;
-            }
+    }
 
-            anEvent->AddPrimaryVertex(vertex);
+    event->AddPrimaryVertex(vertex);
 
-        } else {
+  } else {
             std::cout << "[ LHEPrimaryGenerator ] : Ran out of input events so run will be aborted!" << std::endl;
             G4RunManager::GetRunManager()->AbortRun(true);
-            anEvent->SetEventAborted();
-        }
+            event->SetEventAborted();
+  }
 
-        delete lheEvent;
-    }
+  delete lheEvent;
+}
 
 }
