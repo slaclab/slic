@@ -6,7 +6,7 @@
 #include "G4VPrimaryGenerator.hh"
 
 //~~ SLIC ~~//
-#include "Factory.h"
+#include "Factory.hh"
 
 // Forward Declarations
 class G4Event;
@@ -27,7 +27,7 @@ class PrimaryGenerator : public G4VPrimaryGenerator {
    *
    * @param name Name given the to class instance.
    */
-  PrimaryGenerator(const std::string& name); 
+  PrimaryGenerator(const std::string& name) : name_(name) {}; 
 
   /// Factory for primary generators
   using Factory = ::slic::Factory<PrimaryGenerator,
@@ -35,7 +35,7 @@ class PrimaryGenerator : public G4VPrimaryGenerator {
                                      const std::string&>;
 
   /// Destructor
-  virtual ~PrimaryGenerator();
+  virtual ~PrimaryGenerator() = default;
 
   /**
    * Generate a primary vertex.
