@@ -1,10 +1,11 @@
 // SLIC
 #include "RunManager.hh"
 #include "EventAction.hh"
-#include "EventSourceManager.hh"
+//#include "EventSourceManager.hh"
 #include "ModuleRegistry.hh"
 #include "PhysicsListManager.hh"
 #include "PrimaryGeneratorAction.hh"
+#include "PrimaryGeneratorMessenger.hh" 
 #include "RunAction.hh"
 #include "SlicApplication.hh"
 #include "StackingAction.hh"
@@ -43,13 +44,14 @@ void RunManager::Initialize() {
     new PluginMessenger(m_pluginManager);
 
     PrimaryGeneratorAction* genAction = new PrimaryGeneratorAction;
+    new PrimaryGeneratorMessenger(); 
     RunAction* runAction = new RunAction;
     EventAction* eventAction = new EventAction;
     TrackingAction* trackingAction = new TrackingAction;
     SteppingAction* steppingAction = new SteppingAction;
     StackingAction* stackingAction = new StackingAction;
 
-    genAction->setPluginManager(m_pluginManager);
+    //genAction->setPluginManager(m_pluginManager);
     runAction->setPluginManager(m_pluginManager);
     eventAction->setPluginManager(m_pluginManager);
     trackingAction->setPluginManager(m_pluginManager);
@@ -64,10 +66,10 @@ void RunManager::Initialize() {
     SetUserAction(stackingAction);
 
     // Initialize the event generation manager.
-    EventSourceManager::instance();
+    //EventSourceManager::instance();
 
     // Setup the default event source.
-    EventSourceManager::instance()->setupEventSource();
+    //EventSourceManager::instance()->setupEventSource();
 
     // Print list of registered modules.
 #ifdef SLIC_LOG
@@ -121,10 +123,10 @@ void RunManager::BeamOn(G4int n_event, const char* macroFile, G4int n_select) {
     }
 
     // Check if a generator was setup.
-    if (EventSourceManager::instance()->getCurrentSource() == 0) {
-        log() << LOG::fatal << "No event generator was setup." << LOG::done;
-        abortRun(SlicApplication::GENERATOR_NOT_SETUP);
-    }
+   // if (EventSourceManager::instance()->getCurrentSource() == 0) {
+   //     log() << LOG::fatal << "No event generator was setup." << LOG::done;
+   //     abortRun(SlicApplication::GENERATOR_NOT_SETUP);
+   // }
 
     // Check if run should be aborted due to initialization errors.
     if (!this->isRunAborted()) {
@@ -134,18 +136,18 @@ void RunManager::BeamOn(G4int n_event, const char* macroFile, G4int n_select) {
         G4RunManager::BeamOn(n_event, macroFile, n_select);
 
         // Print number of events that were actually generated.
-        EventSourceManager* eventManager = EventSourceManager::instance();
-        eventManager->printNumEventsGenerated();
+        //EventSourceManager* eventManager = EventSourceManager::instance();
+        //eventManager->printNumEventsGenerated();
 
         // Check if event underflow occurred where number of events provided was less than requested.
-        int nEventsGenerated = eventManager->getNumEventsGenerated();
-        if (nEventsGenerated < m_numberOfEventsToRun) {
+        //int nEventsGenerated = eventManager->getNumEventsGenerated();
+        /*if (nEventsGenerated < m_numberOfEventsToRun) {
             log() << LOG::warning << LOG::head << "Generated " << nEventsGenerated << " events but " << n_event << " were requested." << LOG::done;
             // Set event underflow error but do not override an existing return code.
             if (SlicApplication::instance()->getReturnCode() == SlicApplication::OKAY) {
                 SlicApplication::instance()->setReturnCode(SlicApplication::EVENT_UNDERFLOW);
             }
-        }
+        }*/
     } else {
         log() << LOG::warning << LOG::head << "Run was aborted before G4 event loop was executed." << LOG::done;
     }
