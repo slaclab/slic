@@ -1,13 +1,14 @@
 #pragma once
 
-#include <string> 
+#include <memory>
+#include <string>
 
 //~~ SLIC ~~//
 #include "LHEReader.hh"
-#include "PrimaryGenerator.hh" 
+#include "PrimaryGenerator.hh"
 
 // Forward decs
-class G4Event; 
+class G4Event;
 
 namespace slic {
 
@@ -24,7 +25,14 @@ class LHEPrimaryGenerator : public PrimaryGenerator {
   LHEPrimaryGenerator(const std::string& name);
 
   /// Destructor
-  virtual ~LHEPrimaryGenerator();
+  ~LHEPrimaryGenerator() = default;
+
+  /**
+   * Open the given file for processing.
+   */
+  void open(const std::string filename) final override {
+    reader_->open(filename);
+  };
 
   /**
    * Generate vertices in the Geant4 event.
@@ -34,7 +42,7 @@ class LHEPrimaryGenerator : public PrimaryGenerator {
 
  private:
   // The LHE reader with the event data.
-  LHEReader* reader_;
+  std::unique_ptr<LHEReader> reader_;
 
-}; // LHEPrimaryGenerator
-} // slic
+};  // LHEPrimaryGenerator
+}  // namespace slic
