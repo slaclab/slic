@@ -27,12 +27,12 @@ class PrimaryGenerator : public G4VPrimaryGenerator {
    *
    * @param name Name given the to class instance.
    */
-  PrimaryGenerator(const std::string& name) : name_(name) {}; 
+  PrimaryGenerator(const std::string& name) : name_(name){};
 
   /// Factory for primary generators
-  using Factory = ::slic::Factory<PrimaryGenerator,
-                                     std::shared_ptr<PrimaryGenerator>,
-                                     const std::string&>;
+  using Factory =
+      ::slic::Factory<PrimaryGenerator, std::shared_ptr<PrimaryGenerator>,
+                      const std::string&>;
 
   /// Destructor
   virtual ~PrimaryGenerator() = default;
@@ -43,6 +43,13 @@ class PrimaryGenerator : public G4VPrimaryGenerator {
    * This function must be defined by derived generators.
    */
   virtual void GeneratePrimaryVertex(G4Event*) = 0;
+
+  /**
+   * Open the file of the given name for reading.
+   *
+   * @param[in] filename The path to the file to open.
+   */
+  virtual void open(const std::string filename) = 0; 
 
  protected:
   /// Name of the PrimaryGenerator
@@ -57,7 +64,7 @@ class PrimaryGenerator : public G4VPrimaryGenerator {
  * and then registers the class as a generator
  * with the Factory
  */
-#define DECLARE_GENERATOR(CLASS)                                           \
-  namespace {                                                              \
-    auto v = ::slic::PrimaryGenerator::Factory::get().declare<CLASS>();    \
+#define DECLARE_GENERATOR(CLASS)                                              \
+  namespace {                                                                 \
+    auto v = ::slic::PrimaryGenerator::Factory::get().declare<CLASS>(#CLASS); \
   }
