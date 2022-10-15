@@ -1,6 +1,8 @@
 #pragma once
 
 #include <fstream>
+#include <memory>
+#include <string>
 
 //~~ SLIC ~~//
 #include "LHEEvent.hh"
@@ -13,24 +15,26 @@ namespace slic {
  */
 class LHEReader {
  public:
-  /**
-   * Constructor.
-   *
-   * @param[in] file_name The path to the input file.
-   */
-  LHEReader(const std::string& file_name);
+  /// Constructor
+  LHEReader() = default;
 
   /// Destructor
-  ~LHEReader() = default;
+  ~LHEReader();
+
+  /**
+   * Open a file for processing.
+   * @param[in] Path to the LHE file to process.
+   */
+  void open(const std::string& filename);
 
   /**
    * Read the next event.
    * @return The next LHE event.
    */
-  shared_ptr< LHEEvent > nextEvent();
+  std::shared_ptr<LHEEvent> nextEvent();
 
  private:
   /// The input file stream.
   std::ifstream ifs_;
-}; // LHEReader
-} // namespace slic
+};  // LHEReader
+}  // namespace slic

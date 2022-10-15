@@ -5,14 +5,14 @@
 
 namespace slic {
 
-LHEReader::LHEReader(const std::string& filename) {
-  ifs_.open(filename.c_str(), std::ifstream::in);
-}
-
 LHEReader::~LHEReader() { ifs_.close(); }
 
-shared_ptr< LHEEvent > LHEReader::nextEvent() {
+void LHEReader::open(const std::string& filename) {
+  ifs_.open(filename.c_str(), std::ifstream::in);
+  if (!ifs_.is_open()) throw std::runtime_error("Error opening file."); 
+}
 
+std::shared_ptr<LHEEvent> LHEReader::nextEvent() {
   std::string line;
   auto event_found{false};
   while (getline(ifs_, line)) {
@@ -23,14 +23,14 @@ shared_ptr< LHEEvent > LHEReader::nextEvent() {
   }
 
   if (!event_found) {
-    std::cerr << "WARNING: No next <event> element was found by the LHE reader." 
+    std::cerr << "WARNING: No next <event> element was found by the LHE reader."
               << std::endl;
     return NULL;
   }
 
   getline(ifs_, line);
 
-  auto next_event{std::make_shared<LHEEvent>(line)}; 
+  auto next_event{std::make_shared<LHEEvent>(line)};
   while (getline(ifs_, line)) {
     if (line == "</event>") {
       break;
@@ -40,7 +40,8 @@ shared_ptr< LHEEvent > LHEReader::nextEvent() {
     next_event->addParticle(particle);
   }
 
-  for (auto& particle : next_event->getParticles()) { 
+  auto particles{next_event->getParticles()};
+  for (auto& particle : particles) {
     if (particle->getMOTHUP(0) != 0) {
       int mother1 = particle->getMOTHUP(0);
       int mother2 = particle->getMOTHUP(1);
@@ -55,4 +56,4 @@ shared_ptr< LHEEvent > LHEReader::nextEvent() {
 
   return next_event;
 }
-}
+}  // namespace slic
