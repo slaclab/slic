@@ -3,6 +3,7 @@
 // SLIC
 #include "MCParticleManager.hh"
 #include "TrackManager.hh"
+#include "RunManager.hh"
 
 #include "G4Event.hh"
 #include "G4RunManager.hh"
