@@ -4,6 +4,7 @@
 #include <memory>         // for the unique_ptr default
 #include <stdexcept>      // for runtime exception 
 #include <string>         // for the keys in the library map
+#include <typeinfo> 
 #include <unordered_map>  // for the library of prototypes
 
 namespace slic {
@@ -227,7 +228,7 @@ class Factory {
    *  optimized away.
    */
   template<typename DerivedType>
-  uint64_t declare(std::string class_name) {
+  uint64_t declare(const std::string& class_name) {
     library_[class_name] = &maker<DerivedType>;
     return reinterpret_cast<std::uintptr_t>(&library_);
   }
@@ -255,8 +256,6 @@ class Factory {
     if (lib_it == library_.end()) {
         throw std::runtime_error("An object named " + full_name 
                 + " has not been declared."); 
-      //EXCEPTION_RAISE("SimFactory","An object named "+full_name+
-      //    " has not been declared.");
     }
     warehouse_.emplace_back(lib_it->second(maker_args...));
     return warehouse_.back();
