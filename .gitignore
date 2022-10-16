@@ -1,42 +1,17 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
 # Eclipse config
 .project
 .cproject
+.settings
 
 # ignore configured files
 /include/PackageInfo.hh
 
-# build dir
-/build/
+# build dirs
+/*build/
 
 # install dirs
-/bin
+/*install/
+
+# doxygen output
+doc/
+

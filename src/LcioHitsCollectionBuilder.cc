@@ -103,7 +103,7 @@ void LcioHitsCollectionBuilder::createHitCollections() {
                         m_currentLCEvent->addCollection(collVec, HC->GetName());
 
 #ifdef SLIC_LOG
-                        log() << LOG::always << HC->GetName() << " has " << collVec->size() << " hits" << LOG::done;
+                        //log() << LOG::always << HC->GetName() << " has " << collVec->size() << " hits" << LOG::done;
 #endif
                     }
                 }

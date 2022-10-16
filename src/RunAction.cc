@@ -26,7 +26,7 @@ void RunAction::BeginOfRunAction(const G4Run *aRun) {
 
     // Print the run start message.
 #ifdef SLIC_LOG
-    printBeginOfRunMessage( aRun );
+    //printBeginOfRunMessage( aRun );
 #endif
 
     // Execute LcioManager's beginRun action.
@@ -56,7 +56,7 @@ void RunAction::EndOfRunAction(const G4Run *run) {
 
     // end message
 #ifdef SLIC_LOG
-    printEndOfRunMessage( run );
+    //printEndOfRunMessage( run );
 #endif
 }
 
@@ -77,11 +77,12 @@ void RunAction::stopRunTimer() {
 #endif
 }
 
+/*
 void RunAction::printBeginOfRunMessage(const G4Run* aRun) {
     log() << LOG::okay << ">>>> BeginRun <" << aRun->GetRunID() << ">" << LOG::done;
 }
 
 void RunAction::printEndOfRunMessage(const G4Run* aRun) {
     log() << LOG::okay << ">>>> EndRun <" << aRun->GetRunID() << ">" << LOG::done;
-}
+}*/
 }

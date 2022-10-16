@@ -41,7 +41,7 @@ class PluginManagerAccessor {
 
     protected:
 
-        /* The plugin manager pointer; allow protected access for convenience of sub-classes. */
+        /** The plugin manager pointer; allow protected access for convenience of sub-classes. */
         PluginManager* m_pluginManager;
 };
 

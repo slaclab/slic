@@ -70,7 +70,7 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
 
     /* Save TrackSummary objects to LCIO collection. */
 #ifdef SLIC_LOG
-    log() << LOG::okay << "TrackManager processing " << _trackSummaries->size() << " TrackSummary objects." << LOG::done;
+    /*log() << LOG::okay << "TrackManager processing " << _trackSummaries->size() << " TrackSummary objects." << LOG::done;*/
 #endif
     size_t l;
     TrackSummary* trackSummary;
@@ -116,7 +116,7 @@ void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) 
     lcEvent->addCollection((LCCollection*) mcpVec, "MCParticle");
 
 #ifdef SLIC_LOG
-    log() << LOG::always << "Saved " << mcpVec->getNumberOfElements() << " MCParticles." << LOG::done;
+    //log() << LOG::always << "Saved " << mcpVec->getNumberOfElements() << " MCParticles." << LOG::done;
 #endif
 
 }

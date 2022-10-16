@@ -59,13 +59,13 @@ class RunAction: public G4UserRunAction, public Module, public PluginManagerAcce
          * Print the beginning of run message.
          * @param[in] aRun The G4Run that is starting.
          */
-        void printBeginOfRunMessage(const G4Run *aRun);
+        //void printBeginOfRunMessage(const G4Run *aRun);
 
         /**
          * Print the end of run message.
          * @param[in] aRun The G4Run that is ending.
          */
-        void printEndOfRunMessage(const G4Run *aRun);
+        //void printEndOfRunMessage(const G4Run *aRun);
 
     private:
 

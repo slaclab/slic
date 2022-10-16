@@ -207,37 +207,35 @@ class SlicApplication: public Singleton<SlicApplication>, public Module {
         /**
          * Initialize the Geant4 visualization subsystem.
          */
-#ifdef G4VIS_USE
         void initializeVis();
-#endif
 
     protected:
 
-        // G4 UI manager.
+        /** G4 UI manager. */
         G4UIExecutive* m_ui;
 
-        // app messenger
+        /** app messenger */
         SlicApplicationMessenger* m_appMessenger;
 
-        // field messenger
+        /** field messenger */
         FieldMessenger* m_fieldMessenger;
 
         RunManager* m_runManager;
 
-        // application run mode: batch or interactive
+        /** application run mode: batch or interactive */
         ERunMode m_mode;
 
-        // return code
+        /** return code */
         int m_returnCode;
 
-        // Has the initialize() function been called?
+        /** Has the initialize() function been called? */
         bool m_isInitialized;
 
-        // What was the name of the SLIC binary from CL? (used by LcioFileNamer)
+        /** What was the name of the SLIC binary from CL? (used by LcioFileNamer) */
         std::string m_binaryname;
         std::string m_binarybasename;
 
-        // Version string of Geant4.
+        /** Version string of Geant4. */
         std::string* m_geant4VersionString;
 };
 }

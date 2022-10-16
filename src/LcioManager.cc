@@ -2,26 +2,26 @@
 
 // SLIC
 #include "EventSourceManager.hh"
-#include "StdHepEventSource.hh"
 #include "FileUtil.hh"
-#include "TimeUtil.hh"
-#include "PackageInfo.hh"
-#include "LcioMessenger.hh"
 #include "LcioFileNamer.hh"
-#include "SlicApplication.hh"
+#include "LcioMessenger.hh"
+#include "PackageInfo.hh"
 #include "RunManager.hh"
+#include "SlicApplication.hh"
+#include "StdHepEventSource.hh"
+#include "TimeUtil.hh"
 
 // LCDD
+#include "lcdd/core/LCDDProcessor.hh"
 #include "lcdd/hits/CalorimeterHit.hh"
 #include "lcdd/hits/TrackerHit.hh"
-#include "lcdd/core/LCDDProcessor.hh"
 #include "lcdd/util/StringUtil.hh"
 
 // LCIO
 #include "EVENT/LCIO.h"
 #include "IMPL/LCCollectionVec.h"
-#include "IOIMPL/LCFactory.h"
 #include "IO/LCWriter.h"
+#include "IOIMPL/LCFactory.h"
 #include "UTIL/LCTOOLS.h"
 #include "UTIL/lStdHep.hh"
 
@@ -29,18 +29,18 @@
 #include "G4EventManager.hh"
 #include "G4Run.hh"
 #include "G4RunManager.hh"
+#include "G4SDManager.hh"
 #include "G4TrajectoryContainer.hh"
 #include "G4VHitsCollection.hh"
-#include "G4SDManager.hh"
 
 // STL
 #include <ctime>
 
-using IMPL::LCRunHeaderImpl;
-using IMPL::LCEventImpl;
-using IMPL::LCCollectionVec;
-using EVENT::MCParticle;
 using EVENT::LCIO;
+using EVENT::MCParticle;
+using IMPL::LCCollectionVec;
+using IMPL::LCEventImpl;
+using IMPL::LCRunHeaderImpl;
 using UTIL::LCTOOLS;
 using UTIL::lStdHep;
 
@@ -127,7 +127,7 @@ void LcioManager::openLcioFile() {
     }
 }
 
-LcioManager::EFileExistsAction LcioManager::getFileExistsActionFromString(const string& feaStr) {
+LcioManager::EFileExistsAction LcioManager::getFileExistsActionFromString(const string &feaStr) {
     string s = StringUtil::toLower(feaStr);
     EFileExistsAction fea = eInvalid;
     if (s == "fail") {
@@ -143,7 +143,7 @@ LcioManager::EFileExistsAction LcioManager::getFileExistsActionFromString(const 
 
 void LcioManager::setRunNumber(int runNumber) {
     m_runNumber = runNumber;
-    log().verbose("Set starting run number <" + StringUtil::toString((int) runNumber) + ">");
+    log().verbose("Set starting run number <" + StringUtil::toString((int)runNumber) + ">");
 }
 
 void LcioManager::createWriter() {
@@ -189,11 +189,11 @@ string LcioManager::getFullOutputPath(bool withExtension) {
 void LcioManager::beginRun(const G4Run* aRun) {
 
     // Set the G4Run counter.
-#if ( G4VERSION_NUMBER >= 1000 )
+#if ( G4VERSION_NUMBER >= 1000 ) 
     G4RunManager::GetRunManager()->GetNonConstCurrentRun()->SetRunID(m_runNumber);
 #else
     // Alternate code for backward compatibility.
-    const_cast<G4Run*>(G4RunManager::GetRunManager()->GetCurrentRun())->SetRunID(m_runNumber);
+    const_cast<G4Run *>(G4RunManager::GetRunManager()->GetCurrentRun())->SetRunID(m_runNumber);
 #endif
 
     // Automatically create LCIO output file name if option was selected.
@@ -314,7 +314,7 @@ void LcioManager::makeAutoname() {
     }
 }
 
-LCEventImpl* LcioManager::createLCEvent(const G4Event* anEvent) {
+LCEventImpl* LcioManager::createLCEvent(const G4Event *anEvent) {
 
     /* Create the LCEvent and set basic parameters. */
     LCEventImpl* lcevt = new LCEventImpl();
@@ -386,7 +386,7 @@ void LcioManager::createHitsCollections() {
     m_HCBuilder->createHitCollectionsFromEvent(G4EventManager::GetEventManager()->GetNonconstCurrentEvent(), m_currentLCEvent);
 }
 
-void LcioManager::addCollection(EVENT::LCEvent* event, EVENT::LCCollection* collection, const std::string& collectionName) {
+void LcioManager::addCollection(EVENT::LCEvent* event, EVENT::LCCollection* collection, const std::string &collectionName) {
     event->addCollection(collection, collectionName);
 }
 
@@ -394,4 +394,4 @@ void LcioManager::addCollection(EVENT::LCCollection* collection, const std::stri
     getCurrentLCEvent()->addCollection(collection, collectionName);
 }
 
-}
+} // namespace slic

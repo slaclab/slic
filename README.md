@@ -8,72 +8,74 @@ SLIC is a C++ application that is built using the standard GCC compiler toolchai
 
 ### Required Tools
 
-* gcc 4.8 or greater (prob 4.9 or greater is preferable)
-    * You cannot use the default gcc on RHE6 or similarly old distros so you would need to install one yourself or use a dev toolset.
-* CMake ~3.0 or greater (tested with 3.6)
+* Recent gcc compiler toolchain (tested with GCC 7 on CentOS7)
+    * You cannot use the default gcc on RHE6 or a similarly old distribution, so you would need to install one yourself or use a dev toolset.
+    * The build is not compatible with gcc 4.8.5 now due to Geant4 updates.
+* CMake 3.8 or greater due to requirements of the Geant4 build system (tested with 3.17)
 
-### Initial Setup
+### Build Instructions
 
-You will create a build directory where all the required packages are configured and compiled.
+Start by cloning the project to a local directory.
+
+```
+mkdir /scratch && cd /scratch
+git clone https://github.com/slaclab/slic
+```
 
 Create the build directory within your slic project directory:
 
 ```
-mkdir build
+mkdir build && build
 ```
 
-All build commands will be executed from within this build directory (*not* from the slic project directory).
+The SLIC build system is able to download and install all dependencies for the project if they are not found on your system. This requires a multi-step build for the dependencies to first be downloaded and installed before SLIC itself is built.
 
-### Basic Build Instructions
-
-The SLIC build system is able to download and install all dependencies for the project if they are not found on your system.
-
-Start by executing CMake from the build dir:
+From the build dir created above execute the following:
 
 ```
-cd slic/build
-cmake -DCMAKE_INSTALL_PREFIX=/my/slic/install/dir -DGEANT4_INSTALL_DATA=ON -DINSTALL_DEPENDENCIES=ON ..
+cmake ..
 ```
 
-If no directory arguments are provided that point to locally installed packages, you will see a message stating "Some dependencies were not found."  This is not an error, but to complete the build you will need to build these dependencies and then rerun CMake so they are resolved by the build system.
+You should see a number of messages printed that indicate dependencies were not found and will be built.
 
-Now to build the dependencies, execute the following:
+There are a few cmake options that can be used for configuring SLIC:
 
-```
-make
-```
+| Variable             | Default Value              | Description                           | Notes                   |
+| -------------------- | ---------------------------| ------------------------------------- | ----------------------- |
+| WITH_GEANT4_UIVIS    | NO                         | Enable Geant4 visualization and UI    | Requires X11 and Qt     |
+| WITH_GEANT4_VERSION  | 10.6.1                     | Geant4 release tag to use             | `master` is not allowed |
+| CMAKE_INSTALL_PREFIX | ${CMAKE_BUILD_DIR}/install | Installation prefix for slic and deps | |
 
-Once this is done, then you need to rerun `cmake ..` from the build directory.  If the dependencies all installed successfully, then the message "All dependencies were found." should print.  Now you can just type `make; make install` to complete the build using these installed dependencies.
-
-### Specifying Dependencies
-
-You may also have one or more of SLIC's dependencies installed locally, which you can use in your build by providing CMake with their root directories.
-
-For instance, to use your own Geant4 installation, the command would be something like the following:
+Here is an example of all these options being used together:
 
 ```
-cmake -DGeant4_DIR=/path/to/geant4/lib64/Geant4-10.3.1/ ..
+cmake -DWITH_GEANT4_UIVIS=ON -DWITH_GEANT4_VERSION=10.6.1 -DCMAKE_INSTALL_PREFIX=/work
 ```
 
-This table shows the full list of dependency variables accepted by SLIC:
+These options should be passed the first time you execute the `cmake` command when building the application.
 
-| Dependency | Variable    |
-| ---------- | ----------- |
-| Geant4     | Geant4_DIR  |
-| Xerces C++ | XERCES_DIR  |
-| LCIO       | LCIO_DIR    |
-| HepPDT     | HEPPDT_DIR  |
-| GDML       | GDML_DIR    |
-| LCDD       | LCDD_DIR    |
+Now to the dependencies and SLIC, execute the following:
 
-Instructions for manually installing these dependencies are given below.
+```
+make &> build.log
+```
+
+We save the build to a log file for debugging in case errors occur.
+
+Now, you should be ready to install slic if the above completed without errors:
+
+```
+make install
+```
+
+To test your build, follow the instructions in the next section.
 
 ## Running SLIC
 
 The build system generates a shell script that will setup the necessary environment for running the application:
 
 ```
-source /scratch/slic/install/slic/bin/slic-env.sh
+source /scratch/slic/install/bin/slic-env.sh
 ```
 
 Now you can run the executable from the command line:
@@ -97,33 +99,68 @@ slic -g mygeom.lcdd -i events.stdhep -m commands.mac -r 10
 Read the help to get an idea of the actual commands that are available.
 
 
+### Specifying Dependencies
+
+You may also have one or more of SLIC's dependencies installed locally, which you can use in your build by providing CMake with their root directories.
+
+For instance, to use your own Geant4 installation, the command would be something like the following:
+
+```
+cmake -DGeant4_DIR=/path/to/geant4/lib64/Geant4-10.3.1/ ..
+```
+
+This table shows the full list of dependency variables accepted by SLIC:
+
+| Dependency | Variable    |
+| ---------- | ----------- |
+| Geant4     | Geant4_DIR  |
+| Xerces C++ | XercesC_DIR |
+| LCIO       | LCIO_DIR    |
+| HepPDT     | HEPPDT_DIR  |
+| GDML       | GDML_DIR    |
+| LCDD       | LCDD_DIR    |
+
+Instructions for manually installing these dependencies are provided below.
+
 ## Installing Dependencies Manually
 
 This section covers in detail the manual installation of SLIC's dependencies.  
 
 These procedures are entirely optional, as running `cmake` without providing paths to pre-installed dependencies will cause them to be installed automatically as long as the CMake variable `INSTALL_DEPENDENCIES` is set to `ON`.
 
-#### Geant4
+### Setup a Build Directory
 
-Download the 10.3.p01 tarball from the Geant4 website and untar it or you may clone a tag from the Geant4 github.
+Start by creating a directory to contain the build.
 
 ```
-cd geant4.10.03.p01
-mkdir build; cd build
-cmake -DGEANT4_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX=$install_dir/geant4 ..
-make -j4
-make install
+mkdir /scratch
+cd /scratch
+```
+
+You will start from this directory when building each package by doing `cd /scratch`.
+
+#### Geant4
+
+```
+git clone https://github.com/Geant4/geant4
+cd geant4
+git checkout v10.5.1 # choose Geant4 tag to build
+mkdir build && cd build
+# Geant4 cmake options may vary depending on your setup
+cmake -DGEANT4_INSTALL_DATA=ON -DGEANT4_INSTALL_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install -DGEANT4_USE_SYSTEM_EXPAT=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+make -j8
+make -j8 install
 ```
 
 #### LCIO
 
 ```
 git clone https://github.com/iLCSoft/LCIO.git lcio
-cd lcio; git checkout v02-06
-mkdir build; cd build
-cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=$install_dir/lcio ..
-make -j4
-make install
+cd lcio
+git checkout v02-07-05
+mkdir build && cd build
+cmake -DINSTALL_DOC=OFF -DBUILD_LCIO_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install ..
+make -j8 install
 ```
 
 #### HepPDT
@@ -132,38 +169,42 @@ make install
 wget http://lcgapp.cern.ch/project/simu/HepPDT/download/HepPDT-3.04.01.tar.gz
 tar -zxvf HepPDT-3.04.01.tar.gz
 cd HepPDT-3.04.01
-./configure --prefix=/u/ey/jeremym/hps-dev/slic/install/heppdt .. --disable-static
-make install
+./configure --prefix=$PWD/install --disable-static
+make -j8 install
 ```
 
 #### Xerces
 
 ```
-./configure --prefix=/u/ey/jeremym/hps-dev/slic/install/xerces
-make
-make install
+wget https://mirrors.ocf.berkeley.edu/apache//xerces/c/3/sources/xerces-c-3.2.3.tar.gz
+tar -zxf xerces-c-3.2.3.tar.gz
+cd xerces-c-3.2.3 && mkdir build && cd build
+cmake -DBUILD_SHARED_LIBS=ON .. -DCMAKE_INSTALL_PREFIX=../install
+make -j8 install
 ```
 
 #### GDML
 
 ```
 git clone https://github.com/slaclab/gdml
-cd gdml; mkdir build; cd build
-cmake -DGeant4_DIR=/u/ey/jeremym/hps-dev/slic/install/geant4/lib64/Geant4-10.3.1/ -DXERCES_DIR=/u/ey/jeremym/hps-dev/slic/install/xerces/ -DCMAKE_INSTALL_PREFIX=/u/ey/jeremym/hps-dev/slic/install/gdml ..
-make -j4 install
+cd gdml && mkdir build && cd build
+cmake -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.5.1/ -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so -DCMAKE_INSTALL_PREFIX=../install ..
+make -j8 install
 ```
 
 ### LCDD
 
 ```
 git clone https://github.com/slaclab/lcdd
-cd lcdd; mkdir build; cd build
-cmake -DINSTALL_DOC=OFF -DGeant4_DIR=$install_dir/geant4/lib64/Geant4-10.3.1/ -DGDML_DIR=$install_dir/gdml -DXERCES_DIR=$install_dir/xerces -DCMAKE_INSTALL_PREFIX=$install_dir/gdml ..
+cd lcdd && mkdir build && cd build
+cmake -DINSTALL_DOC=OFF -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.3.1/ -DGDML_DIR=/scratch/gdml/install -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so -DCMAKE_INSTALL_PREFIX=../install ..
 make -j4 install
 ```
 
 ### SLIC
 
 ```
-cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=$install_dir/slic -DXERCES_DIR=$install_dir/xerces -DLCIO_DIR=$install_dir/lcio/ -DGeant4_DIR=$install_dir/geant4/lib64/Geant4-10.3.1/ -DGDML_DIR=$install_dir/gdml/ -DHEPPDT_DIR=$install_dir/heppdt -DLCDD_DIR=$install_dir/lcdd ..
+git clone https://github.com/slaclab/slic
+cd slic && mkdir build && cd build
+cmake -DINSTALL_DOC=OFF -DCMAKE_INSTALL_PREFIX=../install -DXercesC_INCLUDE_DIR=/scratch/xerces/install/include -DXercesC_LIBRARY=/scratchu/xerces/install/lib64/libxerces-c.so -DLCIO_DIR=/scratch/lcio/install -DGeant4_DIR=/scratch/geant4/install/lib64/Geant4-10.3.1/ -DGDML_DIR=/scratch/gdml/install -DHepPDT_DIR=/scratch/HepPDT-3.04.01/install -DLCDD_DIR=/scratch/lcdd/install ..
 ```
