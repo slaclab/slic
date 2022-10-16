@@ -9,6 +9,7 @@
 
 // Forward decs
 class G4Event;
+class G4PrimaryVertex;
 
 namespace slic {
 
@@ -43,6 +44,9 @@ class LHEPrimaryGenerator : public PrimaryGenerator {
  private:
   // The LHE reader with the event data.
   std::unique_ptr<LHEReader> reader_;
+
+  /// The current LHE event being processed.
+  std::shared_ptr<LHEEvent> lhe_event_;
 
 };  // LHEPrimaryGenerator
 }  // namespace slic

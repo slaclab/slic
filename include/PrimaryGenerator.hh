@@ -49,11 +49,25 @@ class PrimaryGenerator : public G4VPrimaryGenerator {
    *
    * @param[in] filename The path to the file to open.
    */
-  virtual void open(const std::string filename) = 0; 
+  virtual void open(const std::string filename) = 0;
+
+  /**
+   * Set whether an event should be re-generated.
+   *
+   * @param[in] regen Set to true to re-generate the event.
+   */
+  void regenEvent(bool& regen) { regen_ = regen; }
+
+  /// @return true if the event should be re-generated.
+  bool regenEvent() { return regen_; }
 
  protected:
   /// Name of the PrimaryGenerator
   std::string name_{""};
+
+  /// Flag indicating whether an event should be regenerated
+  bool regen_{false};
+
 };  // PrimaryGenerator
 }  // namespace slic
 
@@ -64,7 +78,7 @@ class PrimaryGenerator : public G4VPrimaryGenerator {
  * and then registers the class as a generator
  * with the Factory
  */
-#define DECLARE_GENERATOR(CLASS)                                              \
-  namespace {                                                                 \
-    auto v = ::slic::PrimaryGenerator::Factory::get().declare<CLASS>(#CLASS); \
+#define DECLARE_GENERATOR(CLASS)                                            \
+  namespace {                                                               \
+  auto v = ::slic::PrimaryGenerator::Factory::get().declare<CLASS>(#CLASS); \
   }
