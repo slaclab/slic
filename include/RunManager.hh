@@ -36,7 +36,7 @@ class RunManager: public G4RunManager, public Module {
          * @return The singleton RunManager.
          */
         static RunManager* instance() {
-            return dynamic_cast<RunManager*>(G4RunManager::GetRunManager());
+            return static_cast<RunManager*>(G4RunManager::GetRunManager());
         }
 
         /**
@@ -81,6 +81,9 @@ class RunManager: public G4RunManager, public Module {
          */
         bool isRunAborted();
 
+        bool regenEvent() { return regen_; }
+
+        void regenEvent(bool regen) { regen_ = regen; }
     protected:
 
         /**
@@ -107,6 +110,7 @@ class RunManager: public G4RunManager, public Module {
         int m_numberOfEventsToRun;
         bool m_abortRun;
         PluginManager* m_pluginManager;
+        bool regen_{false};
 };
 }
 

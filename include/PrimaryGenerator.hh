@@ -51,22 +51,9 @@ class PrimaryGenerator : public G4VPrimaryGenerator {
    */
   virtual void open(const std::string filename) = 0;
 
-  /**
-   * Set whether an event should be re-generated.
-   *
-   * @param[in] regen Set to true to re-generate the event.
-   */
-  void regenEvent(bool& regen) { regen_ = regen; }
-
-  /// @return true if the event should be re-generated.
-  bool regenEvent() { return regen_; }
-
  protected:
   /// Name of the PrimaryGenerator
   std::string name_{""};
-
-  /// Flag indicating whether an event should be regenerated
-  bool regen_{false};
 
 };  // PrimaryGenerator
 }  // namespace slic
