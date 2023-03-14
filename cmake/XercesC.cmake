@@ -2,7 +2,7 @@ message(STATUS "Checking for XercesC")
 find_package(XercesC QUIET)
 if(NOT XercesC_FOUND)
     message(STATUS "XercesC was not found and will be installed")
-    set(XercesC_VERSION 3.2.3 CACHE STRING "XercesC version" FORCE) # Is this necessary?
+    set(XercesC_VERSION 3.2.4 CACHE STRING "XercesC version" FORCE) # Is this necessary?
     set(XercesC_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/XercesC)
     externalproject_add(
         XercesC
