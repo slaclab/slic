@@ -25,6 +25,10 @@
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
 
+#ifdef QT_VIS
+#include "G4OpenGLStoredQt.hh"
+#endif
+
 namespace slic {
 
 SlicApplication::SlicApplication() :
@@ -118,7 +122,10 @@ void SlicApplication::initialize() {
 
 void SlicApplication::initializeVis()
 {
-    G4VisExecutive* vis = new G4VisExecutive();
+    G4VisManager* vis = new G4VisExecutive();
+#ifdef QT_VIS
+    vis->RegisterGraphicsSystem(new G4OpenGLStoredQt);
+#endif
     vis->Initialize();
 
     // VRML writer within SLIC.

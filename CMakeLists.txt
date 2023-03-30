@@ -10,6 +10,12 @@ cmake_minimum_required(VERSION 3.8)
 
 project(SLIC VERSION 6.1.0)
 
+option(QT_VIS "Enabled visualization with QT." OFF)
+if (QT_VIS)
+  message(STATUS "Enabling QT visualization.") 
+  add_definitions(-DQT_VIS)
+endif() 
+
 # enable in source build since default is not writable from a non-root account
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/install" CACHE PATH "..." FORCE)
