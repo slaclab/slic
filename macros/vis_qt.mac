@@ -1,0 +1,9 @@
+# Macro file used to apply visualization settings during the initialization
+# phase when running in interactive mode.
+
+# This will select the OpenGL+Qt graphics system.
+/vis/open OGLSQt
+
+# Draw geometry
+/vis/drawVolume
+#
