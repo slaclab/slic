@@ -24,6 +24,7 @@
 #include "G4StateManager.hh"
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
+#include "G4EmParameters.hh"
 
 namespace slic {
 
@@ -88,6 +89,9 @@ void SlicApplication::initialize() {
 
         // Create a new RunManager.
         m_runManager = new RunManager();
+        
+        // Enable setting of EM parameters
+        G4EmParameters::Instance();
 
         PhysicsListManager::instance();
 

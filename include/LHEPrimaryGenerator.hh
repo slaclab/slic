@@ -1,17 +1,15 @@
-/**
- * @file LHEPrimaryGenerator.h
- * @brief Class for generating a Geant4 event from LHE event data
- * @author Jeremy McCormick, SLAC National Accelerator Laboratory
- */
+#pragma once
 
-#ifndef SLIC_LHEPRIMARYGENERATOR_HH_
-#define SLIC_LHEPRIMARYGENERATOR_HH_
+#include <memory>
+#include <string>
 
-// Geant4
-#include "G4VPrimaryGenerator.hh"
-
-// LDMX
+//~~ SLIC ~~//
 #include "LHEReader.hh"
+#include "PrimaryGenerator.hh"
+
+// Forward decs
+class G4Event;
+class G4PrimaryVertex;
 
 namespace slic {
 
@@ -19,35 +17,36 @@ namespace slic {
  * @class LHEPrimaryGenerator
  * @brief Generates a Geant4 event from an LHEEvent
  */
-class LHEPrimaryGenerator: public G4VPrimaryGenerator {
+class LHEPrimaryGenerator : public PrimaryGenerator {
+ public:
+  /**
+   * Class constructor.
+   * @param name The instance name of this generator.
+   */
+  LHEPrimaryGenerator(const std::string& name);
 
-    public:
+  /// Destructor
+  ~LHEPrimaryGenerator() = default;
 
-        /**
-         * Class constructor.
-         * @param reader The LHE reader with the event data.
-         */
-        LHEPrimaryGenerator(LHEReader* reader);
+  /**
+   * Open the given file for processing.
+   */
+  void open(const std::string filename) final override {
+    reader_->open(filename);
+  };
 
-        /**
-         * Class destructor.
-         */
-        virtual ~LHEPrimaryGenerator();
+  /**
+   * Generate vertices in the Geant4 event.
+   * @param anEvent The Geant4 event.
+   */
+  void GeneratePrimaryVertex(G4Event* event) final override;
 
-        /**
-         * Generate vertices in the Geant4 event.
-         * @param anEvent The Geant4 event.
-         */
-        void GeneratePrimaryVertex(G4Event* anEvent);
+ private:
+  // The LHE reader with the event data.
+  std::unique_ptr<LHEReader> reader_;
 
-    private:
+  /// The current LHE event being processed.
+  std::shared_ptr<LHEEvent> lhe_event_;
 
-        /**
-         * The LHE reader with the event data.
-         */
-        LHEReader* reader_;
-};
-
-}
-
-#endif
+};  // LHEPrimaryGenerator
+}  // namespace slic

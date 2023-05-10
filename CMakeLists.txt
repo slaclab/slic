@@ -22,6 +22,15 @@ if(CMAKE_CXX_COMPILER_VERSION LESS 4.8)
     message(FATAL_ERROR "The GCC version is too old (at least 4.8 is required).")
 ENDIF()
 
+if(NOT DEFINED CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+  set(CMAKE_CXX_EXTENSIONS OFF)
+endif()
+
+SET( SLIC_VERSION_MAJOR 6 )
+SET( SLIC_VERSION_MINOR 0 )
+SET( SLIC_VERSION_PATCH 1 )
 if(APPLE)
     # use, i.e. don't skip the full RPATH for the build tree
     set(CMAKE_SKIP_BUILD_RPATH  FALSE)

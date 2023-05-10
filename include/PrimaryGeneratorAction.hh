@@ -1,56 +1,37 @@
-#ifndef SLIC_PRIMARYGENERATORACTION_HH_
-#define SLIC_PRIMARYGENERATORACTION_HH_ 1
+#pragma once
 
-// SLIC
-#include "EventSourceManager.hh"
-#include "Module.hh"
-#include "PluginManagerAccessor.hh"
-
-// Geant4
+/*~~ Geant4 ~~*/
 #include "G4VUserPrimaryGeneratorAction.hh"
-#include "G4GeneralParticleSource.hh"
-#include "G4ParticleGun.hh"
-#include "G4RunManager.hh"
+
+// Forward declarations
+class G4Event; 
 
 namespace slic {
 
 /**
  * @class PrimaryGeneratorAction
- * @brief Implementation of G4VUserPrimaryGeneratorAction.
+ * @brief Implementation of Geant4 primary generator action
  */
-class PrimaryGeneratorAction: public G4VUserPrimaryGeneratorAction, public Module, public PluginManagerAccessor {
+class PrimaryGeneratorAction: public G4VUserPrimaryGeneratorAction { 
+ public:
+  /// Constructor.
+  PrimaryGeneratorAction();
 
-    public:
+  /// Destructor.
+  virtual ~PrimaryGeneratorAction() = default;
 
-        /**
-         * Class constructor.
-         */
-        PrimaryGeneratorAction();
+  /**
+   * Generate primaries for the event.
+   *
+   * @param event The Geant4 event.
+   */
+  void GeneratePrimaries(G4Event* event) final override;
 
-        /**
-         * Class destructor.
-         */
-        virtual ~PrimaryGeneratorAction();
+ private:
+  bool smear_;  
+  double beamspot_dx_{0}; 
+  double beamspot_dy_{0}; 
+  double beamspot_dz_{0}; 
 
-    public:
-
-        /**
-         * Generate G4PrimaryParticle objects into the G4Event.
-         * @param[in] anEvent The target G4Event.
-         */
-        virtual void GeneratePrimaries(G4Event *anEvent);
-
-    private:
-
-        /**
-         * Begin the beginning of event message.
-         */
-        void printBeginEventMessage(G4Event* anEvent);
-
-    private:
-
-        EventSourceManager* _manager;
-};
-}
-
-#endif
+}; // PrimaryGeneratorAction
+} // namespace slic
